@@ -19,7 +19,9 @@
         <tr>
             <th scope="col">Code</th>
             <th scope="col">date</th>
+            <th scope="col">Email</th>
             <th scope="col">status</th>
+            <th scope="col">Mark</th>
             <th scope="col">price</th>
             <th scope="col">Action</th>
         </tr>
@@ -29,9 +31,11 @@
         <tr>
             <th scope="row">{{ order.id }}</th>
             <td>{{ order.getCreateDate|date("m/d/Y") }}</td>
-            <td>Otto</td>
+            <td>{{ order.getEmail }}</td>
+            <td style="color: darkgreen">Sucess</td>
+            <td>{{ order.getMark }}</td>
             <td>{{ order.getPrice }}€</td>
-            <td><a href="{{ path('dowloadPDFXml', { 'id': order.id }) }}">PDF</a></td>
+            <td>PDF <a href="{{ path('dowloadPDFXml', { 'id': order.id }) }}"><i class="fas fa-download"></i></a></td>
         </tr>
         {% endfor %}
         </tbody>

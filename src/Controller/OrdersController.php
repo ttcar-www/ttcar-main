@@ -66,6 +66,10 @@ class OrdersController extends AbstractController
                 ->getRepository(Cars::class)
                 ->find($id);
 
+        $mark = $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(['id' => $car->getMark()]);
+
         $accessArray = [];
         foreach ($car->getItems() as $item) {
             $access = $this->getDoctrine()
@@ -127,7 +131,8 @@ class OrdersController extends AbstractController
                 $order->setPrice($price);
                 $order->setItems(isset($_SESSION['itemsOrder']) ? $_SESSION['itemsOrder']: null);
                 $order->setLang('fr');
-
+                $order->setCountDays($nb_days);
+                $order->setMark($mark->getLibelle());
 
                 if ($user) {
                     $order->setCustomerName($user->getName());
