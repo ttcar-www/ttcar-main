@@ -341,6 +341,48 @@ class Order
     private $comment;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mark;
+
+    /**
+     * @return mixed
+     */
+    public function getMark()
+    {
+        return $this->mark;
+    }
+
+    /**
+     * @param mixed $mark
+     */
+    public function setMark($mark): void
+    {
+        $this->mark = $mark;
+    }
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $count_days;
+
+    /**
+     * @return mixed
+     */
+    public function getCountDays()
+    {
+        return $this->count_days;
+    }
+
+    /**
+     * @param mixed $count_days
+     */
+    public function setCountDays($count_days): void
+    {
+        $this->count_days = $count_days;
+    }
+
+    /**
      * @return mixed
      */
     public function getComment()
