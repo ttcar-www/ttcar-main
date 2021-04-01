@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TTcar Transit{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('animate') }}
+            {{ encore_entry_link_tags('blog') }}
+            {{ encore_entry_link_tags('bootstrap') }}
+            {{ encore_entry_link_tags('colors') }}
+            {{ encore_entry_link_tags('demo') }}
+            {{ encore_entry_link_tags('compare') }}
+            {{ encore_entry_link_tags('custom') }}
+            {{ encore_entry_link_tags('detail') }}
+            {{ encore_entry_link_tags('doc') }}
+            {{ encore_entry_link_tags('home') }}
+            {{ encore_entry_link_tags('home-2') }}
+            {{ encore_entry_link_tags('bxslider') }}
+            {{ encore_entry_link_tags('listings') }}
+            {{ encore_entry_link_tags('master') }}
+            {{ encore_entry_link_tags('pages') }}
+            {{ encore_entry_link_tags('site-colors') }}
+            {{ encore_entry_link_tags('start') }}
+            {{ encore_entry_link_tags('submits') }}
+            {{ encore_entry_link_tags('theme') }}
+            {{ encore_entry_link_tags('owl_css') }}
+            {{ encore_entry_link_tags('account') }}
+
+
+        {% endblock %}
+        <link rel="icon" type="image" href="{{ asset('build/tt-groupimg.png') }}" />
+    </head>
+    <body>
+
+<header class="b-topBar wow slideInDown" data-wow-delay="0.7s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-6">
+                <div class="b-topBar__addr">
+                    <span class="fa fa-map-marker"></span>
+                    2 Avenue de la Porte de Saint-Cloud, Paris
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6">
+                <div class="b-topBar__tel">
+                    <span class="fa fa-phone"></span>
+                    +33 (0)1 40 71 72 65/57
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <nav class="b-topBar__nav">
+                    <ul>
+                        {% if app.user %}
+                            <li><a href="#" onclick="toogleMenu()">{{ 'menu.compte'|trans({}, 'messages') }}
+                                    <i class="fas fa-angle-double-down" onclick="toogleMenu()" style="margin-left: 15px"></i>
+                                </a></li>
+                            <li id="toogle_menu" style="display: none">
+                                <a href="{{ path('account') }}">{{ 'menu.profil'|trans({}, 'messages') }}</a>
+                                <a href="{{ path('my_order') }}">{{ 'menu.booking'|trans({}, 'messages') }}</a>
+                                <a href="{{ path('app_logout') }}">{{ 'login.logout'|trans({}, 'messages') }}</a>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ path('app_login') }}">{{ 'login.login'|trans({}, 'messages') }}</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-2 col-xs-6">
+                <div class="b-topBar__lang">
+                    <div class="dropdown">
+                       <a href="{{ path('change_locale',{ 'locale': 'fr' }) }}"><i class="fas fa-globe-europe"></i> FR /</a>
+                        <a href="{{ path('change_locale',{ 'locale': 'en' }) }}" >EN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header><!--b-topBar-->
+
+<nav class="b-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-xs-4">
+                <div class=" wow slideInLeft" data-wow-delay="0.3s">
+                    <a href="{{ path('main') }}">
+                    <img src="{{ asset('build/tt-groupimg.png') }}" class="home_logo" alt="ttcar" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-9 col-xs-8">
+                <div class="b-nav__list wow slideInRight" data-wow-delay="0.3s">
+                    <div class="collapse navbar-collapse navbar-main-slide" id="nav">
+                        <ul class="navbar-nav-menu">
+                            <li><a href="{{ path('main') }}">{{ 'menu.temporary'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('index_promotion') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('blog') }}">Blog</a></li>
+                            <li><a href="{{ path('contact') }}">{{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--b-nav-->
+  {% block body %}
+
+    {% endblock %}
+{% block footer %}
+<footer class="b-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="b-footer__company wow fadeInLeft" data-wow-delay="0.3s">
+                    <div class="b-nav__logo">
+                        <a href="{{ path('main') }}">
+                            <img src="{{ asset('build/tt-groupimg.png') }}" class="home_logo_footer" alt="ttcar"/>
+                        </a>
+                    </div>
+                    <p>&copy; 2015 Designed by Templines</p>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="b-footer__content wow fadeInRight" data-wow-delay="0.3s">
+                    <div class="b-footer__content-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/ttcartransit/"><i class="fab fa-instagram-square"></i></a>
+                        <a href="https://twitter.com/ttcartransit"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://www.youtube.com/user/ttcarfrance"><i class="fab fa-youtube-square"></i></a>
+                    </div>
+                    <nav class="b-footer__content-nav">
+                        <ul>
+                            <li><a href="{{ path('main') }}">{{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('main') }}">{{ 'menu.temporary'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('contact') }}">{{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('dashboard') }}">{{ 'menu.admin'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('app_logout') }}">{{ 'login.logout'|trans({}, 'messages') }}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!--b-footer-->
+{% endblock %}
+
+        {% block javascripts %}
+            <script>
+                function toogleMenu() {
+                    let x = document.getElementById("toogle_menu");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                }
+            </script>
+
+            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('bxslider_js') }}
+            {{ encore_entry_script_tags('classie') }}
+            {{ encore_entry_script_tags('easypiechart') }}
+            {{ encore_entry_script_tags('placeholder') }}
+            {{ encore_entry_script_tags('smooth') }}
+            {{ encore_entry_script_tags('modernizr') }}
+            {{ encore_entry_script_tags('theme_js') }}
+            {{ encore_entry_script_tags('waypoints') }}
+            {{ encore_entry_script_tags('wow') }}
+            {{ encore_entry_script_tags('carousel') }}
+            {{ encore_entry_script_tags('owl_min') }}
+            {{ encore_entry_script_tags('owl_transitions') }}
+            {{ encore_entry_script_tags('owl_theme') }}
+            {{ encore_entry_script_tags('bootsDate') }}
+            {{ encore_entry_script_tags('datepicker') }}
+
+        {% endblock %}
+    </body>
+</html>

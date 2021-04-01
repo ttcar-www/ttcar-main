@@ -1,0 +1,71 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="group_text">
+        <!-- Striped table start -->
+        <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">All Cars</h4>
+                    <a href="{{ path('create_mark') }}" style="color: blue" class="btn btn-light"><i class="fas fa-plus-circle"></i> Add Mark</a>
+                    <a href="{{ path('create_range') }}" style="color: cadetblue; margin-left: 5%" class="btn btn-light"><i class="fas fa-marker"></i> Add Range</a>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <thead class="text-uppercase">
+                                <tr>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Selling price</th>
+                                    <th scope="col">Years</th>
+                                    <th scope="col">Margin</th>
+                                    <th scope="col">Fuel</th>
+                                    <th scope="col">Roof rack</th>
+                                    <th scope="col">Accessories</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for car in cars %}
+                                    <tr>
+                                        {% if car.getIsOnline == true %}
+                                        <td><i class="fas fa-check-circle" style="color: green"></i></td>
+                                        {% else %}
+                                        <td><i class="fas fa-times" style="color: red"></i></td>
+                                        {% endif %}
+                                        <th scope="row">{{ car.id }}</th>
+                                        <td>{{ car.name }}</td>
+                                        <td>{{ car.sellingPrice }}€</td>
+                                        <td>{{ car.years }}</td>
+                                        <td>{{ car.margin }}%</td>
+                                        <td>{{ car.fuel }}</td>
+                                        <td>{{ car.roofRack }}€</td>
+                                        <td>
+                                            {% if  car.items %}
+                                                {% for item in car.getItems %}
+                                                    {{ item.getLibelle }} /
+                                                {% endfor %}
+                                            {% endif %}</td>
+                                        <td>
+                                            <a href="{{ path('edit_car', { 'id': car.id }) }}"> <i class="far fa-edit"></i></a>
+                                            <br>
+                                            <a href="{{ path('delete_car', { 'id': car.id }) }}"
+                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                            <br>
+                                            <a href="{{ path('detail_car', { 'id': car.id }) }}"><i class="fas fa-eye"></i></a>
+                                            <br>
+                                            <a href="{{ path('create_price', { 'id': car.id }) }}"><i class="fas fa-money-bill-wave"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Striped table end -->
+    </div>
+{% endblock %}

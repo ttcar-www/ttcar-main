@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">AutoClub Blog</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
+                <h3>Read Latest Auto News &amp; Reviews</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.3s">
+            <a href="home.html" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="blogTwo.html" class="b-breadCumbs__page m-active">Blog Style 2</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <div class="b-blog s-shadow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <aside class="b-blog__aside">
+        {#                <form class="b-blog__aside-search wow zoomInUp" data-wow-delay="0.3s" action="/" method="post">
+                            <div>
+                                <input type="text" name="search" value="" placeholder="Search" />
+                                <button type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </form>#}
+                        <div class="b-blog__aside-categories wow zoomInUp" data-wow-delay="0.3s">
+                            <header class="s-lineDownLeft">
+                                <h2 class="s-titleDet">CATEGORIES</h2>
+                            </header>
+                            <nav>
+                                <ul class="b-blog__aside-categories-list">
+                                    {% for category in categories %}
+                                    <li><a href="{{ path('findByCategory', { 'id': category.id }) }}">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+         {#               <div class="b-blog__aside-popular wow zoomInUp" data-wow-delay="0.3s">
+                            <header class="s-lineDownLeft">
+                                <h2 class="s-titleDet">POPULAR POSTS</h2>
+                            </header>
+                            <div class="b-blog__aside-popular-posts">
+                                <div class="b-blog__aside-popular-posts-one">
+                                    <img class="img-responsive" src="media/270x150/mercBlog.png" alt="merc" />
+                                    <h4><a href="article.html">2016 Mercedes-Benz GLE-Class Debuts</a></h4>
+                                    <div class="b-blog__aside-popular-posts-one-date"><span class="fa fa-calendar-o"></span>20th May 2015</div>
+                                </div>
+                                <div class="b-blog__aside-popular-posts-one">
+                                    <img class="img-responsive" src="media/270x150/outlander.png" alt="outlander" />
+                                    <h4><a href="article.html">Refreshed 2016 Mitsubishi Outlander</a></h4>
+                                    <div class="b-blog__aside-popular-posts-one-date"><span class="fa fa-calendar-o"></span>20th May 2015</div>
+                                </div>
+                            </div>
+                        </div>#}
+            {#            <div class="b-blog__aside-text wow zoomInUp" data-wow-delay="0.3s">
+                            <header class="s-lineDownLeft">
+                                <h2 class="s-titleDet">WHY CHOOSE US?</h2>
+                            </header>
+                            <p>Curabitur libero. Donec facilisis velit edu est
+                                Phasellus conside quat. Aenean vitae quam.
+                                Vivamus etdu nunc. Nunc conseq sem velde
+                                metus imperdiet lacinia. Cras ornare pretum
+                                tortor. Donec sed augue sed nunc rutru me
+                                egestas. Bulum ante ipsum primisn faucibus
+                                orci luctus et ultrices posuere.</p>
+                        </div>#}
+                        <div class="b-blog__aside-reviews wow zoomInUp" data-wow-delay="0.3s">
+                            <header class="s-lineDownLeft">
+                                <h2 class="s-titleDet">LATEST REVIEWS</h2>
+                            </header>
+                            <div class="b-blog__aside-reviews-posts">
+                                {% for lastPost in lastPosts %}
+                                <div class="b-blog__aside-reviews-posts-one">
+                                    <div class="row m-smallPadding">
+                                        <div class="col-xs-5">
+                                            <img src="{{ asset('build/uploads/'~ lastPost.getPostImg) }}" alt="lastblog" class="img-responsive pull-right" style="width: 55%" />
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="b-blog__aside-reviews-posts-one-info">
+                                                <p>{{  lastPost.title }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <div class="b-blog__posts">
+                        {% for post in pagination %}
+                        <div class="b-blog__posts-one wow zoomInUp" data-wow-delay="0.3s">
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <header class="b-blog__posts-one-body-head s-lineDownLeft">
+                                        <div class="b-blog__posts-one-body-head-notes">
+                                            <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-user"></span>{{  post.author }}</span>
+                                            <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-calendar-o"></span>{{ post.getCreateAt|date("m/d/Y") }}</span>
+{#
+                                            <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-comment"></span>5 Comments</span>
+#}
+                                        </div>
+                                        <h2 class="s-titleDet">{{  post.title }}</h2>
+                                    </header>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4 pull-right">
+                                    <img class="img-responsive center-block" src="{{ asset('build/uploads/'~ post.getPostImg) }}" alt="blog" style="width: 35%" />
+                                </div>
+                                <div class="col-xs-8 pull-right">
+                                    <div class="b-blog__posts-one-info">
+                                        <p>{{  post.content }}</p>
+                                        <a href="{{ path('see_post', { 'id': post.id }) }}" class="btn m-btn m-readMore">Read More<span class="fa fa-angle-right"></span></a>
+                                  {#      <div class="b-blog__posts-one-social pull-right">
+                                            <em>SHARE THIS</em>
+                                            <a href="#"><span class="fa fa-google-plus-square "></span></a>
+                                            <a href="#"><span class="fa  fa-facebook-square"></span></a>
+                                            <a href="#"><span class="fa fa-twitter-square "></span></a>
+                                            <a href="#"><span class="fa fa-pinterest-square"></span></a>
+                                        </div>#}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="text-center wow zoomInUp">
+                            <div class="b-items__pagination-main text-center">
+                                {{ knp_pagination_render(pagination) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--b-blog-->
+
+
+{% endblock %}

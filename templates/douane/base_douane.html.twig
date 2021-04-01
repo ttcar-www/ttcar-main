@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}TTcar Transit{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('animate') }}
+        {{ encore_entry_link_tags('blog') }}
+        {{ encore_entry_link_tags('bootstrap') }}
+        {{ encore_entry_link_tags('colors') }}
+        {{ encore_entry_link_tags('demo') }}
+        {{ encore_entry_link_tags('compare') }}
+        {{ encore_entry_link_tags('custom') }}
+        {{ encore_entry_link_tags('detail') }}
+        {{ encore_entry_link_tags('doc') }}
+        {{ encore_entry_link_tags('home') }}
+        {{ encore_entry_link_tags('home-2') }}
+        {{ encore_entry_link_tags('bxslider') }}
+        {{ encore_entry_link_tags('listings') }}
+        {{ encore_entry_link_tags('master') }}
+        {{ encore_entry_link_tags('pages') }}
+        {{ encore_entry_link_tags('site-colors') }}
+        {{ encore_entry_link_tags('start') }}
+        {{ encore_entry_link_tags('submits') }}
+        {{ encore_entry_link_tags('theme') }}
+        {{ encore_entry_link_tags('owl_css') }}
+        {{ encore_entry_link_tags('account') }}
+    {% endblock %}
+    <link rel="icon" type="image" href="{{ asset('build/tt-groupimg.png') }}" />
+</head>
+<body>
+
+<header class="b-topBar wow slideInDown">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-6">
+                <div class="b-topBar__addr">
+                    <a href="{{ path('main') }}" style="color: orangered">Revenir sur TTCAR ></a>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <nav class="b-topBar__nav">
+                    <ul>
+                        {% if app.user %}
+                            <li><a href="#" onclick="toogleMenu()">{{ 'menu.compte'|trans({}, 'messages') }}
+                                    <i class="fas fa-angle-double-down" onclick="toogleMenu()" style="margin-left: 15px"></i>
+                                </a></li>
+                            <li id="toogle_menu" style="display: none">
+                                <a href="{{ path('account') }}">{{ 'menu.profil'|trans({}, 'messages') }}</a>
+                                <a href="{{ path('app_logout') }}">{{ 'login.logout'|trans({}, 'messages') }}</a>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ path('app_login') }}">{{ 'login.login'|trans({}, 'messages') }}</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-2 col-xs-6">
+                <div class="b-topBar__lang">
+                    <div class="dropdown">
+                        <a href="{{ path('change_locale',{ 'locale': 'fr' }) }}"><i class="fas fa-globe-europe"></i> FR /</a>
+                        <a href="{{ path('change_locale',{ 'locale': 'en' }) }}" >EN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header><!--b-topBar-->
+
+<nav class="b-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-xs-4">
+                <div class=" wow slideInLeft" data-wow-delay="0.3s">
+                    <div class="col-sm-3 col-xs-4">
+                        <div class="b-nav__logo wow slideInLeft" data-wow-delay="0.3s">
+                            <h3><a href="{{ path('TTdouane') }}">DOUANE<span>EXPORT</span></a></h3>
+                            <h2><a href="{{ path('TTdouane') }}">LOCATION DE VOITURE</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 col-xs-8">
+                <div class="b-nav__list wow slideInRight" data-wow-delay="0.3s">
+                    <div class="collapse navbar-collapse navbar-main-slide" id="nav">
+                    <ul class="navbar-nav-menu">
+                            <li><a href="{{ path('transit') }}">Transit Temporaire</a></li>
+                            <li><a href="{{ path('export') }}">W Export</a></li>
+                            <li><a href="{{ path('douane') }}">Douane</a></li>
+                            <li><a href="{{ path('transport') }}">Transport</a></li>
+                            <li><a href="{{ path('contactDouane') }}">{{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--b-nav-->
+{% block body %}
+
+{% endblock %}
+{% block footer %}
+
+    <div class="b-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <aside class="b-info__aside wow zoomInLeft" data-wow-delay="0.3s">
+                        <article class="b-info__aside-article">
+                            <h3>OPENING HOURS</h3>
+                            <div class="b-info__aside-article-item">
+                                <h6>Sales Department</h6>
+                                <p>lundi-vendredi 9h00-17h00</p>
+                                <p> Fermé le Weekend et jours fériés</p>
+                            </div>
+                        </article>
+                        <article class="b-info__aside-article">
+                            <h3>Newsletter</h3>
+                            <form>
+                                <input type="text" id="name" name="name" required
+                                       minlength="4" maxlength="8" size="10">
+                            </form>
+                        </article>
+                    </aside>
+                </div>
+                <div class="col-md-4 col-xs-12">
+
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <address class="b-info__contacts wow slideInUp" data-wow-delay="0.3s">
+                        <p>Contact us</p>
+                        <div class="b-info__contacts-item">
+                            <span class="fa fa-map-marker"></span>
+                            <em>2 Avenue de la Porte de Saint-Cloud,<br />
+                                75016 Paris</em>
+                        </div>
+                        <div class="b-info__contacts-item">
+                            <span class="fa fa-phone"></span>
+                            <em>Phone: +33 (0)1 40 71 72 65/57</em>
+                        </div>
+                        <div class="b-info__contacts-item">
+                            <span class="fa fa-fax"></span>
+                            <em>FAX: +33 (0)1 40 71 00 14</em>
+                        </div>
+                        <div class="b-info__contacts-item">
+                            <span class="fa fa-envelope"></span>
+                            <em>Email: info@ttcar.net</em>
+                        </div>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div><!--b-info-->
+
+    <footer class="b-footer">
+        <a id="to-top" href="#this-is-top"><i class="fa fa-chevron-up"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="b-footer__company wow slideInLeft" data-wow-delay="0.3s">
+                        <div class="b-nav__logo">
+                            <h3><a href="#">Douane<span>Export</span></a></h3>
+                        </div>
+                        <p>&copy; 2015 Designed by Templines</p>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="b-footer__content wow slideInRight" data-wow-delay="0.3s">
+                        <nav class="b-footer__content-nav">
+                            <ul>
+                                <li><a href="home.html">Home</a></li>
+                                <li><a href="404.html">Pages</a></li>
+                                <li><a href="listings.html">Inventory</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="404.html">Services</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="listTable.html">Shop</a></li>
+                                <li><a href="contacts.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!--b-footer-->
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function toogleMenu() {
+            let x = document.getElementById("toogle_menu");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('bxslider_js') }}
+    {{ encore_entry_script_tags('classie') }}
+    {{ encore_entry_script_tags('easypiechart') }}
+    {{ encore_entry_script_tags('placeholder') }}
+    {{ encore_entry_script_tags('smooth') }}
+    {{ encore_entry_script_tags('modernizr') }}
+    {{ encore_entry_script_tags('theme_js') }}
+    {{ encore_entry_script_tags('waypoints') }}
+    {{ encore_entry_script_tags('wow') }}
+    {{ encore_entry_script_tags('carousel') }}
+    {{ encore_entry_script_tags('owl_min') }}
+    {{ encore_entry_script_tags('owl_transitions') }}
+    {{ encore_entry_script_tags('owl_theme') }}
+{% endblock %}
+</body>
+</html>

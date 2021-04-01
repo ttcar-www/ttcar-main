@@ -1,0 +1,68 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="group_text">
+        <!-- Striped table start -->
+        <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">All Promotions</h4>
+                    <a href="{{ path('create_promotion') }}" style="color: blue" class="btn btn-light"><i class="fas fa-plus-circle"></i> Add Promo</a>
+                    <a href="{{ path('create_type') }}" style="color: darkslategrey; margin-left: 5%" class="btn btn-light"><i class="fas fa-search-dollar"></i> Add Type promo</a>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <thead class="text-uppercase">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">start_date</th>
+                                    <th scope="col">end_date</th>
+                                    <th scope="col">start_delivery</th>
+                                    <th scope="col">end_delivery</th>
+                                    <th scope="col">place_delivery</th>
+                                    <th scope="col">place_departure</th>
+                                    <th scope="col">type</th>
+                                    <th scope="col">Mark</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for promo in promotions %}
+                                    <tr>
+                                        <th scope="row">{{ promo.id }}</th>
+                                        <td>{{ promo.libelle }}</td>
+                                        <td>{{ promo.value }}</td>
+                                        <td>{{ promo.getStartDate|date("m/d/Y") }}</td>
+                                        <td>{{ promo.getEndDate|date("m/d/Y") }}</td>
+                                        <td>{{ promo.getStartDelivery|date("m/d/Y") }}</td>
+                                        <td>{{ promo.getEndDelivery|date("m/d/Y") }}</td>
+                                        <td>{{ promo.getPlaceDelivery.getLibelle }}</td>
+                                        <td>{{ promo.getPlaceDeparture.getLibelle }}</td>
+                                        <td>{{ promo.type.getType }}</td>
+                                        <td>
+                                            {% if promo.mark %}
+                                            {{ promo.mark.getlibelle }}
+                                            {% else %}
+                                                <i class="fas fa-ban" style="color: red"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                             <a href="{{ path('edit_promo', { 'id': promo.id }) }}"><i class="fas fa-edit"></i></a>
+                                            <br>
+                                            <a href="{{ path('delete_promo', { 'id': promo.id }) }}"
+                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Striped table end -->
+    </div>
+{% endblock %}

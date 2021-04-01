@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">Login</h1>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.7s">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a>
+            <span class="fa fa-angle-right"></span><a href="{{ path('app_login') }}" class="b-breadCumbs__page m-active">Blog Post</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <!-- basic form start -->
+    <div class="container">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body login-div">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                        <br>
+                        <br>
+                    {% endif %}
+                    <div class="form-row align-items-center">
+                        <div class="col-sm-3 my-1">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                        </div>
+                        <div class="col-sm-3 my-1">
+                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                            <div class="input-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            </div>
+                        </div>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+                        <br>
+                        <div class="col-auto my-1">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- basic form end -->
+    </div>
+{% endblock %}

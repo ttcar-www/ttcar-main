@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">
+<fields>
+<field name="ref_ada">
+<value>T120939</value>
+</field>
+<field name="ref_sodexa">
+<value></value>
+</field>
+<field name="nom">
+<value>DE FREITAS</value>
+</field>
+<field name="nom_jeune_fille">
+<value></value>
+</field>
+<field name="Title">
+<value>01</value>
+</field>
+<field name="prenom">
+<value>NUNO</value>
+</field>
+<field name="Language">
+<value>F</value>
+</field>
+<field name="date_naissance">
+<value>01/01/1977</value>
+</field>
+<field name="pays_naissance">
+<value>PORTUGAL</value>
+</field>
+<field name="ville_naissance">
+<value>MATOSINHOS</value>
+</field>
+<field name="nationalite">
+<value>CANADA</value>
+</field>
+<field name="profession">
+<value>EMPLOYÉ</value>
+</field>
+<field name="Phone">
+<value>F</value>
+</field>
+<field name="telephone">
+<value>00141788988900</value>
+</field>
+<field name="email">
+<value>NUNODEFREITAS@YAHOO.CA</value>
+</field>
+<field name="Identity">
+<value>Passport</value>
+</field>
+<field name="nr_passeport">
+<value>G735845</value>
+</field>
+<field name="date_emission">
+<value>14/03/2015</value>
+</field>
+<field name="lieu_emission">
+<value>PARIS</value>
+</field>
+<field name="hors_ue">
+<value>54, PORTS HEAD</value>
+</field>
+<field name="complement_hors_ue">
+<value></value>
+</field>
+<field name="code_postal">
+<value>H2Z3T5</value>
+</field>
+<field name="ville">
+<value>TORONTO</value>
+</field>
+<field name="pays_hors_ue">
+<value>CANADA</value>
+</field>
+<field name="adresse_ue">
+<value>  </value>
+</field>
+<field name="Profile">
+<value>Tourist</value>
+</field>
+<field name="vehicule">
+<value>2008 ESSENCE - BVM - GPS</value>
+</field>
+<field name="observations">
+<value>Promotions: 883 - 10 jours offerts Peugeot Essence et Hybride</value>
+</field>
+<field name="date_liv">
+<value>03/03/2020</value>
+</field>
+<field name="date_res">
+<value>26/04/2020</value>
+</field>
+<field name="duree">
+<value>55</value>
+</field>
+<field name="lieu_liv">
+<value>LYON SAINT EXUPÉRY</value>
+</field>
+<field name="nr_vol">
+<value>UU0977</value>
+</field>
+<field name="heure_vol">
+<value>10:00</value>
+</field>
+<field name="flight_time">
+<value>AM</value>
+</field>
+<field name="lieu_res">
+<value>LYON SAINT EXUPÉRY</value>
+</field>
+<field name="acompte">
+<value>1596,00</value>
+</field>
+<field name="frais_livraison">
+<value>0,00</value>
+</field>
+<field name="frais_restitution">
+<value>0,00</value>
+</field>
+<field name="total">
+<value>1596,00</value>
+</field>
+<field name="montant_accessoires">
+<value>0,00</value>
+</field>
+<field name="accessoires1">
+<value></value>
+</field>
+<field name="accessoires2">
+<value></value>
+</field>
+<field name="accessoires3">
+<value></value>
+</field>
+<field name="accessoires4">
+<value></value>
+</field>
+<field name="fait_le">
+<value>03/02/2020</value>
+</field>
+<field name="fait_a">
+<value>TORONTO</value>
+</field>
+<field name="nom_vendeur">
+<value>TTCAR</value>
+</field>
+</fields>
+</xfdf>

@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">AutoClub Blog</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+                <h3>Read Latest Auto News &amp; Reviews</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.7s">
+            <a href="home.html" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="blog.html" class="b-breadCumbs__page">Blog Style 1</a><span class="fa fa-angle-right"></span><a href="article.html" class="b-breadCumbs__page m-active">Blog Post</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <section class="b-article">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-xs-12">
+                    <div class="b-article__main">
+                        <div class="b-blog__posts-one">
+                            <div class="row m-noBlockPadding">
+                                <div class="col-sm-1 col-xs-2">
+                                    <div class="b-blog__posts-one-author wow zoomInUp" data-wow-delay="0.5s">
+                                        <div class="b-blog__posts-one-author-img">
+                                            <img src="{{ asset('build/tt-groupimg.png') }}" alt="ttcar" style="width: 130%" />
+                                        </div>
+                          {#              <div class="b-blog__posts-one-share s-lineDownCenter">SHARE THIS</div>
+                                        <div class="b-blog__posts-one-social">
+                                            <div>
+                                                <a href="#"><span class="fa fa-google-plus-square "></span></a>
+                                                <a href="#"><span class="fa  fa-facebook-square"></span></a>
+                                            </div>
+                                            <div>
+                                                <a href="#"><span class="fa fa-twitter-square "></span></a>
+                                                <a href="#"><span class="fa fa-pinterest-square"></span></a>
+                                            </div>
+                                        </div>#}
+                                    </div>
+                                </div>
+                                <div class="col-sm-11 col-xs-10">
+                                    <div class="b-blog__posts-one-body">
+                                        <header class="b-blog__posts-one-body-head wow zoomInUp" data-wow-delay="0.5s">
+                                            <h2 class="s-titleDet">{{ post.title }}</h2>
+                                            <div class="b-blog__posts-one-body-head-notes">
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-user"></span>{{ post.author }}</span>
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-calendar-o"></span>{{ post.getCreateAt|date("m/d/Y") }}</span>
+{#
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-comment"></span>5 Comments</span>
+#}
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-pencil"></span>AutoMarket, Tips &amp; Advice</span>
+                                            </div>
+                                        </header>
+                                        <div class="b-blog__posts-one-body-main wow zoomInUp" data-wow-delay="0.5s">
+                                            <div class="b-blog__posts-one-body-main-img">
+                                                <p>{{ post.content|raw }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-article__main-related s-shadow">
+                            <div class="s-lineDownLeft  s-titleLeft">
+                                <div>
+                                    <h2 class="s-titleDet wow zoomInUp" data-wow-delay="0.5s">More Related Articles</h2>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                {% for postLast in lastPost %}
+                                    {% if postLast.id != post.id %}
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="b-article__main-related-item wow zoomInUp" data-wow-delay="0.5s">
+                                        <div class="row m-smallPadding">
+                                            <div class="col-xs-4">
+                                                <img class="center-block img-responsive" src="{{ asset('build/uploads/'~ postLast.getPostImg) }}" alt="related" />
+                                            </div>
+                                            <div class="col-xs-8">
+                                                <h5><a href="{{ path('see_post', { 'id': postLast.id }) }}">{{ postLast.title }}</a></h5>
+                                                <div class="b-blog__posts-one-body-head-notes">
+                                                    <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-user"></span>{{ postLast.author }}</span>
+                                                    <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-calendar-o"></span>{{ postLast.getCreateAt|date("m/d/Y") }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {#<div class="b-article__main-comments">
+                            <div class="s-lineDownLeft  s-titleLeft">
+                                <div class=" wow zoomInUp" data-wow-delay="0.5s">
+                                    <h2 class="s-titleDet">COMMENTS</h2>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="b-article__main-comments-one wow zoomInUp" data-wow-delay="0.5s">
+                                        <div class="b-article__main-comments-one-person">
+                                            <div class="b-blog__posts-one-author-img"></div>
+                                        </div>
+                                        <div class="b-article__main-comments-one-text">
+                                            <header class="b-article__main-comments-one-text-head">
+                                                <h6>William Shane</h6>
+                                                <div class="b-article__main-comments-one-text-head-date">
+                                                    <span>30 MAY 2015</span>
+                                                    <span>Posted at 12:25 AM</span>
+                                                </div>
+                                                <a class="b-article__main-comments-one-text-head-answer  pull-right" href="#"><span class="fa fa-long-arrow-left"></span></a>
+                                            </header>
+                                            <p>
+                                                In eget dolor. Lorem ipsum dolor sit amet consectetuer adipiscing elit. Ut ornare cursus nibh. Sed lorem volutpat purus scel erisque dapibus. Etiam adipiscing ante nec nibh. In in felis in metus mollis blandit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="b-article__main-comments-one m-second wow zoomInUp" data-wow-delay="0.5s">
+                                        <div class="b-article__main-comments-one-person">
+                                            <div class="b-blog__posts-one-author-img m-woomen"></div>
+                                        </div>
+                                        <div class="b-article__main-comments-one-text">
+                                            <header class="b-article__main-comments-one-text-head">
+                                                <h6>Martina Kathrine</h6>
+                                                <div class="b-article__main-comments-one-text-head-date">
+                                                    <span>30 MAY 2015</span>
+                                                    <span>Posted at 12:25 AM</span>
+                                                </div>
+                                                <a class="b-article__main-comments-one-text-head-answer  pull-right" href="#"><span class="fa fa-long-arrow-left"></span></a>
+                                            </header>
+                                            <p>
+                                                In eget dolor. Lorem ipsum dolor sit amet consectetuer adipiscing elit. Ut ornare cursus nibh. Sed lorem volutpat purus scel erisque dapibus. Etiam adipiscing ante nec nibh. In in felis in metus mollis blandit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>#}
+               {#         <div class="b-article__main-add wow zoomInUp" data-wow-delay="0.5s">
+                            <div class="s-lineDownLeft  s-titleLeft">
+                                <div>
+                                    <h2 class="s-titleDet">ADD A REPLY</h2>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <form action="/" method="POST">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <input placeholder="YOUR NAME" type="text" name="name" />
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input placeholder="EMAIL ADDRESS" type="text" name="email" />
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input placeholder="WEBSITE" type="text" name="website" />
+                                    </div>
+                                </div>
+                                <textarea name="text" placeholder="MESSAGE"></textarea>
+                                <button type="submit" class="btn m-btn">SEND COMMENT<span class="fa fa-angle-right"></span></button>
+                            </form>
+                        </div>#}
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <aside class="b-blog__aside">
+                       {# <form class="b-blog__aside-search wow zoomInUp" data-wow-delay="0.5s" action="/" method="post">
+                            <div>
+                                <input type="text" name="search" value="" placeholder="Search" />
+                                <button type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </form>#}
+                        <div class="b-blog__aside-categories wow zoomInUp" data-wow-delay="0.5s">
+                            <header class="s-lineDownLeft">
+                                <h2 class="s-titleDet">CATEGORIES</h2>
+                            </header>
+                            <nav>
+                                <ul class="b-blog__aside-categories-list">
+                                    {% for category in categories %}
+                                    <li><a href="{{ path('findByCategory', { 'id': category.id }) }}">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="b-blog__aside-text wow zoomInUp" data-wow-delay="0.5s">
+                            <header class="s-lineDownLeft">
+                                <h2 class="s-titleDet">WHY CHOOSE US?</h2>
+                            </header>
+                            <p>Curabitur libero. Donec facilisis velit edu est
+                                Phasellus conside quat. Aenean vitae quam.
+                                Vivamus etdu nunc. Nunc conseq sem velde
+                                metus imperdiet lacinia. Cras ornare pretum
+                                tortor. Donec sed augue sed nunc rutru me
+                                egestas. Bulum ante ipsum primisn faucibus
+                                orci luctus et ultrices posuere.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section><!--b-article-->
+
+{% endblock %}

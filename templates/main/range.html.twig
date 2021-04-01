@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">Nos gammes</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+                <h3>The Largest Auto Dealer Online</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('main') }}" class="b-breadCumbs__page m-active">Gammes</a>
+        </div>
+    </div><!--b-breadCumbs-->
+    <div class="b-auto__main">
+<section class="b-auto">
+    <div class="container">
+        <h2 class="s-title wow zoomInRight" data-wow-delay="0.3s" data-wow-offset="100">Choice your range page</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    {% for range in ranges %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ range.libelle }}</h5>
+{#                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>#}
+                            {% if  range.rangeImg %}
+                            <img src="{{ asset('build/uploads/'~ range.getRangeImg) }}" style="width: 250px">
+                                <br>
+                            {% endif %}
+                            <a href="{{ path('details_to_range',{ 'path': range.id }) }}" class="btn btn-primary">Choice this range</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    </div>
+</section><!--b-auto-->
+{% endblock %}

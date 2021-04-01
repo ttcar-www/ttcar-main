@@ -1,0 +1,478 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('index') }}
+    {% endblock %}
+
+    {# read and display all flash messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-warning flash-{{ label }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <section class="b-slider">
+        <div id="carousel" class="slide carousel carousel-fade">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{{ asset('build/10_jours_offerts_PSA.png') }}" alt="sliderImg" />
+    {#                <div class="container">
+                        <div class="carousel-caption b-slider__info">
+                            <h3>Find your dream</h3>
+                            <h2>Lamborghini Aventador</h2>
+                            <p>Model 2015 <span>$184,900</span></p>
+                            <a class="btn m-btn" href="#">see details<span class="fa fa-angle-right"></span></a>
+                        </div>
+                    </div>#}
+                </div>
+{#            <a class="carousel-control right" href="#carousel" data-slide="next">
+                <span class="fa fa-angle-right m-control-right"></span>
+            </a>
+            <a class="carousel-control left" href="#carousel" data-slide="prev">
+                <span class="fa fa-angle-left m-control-left"></span>
+            </a>#}
+        </div>
+        </div>
+    </section><!--b-slibeder-->
+    <!--Search bar-->
+        <div class="container search_bar">
+            <div class="b-search__main">
+                <div class="b-search__main-title wow zoomInUp" >
+                    <h2>{{ 'search_tilte'|trans({}, 'messages') }}</h2>
+                </div>
+                <div class="b-search__main-type wow zoomInUp" >
+                    <div class="col-xs-12 col-md-2 s-noLeftPadding">
+                        <h4>Select vehicle type</h4>
+                    </div>
+                    {{ form_start(formSearch) }}
+                    <div class="col-xs-12 col-md-10">
+                        <div class="row">
+                        <div class="col-xs-2">
+                            <input id="type1" type="radio" name="type" />
+                            <label for="type1" class="b-search__main-type-svg">
+                                <img src="{{ asset('/build/renauttrans.png') }}" width="100%">
+                            </label>
+                            <h5><label for="type1"> {{ form_row(formSearch.mark_1) }}</label></h5>
+                        </div>
+                            <div class="col-xs-2">
+                                <input id="type1" type="radio" name="type" />
+                                <label for="type1" class="b-search__main-type-svg">
+                                    <img src="{{ asset('/build/peugeottrans.png') }}" width="50%">
+                                </label>
+                                <h5><label for="type1">{{ form_row(formSearch.mark_2) }}</label></h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <input id="type1" type="radio" name="type" />
+                                <label for="type1" class="b-search__main-type-svg">
+                                    <img src="{{ asset('/build/citroentrans.png') }}" width="50%">
+                                </label>
+                                <h5><label for="type1">{{ form_row(formSearch.mark_3) }}</label></h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <input id="type1" type="radio" name="type" />
+                                <label for="type1" class="b-search__main-type-svg">
+                                    <img src="{{ asset('/build/dstrans.png') }}" width="70%">
+                                </label>
+                                <h5><label for="type1"> {{ form_row(formSearch.mark_4) }}</label></h5>
+                            </div>
+                            <div class="col-xs-2 col-md-offset-2" data-tooltip="Nous contacter pour un délais plus court">
+                                <p class="delay">Délai de livraison : <span>21 Jours</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-search__main-form wow zoomInUp" >
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <div class="m-firstSelects">
+                                <div class="col-xs-6">
+                                    <label>Date de depart</label>
+                                    <div style="color: black">
+                                    {{ form_row(formSearch.date_start) }}
+                                    </div>
+                                    <br>
+                                    {{ form_row(formSearch.placeDepart) }}
+                                </div>
+                                <div class="col-xs-6">
+                                    <label>Date de Retour</label>
+                                    <div style="color: black">
+                                    {{ form_row(formSearch.date_end) }}
+                                    </div>
+                                    <br>
+                                    {{ form_row(formSearch.placeReturn) }}
+                                </div>
+                            </div>
+                            <div class="m-secondSelects">
+                                <div class="col-xs-6" style="margin-top: 3%;">
+                                    {{ form_row(formSearch.promo) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 text-left s-noPadding">
+                            <div class="b-search__main-form-submit" style="margin-top: 15%">
+                                <button type="submit" class="btn m-btn">Search the Vehicle<span class="fa fa-angle-right"></span></button>
+                            </div>
+                            {{ form_end(formSearch) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--search bar-->
+
+    <section class="b-asks">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12">
+                    <div class="b-asks__first wow zoomInLeft"  data-wow-offset="100">
+                        <div class="b-asks__first-circle">
+{#                            <img src="{{ asset('build/logo-ks-ph.png') }}">#}
+                        </div>
+                        <div class="b-asks__first-info">
+                            <h2>{{ 'home_doc.key_tiltle'|trans({}, 'messages') }}</h2>
+                            <p>{{ 'home_doc.key_subtiltle'|trans({}, 'messages') }}</p>
+                        </div>
+                        <div class="b-asks__first-arrow">
+{#                            <a href="#"><span class="fa fa-angle-right"></span></a>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
+                    <a href="{{ path('TTdouane') }}">
+                    <div class="b-asks__first m-second wow zoomInRight"  data-wow-offset="100">
+                        <div class="b-asks__first-circle">
+                            <img src="{{ asset('build/tt-groupimg.png') }}" style="margin-top: 10%; width: 100%">
+                        </div>
+                        <div class="b-asks__first-info">
+                            <h2>{{ 'home_doc.tt_tiltle'|trans({}, 'messages') }}</h2>
+                            <p>{{ 'home_doc.tt_subtilte'|trans({}, 'messages') }}</p>
+                        </div>
+                        <div class="b-asks__first-arrow">
+{#                            <a href="#"><span class="fa fa-angle-right"></span></a>#}
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xs-12">
+                    <p class="b-asks__call wow zoomInUp">{{ 'home_doc.question'|trans({}, 'messages') }}   : <span><a href="{{ path('contact') }}">ICI</a> </span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--b-asks-->
+
+
+    <section class="b-featured">
+        <div class="container">
+            <h2 class="s-title wow zoomInUp" >{{ 'featured_cars'|trans({}, 'messages') }}</h2>
+            <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
+                {% for car in cars %}
+                <div style="width: 100%">
+                    <div class="b-featured__item wow rotateIn">
+                        <a href="{{ path('detail_car', { 'id': car.id }) }}">
+                            <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px" />
+{#                            <span class="m-premium">Premium</span>#}
+                        </a>
+                        <div class="b-featured__item-price" style="background-color: red">
+                            PROMO
+                        </div>
+                        <div class="clearfix"></div>
+                        <h5><a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.mark.getlibelle }}</a></h5>
+                        <div class="b-featured__item-count"><span class="fa fa-tachometer"></span>{{ car.name }}</div>
+                        <div class="b-featured__item-links">
+                            <a href="#">{{ car.years }}</a>
+                            <a href="#">{{ car.transmission }}</a>
+                            <a href="#">{{ car.fuel }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--b-featured-->
+
+    <section class="b-auto">
+        <div class="container">
+            <h5 class="s-titleBg wow zoomInLeft">GIVING OUR CUSTOMERS BEST DEALS</h5><br />
+            <h2 class="s-title wow zoomInRight">BEST OFFERS FROM AUTOCLUB</h2>
+            <div class="row">
+                <div class="col-xs-5 col-sm-4 col-md-3">
+                    <aside class="b-auto__main-nav wow zoomInLeft">
+                        <ul>
+                            <li><a href="javascript:void(0);" onclick="ClickAll()">All Manufacturers</a></li>
+                            <li class="active"><a href="javascript:void(0);" onclick="ClickRenault()">Renault</a></li>
+                            <li><a href="javascript:void(0);" data-to="#second"  onclick="ClickPeugeot()">Peugeot</a></li>
+                            <li><a href="javascript:void(0);" onclick="ClickCitroen()">Citroën</a></li>
+                            <li><a href="javascript:void(0);" onclick="ClickDs()">DS Automobile</a></li>
+                        </ul>
+               {#         <div class="owl-buttons">
+                            <div class="owl-prev j-tab" data-to='#first'></div>
+                            <div class="owl-next j-tab" data-to='#second'></div>
+                        </div>#}
+                    </aside>
+                </div>
+                <div class="col-md-9 col-sm-8 col-xs-7">
+                    <div class="b-auto__main">
+                        <div class="col-md-12 col-md-offset-1 col-xs-12">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row m-margin" id="renault">
+                            {% for car in cars %}
+                            {% if car.getMark.getLibelle == "Renault"  %}
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="b-auto__main-item wow slideInUp">
+                                    <img class="img-responsive"  src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mazda" />
+                                    <div class="b-world__item-val">
+                                        <span class="b-world__item-val-title">REGISTERED <span>{{ car.years }}</span></span>
+                                    </div>
+                                    <h2 style="height: 45px"><a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name }}</a></h2>
+                                    <div class="b-auto__main-item-info">
+											<span class="m-price">
+                                                {{ car.getMark.getLibelle }}
+											</span>
+                                        {#                 <span class="m-number">
+												<span class="fa fa-tachometer"></span>35,000 KM
+											</span>#}
+                                    </div>
+                                    <div class="b-featured__item-links m-auto">
+                                        <a href="#">Used</a>
+                                        <a href="#">{{ car.years }}</a>
+                                        <a href="#">{{ car.transmission }}</a>
+                                        <a href="#">Orange</a>
+                                        <a href="#">{{ car.fuel }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="row m-margin" id="peugeot" style="display: none">
+                            {% for car in cars %}
+                            {% if car.getMark.getLibelle == "Peugeot"  %}
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="b-auto__main-item wow slideInUp">
+                                        <img class="img-responsive"  src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mazda" />
+                                        <div class="b-world__item-val">
+                                            <span class="b-world__item-val-title">REGISTERED <span>{{ car.years }}</span></span>
+                                        </div>
+                                        <h2 style="height: 45px"><a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name }}</a></h2>
+                                        <div class="b-auto__main-item-info">
+											<span class="m-price">
+                                                {{ car.getMark.getLibelle }}
+											</span>
+                                            {#                 <span class="m-number">
+												<span class="fa fa-tachometer"></span>35,000 KM
+											</span>#}
+                                        </div>
+                                        <div class="b-featured__item-links m-auto">
+                                            <a href="#">Used</a>
+                                            <a href="#">{{ car.years }}</a>
+                                            <a href="#">{{ car.transmission }}</a>
+                                            <a href="#">Orange</a>
+                                            <a href="#">{{ car.fuel }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="row m-margin" id="citroen" style="display: none">
+                            {% for car in cars %}
+                                {% if car.getMark.getLibelle == "Citroën"  %}
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="b-auto__main-item wow slideInUp">
+                                            <img class="img-responsive"  src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mazda" />
+                                            <div class="b-world__item-val">
+                                                <span class="b-world__item-val-title">REGISTERED <span>{{ car.years }}</span></span>
+                                            </div>
+                                            <h2 style="height: 45px"><a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name }}</a></h2>
+                                            <div class="b-auto__main-item-info">
+											<span class="m-price">
+                                                {{ car.getMark.getLibelle }}
+											</span>
+                                                {#                 <span class="m-number">
+												<span class="fa fa-tachometer"></span>35,000 KM
+											</span>#}
+                                            </div>
+                                            <div class="b-featured__item-links m-auto">
+                                                <a href="#">Used</a>
+                                                <a href="#">{{ car.years }}</a>
+                                                <a href="#">{{ car.transmission }}</a>
+                                                <a href="#">Orange</a>
+                                                <a href="#">{{ car.fuel }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="row m-margin" id="dsauto" style="display: none">
+                            {% for car in cars %}
+                                {% if car.getMark.getLibelle == "DS Automobile"  %}
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="b-auto__main-item wow slideInUp">
+                                            <img class="img-responsive"  src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mazda" />
+                                            <div class="b-world__item-val">
+                                                <span class="b-world__item-val-title">REGISTERED <span>{{ car.years }}</span></span>
+                                            </div>
+                                            <h2 style="height: 45px"><a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name }}</a></h2>
+                                            <div class="b-auto__main-item-info">
+											<span class="m-price">
+                                                {{ car.getMark.getLibelle }}
+											</span>
+                                                {#                 <span class="m-number">
+												<span class="fa fa-tachometer"></span>35,000 KM
+											</span>#}
+                                            </div>
+                                            <div class="b-featured__item-links m-auto">
+                                                <a href="#">Used</a>
+                                                <a href="#">{{ car.years }}</a>
+                                                <a href="#">{{ car.transmission }}</a>
+                                                <a href="#">Orange</a>
+                                                <a href="#">{{ car.fuel }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--b-auto-->
+
+    <section class="b-world">
+        <div class="container">
+            <h6 class="wow zoomInLeft" data-wow-delay="0.3s" data-wow-offset="100">Notre Blog</h6><br />
+            <h2 class="s-title wow zoomInRight" data-wow-delay="0.3s" data-wow-offset="100">THE WORLD OF AUTOS</h2>
+            <div class="row">
+                {% for post in posts %}
+                <div class="col-sm-4 col-xs-12">
+                    <div class="b-world__item wow zoomInLeft" data-wow-delay="0.3s" data-wow-offset="100">
+                        <img class="img-responsive" src="{{ asset('build/uploads/'~ post.getPostImg) }}" alt="wolks" style="width: 45%" />
+                        <div class="b-world__item-val">
+                            <span class="b-world__item-val-title">{{ post.title }}</span>
+                {#            <div class="b-world__item-val-circles">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span class="m-empty"></span>
+                            </div>#}
+{#
+                            <span class="b-world__item-num">4.1</span>
+#}
+                        </div>
+                        <h2>{{ post.title }}</h2>
+{#
+                        <p>{{ post.content|raw }}</p>
+#}
+                        <a href="{{ path('see_post', { 'id': post.id }) }}" class="btn m-btn">READ MORE<span class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!--b-world-->
+
+    <section class="b-contact">
+        <div class="container">
+            <div class="row wow zoomInLeft"  data-wow-offset="100">
+                <div class="col-xs-4">
+                    <div class="b-contact-title">
+                        <h5>{{ 'home_deals.tilte'|trans({}, 'messages') }}</h5><br />
+                        <h2>{{ 'home_deals.subtiltle'|trans({}, 'messages') }}</h2>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="b-contact__form">
+                        <p>{{ 'home_deals.content'|trans({}, 'messages') }}</p>
+                        {{ form_start(form_newsletter) }}
+                        <label>{{ 'contact_page.email'|trans({}, 'messages') }}</label>
+                        {{ form_row(form_newsletter.email, { 'attr': {'class': 'form-control'} }) }}
+                            <button type="submit"><span class="fa fa-angle-right"></span></button>
+                        {{ form_end(form_newsletter) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--b-contact-->
+    <div class="d-flex justify-content-center mt-5 h-100 cookieBar" id="cookieBar">
+        <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
+            <img src="{{  asset('build/cookie.png') }}" width="50" style="display: block;margin: 0 auto;">
+            <span class="mt-2">We use third party cookies to personalize content, ads and analyze site traffic.</span>
+            <a class="d-flex align-items-center" href="{{ path('cookies') }}" style="margin-bottom: 3%">Manage cookie<i class="fa fa-angle-right ml-2"></i></a>
+            <button class="btn btn-dark mt-3 px-4" type="button" onclick="CookieBar()">Accept alls cookies</button>
+        </div>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+
+        <script>
+
+            //DatePicker Search
+            $(document).ready(function() {
+                $('.datepicker-dateStart').datepicker({
+                    format: 'dd/mm/yyyy',
+                    startDate: '+21d',
+                    endDate: '+6M'
+                });
+
+                $('.datepicker-dateEnd').datepicker({
+                    format: 'dd/mm/yyyy',
+                    startDate: '+1m'
+                });
+            });
+
+            //CookieBar
+            function CookieBar() {
+                document.getElementById("cookieBar").style.display = "none";
+            }
+
+            // Caroussel cars
+
+            let w = document.getElementById("renault");
+            let x = document.getElementById("peugeot");
+            let y = document.getElementById("citroen");
+            let z = document.getElementById("dsauto");
+
+            function ClickAll() {
+                w.style.display = "block";
+                x.style.display = "block";
+                y.style.display = "block";
+                z.style.display = "block";
+
+            }
+            function ClickRenault() {
+                w.style.display = "block";
+                x.style.display = "none";
+                y.style.display = "none";
+                z.style.display = "none";
+            }
+            function ClickPeugeot() {
+                x.style.display = "block";
+                w.style.display = "none";
+                y.style.display = "none";
+                z.style.display = "none";
+            }
+            function ClickCitroen() {
+                y.style.display = "block";
+                w.style.display = "none";
+                x.style.display = "none";
+                z.style.display = "none";
+            }
+            function ClickDs() {
+                z.style.display = "block";
+                w.style.display = "none";
+                x.style.display = "none";
+                y.style.display = "none";
+            }
+        </script>
+    {% endblock %}
+{% endblock %}

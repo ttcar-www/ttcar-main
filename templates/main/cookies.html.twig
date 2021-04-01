@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    {% endblock %}
+    <section id="documentation" class="documentation-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+                <p>Manage Cookie and condition utilisation <a href="#" target="_blank">Condition utilisation</a>, but please make sure you read this documentation first. Thank you so much!</p>
+                <hr>
+                <p class="alert alert-success">If you are not familiar with HTML and CSS, I highly recommend that you to hire a specialist. It will save your time and you will get only positive emotions while using our product.</p>
+                <header class="section-header">
+                    <div class="heading-2-wrap">
+                        <h2 class="heading-2 text-center"><span>MANAGE COOKIES</span></h2>
+                    </div>
+                </header>
+                <p>Let's look at the structure of Landing Page. It includes its own sections with content. On request you can add or remove sections of the site. Please, be careful when removing unwanted sections. It can cause errors in <strong>theme.js</strong>. All tags have to be closed properly.</p>
+                <h3>Tools to help work:</h3>
+{#                <hr>
+                <ul>
+                    <li><a target="_blank" href="https://addons.mozilla.org/ru/firefox/addon/firebug/">Firebug</a></li>
+                    <li class="li-last"><a target="_blank" href="https://developer.chrome.com/devtools/index">Chrome devtools</a></li>
+                </ul>#}
+                <h3>slides section</h3>
+                <pre class="javascript" style="font-family:monospace;">COOKIE MANAGE
+                    {% for cookie in cookies %}
+                        {{ cookie }} / <input type="checkbox" checked data-toggle="toggle" data-size="sm">
+                    {% endfor %}
+                </pre>
+{#
+                <div class="xsection">
+                    <header data-animation="fadeInUp" class="section-header animated  animation-done fadeInUp">
+
+                        <div class="heading-2-wrap">
+                            <h2 class="heading-2 text-center"><span>Color switcher settings</span></h2>
+                        </div>
+                    </header>
+                    <p>Install data attribute data-default-color="true" for change default color</p>
+                    <p class="pre customBgColor"> <i class="fa fa-folder-open"></i> assets/switcher/ </p>
+                    <pre class="html4strict" style="font-family:monospace;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">link</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alternate stylesheet&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/css&quot;</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;assets/switcher/css/color1.css&quot;</span> <span style="color: #000066;">title</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;color1&quot;</span> <span style="color: #000066;">media</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;all&quot;</span><br>data-default-<span style="color: #000066;">color</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;true&quot;</span> <span style="color: #66cc66;">/</span>&gt;</span></pre>
+                </div>#}
+        </div>
+    </div>
+    </div>
+</section>
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+{% endblock %}
+{% endblock %}

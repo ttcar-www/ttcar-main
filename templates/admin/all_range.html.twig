@@ -1,0 +1,25 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="main-content-inner">
+        <div class="row">
+            {% for mark in marks %}
+            <div class="col-lg-6 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media mb-5">
+                            <img class="img-fluid mr-4" src="{{ asset('build/uploads/'~ mark.getMarkImg) }}" style="width: 20%">
+                            <div class="media-body">
+                                <h4 class="mb-3">{{ mark.libelle }}</h4>
+                                <a href="{{ path('path_to_range',{ 'path': mark.id }) }}" class="btn btn-outline-success">Choice this range </a>
+                                <br><br>
+                                <a href="{{ path('create_mark_promo',{ 'id': mark.id }) }}" class="btn btn-outline-warning">Add Promotion </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

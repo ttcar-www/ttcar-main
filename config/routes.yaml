@@ -1,0 +1,5 @@
+index:
+    path: /{_locale}/
+    controller: App\Controller\MainController::index
+    requirements:
+      _locale: 'en|fr'

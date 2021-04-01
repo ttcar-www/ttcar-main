@@ -1,0 +1,234 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{#
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Order</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
+                <h3>Your Order</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.5s">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
+        </div>
+    </div><!--b-breadCumbs-->
+
+
+    <div class="b-infoBar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
+                        <div class="b-infoBar__progress-line clearfix">
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <a href="#" onclick="history.back(-1)">
+                                    <div class="b-infoBar__progress-line-step-circle">
+                                        <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="b-infoBar__progress-line-step">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                </div>
+                                <div class="b-infoBar__progress-line-step-circle m-last">
+                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--b-infoBar-->
+
+
+    <div class="b-items">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-sm-8 col-xs-12">
+                    <div class="row">
+
+                        <div class="card" style="margin-top: 5%">
+                            <div class="card-header">
+                                Featured
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Paiement <i class="fas fa-car-side"></i></h5>
+                                {{ order.getPrice }} €
+#}
+{#
+                                <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" class="card-img-top" style="width: 30%">
+#}{#
+
+
+                            </div>
+                        </div>
+
+
+            #}
+{#<div class="col-lg-3 col-sm-4 col-xs-12">
+                <aside class="b-items__aside">
+                    <div class="b-items__aside-sell wow zoomInUp" data-wow-delay="0.5s">
+                        <div class="b-items__aside-sell-info">
+                            <h3>Prix </h3>
+                            {% set price_without = price - price_depart - price_return %}
+                            <p> Forfait {{nb_days}} jours : {{ price_without }}€ </p>
+                            <p>Livraison du véhicule :
+                                {% if price_depart == 0 %}
+                                    Gratuit !
+                                {% else %}
+                                    {{ price_depart }}€
+                                {% endif %}
+                            </p>
+                            <p>Retour du véhicule :
+                                {% if price_return == 0 %}
+                                    Gratuit !
+                                {% else %}
+                                    {{ price_return }}€
+                                {% endif %}
+                            </p>
+                            <p id="item"></p>
+                            <h3>TOTAL</h3>
+                            <h3 id="notAjax">{{ price }}€</h3>
+                            <h3 id="results"></h3>
+
+                            </p>
+                        </div>
+                    </div>
+                </aside>#}{#
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+#}
+
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.3s">Submit Your Vehicle</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
+                <h3>Add Your Vehicle In Our Listings</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.3s">
+            <a href="home.html" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="submit5.html" class="b-breadCumbs__page m-active">Submit a Vehicle</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <div class="b-infoBar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.3s">
+                        <div class="b-infoBar__progress-line clearfix">
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step m-active">
+                                <a href="#" onclick="history.back(-1)">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                                </a>
+                                <div class="b-infoBar__progress-line-step-circle m-last">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--b-infoBar-->
+
+    <div class="b-submit">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6 col-md-offset-2">
+                    <div class="b-submit__main">
+                        <form action="/" method="post" class='s-submit'>
+                            <div class="b-submit__main-plan wow zoomInUp" data-wow-delay="0.3s">
+                                <header class="s-headerSubmit s-lineDownLeft">
+                                    <h2>Your Order</h2>
+                                </header>
+                                <p> FORFAIT : {{ nb_days }} Jours</p>
+                                <p> Voiture : {{ order.getCarLibelle }}</p>
+                                {% if order.items != null %}
+                                <p> Accessoires : </p>
+                                    {% for item in order.items %}
+                                        {{ item }}<br>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="b-submit__main-plan wow zoomInUp" data-wow-delay="0.3s">
+                                <header class="s-headerSubmit s-lineDownLeft">
+                                    <h2>Prix <span class="b-submit__main-plan-money">( <span class="b-submit__main-plan-money-num">{{  order.price }}</span> <span class="b-submit__main-plan-money-note">€</span> )</span></h2>
+                                </header>
+                                <p>Ce prix comprend </p>
+                            </div>
+                            <div class="b-submit__main-plan wow zoomInUp" data-wow-delay="0.3s">
+                                <header class="s-headerSubmit s-lineDownLeft">
+                                    <h2>Paiement</h2>
+                                </header>
+                                <div class="b-submit__main-contacts-check">
+                                    <input type="radio" name="check2" id="check1" />
+                                    <label class="s-submitCheckLabel" for="check1"><span class="m-circle"></span></label>
+                                    <label class="s-submitCheck" for="check1">PAYPAL</label>
+                                    <input type="radio" name="check2" id="check2" />
+                                    <label class="s-submitCheckLabel" for="check2"><span class="m-circle"></span></label>
+                                    <label class="s-submitCheck" for="check2">CREDIT CARD</label>
+                                </div>
+                                <div class="b-submit__main-element">
+                                    <label>Enter Your Paypal ID <span>*</span></label>
+                                    <div class="row m-smallPadding">
+                                        <div class="col-sm-6 col-xs-12">
+                                            <input type="text" name="id"/>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-12">
+                                            <a href="#" class="btn m-btn m-pay">PAY NOW &amp; UPGRADE<span class="fa fa-angle-right"></span></a>
+                                        </div>
+                                    </div>
+                                </div>                            </div>
+                            <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.3s">PUBLISH MY LISTING NOW<span class="fa fa-angle-right"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--b-submit-->
+
+
+{% endblock %}

@@ -1,0 +1,135 @@
+Symfony: I love SF
+menu:
+  home: Home
+  temporary: Temporary transition
+  location: Rental
+  douane: Douane export
+  compte: My accompte
+  profil: Profil
+  booking: Booking
+  groupe: The groupe
+  admin: Admin
+  range: Cars
+  contact: Contact
+  promo: Sold
+login:
+  registre: Registre
+  login: Login
+  logout: Logout
+error:
+  titre: Error
+  notfound: PAGE NOT FOUND
+  content: The page you are looking for is not available and might have been removed, its name changed or is temprarily unavailable.
+search_tilte: Reserve a vehicle
+text_group_tilte: The Group
+text_group_1: Since 1972, TT CAR TRANSIT has been specialized on the vehicle Tax Free sales and Rent-a-Car for the European
+  expatriates and non-European residents.
+text_group_2: As an historical partner of the French makers, TT CAR TRANSIT has proven its professionalism
+  by administrating all the major delivery centers for TT rental vehicles.
+text_group_3: The international Rent-a-Car companies, partners of Key Services, are a guarantee of exceptional conditions, allowing us to offer
+  the best product range at the most competitive prices on the market.
+text_group_4: Les loueurs Internationaux partenaires de Key Services garantissent en location de voitures les meilleurs produits à des
+  prix et conditions exceptionnels.
+text_group_5: Our experience and staff's proficiency are at your service to guide you through the choice of your next vehicle and make sure
+  you get the best deal.
+text_group_6: Service is a profession, the Quality of Service is ours.
+text_group_why_tilte: Understanding Temporary Transit (TT)
+text_group_why_1: Temporary transit is a customs and tax provision which allows anyone residing outside Community territory (including French overseas departments and territories) to have a new vehicle during their stay in Europe and to acquire it exempt from customs duties and tax. VAT. You thus benefit from a specific French registration allowing free movement in Europe.
+text_group_why_2: It is also possible to benefit from this plan without having to pay the full price of the vehicle. This formula, known by the generic term buy-back, is a lot like a car rental.
+text_group_why_tilte_2: Benefits of Temporary Transit
+text_group_why_tilte_3: New vehicles
+text_group_why_tilte_4: New vehicles
+text_group_why_tilte_5: 24/7 assistance
+text_group_why_tilte_6: Comprehensive insurance without excess
+text_group_why_tilte_7: Free GPS
+text_group_why_tilte_8: 48 months minimum manufacturer warranty
+douane_tilte: TT Customs Export
+douane_text_1: If you wish to acquire a new tax-free vehicle in mainland France, two types of registration are available to you depending on the conditions you meet Temporary Transit and W Export.
+douane_tilte_2: Our Customs & Export services
+douane_tilte_3: Discover our services
+douane_text_2: We offer a Temporary Transit or W Export registration service. Our company is also a Customs declarer approved by French Customs. We therefore carry out, in their name and with their agreement, customs export declarations. These services can be supplemented by Maritime Transport and / or Insurance.
+home_deals:
+  tilte: Latest Deals
+  subtiltle: DEALS SIGNUP
+  content: Get tips
+featured_cars: PROMOTIONAL CARS
+home_doc:
+  key_tiltle: KEY SERVICE
+  key_subtiltle: car rental
+  tt_tiltle: DOUANE EXPORT
+  tt_subtilte: If you wish to acquire a new tax-free vehicle in mainland France, two types of registration are available to you depending on the conditions you meet Temporary Transit and W Export.
+  question: Question ?
+promo_page:
+  tiltle: DEALS
+  all: All deals
+  btn: Choice this deal
+  day: remaining days
+contact_page:
+  form: Contact Form
+  help: Need help ? Do not hesitate to contact us, our teams are at your disposal
+  hours: OPENING HOURS
+  visit: Office
+  mond: mond-sat 9h00-17h00
+  close: weekend and public holidays
+  contact: Contact
+  adress: adress
+  phone: phone
+  phne_subtilte: To modify a reservation, contact us directly by phone so that your request is processed quickly.
+  fax: fax
+  email: email
+form_order:
+  tilte: Your search returned
+  tilteResult: results
+  order: Your Order
+  detail: Details of the order
+  years: Year
+  place: Places
+  bag: Bags
+  item: Accessories
+  add: Add
+  important: IMPORTANT:Your flight number is used to guarantee your delivery in the event of a delay in your plane or a change of terminal upon your arrival.
+  btnPayment: Payment
+  free: Free
+  deliveryStart: Vehicle delivery
+  deliveryEnd: Vehicle return
+  forfait: A package
+  price: Price
+  days: days
+  new: A new vehicle
+  mileage: Unlimited mileage
+  assurance: Multi-risk insurance without excess
+  assistance: Assistance 24/7
+  freeDelivery: Delivery and return costs
+  compte: Account
+  choice1: Tourist
+  choice2: student
+  choice3: traineeship
+  choice4: Assignments
+  choice5: Mission Members / Journalist
+  typeMr: Mr
+  typeMme: Mrs
+  email: Email
+  name: Name
+  first: First name
+  maiden: Maiden name
+  adress: Adress
+  city: City
+  country: Country
+  postal: Postal code
+  phone: Phone
+  reason: Reason
+  nationality: Nationality
+  birthDate : Birth date
+  birthPostal: Birth postal code
+  birthCity: Birth city
+  birthCountry: Birth country
+  passportNumber: Passport number
+  passportDate: Passport date
+  passportPlace: Passport place
+  numberPlane: Number plane
+  planeDate: Hours of plane
+  placePlane: Place plane
+  adressCityHue : adress city hue
+  adressCountryHue: Adress country hue
+  adressNoUe: Adress no ue
+  adressCodeHue: Adress code hue

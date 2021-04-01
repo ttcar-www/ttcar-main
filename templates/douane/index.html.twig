@@ -1,0 +1,175 @@
+{% extends 'douane/base_douane.html.twig' %}
+
+{% block body %}
+
+<body class="m-home" data-scrolling-animations="true" data-equal-height=".b-auto__main-item">
+
+<!-- Loader -->
+<div id="page-preloader"><span class="spinner"></span></div>
+<!-- Loader end -->
+
+<section class="b-slider">
+    <div id="carousel" class="slide carousel carousel-fade">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="{{ asset('build/nightCars.jpg') }}" alt="sliderImg"  style="height: 800px"/>
+                <div class="container">
+                    <div class="carousel-caption b-slider__info">
+                        <h3>TTCAR DOUANE EXPORT</h3>
+                        <h2>LOCATION <br/>DE VOITURE</h2>
+                        <p>Model 2015</p>
+                        <a class="btn m-btn" href="#">see details<span class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--b-slider-->
+
+<section class="b-world" style="padding-top: 0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <div class="b-world__item wow zoomInLeft" data-wow-delay="0.3s">
+{#
+                    <img class="img-responsive" src="{{ asset('build/location-de-voiture.png') }}" alt="wolks" />
+#}
+                    <div class="b-world__item-val">
+                        <span class="b-world__item-val-title">WE OFFER</span>
+                    </div>
+                        <h2>W Export</h2>
+                        <p>Le W Export permet de circuler maximum 4 mois en France Métropolitaine. Ce régime est ouvert aux particuliers ayant une résidence Hors France ou dans un DOM/TOM.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <div class="b-world__item wow zoomInUp" data-wow-delay="0.3s">
+{#
+                    <img class="img-responsive"  src="media/370x200/mazda.jpg" alt="mazda" />
+#}
+                    <div class="b-world__item-val">
+                        <span class="b-world__item-val-title">WE ARE THE</span>
+                    </div>
+                    <h2>Déclaration Douane</h2>
+                    <p>La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés destinés à être exportés hors Union Européenne.</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <div class="b-world__item wow zoomInRight" data-wow-delay="0.3s">
+{#
+                    <img class="img-responsive"  src="media/370x200/chevrolet.jpg" alt="chevrolet" />
+#}
+                    <div class="b-world__item-val">
+                        <span class="b-world__item-val-title">OUR CUSTOMERS GET</span>
+                    </div>
+                    <h2>Transport</h2>
+                    <p>TT CAR TRANSIT vous propose de prendre en charge l'expédition maritime de votre véhicule pour toutes destinations dans le monde.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--b-world-->
+
+<section class="b-welcome">
+    <div class="container">
+        <div class="row">
+            <div class="b-welcome__services">
+                <div class="col-md-3 col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12 m-padding">
+                            <div class="b-welcome__services-auto wow zoomInLeft" data-wow-delay="0.3s">
+                                <div class="b-welcome__services-img m-auto">
+                                    <a href="{{ path('transit') }}">
+                                        <img src="{{ asset('build/transit-temporaire.png') }}" style="width: 80%">
+                                    </a>
+                                </div>
+                                <h3>Transit Temporaire</h3>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 text-right visible-md visible-lg">
+                            <div class="m-circle wow slideInRight" data-wow-delay="0.3s">
+                                <span class="b-welcome__services-circle"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 m-padding">
+                            <div class="b-welcome__services-buying wow zoomInLeft" data-wow-delay="0.3s">
+                                <div class="b-welcome__services-img m-buying">
+                                    <a href="{{ path('export') }}">
+                                        <img src="{{ asset('build/location-de-voiture.png') }}" style="width: 80%">
+                                    </a>
+                                </div>
+                                <h3>W Export</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="b-welcome__text wow zoomInUp" data-wow-delay="0.3s">
+                    <h2>Formalités douanières pour l’exportation</h2>
+                    <h3>TT Douane Export</h3>
+                    <p>Si vous souhaitez acquérir en France métropolitaine un véhicule neuf hors taxes, deux types d’immatriculations s’offrent à vous selon les conditions que vous remplissez: le Transit Temporaire et le W Export.</p>
+                    <p>Ipsum midne ultrices magn eu tempor quam dolor eustrl sem. Donec quis dolel Donec pede quam placerat alterl tristique faucibus posuere lobortis.</p>
+                    <ul>
+                        <li><span class="fa fa-check"></span> W export et transit temporaire </li>
+                        <li><span class="fa fa-check"></span> Assurance courte durée</li>
+                        <li><span class="fa fa-check"></span> Transport maritime</li>
+                        <li><span class="fa fa-check"></span> Immatriculation France</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="b-welcome__services">
+                <div class="col-md-3 col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12 m-padding">
+                            <div class="b-welcome__services-trade wow zoomInRight" data-wow-delay="0.3s">
+                                <div class="b-welcome__services-img m-trade">
+                                    <a href="{{ path('douane') }}">
+                                        <img src="{{ asset('build/declaration-douane.png') }}" style="width: 80%">
+                                    </a>
+                                </div>
+                                <h3>Déclaration douane</h3>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 text-left visible-md visible-lg">
+                            <div class="m-circle pull-right wow slideInLeft" data-wow-delay="0.3s">
+                                <span class="b-welcome__services-circle m-left"></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 m-padding">
+                            <div class="b-welcome__services-support wow zoomInRight" data-wow-delay="0.3s">
+                                <div class="b-welcome__services-img m-support">
+                                    <a href="{{ path('transport') }}">
+                                        <img src="{{ asset('build/transport-maritime.png') }}" style="width: 80%">
+                                    </a>
+                                </div>
+                                <h3>Transport</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--b-welcome-->
+<section class="b-asks">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-offset-1">
+                <div class="b-asks__first m-second wow zoomInRight" data-wow-delay="0.3s">
+                    <div class="b-asks__first-circle">
+                        <span class="fa fa-usd"></span>
+                    </div>
+                    <div class="b-asks__first-info">
+                        <h2>Découvrir nos services</h2>
+                        <p>Nous proposons un service d’immatriculation en Transit Temporaire ou W Export. Notre société est aussi déclarant en Douane agrée par la Douane Française. Nous effectuons donc, en leur nom et avec leur accord, des Déclarations douanières d’exportation. Ces prestations peuvent être complémentées par un Transport Maritime et/ou une Assurance*.
+                           <span> (*) Prestations d’assurance possible uniquement si nous avons traité votre dossier.</span></p>
+                    </div>
+                    <div class="b-asks__first-arrow">
+                        <a href="#"><span class="fa fa-angle-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--b-asks-->
+{% endblock %}

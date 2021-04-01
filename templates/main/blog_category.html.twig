@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">AutoClub Blog</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
+                <h3>{{ category.name }}</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.3s">
+            <a href="home.html" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="blogTwo.html" class="b-breadCumbs__page m-active">Blog Style 2</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <div class="b-blog s-shadow">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <aside class="b-blog__aside">
+                        {#                <form class="b-blog__aside-search wow zoomInUp" data-wow-delay="0.3s" action="/" method="post">
+                            <div>
+                                <input type="text" name="search" value="" placeholder="Search" />
+                                <button type="submit"><span class="fa fa-search"></span></button>
+                            </div>
+                        </form>#}
+                <div class="col-md-9 col-xs-12">
+                    <div class="b-blog__posts">
+                        {% for post in posts %}
+                            <div class="b-blog__posts-one wow zoomInUp" data-wow-delay="0.3s">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <header class="b-blog__posts-one-body-head s-lineDownLeft">
+                                            <div class="b-blog__posts-one-body-head-notes">
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-user"></span>{{  post.author }}</span>
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-calendar-o"></span>{{ post.getCreateAt|date("m/d/Y") }}</span>
+                                                {#
+                                                <span class="b-blog__posts-one-body-head-notes-note"><span class="fa fa-comment"></span>5 Comments</span>
+                                                #}
+                                            </div>
+                                            <h2 class="s-titleDet">{{  post.title }}</h2>
+                                        </header>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 pull-right">
+                                        <img class="img-responsive center-block" src="{{ asset('build/uploads/'~ post.getPostImg) }}" alt="blog" style="width: 35%" />
+                                    </div>
+                                    <div class="col-xs-8 pull-right">
+                                        <div class="b-blog__posts-one-info">
+                                            <p>{{  post.content }}</p>
+                                            <a href="{{ path('see_post', { 'id': post.id }) }}" class="btn m-btn m-readMore">Read More<span class="fa fa-angle-right"></span></a>
+                                            {#      <div class="b-blog__posts-one-social pull-right">
+                                            <em>SHARE THIS</em>
+                                            <a href="#"><span class="fa fa-google-plus-square "></span></a>
+                                            <a href="#"><span class="fa  fa-facebook-square"></span></a>
+                                            <a href="#"><span class="fa fa-twitter-square "></span></a>
+                                            <a href="#"><span class="fa fa-pinterest-square"></span></a>
+                                        </div>#}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <div class="text-center wow zoomInUp" data-wow-delay="0.3s">
+                            <div class="b-items__pagination-main text-center">
+                                <a href="#" class="m-left"><span class="fa fa-angle-left"></span></a>
+                                <span class="m-active"><a href="#">1</a></span>
+                                <span><a href="#">2</a></span>
+                                <span><a href="#">3</a></span>
+                                <span><a href="#">4</a></span>
+                                <a href="#" class="m-right"><span class="fa fa-angle-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--b-blog-->
+
+
+{% endblock %}

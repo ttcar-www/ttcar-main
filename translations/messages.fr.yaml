@@ -1,0 +1,135 @@
+Symfony: J'aime Symfony
+menu:
+  home: Accueil
+  temporary: Transit temporaire
+  location: Location
+  douane: Douane export
+  compte: Mon compte
+  profil: Profil
+  booking: Réservation
+  groupe: Le groupe
+  admin: Admin
+  range: Voitures
+  contact: Contact
+  promo: Promotions
+login:
+  registre: S'inscrire
+  login: Se connecter
+  logout: Se déconnecter
+error:
+  titre: Erreur
+  notfound: PAGE NON TROUVÉE
+  content: La page que vous recherchez n'est pas disponible et a peut-être été supprimée, son nom a changé ou est temporairement indisponible.
+search_tilte: Réservez un véhicule
+text_group_tilte: Le groupe
+text_group_1: Depuis 1972, TT CAR TRANSIT, société de services est spécialisée dans la vente hors taxes de véhicules et la
+  location de voitures pour les expatriés français et les touristes séjournant en France.
+text_group_2: Partenaire historique des marques automobiles françaises, TT CAR TRANSIT a toujours fait preuve de professionnalisme en
+  gérant les plus grands centres de livraison et retour des aéroports pour les véhicules en TT.
+text_group_3: Grâce à leur expérience et leurs compétences, nos équipes sont à votre disposition pour vous conseiller et vous offrir les meilleures conditions de
+  séjour au volant de votre prochaine voiture.
+text_group_4: Les loueurs Internationaux partenaires de Key Services garantissent en location de voitures les meilleurs produits à des
+  prix et conditions exceptionnels.
+text_group_5: Notre savoir faire et notre rigueur sont les bases de notre métier de déclarant en douanes gérant toutes formalités
+  d'immatriculation en TT et en W export
+text_group_6: Nous proposons également les meilleurs tarifs pour le transport maritime de votre véhicule toutes destinations.
+text_group_why_tilte: Comprendre le Transit Temporaire (TT)
+text_group_why_1: Le transit temporaire est une disposition douanière et fiscale qui permet à toute personne résidant hors du territoire communautaire (DOM TOM inclus) de disposer d’un véhicule neuf lors de son séjour en Europe et de l’acquérir exonéré des droits de douanes et de la TVA. Vous bénéficiez ainsi d’une immatriculation française spécifique permettant une libre circulation en Europe.
+text_group_why_2: Il est aussi possible de bénéficier de ce régime sans avoir a payer l’intégralité du prix du véhicule. Cette formule, connue sous le terme générique d’achat-rachat, ressemble beaucoup à une location de voiture.
+text_group_why_tilte_2: Avantages du Transit Temporaire
+text_group_why_tilte_3: Des véhicules neufs
+text_group_why_tilte_4: Le kilométage illimité
+text_group_why_tilte_5: L’assistance 7j/7 et 24h/24
+text_group_why_tilte_6: Une assurance multirisques sans franchise
+text_group_why_tilte_7: Un GPS gratuit
+text_group_why_tilte_8: 48 mois de garantie constructeur minimum
+douane_tilte: TT Douane Export
+douane_text_1: Si vous souhaitez acquérir en France métropolitaine un véhicule neuf hors taxes, deux types d’immatriculations s’offrent à vous selon les conditions que vous remplissez le Transit Temporaire et le W Export.
+douane_tilte_2: Nos services Douane & Export
+douane_tilte_3: Découvrir nos services
+douane_text_2: Nous proposons un service d’immatriculation en Transit Temporaire ou W Export. Notre société est aussi déclarant en Douane agrée par la Douane Française. Nous effectuons donc, en leur nom et avec leur accord, des Déclarations douanières d’exportation. Ces prestations peuvent être complémentées par un Transport Maritime et/ou une Assurance.
+home_deals:
+  tilte: Derniers bons plans
+  subtiltle: S'enregistrer aux bon plans
+  content: Recevez les bons plans TT
+featured_cars: VOITURES EN PROMOTION
+home_doc:
+  key_tiltle: KEY SERVICE
+  key_subtiltle: Location de voiture
+  tt_tiltle: DOUANE EXPORT
+  tt_subtilte: Si vous souhaitez acquérir en France métropolitaine un véhicule neuf hors taxes, deux types d’immatriculations s’offrent à vous selon les conditions que vous remplissez le Transit Temporaire et le W Export.
+  question: Une question ?
+promo_page:
+  tiltle: Promotions
+  all: Toutes les promotions
+  btn: Choisir cette promo
+  day: jours restant
+contact_page:
+  form: Formumlaire de contact
+  help: Besoin d’aide ? N’hésitez pas à nous contacter, nos équipes se tiennent à votre disposition
+  hours: Heures d'ouverture
+  visit: Accueil client
+  mond: lundi-vendredi 9h00-17h00
+  close: Weekend et jours fériés
+  contact: Contact
+  adress: adresse
+  phone: téléphone
+  phne_subtilte: Pour modifier une réservation, contactez-nous directement par téléphone pour que votre demande soit traitée rapidement.
+  fax: fax
+  email: email
+form_order:
+  tilte: Votre recherche a trouvé
+  tilteResult: voitures
+  order: Votre commande
+  detail: Details de la commande
+  years: année
+  place: Places
+  bag: Valises
+  item: Accessoires
+  add: Ajouter
+  important: IMPORTANT:Votre numéro de vol permet de garantir votre livraison en cas de retard de votre avion ou de changement de terminal lors de votre arrivée.
+  btnPayment: Paiement
+  free: Gratuit
+  deliveryStart: Livraison du véhicule
+  deliveryEnd: Retour du véhicule
+  forfait: Un forfait
+  price: Prix
+  days: jours
+  new: Un véhicule neuf
+  mileage: Le kilométrage illimité
+  assurance: L'assurance multirisques sans franchise
+  assistance: L'assistance 7j / 7 et 24h / 24
+  freeDelivery: Les frais de livraison et de restitution
+  compte: Compte
+  choice1: Touriste
+  choice2: Etudiant
+  choice3: Stage
+  choice4: Chargés de Mission
+  choice5: Membres de Mission / Journaliste
+  typeMr: Mr
+  typeMme: Mme
+  email: Email
+  name: Nom
+  first: Prénom
+  maiden: Nom de jeune fille
+  adress: Adresse
+  city: Ville
+  country: Pays
+  postal: Code postal
+  phone: Téléphone
+  reason: Raison
+  nationality: Nationalité
+  birthDate: Date de naissance
+  birthPostal: Code postal de naissance
+  birthCity: Ville de naissance
+  birthCountry: Pays de naissance
+  passportNumber: Numéro de passport
+  passportDate: Date d'émission du passport
+  passportPlace: Lieu d'émission du passport
+  numberPlane: Numéro de vol
+  planeDate: Heure du vol
+  placePlane: Aéroport
+  adressCityHue: Ville hors UE
+  adressCountryHue: Pays hors UE
+  adressNoUe: Adresse hors UE
+  adressCodeHue: Code postal hors UE

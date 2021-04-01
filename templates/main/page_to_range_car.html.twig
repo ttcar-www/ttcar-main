@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">Nos gammes</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+                <h3>The Largest Auto Dealer Online</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('main') }}" class="b-breadCumbs__page m-active">Gammes</a>
+        </div>
+    </div><!--b-breadCumbs-->
+    <div class="b-auto__main">
+
+    <section class="b-welcome" style="margin-bottom: 10%">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="b-welcome__text wow fadeInLeft" data-wow-delay="0.3s" data-wow-offset="100">
+                        <h2>Choice Mark</h2>
+                        <h3>Select your Range Page</h3>
+                        <img src="{{ asset('build/tt-groupimg.png') }}" alt="sliderImg" style="width: 100%" />
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-2 col-sm-6 col-xs-12" style="margin-top: 5%">
+                    <div class="b-welcome__services wow fadeInRight" data-wow-delay="0.3s" data-wow-offset="100">
+                        <div class="row">
+                            {% for mark in marks %}
+                                <div class="col-xs-6 m-padding">
+                                    <div class="b-welcome__services-auto">
+                                        <a href="{{ path('group_to_range',{ 'path': mark.id }) }}">
+                                            <div class="b-welcome__services-img m-auto">
+                                                {% if  mark.markImg %}
+                                                    <span></span>
+                                                    <img src="{{ asset('build/uploads/'~ mark.getMarkImg) }}" style="width: 100%; border-radius: 80%">
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                        <h3>{{ mark.libelle }}</h3>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--b-welcome-->
+{% endblock %}

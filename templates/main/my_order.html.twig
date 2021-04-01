@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section class="b-pageHeader">
+    <div class="container">
+        <h1 class="wow zoomInLeft" data-wow-delay="0.7s">My order</h1>
+        {# <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+            <h3>The Largest Auto Dealer Online</h3>
+        </div>#}
+    </div>
+</section><!--b-pageHeader-->
+
+<section class="b-best">
+    <div class="container">
+        <div class="row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">date</th>
+            <th scope="col">status</th>
+            <th scope="col">price</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+        <tr>
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.getCreateDate|date("m/d/Y") }}</td>
+            <td>Otto</td>
+            <td>{{ order.getPrice }}€</td>
+            <td><a href="{{ path('dowloadPDFXml', { 'id': order.id }) }}">PDF</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

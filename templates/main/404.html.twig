@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInUp" data-wow-delay="0.7s">{{ 'error.titre'|trans({}, 'messages') }}</h1>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
+            <a href="#" class="b-breadCumbs__page m-active">{{ 'error.titre'|trans({}, 'messages') }}</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <section class="b-error s-shadow">
+        <div class="container">
+            <h1 class="wow zoomInUp" data-wow-delay="0.7s">{{ 'error.titre'|trans({}, 'messages') }}</h1>
+            <img class="img-responsive center-block wow zoomInUp" data-wow-delay="0.7s" src="{{ asset('build/000-404.png') }}" alt="404" />
+            <h2 class="s-lineDownCenter wow zoomInUp" data-wow-delay="0.7s">{{ 'error.notfound'|trans({}, 'messages') }}</h2>
+            <p class="wow zoomInUp" data-wow-delay="0.7s">{{ 'error.content'|trans({}, 'messages') }}</p>
+        </div>
+    </section><!--b-error-->
+
+{% endblock %}

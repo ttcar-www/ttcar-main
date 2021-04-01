@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">About Us</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+                <h3>The Largest Auto Dealer Online</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('groupe') }}" class="b-breadCumbs__page m-active">About Us</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <section class="b-best">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="b-best__info">
+                        <header class="s-lineDownLeft b-best__info-head">
+                            <h2 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_tilte'|trans({}, 'messages') }}</h2>
+                        </header>
+                        <h6 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_1'|trans({}, 'messages') }} </h6>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_2'|trans({}, 'messages') }}</p>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_3'|trans({}, 'messages') }}</p>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_4'|trans({}, 'messages') }}</p>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_5'|trans({}, 'messages') }}</p>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_6'|trans({}, 'messages') }}</p>
+                        {#                        <a href="article.html" class="btn m-btn m-readMore wow zoomInUp" data-wow-delay="0.5s">view listings<span class="fa fa-angle-right"></span></a>#}
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12" style="margin-top: 15%">
+{#                    <img class="img-responsive center-block wow zoomInUp" data-wow-delay="0.5s" alt="best" src="{{ asset('img/logo-tt-pict.png') }}" />#}
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5DpCdHOG92s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                </div>
+            </div>
+        </div>
+    </section><!--b-best-->
+
+    <section class="b-more">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="b-more__why wow zoomInLeft" data-wow-delay="0.5s">
+                        <h2 class="s-title">{{ 'text_group_why_tilte'|trans({}, 'messages') }}</h2>
+                        <p>{{ 'text_group_why_1'|trans({}, 'messages') }}</p>
+                        <p>{{ 'text_group_why_2'|trans({}, 'messages') }}</p>
+             {#           <ul class="s-list">
+                            <li><span class="fa fa-check"></span>Donec facilisis velit eu est phasellus consequat quis nostrud</li>
+                            <li><span class="fa fa-check"></span>Aenean vitae quam. Vivamus et nunc nunc conseq</li>
+                            <li><span class="fa fa-check"></span>Sem vel metus imperdiet lacinia enean </li>
+                            <li><span class="fa fa-check"></span>Dapibus aliquam augue fusce eleifend quisque tels</li>
+                            <li><span class="fa fa-check"></span>Lorem ipsum dolor sit amet, consectetur </li>
+                            <li><span class="fa fa-check"></span>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore Magna </li>
+                        </ul>#}
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="b-more__info wow zoomInRight" data-wow-delay="0.5s">
+                        <h2 class="s-title">{{ 'text_group_why_tilte_2'|trans({}, 'messages') }}</h2>
+                        <div class="b-more__info-block">
+                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_3'|trans({}, 'messages') }}<a class="j-more" href="#"><span class="fa fa-angle-left"></span></a></div>
+                            <div class="b-more__info-block-inside j-inside">
+                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
+                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                        <div class="b-more__info-block">
+                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_4'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
+                            <div class="b-more__info-block-inside j-inside">
+                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
+                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                        <div class="b-more__info-block">
+                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_5'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
+                            <div class="b-more__info-block-inside j-inside">
+                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
+                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                        <div class="b-more__info-block">
+                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_6'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
+                            <div class="b-more__info-block-inside j-inside">
+                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
+                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                        <div class="b-more__info-block">
+                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_7'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
+                            <div class="b-more__info-block-inside j-inside">
+                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
+                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                        <div class="b-more__info-block">
+                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_8'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
+                            <div class="b-more__info-block-inside j-inside">
+                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
+                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--b-more-->
+
+{% endblock %}

@@ -1,0 +1,56 @@
+.header_img img{background-color:#666; height: 113px}
+
+.header_admin{ width: 13%}
+.header_admin ul{background-color: #666}
+.header_admin a {color: #0053aa; margin-right: 50px; text-decoration:none; font-weight: bold;}
+
+.dropdownmenu{ height: 40em}
+.dropdownmenu,
+.dropdownmenu ul { /* Pour les sous-menus */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.dropdownmenu ul {
+    display: none;
+}
+.dropdownmenu li {
+    position: relative;
+}
+.dropdownmenu a {
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    padding: 3px 10px;
+    text-align: center;
+}
+.dropdownmenu li:hover ul {
+    display: block ;
+    position: absolute;
+    top: 36px;
+    left: 0;
+    z-index: 100;
+}
+/* Gestion des couleurs */
+.dropdownmenu li {
+    background-color: #666; /* Couleur d'arriere-plan du menu */
+}
+.dropdownmenu li a {
+    color: #ccc; /* Couleur du texte du menu */
+}
+.dropdownmenu li:hover {
+    background-color: #000; /* Couleur d'arriere-plan du menu au survol */ }
+.dropdownmenu li:hover a {
+    color: #fff; /* Couleur du texte du menu au survol */
+}
+.dropdownmenu ul li {
+    background-color: #ccc; /* Couleur d'arriere-plan des sous-menu */
+}
+.dropdownmenu ul li:hover {
+    background-color: #000; /* Couleur d'arriere-plan des sous-menu au survol */ }
+.dropdownmenu ul li a {
+    color: #666; /* Couleur du texte des sous-menu */ }
+.dropdownmenu ul li:hover a {
+    color: #f00; /* Couleur du texte des sous-menu au survol */
+}

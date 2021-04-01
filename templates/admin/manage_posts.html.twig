@@ -1,0 +1,48 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="group_text">
+        <!-- Striped table start -->
+        <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">All Posts</h4>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <a href="{{ path('create_post') }}" style="color: blue" class="btn btn-light"><i class="fas fa-plus-circle"></i> Add Post</a>
+                                <a href="{{ path('create_category_post') }}"  style="color: darkslategrey; margin-left: 5%" class="btn btn-light"><i class="fas fa-hat-wizard"></i>  Add Category</a>
+                                <thead class="text-uppercase">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Tiltle</th>
+                                    <th scope="col">Content</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for post in posts %}
+                                    <tr>
+                                        <th scope="row">{{ post.id }}</th>
+                                        <td>{{ post.title }}</td>
+                                        <td>{{ post.content|u.truncate(35, '...') }}</td>
+                                        <td>{{ post.getCreateAt|date("m/d/Y") }}</td>
+                                        <td>
+                                            <a href="{{ path('edit_post', { 'id': post.id }) }}"> <i class="far fa-edit"></i></a>
+                                            <br>
+                                            <a href="{{ path('delete_post', { 'id': post.id }) }}"
+                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Striped table end -->
+    </div>
+{% endblock %}

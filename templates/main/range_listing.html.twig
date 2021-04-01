@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">Nos gammes</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+                <h3>The Largest Auto Dealer Online</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('main') }}" class="b-breadCumbs__page m-active">Gammes</a>
+        </div>
+    </div><!--b-breadCumbs-->
+    <div class="b-auto__main">
+    <section class="b-items s-shadow">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-sm-8 col-xs-12">
+                    <div class="b-items__cars">
+                        {% for car in cars %}
+                            <div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
+                            <div class="b-items__cars-one-img">
+                                <img src="media/270x230/dodge.jpg" alt='dodge'/>
+                                <span class="b-items__cars-one-img-type m-premium">PREMIUM</span>
+                            </div>
+                            <div class="b-items__cars-one-info">
+                                <header class="b-items__cars-one-info-header s-lineDownLeft">
+                                    <h2>{{ car.name }}</h2>
+                                    <span style="margin-left: 290px">{{ car.sellingPrice }}€</span>
+                                </header>
+                               {# <p>
+                                    In a pickup market gone fancy, the Silverado sticks to its basic-truck recipe. The steering is accurate, and the Silverado handles more like a big car than a big truck.
+                                </p>#}
+                                <div class="b-items__cars-one-info-km">
+{#                                    <span class="fa fa-tachometer"></span> 31,730 KM#}
+                                </div>
+                                <div class="b-items__cars-one-info-details">
+                                    <div class="b-featured__item-links">
+                                        <a href="#">{{ car.transmission }}</a>
+                                        <a href="#">{{ car.fuel }}</a>
+                                    </div>
+                                    <a href="{{ path('detail_car', { 'id': car.id }) }}" class="btn m-btn">VIEW DETAILS<span class="fa fa-angle-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {#<div class="b-items__pagination wow zoomInUp" data-wow-delay="0.5s">
+                        <div class="b-items__pagination-main">
+                            <a data-toggle="modal" data-target="#myModal" href="#" class="m-left"><span class="fa fa-angle-left"></span></a>
+                            <span class="m-active"><a href="#">1</a></span>
+                            <span><a href="#">2</a></span>
+                            <span><a href="#">3</a></span>
+                            <span><a href="#">4</a></span>
+                            <a href="#" class="m-right"><span class="fa fa-angle-right"></span></a>
+                        </div>
+                    </div>#}
+                </div>
+                </div>
+            </div>
+        </div>
+    </section><!--b-items-->
+{% endblock %}

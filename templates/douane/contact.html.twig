@@ -1,0 +1,111 @@
+{% extends 'douane/base_douane.html.twig' %}
+
+{% block body %}
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">AutoClub Blog</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
+                <h3>Read Latest Auto News &amp; Reviews</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.3s">
+            <a href="home.html" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="blogTwo.html" class="b-breadCumbs__page m-active">Blog Style 2</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <section class="b-contacts s-shadow">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="b-contacts__form">
+                        <header class="b-contacts__form-header s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
+                            <h2 class="s-titleDet">{{ 'contact_page.form'|trans({}, 'messages') }}</h2>
+                        </header>
+                        <p class=" wow zoomInUp" data-wow-delay="0.5s">
+                            {{ 'contact_page.help'|trans({}, 'messages') }}
+                        <div id="success"></div>
+                        {{ form_start(form) }}
+                        <div class="form-group col-md-6">
+                            {{ form_row(form.email, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form_row(form.name, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                        <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                            <div class="form-group">
+                                {{ form_row(form.content, { 'attr': {'class': 'form-control form-control-lg textarena_large'} }) }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.5s">Envoyer<span class="fa fa-angle-right"></span></button>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="b-contacts__address">
+                        <div class="b-contacts__address-hours">
+                            <h2 class="s-titleDet wow zoomInUp" data-wow-delay="0.5s">{{ 'contact_page.hours'|trans({}, 'messages') }}</h2>
+                            <div class="b-contacts__address-hours-main wow zoomInUp" data-wow-delay="0.5s">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-12">
+                                        <h5>{{ 'contact_page.visit'|trans({}, 'messages') }}</h5>
+                                        <p>{{ 'contact_page.mond'|trans({}, 'messages') }}<br/>
+                                            {{ 'contact_page.close'|trans({}, 'messages') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-contacts__address-info">
+                            <h2 class="s-titleDet wow zoomInUp" data-wow-delay="0.5s">{{ 'contact_page.close'|trans({}, 'messages') }}</h2>
+                            <address class="b-contacts__address-info-main wow zoomInUp" data-wow-delay="0.5s">
+                                <div class="b-contacts__address-info-main-item">
+                                    <span class="fa fa-home"></span>
+                                    {{ 'contact_page.adress'|trans({}, 'messages') }}
+                                    <p>2 Avenue de la Porte de Saint-Cloud, 75016 Paris</p>
+                                </div>
+                                <div class="b-contacts__address-info-main-item">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-xs-12">
+                                            <span class="fa fa-phone"></span>
+                                            {{ 'contact_page.phone'|trans({}, 'messages') }}
+                                        </div>
+                                        <div class="col-lg-9 col-md-8 col-xs-12">
+                                            <em>+33 (0)1 40 71 72 65/57</em>
+                                            <p>{{ 'contact_page.phne_subtilte'|trans({}, 'messages') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="b-contacts__address-info-main-item">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-xs-12">
+                                            <span class="fa fa-fax"></span>
+                                            {{ 'contact_page.fax'|trans({}, 'messages') }}
+                                        </div>
+                                        <div class="col-lg-9 col-md-8 col-xs-12">
+                                            <em>+33 (0)1 40 71 00 14</em>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="b-contacts__address-info-main-item">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 col-xs-12">
+                                            <span class="fa fa-envelope"></span>
+                                            {{ 'contact_page.email'|trans({}, 'messages') }}
+                                        </div>
+                                        <div class="col-lg-9 col-md-8 col-xs-12">
+                                            <em>info@ttcar.net</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--b-contacts-->
+{% endblock %}

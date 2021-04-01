@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">About Us</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
+                <h3>The Largest Auto Dealer Online</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('groupe') }}" class="b-breadCumbs__page m-active">About Us</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <section class="b-best">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="b-best__info">
+                        <header class="s-lineDownLeft b-best__info-head">
+                            <h2 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'douane_tilte'|trans({}, 'messages') }}</h2>
+                        </header>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'douane_text_1'|trans({}, 'messages') }}</p>
+                        <h3 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'douane_tilte_2'|trans({}, 'messages') }}</h3>
+                        <h3 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'douane_tilte_3'|trans({}, 'messages') }}</h3>
+                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'douane_text_2'|trans({}, 'messages') }}</p>
+                        {#                        <a href="article.html" class="btn m-btn m-readMore wow zoomInUp" data-wow-delay="0.5s">view listings<span class="fa fa-angle-right"></span></a>#}
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12" style="margin-top: 15%">
+                    <img class="img-responsive center-block wow zoomInUp" data-wow-delay="0.5s" alt="best" src="{{ asset('build/douane-home.png') }}" />
+                </div>
+            </div>
+        </div>
+    </section><!--b-best-->
+
+{% endblock %}

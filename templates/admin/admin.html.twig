@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}TTcar back-office {% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('admin') }}
+        {{ encore_entry_link_tags('bootstrap_css') }}
+        {{ encore_entry_link_tags('default') }}
+        {{ encore_entry_link_tags('awesome') }}
+        {{ encore_entry_link_tags('metisMenu_css') }}
+        {{ encore_entry_link_tags('responsive') }}
+        {{ encore_entry_link_tags('slicknav_css') }}
+        {{ encore_entry_link_tags('style') }}
+        {{ encore_entry_link_tags('themify') }}
+        {{ encore_entry_link_tags('typography') }}
+    {% endblock %}
+    <link rel="icon" type="image" href="{{ asset('build/tt-groupimg.png') }}" />
+</head>
+<body>
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="{{ path('main') }}"><img src="{{ asset('build/tt-groupimg.png') }}" alt="logo"></a>
+            </div>
+        </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+                        <li><a href="{{ path('dashboard') }}"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                        <li><a href="{{ path('manage_range') }}"><i class="fas fa-plus-square"></i><span>Create</span></a></li>
+                        <li><a href="{{ path('manage_user') }}"><i class="fas fa-users-cog"></i><span>Manage Users</span></a></li>
+                        <li><a href="{{ path('manage_cars') }}"><i class="fas fa-car-side"></i><span>Manage Cars</span></a></li>
+                        <li><a href="{{ path('manage_accessory') }}"><i class="fas fa-hat-wizard"></i><span>Manage Accessories</span></a></li>
+                        <li><a href="{{ path('manage_place') }}"><i class="fas fa-location-arrow"></i><span>Manage Places</span></a></li>
+                        <li><a href="{{ path('manage_country') }}"><i class="far fa-flag"></i><span>Manage Country</span></a></li>
+                        <li><a href="{{ path('manage_nationality') }}"><i class="fas fa-globe-asia"></i><span>Manage Nationality</span></a></li>
+                        <li><a href="{{ path('manage_reason') }}"><i class="fas fa-briefcase"></i><span>Manage Reasons</span></a></li>
+                        <li><a href="{{ path('manage_promotion') }}"><i class="fas fa-search-dollar"></i><span>Manage Promotions</span></a></li>
+                        <li><a href="{{ path('manage_price') }}"><i class="fas fa-tags"></i><span>Manage Prices</span></a></li>
+                        <li><a href="{{ path('manage_blog') }}"><i class="fas fa-warehouse"></i> <span>Manage Blog</span></a></li>
+                        <li><a href="{{ path('manage_contact') }}"><i class="fas fa-envelope-open-text"></i><span>Manage Contact</span></a></li>
+                        <li><a href="{{ path('manage_contact_car') }}"><i class="fas fa-envelope-open-text"></i><span>Manage Contact By Car</span></a></li>
+                        <li><a href="{{ path('manage_contact_douane') }}"><i class="fas fa-envelope-open-text"></i><span>Manage Contact Douane</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar menu area end -->
+    <!-- main content area start -->
+    <div class="main-content">
+        <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">Dashboard</h4>
+                        <ul class="breadcrumbs pull-left">
+                            <li><a href="{{ path('dashboard') }}">Home</a></li>
+                            <li><span>Dashboard</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="{{ asset('build/tt-groupimg.png') }}" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">
+                            {% if app.user %}
+                                {{ app.user.username }}
+                            {% endif %}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('bar-chart') }}
+    {{ encore_entry_script_tags('slimscroll') }}
+    {{ encore_entry_script_tags('line_chart') }}
+    {{ encore_entry_script_tags('maps') }}
+    {{ encore_entry_script_tags('metisMenu') }}
+    {{ encore_entry_script_tags('carousel') }}
+    {{ encore_entry_script_tags('pie') }}
+    {{ encore_entry_script_tags('plugins') }}
+    {{ encore_entry_script_tags('popper') }}
+{% endblock %}
+    </div>
+
+    {% block footer %}
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2020. All right reserved. TTcar.</p>
+        </div>
+    </footer>
+    <!-- footer area end-->
+    {% endblock %}
+
+</div>
+</body>
+</html>
