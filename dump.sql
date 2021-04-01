@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 08, 2021 at 04:04 PM
+-- Generation Time: Apr 01, 2021 at 07:29 AM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.7
 
@@ -58,10 +58,11 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `title`, `content`, `author`, `create_at`, `post_img`, `category_post_id`) VALUES
-(3, 'Test1', 'je suis un test d'\'article', 'slothie', '2021-03-08', 'default2-6045de7cec020.png', 1),
+(3, 'Test1', 'je suis un test d\'article', 'slothie', '2021-03-08', 'default2-6045de7cec020.png', 1),
 (4, 'Test2', 'Je suis toujours un test', 'slothie', '2021-03-08', 'default2-6045de8f44fe8.png', 2),
 (5, 'Test3', 'Je retest et retest', 'slothie', '2021-03-08', 'default2-6045e07fe719e.png', 4),
-(6, 'Test4', 'Je suis un test 4', 'slothie', '2021-03-08', 'default2-6045e254ad273.png', 6);
+(6, 'Test4', 'Je suis un test 4', 'slothie', '2021-03-08', 'default2-6045e254ad273.png', 6),
+(7, 'test42', '<p>je suis un <u><strong>test</strong></u></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2><u><strong>dzzsw<em>cccccc</em></strong></u></h2>', 'slothie', '2021-03-11', 'transport-maritime-604a137338e48.png', 3);
 
 -- --------------------------------------------------------
 
@@ -103,12 +104,12 @@ CREATE TABLE `cars` (
 INSERT INTO `cars` (`id`, `margin`, `fuel`, `name`, `roof_rack`, `chains`, `years`, `selling_price`, `passenger`, `door`, `transmission`, `clim`, `co2`, `luggage`, `mark_id`, `ranges_id`, `car_img`, `items`, `is_online`, `date_start`, `date_end`, `price_id`, `contact_actived`, `description`) VALUES
 (56, 10, 'diesel', 'G20-Mégane Diesel BVA GPS Europe', 25, 30, 2020, 35000, 5, 4, 'Manuel', 1, 102, 5, 1, 1, 'renault-megane-berline-6007ebe9a4f21.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-11-30', '2021-11-20', 1, 1, NULL),
 (58, 10, 'diesel', '2019 - Scénic Blue', 25, 30, 2019, 35000, 5, 4, 'Manuel', 1, 102, 5, 1, 1, 'renault-scenics-6007ec642c158.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:2:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}i:1;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:2;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:13:\"Siège bébé\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";r:7;s:27:\"\0App\\Entity\\Accessory\0price\";i:35;}}}', 1, '2020-04-18', '2022-08-24', 2, 0, NULL),
-(59, 55, 'diesel', '2019 - 308 DIESEL - BVA', 25, 30, 2019, 35000, 5, 4, 'auto', 1, 102, 5, 2, 3, 'peugeot-308-sw1-big-6007ecbfbd356.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-08-13', '2021-11-19', NULL, 0, NULL),
-(60, 25, 'diesel', '2019 - 508 DIESEL - BVA - GPS', 25, 30, 2020, 35000, 5, 4, 'auto', 1, 102, 5, 2, 4, 'peugeot-508-berline1-big-6007ecee098d4.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-07-17', '2021-10-19', NULL, 0, NULL),
-(61, 10, 'diesel', '2019 - C3 DIESEL- BVM - GPS', 25, 30, 2020, 35000, 5, 4, 'auto', 1, 102, 5, 3, 5, 'citroen-c3-big-6007ed17bdf38.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:2:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}i:1;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:2;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:13:\"Siège bébé\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";r:7;s:27:\"\0App\\Entity\\Accessory\0price\";i:35;}}}', 1, '2020-10-25', '2021-10-26', NULL, 0, NULL),
-(62, 55, 'diesel', 'C4 - DIESEL - BOITE AUTO - GPS', 25, 30, 2020, 38000, 5, 4, 'auto', 1, 102, 5, 3, 6, 'citroen-c4-berline-big-6007ed433ba97.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-03-19', '2021-04-19', NULL, 0, NULL),
-(63, 10, 'diesel', '2019 - DS7 CROSSBACK - DIESEL - BVA - GPS', 25, 30, 2020, 35000, 5, 4, 'auto', 1, 102, 5, 4, 7, 'ds7-crossback-big-6007ed7b17a5b.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2021-02-14', '2022-11-30', NULL, 0, NULL),
-(64, 55, 'diesel', '2019 - DS3 CROSSBACK - ESSENCE - BVA - GPS', 25, 30, 2019, 35000, 5, 4, 'Manuel', 1, 102, 5, 4, 8, 'ds3-crossback-big-6007ed9fd9495.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2021-11-30', '2022-11-30', NULL, 0, NULL);
+(59, 55, 'diesel', '2019 - 308 DIESEL - BVA', 25, 30, 2019, 35000, 5, 4, 'auto', 1, 102, 5, 2, 3, 'peugeot-308-sw1-big-6007ecbfbd356.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-08-13', '2021-11-19', 1, 0, NULL),
+(60, 25, 'diesel', '2019 - 508 DIESEL - BVA - GPS', 25, 30, 2020, 35000, 5, 4, 'auto', 1, 102, 5, 2, 4, 'peugeot-508-berline1-big-6007ecee098d4.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-07-17', '2021-10-19', 2, 0, NULL),
+(61, 10, 'diesel', '2019 - C3 DIESEL- BVM - GPS', 25, 30, 2020, 35000, 5, 4, 'auto', 1, 102, 5, 3, 5, 'citroen-c3-big-6007ed17bdf38.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:2:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}i:1;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:2;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:13:\"Siège bébé\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";r:7;s:27:\"\0App\\Entity\\Accessory\0price\";i:35;}}}', 1, '2020-10-25', '2021-10-26', 1, 0, NULL),
+(62, 55, 'diesel', 'C4 - DIESEL - BOITE AUTO - GPS', 25, 30, 2020, 38000, 5, 4, 'auto', 1, 102, 5, 3, 6, 'citroen-c4-berline-big-6007ed433ba97.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2020-03-19', '2021-04-19', 2, 0, NULL),
+(63, 10, 'diesel', '2019 - DS7 CROSSBACK - DIESEL - BVA - GPS', 25, 30, 2020, 35000, 5, 4, 'auto', 1, 102, 5, 4, 7, 'ds7-crossback-big-6007ed7b17a5b.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2021-02-14', '2022-11-30', 1, 0, NULL),
+(64, 55, 'diesel', '2019 - DS3 CROSSBACK - ESSENCE - BVA - GPS', 25, 30, 2019, 35000, 5, 4, 'Manuel', 1, 102, 5, 4, 8, 'ds3-crossback-big-6007ed9fd9495.jpg', 'O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:20:\"App\\Entity\\Accessory\":5:{s:24:\"\0App\\Entity\\Accessory\0id\";i:1;s:29:\"\0App\\Entity\\Accessory\0libelle\";s:15:\"Plein d\'essence\";s:26:\"\0App\\Entity\\Accessory\0year\";i:2020;s:26:\"\0App\\Entity\\Accessory\0mark\";O:30:\"Proxies\\__CG__\\App\\Entity\\Mark\":7:{s:17:\"__isInitialized__\";b:0;s:19:\"\0App\\Entity\\Mark\0id\";i:1;s:24:\"\0App\\Entity\\Mark\0libelle\";N;s:21:\"\0App\\Entity\\Mark\0cars\";N;s:23:\"\0App\\Entity\\Mark\0ranges\";N;s:24:\"\0App\\Entity\\Mark\0markImg\";N;s:28:\"\0App\\Entity\\Mark\0accessories\";N;}s:27:\"\0App\\Entity\\Accessory\0price\";i:40;}}}', 1, '2021-11-30', '2022-11-30', 2, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -184,6 +185,49 @@ INSERT INTO `contact_cars` (`id`, `create_at`, `email`, `content`, `name`, `car_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact_douane`
+--
+
+CREATE TABLE `contact_douane` (
+  `id` int(11) NOT NULL,
+  `create_at` date NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_read` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact_douane`
+--
+
+INSERT INTO `contact_douane` (`id`, `create_at`, `email`, `content`, `name`, `is_read`) VALUES
+(1, '2021-03-10', 'Test@douane.fr', 'Je souhaite des info douane', 'douaneMe', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `country`
+--
+
+CREATE TABLE `country` (
+  `id` int(11) NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `country`
+--
+
+INSERT INTO `country` (`id`, `code`, `name_fr`, `name_en`) VALUES
+(1, 'FRED', 'France', 'French'),
+(2, 'AMES', 'Amerique', 'America');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
@@ -196,33 +240,34 @@ CREATE TABLE `customer` (
   `adress_ue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adress_no_ue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthdays_date` date NOT NULL,
-  `place_birth` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country_birth` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pice_identity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `number_piece` int(11) NOT NULL,
   `delivery_piece` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `reason` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name_young` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_piece` date NOT NULL,
-  `adress_country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adress_city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adress_code` int(11) NOT NULL,
   `adress_code_hue` int(11) NOT NULL,
-  `adress_country_hue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adress_city_hue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `birth_postal` int(11) NOT NULL
+  `birth_postal` int(11) NOT NULL,
+  `adress_country_id` int(11) DEFAULT NULL,
+  `adress_country_hue_id` int(11) DEFAULT NULL,
+  `nationality_id` int(11) DEFAULT NULL,
+  `reason_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `user_id`, `name`, `username`, `phone`, `adress_ue`, `adress_no_ue`, `birthdays_date`, `place_birth`, `country_birth`, `nationality`, `pice_identity`, `number_piece`, `delivery_piece`, `reason`, `name_young`, `email`, `date_piece`, `adress_country`, `adress_city`, `adress_code`, `adress_code_hue`, `adress_country_hue`, `adress_city_hue`, `customer_type`, `birth_postal`) VALUES
-(2, 4, 'dupont', 'Lea', 622188580, '10 av st', 'no', '2021-01-04', 'domont', 'France', 'fr', 'Passport', 123, 'domont', 'Passport', 'duponnet', 'testtinggg@add.fr', '2021-01-02', 'France', 'Chatillon', 92320, 0, 'no', 'no', 'mme', 95200),
-(3, 15, 'testkn,', 'moitest', 7864398, 'testasres', 'null', '2021-01-14', 'testme', 'TestCountry', 'FRTEST', 'Passport', 986533, 'placetest', 'testeur', 'NULL', 'hfgbcwt@azeis.fr', '2017-01-01', 'FRTEST', 'tesdrt', 92320, 0, 'null', 'null', '', 0);
+INSERT INTO `customer` (`id`, `user_id`, `name`, `username`, `phone`, `adress_ue`, `adress_no_ue`, `birthdays_date`, `country_birth`, `pice_identity`, `number_piece`, `delivery_piece`, `name_young`, `email`, `date_piece`, `adress_city`, `adress_code`, `adress_code_hue`, `adress_city_hue`, `customer_type`, `birth_postal`, `adress_country_id`, `adress_country_hue_id`, `nationality_id`, `reason_id`) VALUES
+(2, 4, 'dupont', 'Lea', 622188580, '10 av st', 'no', '2021-01-04', 'France', 'Passport', 123, 'domont', 'duponnet', 'testtinggg@add.fr', '2021-01-02', 'Chatillon', 92320, 0, 'no', 'mme', 95200, 1, 1, 1, 1),
+(3, 15, 'testkn,', 'moitest', 7864398, 'testasres', 'null', '2021-01-14', 'TestCountry', 'Passport', 986533, 'placetest', 'NULL', 'hfgbcwt@azeis.fr', '2017-01-01', 'tesdrt', 92320, 0, 'null', '', 0, 1, 1, 1, 2),
+(4, 23, 'testmoi', 'moitest', 623159999, 'testasres', 'noOOOOOOOOOOOO', '2021-03-12', 'France', 'Passport', 99865339, 'placetest', 'testmoi', 'email@customer.com', '2021-03-12', 'sarcelles', 95200, 75007, 'sarcelles', 'mr', 92320, 1, 1, 2, 5),
+(5, 24, 'testmoi', 'moitest', 623159999, 'testasres', 'noOOOOOOOOOOOO', '2021-03-05', 'France', 'Passport', 99865339, 'placetest', 'testmoi', 'email@customer42.com', '2021-03-06', 'sarcelles', 95200, 75007, 'sarcelles', 'mme', 95200, 1, 1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -269,6 +314,27 @@ INSERT INTO `mark` (`id`, `libelle`, `mark_img`, `margin`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nationality`
+--
+
+CREATE TABLE `nationality` (
+  `id` int(11) NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_fr` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `nationality`
+--
+
+INSERT INTO `nationality` (`id`, `code`, `name_fr`, `name_en`) VALUES
+(1, 'FRCDE', 'Francaise', 'French'),
+(2, 'FRZS', 'Americaine', 'American');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `newsletter`
 --
 
@@ -287,7 +353,6 @@ CREATE TABLE `newsletter` (
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `create_date` date NOT NULL,
-  `number_plane` int(11) NOT NULL,
   `place_plane` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -296,11 +361,8 @@ CREATE TABLE `order` (
   `adress` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `postal_code` int(11) NOT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` int(11) NOT NULL,
-  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birth_date` date NOT NULL,
-  `birth_place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birth_postal` int(11) NOT NULL,
   `birth_city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birth_country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -320,50 +382,62 @@ CREATE TABLE `order` (
   `lang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
   `adress_no_ue` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `adress_country_hue` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `adress_city_hue` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `adress_code_hue` int(11) DEFAULT NULL,
-  `reason` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `car_libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `items` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `plane_date2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `plane_date2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number_plane` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adress_more` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adress_more_no_ue` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `reason_id` int(11) DEFAULT NULL,
+  `nationality_id` int(11) DEFAULT NULL,
+  `adress_country_hue_id` int(11) DEFAULT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mark` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count_days` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`id`, `create_date`, `number_plane`, `place_plane`, `customer_type`, `customer_name`, `customer_old_name`, `customer_username`, `adress`, `city`, `postal_code`, `country`, `phone`, `nationality`, `birth_date`, `birth_place`, `birth_postal`, `birth_city`, `birth_country`, `passport_number`, `passport_date`, `passport_place`, `depart_place`, `depart_price`, `depart_date`, `return_place`, `return_price`, `return_date`, `basic_price`, `promotions`, `price`, `update_at`, `lang`, `email`, `adress_no_ue`, `adress_country_hue`, `adress_city_hue`, `adress_code_hue`, `reason`, `car_libelle`, `items`, `plane_date2`) VALUES
-(17, '2021-02-18', 42424242, 'AFtest', 'mme', 'Johanna Queille', 'testmoi', 'moitest', 'testasres', 'Châtillon', 92320, 'France', 88580, 'FRTEST', '2020-02-01', 'testme', 92320, 'Chatillon', 'France', 986533, '2016-03-01', 'placetest', 'Marseille', 75, '2021-02-19', 'Paris', 35, '2021-04-03', 1320, 1170, 1390, NULL, 'fr', 'test@testmoi.fr', '', '', '', 0, '', '', '', ''),
-(18, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'test@testmoi2.fr', '', '', '', 0, '', '', '', ''),
-(20, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'test@testmoi42.fr', '', '', '', 0, '', '', '', ''),
-(21, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'test@testmoi42bis.fr', '', '', '', 0, '', '', '', ''),
-(22, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'test@testmoi4bis.fr', '', '', '', 0, '', '', '', ''),
-(23, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'test@tes2is.fr', '', '', '', 0, '', '', '', ''),
-(24, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'testcxw@tes2is.fr', '', '', '', 0, '', '', '', ''),
-(25, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'testccsc@tes2is.fr', '', '', '', 0, '', '', '', ''),
-(26, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', '42test@tes2is.fr', '', '', '', 0, '', '', '', ''),
-(27, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', '42texcst@tes2is.fr', '', '', '', 0, '', '', '', ''),
-(28, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', '42texcst@tescwx2is.fr', '', '', '', 0, '', '', '', ''),
-(29, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', '42texcst@azeis.fr', '', '', '', 0, '', '', '', ''),
-(30, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'uoiout@azeis.fr', '', '', '', 0, '', '', '', ''),
-(31, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'uwcxwt@azeis.fr', '', '', '', 0, '', '', '', ''),
-(32, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'uwcwt@azeis.fr', '', '', '', 0, '', '', '', ''),
-(33, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'iuyicwt@azeis.fr', '', '', '', 0, '', '', '', ''),
-(34, '2021-02-19', 42424242, 'AFtest', 'mme', 'testkn,', 'testmoi', 'moitest', 'testasres', 'tesdrt', 92320, 'FRTEST', 7864398, 'FRTEST', '2021-01-14', 'testme', 95200, 'testcityy', 'TestCountry', 986533, '2017-01-01', 'placetest', 'Marseille', 75, '2021-02-17', 'Paris', 35, '2021-02-28', 1100, 950, 1065, NULL, 'fr', 'hfgbcwt@azeis.fr', '', '', '', 0, '', '', '', ''),
-(35, '2021-02-19', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-02-09', 'Paris', 35, '2021-02-04', 1060, 910, 990, NULL, 'fr', 'testtinggg@add.fr', '', '', '', 0, '', '', '', ''),
-(37, '2021-02-19', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-02-09', 'Paris', 35, '2021-02-04', 1060, 910, 990, NULL, 'fr', 'testtinggg@add.fr', '', '', '', 0, '', '', '', ''),
-(38, '2021-02-19', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-02-09', 'Paris', 35, '2021-02-04', 1060, 910, 990, NULL, 'fr', 'testtinggg@add.fr', '', '', '', 0, '', '', '', ''),
-(39, '2021-02-19', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-02-09', 'Paris', 35, '2021-02-04', 1060, 910, 990, NULL, 'fr', 'testtinggg@add.fr', '', '', '', 0, '', '', '', ''),
-(40, '2021-02-19', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-02-09', 'Paris', 35, '2021-02-04', 1060, 910, 990, NULL, 'fr', 'testtinggg@add.fr', '', '', '', 0, '', '', '', ''),
-(41, '2021-02-22', 42424242, 'AFtest', 'mme', 'test', 'tsttt', 'kjkl', 'jkjkljkl', 'jkjkljlkkj', 9878, 'jkjkjkj', 987878, 'nncsd', '2019-01-01', 'dazde', 9888, 'cdsds', 'dsqcdsc', 986533, '2023-01-01', 'placetest', 'Paris', 35, '2021-02-21', 'Montpellier', 100, '2021-04-11', 1405, 1255, 1405, NULL, 'fr', 'testdumatin@test.com', 'no', NULL, NULL, NULL, 'stage', '', '', ''),
-(42, '2021-02-22', 42424242, 'AFtest', 'mme', 'test', 'tsttt', 'kjkl', 'jkjkljkl', 'jkjkljlkkj', 9878, 'jkjkjkj', 987878, 'nncsd', '2019-01-01', 'dazde', 9888, 'cdsds', 'dsqcdsc', 986533, '2023-01-01', 'placetest', 'Paris', 35, '2021-02-21', 'Montpellier', 100, '2021-04-11', 1405, 1255, 1405, NULL, 'fr', 'testdumatin@test.com', 'no', NULL, NULL, NULL, 'stage', '', '', ''),
-(43, '2021-02-22', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Montpellier', 100, '2021-02-25', 'Paris', 35, '2021-02-28', 1125, 975, 1125, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 'no', 0, 'Passport', '2019 - Scénic Blue', '', ''),
-(44, '2021-02-22', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Montpellier', 100, '2021-02-25', 'Paris', 35, '2021-02-28', 1125, 975, 1125, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 'no', 0, 'Passport', '2019 - Scénic Blue', '', ''),
-(45, '2021-02-22', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Montpellier', 100, '2021-02-25', 'Paris', 35, '2021-02-28', 1125, 975, 1195, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 'no', 0, 'Passport', '2019 - Scénic Blue', '', ''),
-(46, '2021-02-22', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Montpellier', 100, '2021-02-25', 'Paris', 35, '2021-02-28', 1125, 975, 1195, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 'no', 0, 'Passport', '2019 - Scénic Blue', '', ''),
-(47, '2021-02-22', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Montpellier', 100, '2021-02-25', 'Paris', 35, '2021-02-28', 1125, 975, 1130, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 'no', 0, 'Passport', '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', ''),
-(48, '2021-02-23', 7867, 'AIR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 'France', 622188580, 'fr', '2021-01-04', 'domont', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-02-26', 'Marseille', 75, '2021-02-28', 1100, 950, 1095, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 'no', 0, 'Passport', '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '2021-02-24 20:03:00');
+INSERT INTO `order` (`id`, `create_date`, `place_plane`, `customer_type`, `customer_name`, `customer_old_name`, `customer_username`, `adress`, `city`, `postal_code`, `phone`, `birth_date`, `birth_postal`, `birth_city`, `birth_country`, `passport_number`, `passport_date`, `passport_place`, `depart_place`, `depart_price`, `depart_date`, `return_place`, `return_price`, `return_date`, `basic_price`, `promotions`, `price`, `update_at`, `lang`, `email`, `adress_no_ue`, `adress_city_hue`, `adress_code_hue`, `car_libelle`, `items`, `plane_date2`, `number_plane`, `adress_more`, `adress_more_no_ue`, `country_id`, `reason_id`, `nationality_id`, `adress_country_hue_id`, `comment`, `mark`, `count_days`) VALUES
+(51, '2021-03-21', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-26', 95200, 'sarcelles', 'France', 42424342, '2021-03-19', 'placetest', 'Marseille', 75, '2021-04-22', 'Montpellier', 100, '2021-05-01', 1165, 1015, 1165, NULL, 'fr', 'email@email.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-19 11:05:00', '42424242A', 'Adresse de societe', 'Adresse de societe', 1, 4, 2, 1, '', '', 0),
+(52, '2021-03-21', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-26', 95200, 'sarcelles', 'France', 42424342, '2021-03-19', 'placetest', 'Marseille', 75, '2021-04-22', 'Montpellier', 100, '2021-05-01', 1165, 1015, 1165, NULL, 'fr', 'email@email.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-19 11:05:00', '42424242A', 'Adresse de societe', 'Adresse de societe', 1, 4, 2, 1, '', '', 0),
+(53, '2021-03-21', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-26', 95200, 'sarcelles', 'France', 42424342, '2021-03-19', 'placetest', 'Marseille', 75, '2021-04-22', 'Montpellier', 100, '2021-05-01', 1165, 1015, 1165, NULL, 'fr', 'email@email.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-19 11:05:00', '42424242A', 'Adresse de societe', 'Adresse de societe', 1, 4, 2, 1, '', '', 0),
+(54, '2021-03-21', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-26', 95200, 'sarcelles', 'France', 42424342, '2021-03-19', 'placetest', 'Marseille', 75, '2021-04-22', 'Montpellier', 100, '2021-05-01', 1165, 1015, 1165, NULL, 'fr', 'email@email.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-19 11:05:00', '42424242A', 'Adresse de societe', 'Adresse de societe', 1, 4, 2, 1, '', '', 0),
+(55, '2021-03-21', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-26', 95200, 'sarcelles', 'France', 42424342, '2021-03-19', 'placetest', 'Marseille', 75, '2021-04-22', 'Montpellier', 100, '2021-05-01', 1165, 1015, 1165, NULL, 'fr', 'email@email.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-19 11:05:00', '42424242A', 'Adresse de societe', 'Adresse de societe', 1, 4, 2, 1, '', '', 0),
+(57, '2021-03-22', 'AFtestFR', 'mme', 'testmoi', 'no', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-06', 95200, 'sarcelles', 'France', 98653330, '2021-03-24', 'placetest', 'Marseille', 75, '2021-04-30', 'Montpellier', 100, '2021-05-29', 1245, 1095, 1245, NULL, 'fr', 'compte@test.com', 'noOOOOOOOOOOOO', 'sarcelles', NULL, '2019 - Scénic Blue', 'N;', '2021-03-27 13:42:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 4, 1, 1, '', '', 0),
+(58, '2021-03-22', 'AFtestFR', 'mme', 'testmoi', 'no', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-06', 95200, 'sarcelles', 'France', 98653330, '2021-03-24', 'placetest', 'Marseille', 75, '2021-04-30', 'Montpellier', 100, '2021-05-29', 1245, 1095, 1245, NULL, 'fr', 'compte@test.com', 'noOOOOOOOOOOOO', 'sarcelles', NULL, '2019 - Scénic Blue', 'N;', '2021-03-27 13:42:00', '42424242', 'Adresse de societe', 'Adresse de societe', 2, 4, 2, 1, '', '', 0),
+(62, '2021-03-22', 'AFtestFR', 'mme', 'Johanna Queille', 'testmoi', 'kjkl', 'testasres', 'Châtillon', 92320, 622188580, '2021-03-20', 95200, 'sarcelles', 'France', 986533900, '2021-03-18', 'placetest', 'Montpellier', 100, '2021-04-15', 'Montpellier', 100, '2021-05-08', 1210, 1060, 1210, NULL, 'fr', 'queille.johanna@gmail.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-26 18:35:00', '42424242A', '10 avenue saint exupery', 'Adresse de societe', 1, 5, 1, 1, NULL, '', 0),
+(63, '2021-03-22', 'AFtestFR', 'mme', 'Johanna Queille', 'testmoi', 'kjkl', 'testasres', 'Châtillon', 92320, 622188580, '2021-03-20', 95200, 'sarcelles', 'France', 986533900, '2021-03-18', 'placetest', 'Montpellier', 100, '2021-04-15', 'Montpellier', 100, '2021-05-08', 1210, 1060, 1210, NULL, 'fr', 'queille.johanna@gmail.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-26 18:35:00', '42424242A', '10 avenue saint exupery', 'Adresse de societe', 1, 5, 1, 1, NULL, '', 0),
+(64, '2021-03-22', 'AFtestFR', 'mme', 'testmoi', 'no', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-04-03', 95200, 'sarcelles', 'France', 986533900, '2021-03-20', 'placetest', 'Montpellier', 100, '2021-04-15', 'Montpellier', 100, '2021-05-08', 1210, 1060, 1210, NULL, 'fr', 'email@email.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '2021-03-27 19:38:00', '42424242F', 'Adresse de societe', 'Adresse de societe', 1, 5, 1, 1, NULL, '', 0),
+(65, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-25', 95200, 'sarcelles', 'France', 986533333, '2021-04-03', 'placetest', 'Marseille', 75, '2021-04-20', 'Montpellier', 100, '2021-05-29', 1345, 1195, 1275, NULL, 'fr', 'email@compte.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:20:\"Plein d&#039;essence\";}', '12:33:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 3, 1, 1, NULL, '', 0),
+(66, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-25', 95200, 'sarcelles', 'France', 986533333, '2021-04-03', 'placetest', 'Marseille', 75, '2021-04-20', 'Montpellier', 100, '2021-05-29', 1345, 1195, 1275, NULL, 'fr', 'email@compte.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:20:\"Plein d&#039;essence\";}', '12:33:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 3, 1, 1, NULL, '', 0),
+(67, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(68, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 1, 1, 'Je suis un commentaire', '', 0),
+(69, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(70, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(71, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(72, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(73, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(74, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(75, '2021-03-23', 'AFtest', 'mr', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(76, '2021-03-23', 'AFtest', 'mr', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-12', 92320, 'Châtillon', 'France', 99865339, '2021-03-12', 'placetest', 'Marseille', 75, '2021-04-23', 'Montpellier', 100, '2021-05-29', 1315, 1165, 1235, NULL, 'fr', 'email@customer.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:1:{i:0;s:13:\"Siège bébé\";}', '11:39:00', '42424242', 'Adresse de societe', 'Adresse de societe', 1, 5, 2, 1, 'Je suis un commentaire', '', 0),
+(77, '2021-03-23', 'AFtest', 'mme', 'testmoi', 'testmoi', 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'sarcelles', 'France', 99865339, '2021-03-06', 'placetest', 'Marseille', 75, '2021-04-29', 'Montpellier', 100, '2021-05-08', 1165, 1015, 1165, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'N;', '12:51:00', '42424242A', 'Adresse de societe', 'Adresse de societe', 1, 4, 1, 1, NULL, '', 0),
+(81, '2021-03-23', 'AIRFRR', 'null', 'testmoi', NULL, 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'testasres', 'France', 99865339, '2021-03-06', 'placetest', 'Montpellier', 100, '2021-04-16', 'Paris', 35, '2021-05-29', 1345, 1195, 1270, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '17:11:00', '78672A', NULL, NULL, 1, 4, 1, 1, NULL, '', 0),
+(82, '2021-03-24', 'AIRFRR', 'null', 'testmoi', NULL, 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'testasres', 'France', 99865339, '2021-03-06', 'placetest', 'Marseille', 75, '2021-04-29', 'Montpellier', 100, '2021-06-05', 1325, 1175, 1270, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '11:17:00', '78672A', NULL, NULL, 1, 4, 1, 1, NULL, '', 0),
+(83, '2021-03-24', 'AIRFRR', 'null', 'testmoi', NULL, 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'testasres', 'France', 99865339, '2021-03-06', 'placetest', 'Marseille', 75, '2021-04-29', 'Montpellier', 100, '2021-06-05', 1325, 1175, 1270, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '11:17:00', '78672A', NULL, NULL, 1, 4, 1, 1, NULL, '', 0),
+(84, '2021-03-24', 'AIRFRR', 'null', 'testmoi', NULL, 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'testasres', 'France', 99865339, '2021-03-06', 'placetest', 'Marseille', 75, '2021-04-29', 'Montpellier', 100, '2021-06-05', 1325, 1175, 1270, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '11:17:00', '78672A', NULL, NULL, 1, 4, 1, 1, NULL, '', 0),
+(85, '2021-03-24', 'AIRFRR', 'null', 'testmoi', NULL, 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'testasres', 'France', 99865339, '2021-03-06', 'placetest', 'Marseille', 75, '2021-04-29', 'Montpellier', 100, '2021-06-05', 1325, 1175, 1270, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '11:17:00', '78672A', NULL, NULL, 1, 4, 1, 1, NULL, '', 0),
+(86, '2021-03-24', 'AIRFRR', 'null', 'testmoi', NULL, 'moitest', 'testasres', 'sarcelles', 95200, 623159999, '2021-03-05', 95200, 'testasres', 'France', 99865339, '2021-03-06', 'placetest', 'Marseille', 75, '2021-04-29', 'Montpellier', 100, '2021-06-05', 1325, 1175, 1270, NULL, 'fr', 'email@customer42.com', 'noOOOOOOOOOOOO', 'sarcelles', 75007, '2019 - Scénic Blue', 'a:2:{i:0;s:20:\"Plein d&#039;essence\";i:1;s:13:\"Siège bébé\";}', '11:17:00', '78672A', NULL, NULL, 1, 4, 1, 1, NULL, '', 0),
+(88, '2021-03-31', 'AIRFRR', 'null', 'dupont', 'OldName', 'Lea', '10 av st', 'Chatillon', 92320, 622188580, '2021-01-04', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Marseille', 75, '2021-04-22', 'Montpellier', 100, '2021-05-29', 1325, 1175, 1325, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 0, '2019 - Scénic Blue', 'N;', '11:25:00', '78672A', NULL, NULL, 1, 1, 1, 1, 'Je suis un commentaire', '', 0),
+(89, '2021-03-31', 'AIRFRR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 622188580, '2021-01-04', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-04-29', 'Marseille', 75, '2021-07-03', 1675, 837, 1675, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 0, '2019 - 508 DIESEL - BVA - GPS', 'N;', '12:55:00', '78672A', NULL, NULL, 1, 1, 1, 1, NULL, '', 0),
+(90, '2021-03-31', 'AIRFRR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 622188580, '2021-01-04', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Montpellier', 100, '2021-04-29', 'Marseille', 75, '2021-06-25', 1660, 830, 1660, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 0, '2019 - 508 DIESEL - BVA - GPS', 'N;', '16:48:00', '78672A', NULL, NULL, 1, 1, 1, 1, NULL, 'Peugeot', 57),
+(91, '2021-03-31', 'AIRFRR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 622188580, '2021-01-04', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-04-30', 'Montpellier', 100, '2021-07-02', 1680, 840, 1680, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 0, '2019 - 508 DIESEL - BVA - GPS', 'N;', '18:54:00', '78672A', NULL, NULL, 1, 1, 1, 1, NULL, 'Peugeot', 63),
+(92, '2021-03-31', 'AIRFRR', 'null', 'dupont', NULL, 'Lea', '10 av st', 'Chatillon', 92320, 622188580, '2021-01-04', 92320, '10 av st', 'France', 123, '2021-01-02', 'domont', 'Paris', 35, '2021-05-01', 'Paris', 35, '2021-05-21', 1060, 910, 1060, NULL, 'fr', 'testtinggg@add.fr', 'no', 'no', 0, '2019 - Scénic Blue', 'N;', '21:38:00', '78672A', NULL, NULL, 1, 1, 1, 1, NULL, 'Renault', 20);
 
 -- --------------------------------------------------------
 
@@ -374,17 +448,18 @@ INSERT INTO `order` (`id`, `create_date`, `number_plane`, `place_plane`, `custom
 CREATE TABLE `place` (
   `id` int(11) NOT NULL,
   `libelle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `place_pdf` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `place`
 --
 
-INSERT INTO `place` (`id`, `libelle`, `price`) VALUES
-(1, 'Paris', 35),
-(2, 'Marseille', 75),
-(3, 'Montpellier', 100);
+INSERT INTO `place` (`id`, `libelle`, `price`, `place_pdf`) VALUES
+(1, 'Paris', 35, ''),
+(2, 'Marseille', 75, ''),
+(3, 'Montpellier', 100, '');
 
 -- --------------------------------------------------------
 
@@ -488,6 +563,28 @@ INSERT INTO `range` (`id`, `mark_id`, `libelle`, `range_img`) VALUES
 (6, 3, 'Citroën C4 Berline', 'citroen-c4-berline-big-5ffc13be8123a.jpg'),
 (7, 4, 'DS7  Crossback', 'ds7-crossback-big-5ffc13d9c0b76.jpg'),
 (8, 4, 'DS3 Crossback', 'ds3-crossback-big-5ffc13e62d653.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reason`
+--
+
+CREATE TABLE `reason` (
+  `id` int(11) NOT NULL,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reason`
+--
+
+INSERT INTO `reason` (`id`, `content`) VALUES
+(1, 'Touriste'),
+(2, 'Etudiant'),
+(3, 'Stage'),
+(4, 'Chargée de mission'),
+(5, 'Membre de mission / Journaliste');
 
 -- --------------------------------------------------------
 
@@ -610,7 +707,13 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`, `is_verified`, `create_a
 (13, 'uwcwt@azeis.fr', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$eS4PF9PxZ1SrJfSX4MEbbA$+JQ1YjLzbVl/uYh4/nikR10RUeG23Mdny9R0coJGOmY', 0, '2021-02-19', 'moitest', 0),
 (14, 'iuyicwt@azeis.fr', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$sQskJKdpYUAKpMdTKtgSiQ$COFSCtL8lZKxXOJs6HVKhOPkE7RBQiPYzDZ/CwLCVr0', 0, '2021-02-19', 'moitest', 0),
 (15, 'hfgbcwt@azeis.fr', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$h/2lQNHFM5XQMPvzO+y+iA$K0KhfomU29KDX2bWKonxJKE7or1KNsgFB5sIuLNCPaM', 0, '2021-02-19', 'moitest', 0),
-(16, 'testdumatin@test.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$2wZD1f94TBOPsfe6htzrWA$aLDnhmnt8/pYsMfMdSXXOcBNArmxdo7B32JUCjtWN9o', 0, '2021-02-22', 'kjkl', 0);
+(16, 'testdumatin@test.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$2wZD1f94TBOPsfe6htzrWA$aLDnhmnt8/pYsMfMdSXXOcBNArmxdo7B32JUCjtWN9o', 0, '2021-02-22', 'kjkl', 0),
+(17, 'email@email.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$a5HNa2SBXX6xnohAw+UyPQ$rwvTsnmOm9WJjBywKC2e1YrsNswZg/ZiVX5EKKk5X/M', 0, '2021-03-21', 'moitest', 0),
+(18, 'compte@test.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$uU7Cg592/xZI5UuDG0Zxnw$i6ZkxgOSz3d4Yh4BKJ4bG9re7kzSjC0GJk+CNjCNx5Q', 0, '2021-03-22', 'moitest', 0),
+(19, 'queille.johanna@gmail.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$txOgEA4a3Ws8t0ucBv//Dg$0CcSZBFSshKJ1DpPfs2rcjk5LZm+reMuOZvdha+/yME', 0, '2021-03-22', 'kjkl', 0),
+(20, 'email@compte.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$tNVR7LjxpmojZt+FUbeHkw$gftxrj2ysaBaMeTh9SBA2jTHIm3IEqQdKeyC2KipQyw', 0, '2021-03-23', 'moitest', 0),
+(23, 'email@customer.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$hkhUxmBbOajgEWmgwCqsgg$WaUI3tf+njRKT7I1F/Ir0LyOAlQ4BWklD2hUAIfZ5PA', 0, '2021-03-23', 'moitest', 0),
+(24, 'email@customer42.com', '[\"ROLE_USER\"]', '$argon2id$v=19$m=65536,t=4,p=1$eBMFGs72e0fcEFUtq1KH1A$FVLB/zDTbogDfKErCl2cWBuYRKVmuiUNb2TXtuw0x3U', 0, '2021-03-23', 'moitest', 1);
 
 --
 -- Indexes for dumped tables
@@ -658,12 +761,28 @@ ALTER TABLE `contact_cars`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_douane`
+--
+ALTER TABLE `contact_douane`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `country`
+--
+ALTER TABLE `country`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `UNIQ_81398E09E7927C74` (`email`),
-  ADD UNIQUE KEY `UNIQ_81398E09A76ED395` (`user_id`);
+  ADD UNIQUE KEY `UNIQ_81398E09A76ED395` (`user_id`),
+  ADD KEY `IDX_81398E09D3711A23` (`adress_country_id`),
+  ADD KEY `IDX_81398E09A8A84437` (`adress_country_hue_id`),
+  ADD KEY `IDX_81398E091C9DA55` (`nationality_id`),
+  ADD KEY `IDX_81398E0959BB1592` (`reason_id`);
 
 --
 -- Indexes for table `doctrine_migration_versions`
@@ -678,6 +797,12 @@ ALTER TABLE `mark`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nationality`
+--
+ALTER TABLE `nationality`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `newsletter`
 --
 ALTER TABLE `newsletter`
@@ -687,7 +812,11 @@ ALTER TABLE `newsletter`
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_F5299398F92F3E70` (`country_id`),
+  ADD KEY `IDX_F529939859BB1592` (`reason_id`),
+  ADD KEY `IDX_F52993981C9DA55` (`nationality_id`),
+  ADD KEY `IDX_F5299398A8A84437` (`adress_country_hue_id`);
 
 --
 -- Indexes for table `place`
@@ -725,6 +854,12 @@ ALTER TABLE `promotions_range`
 ALTER TABLE `range`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_93875A494290F12B` (`mark_id`);
+
+--
+-- Indexes for table `reason`
+--
+ALTER TABLE `reason`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `reset_password_request`
@@ -774,7 +909,7 @@ ALTER TABLE `accessory`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `cars`
@@ -801,16 +936,34 @@ ALTER TABLE `contact_cars`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `contact_douane`
+--
+ALTER TABLE `contact_douane`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `country`
+--
+ALTER TABLE `country`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mark`
 --
 ALTER TABLE `mark`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `nationality`
+--
+ALTER TABLE `nationality`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `newsletter`
@@ -822,7 +975,7 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `place`
@@ -847,6 +1000,12 @@ ALTER TABLE `promotions`
 --
 ALTER TABLE `range`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `reason`
+--
+ALTER TABLE `reason`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reset_password_request`
@@ -876,7 +1035,7 @@ ALTER TABLE `type_promo`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -906,7 +1065,20 @@ ALTER TABLE `cars`
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `FK_81398E09A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `FK_81398E091C9DA55` FOREIGN KEY (`nationality_id`) REFERENCES `nationality` (`id`),
+  ADD CONSTRAINT `FK_81398E0959BB1592` FOREIGN KEY (`reason_id`) REFERENCES `reason` (`id`),
+  ADD CONSTRAINT `FK_81398E09A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `FK_81398E09A8A84437` FOREIGN KEY (`adress_country_hue_id`) REFERENCES `country` (`id`),
+  ADD CONSTRAINT `FK_81398E09D3711A23` FOREIGN KEY (`adress_country_id`) REFERENCES `country` (`id`);
+
+--
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `FK_F52993981C9DA55` FOREIGN KEY (`nationality_id`) REFERENCES `nationality` (`id`),
+  ADD CONSTRAINT `FK_F529939859BB1592` FOREIGN KEY (`reason_id`) REFERENCES `reason` (`id`),
+  ADD CONSTRAINT `FK_F5299398A8A84437` FOREIGN KEY (`adress_country_hue_id`) REFERENCES `country` (`id`),
+  ADD CONSTRAINT `FK_F5299398F92F3E70` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`);
 
 --
 -- Constraints for table `promotions`
