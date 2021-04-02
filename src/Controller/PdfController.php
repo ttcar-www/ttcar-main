@@ -7,6 +7,7 @@ use App\Entity\Country;
 use App\Entity\Mark;
 use App\Entity\Nationality;
 use App\Entity\Order;
+use App\Entity\Reason;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\PathPackage;
 use Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy;
@@ -32,15 +33,20 @@ class PdfController extends AbstractController
             ->findOneBy(['id' => $id]);
 
         file_put_contents($projectDir . '/public/build/filesPdf/xfdf_20939.xfdf', $this->ttcar_order_create_xfdf($id));
+        if ($order->getLang() == 'fr') {
+            $path = '/public/build/filesPdf/FR/';
+        }else {
+            $path = '/public/build/filesPdf/EN/';
+        }
 
         if ($order->getMark() == 'Renault') {
-            $original = $projectDir . '/public/build/filesPdf/FR/Renault.pdf';
+            $original = $projectDir.$path.'Renault.pdf';
         } elseif ($order->getMark() == 'Citroen') {
-            $original = $projectDir . '/public/build/filesPdf/FR/Citroen.pdf';
+            $original = $projectDir.$path.'Citroen.pdf';
         }elseif ($order->getMark() == 'Peugeot') {
-            $original = $projectDir . '/public/build/filesPdf/FR/Peugeot.pdf';
+            $original = $projectDir.$path.'Peugeot.pdf';
         }else {
-            $original = $projectDir . '/public/build/filesPdf/FR/Ds.pdf';
+            $original = $projectDir.$path.'Ds.pdf';
         }
         
         exec("pdftk " . $original . " fill_form " . $projectDir ."/public/build/filesPdf/xfdf_20939.xfdf output " . $projectDir . '/assets/images/filesPdf/' .$id. ".pdf");
@@ -89,6 +95,10 @@ class PdfController extends AbstractController
             ->getRepository(Country::class)
             ->findOneBy(['id' => $order->getAdressCountryHue()]);
 
+        $reason = $this->getDoctrine()
+            ->getRepository(Reason::class)
+            ->findOneBy(['id' => $order->getReason()]);
+
         if( empty( $order ) ) return "";
 
         $xml = array();
@@ -97,7 +107,7 @@ class PdfController extends AbstractController
         $xml[] = '<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">';
         $xml[] = '<fields>';
 
-        $ref_ada = $order->getId();
+        $ref_ada = "";
         $ref_sodexa = "";
 
         switch ($order->getMark()) {
@@ -113,20 +123,20 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="NomJeuneFille">';
                 $xml[] = '<value>' . mb_strtoupper($maiden) . '</value>';
                 $xml[] = '</field>';
-                /*               $xml[] = '<field name="Monsieur">';
-                               if ($order->user_info->civility == 1) {
-                                   $xml[] = '<value>Oui</value>';
-                               } else {
-                                   $xml[] = '<value>Off</value>';
-                               }
-                               $xml[] = '</field>';
-                               $xml[] = '<field name="Madame">';
-                               if ($order->user_info->civility == 2) {
-                                   $xml[] = '<value>Oui</value>';
-                               } else {
-                                   $xml[] = '<value>Off</value>';
-                               }
-                               $xml[] = '</field>';*/
+                $xml[] = '<field name="Monsieur">';
+                if ($order->getCustomerType() == 'mr') {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
+                $xml[] = '<field name="Madame">';
+                if ($order->getCustomerType() == 'mme') {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
                 $xml[] = '<field name="Prenom">';
                 $xml[] = '<value>' . mb_strtoupper($order->getCustomerUsername()) . '</value>';
                 $xml[] = '</field>';
@@ -202,44 +212,44 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="TelBur">';
                 $xml[] = '<value></value>';
                 $xml[] = '</field>';
-                /*        $xml[] = '<field name="Journal">';
-                        if ($order->user_info->situation == 5) {
-                            $xml[] = '<value>Oui</value>';
-                        } else {
-                            $xml[] = '<value>Off</value>';
-                        }
-                        $xml[] = '</field>';*/
-                /*        $xml[] = '<field name="Etudiant">';
-                        if ($order->user_info->situation == 2) {
-                            $xml[] = '<value>Oui</value>';
-                        } else {
-                            $xml[] = '<value>Off</value>';
-                        }
-                        $xml[] = '</field>';*/
-                /*      $xml[] = '<field name="MissUniv">';
-                      if ($order->user_info->situation == 4) {
-                          $xml[] = '<value>Oui</value>';
-                      } else {
-                          $xml[] = '<value>Off</value>';
-                      }
-                      $xml[] = '</field>';*/
-                /*      $xml[] = '<field name="Stage">';
-                      if ($order->user_info->situation == 3) {
-                          $xml[] = '<value>Oui</value>';
-                      } else {
-                          $xml[] = '<value>Off</value>';
-                      }
-                      $xml[] = '</field>';*/
-                /*      $xml[] = '<field name="Mili">';
-                      $xml[] = '<value></value>';
-                      $xml[] = '</field>';
-                      $xml[] = '<field name="Tour">';
-                      if ($order->user_info->situation == 1) {
-                          $xml[] = '<value>Oui</value>';
-                      } else {
-                          $xml[] = '<value>Off</value>';
-                      }
-                      $xml[] = '</field>';*/
+                $xml[] = '<field name="Journal">';
+                if ($reason->getId() == 5) {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
+                $xml[] = '<field name="Etudiant">';
+                if ($reason->getId() == 2) {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
+                $xml[] = '<field name="MissUniv">';
+                if ($reason->getId() == 4) {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
+                $xml[] = '<field name="Stage">';
+                if ($reason->getId() == 3) {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
+                $xml[] = '<field name="Mili">';
+                $xml[] = '<value></value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="Tour">';
+                if ($reason->getId() == 1) {
+                    $xml[] = '<value>Oui</value>';
+                } else {
+                    $xml[] = '<value>Off</value>';
+                }
+                $xml[] = '</field>';
                 $xml[] = '<field name="For">';
                 $xml[] = '<value></value>';
                 $xml[] = '</field>';
@@ -288,9 +298,9 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="LieuCont">';
                 $xml[] = '<value>' . mb_strtoupper($order->getCity()) . '</value>';
                 $xml[] = '</field>';
-                /*   $xml[] = '<field name="RefTTCar">';
-                   $xml[] = '<value>' . mb_strtoupper($order->reference) . '</value>';
-                   $xml[] = '</field>';*/
+                   $xml[] = '<field name="RefTTCar">';
+                   $xml[] = '<value>' . mb_strtoupper('T'.$order->getId()) . '</value>';
+                   $xml[] = '</field>';
                 $xml[] = '<field name="DateEmission">';
                 $xml[] = '<value>' . mb_strtoupper($order->getPassportDate()->format('d/m/y')) . '</value>';
                 $xml[] = '</field>';
@@ -314,12 +324,12 @@ class PdfController extends AbstractController
                 /*     foreach ($accessories as $accessory) {
                          $prices_acc += $accessory->price * $accessory->quantity;
                      }*/
-                /*   $xml[] = '<field name="PrixAccess">';
+                  /* $xml[] = '<field name="PrixAccess">';
                    $xml[] = '<value>' . number_format($prices_acc,2,","," ") . '</value>';
-                   $xml[] = '</field>';
-                   $xml[] = '<field name="FraisLiv">';
-                   $xml[] = '<value>' . number_format($order->delivery,2,","," ") . '</value>';
                    $xml[] = '</field>';*/
+                   $xml[] = '<field name="FraisLiv">';
+                   $xml[] = '<value>' . number_format($order->getDepartPrice()+$order->getReturnPrice(),2,","," ") . '</value>';
+                   $xml[] = '</field>';
                 /*            if( $order->rebuy_price > 0 ) {
                                 $xml[] = '<field name="PrixModele">';
                                 $xml[] = '<value>' . number_format($order->rebuy_price,2,","," ") . '</value>';
@@ -427,10 +437,10 @@ class PdfController extends AbstractController
             case 'Citroën':
             case 'DS Automobile':
                 $xml[] = '<field name="ref_ada">';
-                $xml[] = '<value>' . $ref_ada . '</value>';
+                $xml[] = '<value>' . 'T'.$order->getId() . '</value>';
                 $xml[] = '</field>';
                 $xml[] = '<field name="ref_ada*">';
-                $xml[] = '<value>' . $ref_ada . '</value>';
+                $xml[] = '<value>' . 'T'.$order->getId() . '</value>';
                 $xml[] = '</field>';
                 $xml[] = '<field name="ref_sodexa">';
                 $xml[] = '<value>' . $ref_sodexa . '</value>';
@@ -457,11 +467,16 @@ class PdfController extends AbstractController
                 $xml[] = '<value>' . mb_strtoupper($maiden) . '</value>';
                 $xml[] = '</field>';
 
+                if ($order->getCustomerType() == 'mme') {
+                    $tilte = '02';
+                }else {
+                    $tilte = '01';
+                }
                 $xml[] = '<field name="Title">';
-                $xml[] = '<value>'.('01' ).'</value>';	// 01: M. / 02: Mme / 03: Mlle
+                $xml[] = '<value>'.($tilte ).'</value>';	// 01: M. / 02: Mme / 03: Mlle
                 $xml[] = '</field>';
                 $xml[] = '<field name="Title*">';
-                $xml[] = '<value>'.( '01' ).'</value>';	// 01: M. / 02: Mme / 03: Mlle
+                $xml[] = '<value>'.($tilte).'</value>';	// 01: M. / 02: Mme / 03: Mlle
                 $xml[] = '</field>';
                 $xml[] = '<field name="prenom">';
                 $xml[] = '<value>' . mb_strtoupper($order->getCustomerUsername()) . '</value>';
@@ -585,36 +600,36 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="adresse_ue*">';
                 $xml[] = '<value>' . mb_strtoupper(preg_replace("/(\r\n|\n|\r)/", " ", $order->getAdress()) . ' ' . $order->getCity() . ' ' . $order->getPostalCode()) . '</value>';
                 $xml[] = '</field>';
-                /*              $xml[] = '<field name="Profile">';
-                              if( $order->user_info->situation == 5 ) {
-                                  $xml[] = '<value>Member of mission / journalist</value>';	// Journaliste
-                              } elseif( $order->user_info->situation == 2 ) {
-                                  $xml[] = '<value>Student</value>';							// Etudiant
-                              } elseif( $order->user_info->situation == 3 ) {
-                                  $xml[] = '<value>Trainee</value>';							// Stagiaire
-                              } elseif( $order->user_info->situation == 4 ) {
-                                  $xml[] = '<value>Project manager</value>';					// Chargés de mission
-                              } elseif( $order->user_info->situation == 1 ) {
-                                  $xml[] = '<value>Tourist</value>';							// Touriste
-                              } else {
-                                  $xml[] = '<value></value>';									// (absent)
-                              }
-                              $xml[] = '</field>';*/
-                /*   $xml[] = '<field name="Profile*">';
-                   if( $order->user_info->situation == 5 ) {
-                       $xml[] = '<value>Member of mission / journalist</value>';	// Journaliste
-                   } elseif( $order->user_info->situation == 2 ) {
-                       $xml[] = '<value>Student</value>';							// Etudiant
-                   } elseif( $order->user_info->situation == 3 ) {
-                       $xml[] = '<value>Trainee</value>';							// Stagiaire
-                   } elseif( $order->user_info->situation == 4 ) {
-                       $xml[] = '<value>Project manager</value>';					// Chargés de mission
-                   } elseif( $order->user_info->situation == 1 ) {
-                       $xml[] = '<value>Tourist</value>';							// Touriste
-                   } else {
-                       $xml[] = '<value></value>';									// (absent)
-                   }
-                   $xml[] = '</field>';*/
+                $xml[] = '<field name="Profile">';
+                if( $reason->getId() == 5 ) {
+                    $xml[] = '<value>Member of mission / journalist</value>';	// Journaliste
+                } elseif( $reason->getId() == 2 ) {
+                    $xml[] = '<value>Student</value>';							// Etudiant
+                } elseif( $reason->getId() == 3 ) {
+                    $xml[] = '<value>Trainee</value>';							// Stagiaire
+                } elseif( $reason->getId() == 4 ) {
+                    $xml[] = '<value>Project manager</value>';					// Chargés de mission
+                } elseif( $reason->getId() == 1 ) {
+                    $xml[] = '<value>Tourist</value>';							// Touriste
+                } else {
+                    $xml[] = '<value></value>';									// (absent)
+                }
+                $xml[] = '</field>';
+                $xml[] = '<field name="Profile*">';
+                if( $reason->getId() == 5 ) {
+                    $xml[] = '<value>Member of mission / journalist</value>';	// Journaliste
+                } elseif( $reason->getId() == 2 ) {
+                    $xml[] = '<value>Student</value>';							// Etudiant
+                } elseif( $reason->getId() == 3 ) {
+                    $xml[] = '<value>Trainee</value>';							// Stagiaire
+                } elseif( $reason->getId() == 4 ) {
+                    $xml[] = '<value>Project manager</value>';					// Chargés de mission
+                } elseif( $reason->getId() == 1 ) {
+                    $xml[] = '<value>Tourist</value>';							// Touriste
+                } else {
+                    $xml[] = '<value></value>';									// (absent)
+                }
+                $xml[] = '</field>';
                 $xml[] = '<field name="vehicule">';
                 $xml[] = '<value>' . mb_strtoupper($order->getCarLibelle()) . '</value>';
                 $xml[] = '</field>';
@@ -667,12 +682,12 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="heure_vol*">';
                 $xml[] = '<value>' . $order->getPlaneDate2() . '</value>';
                 $xml[] = '</field>';
-                /*    $xml[] = '<field name="flight_time">';
-                    $xml[] = '<value>' . ( preg_match( "/AM/i", $order->flight_hour ) || intval( substr( $order->flight_hour, 0, 2 ) ) < 12 ? "AM" : "PM" ) . '</value>';
-                    $xml[] = '</field>';*/
-                /*$xml[] = '<field name="flight_time*">';
-                $xml[] = '<value>' . ( preg_match( "/AM/i", $order->flight_hour ) || intval( substr( $order->flight_hour, 0, 2 ) ) < 12 ? "AM" : "PM" ) . '</value>';
-                $xml[] = '</field>';*/
+                $xml[] = '<field name="flight_time">';
+                $xml[] = '<value>' . ( preg_match( "/AM/i", $order->getPlaneDate2() ) || intval( substr( $order->getPlaneDate2(), 0, 2 ) ) < 12 ? "AM" : "PM" ) . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="flight_time*">';
+                $xml[] = '<value>' . ( preg_match( "/AM/i", $order->getPlaneDate2() ) || intval( substr( $order->getPlaneDate2(), 0, 2 ) ) < 12 ? "AM" : "PM" ) . '</value>';
+                $xml[] = '</field>';
                 $xml[] = '<field name="lieu_res">';
                 $xml[] = '<value>' . mb_strtoupper($order->getReturnPlace()) . '</value>';
                 $xml[] = '</field>';

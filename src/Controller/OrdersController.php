@@ -130,7 +130,7 @@ class OrdersController extends AbstractController
                 $order->setPromotions($promoPrice);
                 $order->setPrice($price);
                 $order->setItems(isset($_SESSION['itemsOrder']) ? $_SESSION['itemsOrder']: null);
-                $order->setLang('fr');
+                $order->setLang($request->getLocale());
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
 
