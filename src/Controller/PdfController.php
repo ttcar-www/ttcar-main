@@ -164,9 +164,9 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="Nationalite">';
                 $xml[] = '<value>' . mb_strtoupper($nationality->getNameFr()) . '</value>';
                 $xml[] = '</field>';
-                /* $xml[] = '<field name="Profession">';
-                 $xml[] = '<value>' . mb_strtoupper($order->user_info->job) . '</value>';
-                 $xml[] = '</field>';*/
+                $xml[] = '<field name="Profession">';
+                $xml[] = '<value>' . mb_strtoupper($order->getProfession()) . '</value>';
+                $xml[] = '</field>';
                 $xml[] = '<field name="CNI">';
                 $xml[] = '<value>Off</value>';
                 $xml[] = '</field>';
@@ -203,9 +203,9 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="Email">';
                 $xml[] = '<value>' . mb_strtoupper($order->getEmail()) . '</value>';
                 $xml[] = '</field>';
-                /*  $xml[] = '<field name="Port">';
-                  $xml[] = '<value>' . mb_strtoupper($order->getPhone()) . '</value>';
-                  $xml[] = '</field>';*/
+                $xml[] = '<field name="Port">';
+                $xml[] = '<value>' . ' ' . '</value>';
+                $xml[] = '</field>';
                 $xml[] = '<field name="TelDom">';
                 $xml[] = '<value></value>';
                 $xml[] = '</field>';
@@ -417,12 +417,12 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="postcode">';
                 $xml[] = '<value>' . mb_strtoupper($order->getPostalCode()) . '</value>';
                 $xml[] = '</field>';
-                /*   $xml[] = '<field name="Obs1">';
-                   $xml[] = '<value>'.ttcar_order_get_promotions_labels( $order->id, ", ", "Promotion(s): ", "" ).'</value>';
-                   $xml[] = '</field>';
-                   $xml[] = '<field name="Obs2">';
-                   $xml[] = '<value></value>';
-                   $xml[] = '</field>';*/
+                $xml[] = '<field name="Obs1">';
+                $xml[] = '<value>'.$order->getPromoLibelle().', ", ", "Promotion(s): ", "" '.'</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="Obs2">';
+                $xml[] = '<value></value>';
+                $xml[] = '</field>';
                 $xml[] = '<field name="adeurp">';
                 $xml[] = '<value>' . mb_strtoupper(preg_replace("/(\r\n|\n|\r)/", " ", $order->getAdress()) . ' ' . $order->getCity() . ' ' . $order->getPostalCode()) . '</value>';
                 $xml[] = '</field>';
@@ -515,12 +515,12 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="nationalite*">';
                 $xml[] = '<value>' . mb_strtoupper($nationality->getNameFr()) . '</value>';
                 $xml[] = '</field>';
-                /*       $xml[] = '<field name="profession">';
-                       $xml[] = '<value>' . mb_strtoupper($order->user_info->job) . '</value>';
-                       $xml[] = '</field>';
-                       $xml[] = '<field name="profession*">';
-                       $xml[] = '<value>' . mb_strtoupper($order->user_info->job) . '</value>';
-                       $xml[] = '</field>';*/
+                $xml[] = '<field name="profession">';
+                $xml[] = '<value>' . mb_strtoupper($order->getProfession()) . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="profession*">';
+                $xml[] = '<value>' . mb_strtoupper($order->getProfession()) . '</value>';
+                $xml[] = '</field>';
                 $xml[] = '<field name="Phone">';
                 $xml[] = '<value>P</value>';		// P: portable
                 $xml[] = '</field>';
@@ -694,12 +694,12 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="lieu_res*">';
                 $xml[] = '<value>' . mb_strtoupper($order->getReturnPlace()) . '</value>';
                 $xml[] = '</field>';
-                /*$xml[] = '<field name="acompte">';
-                $xml[] = '<value>' . number_format($order->package,2,",","") . '</value>';
+                $xml[] = '<field name="acompte">';
+                $xml[] = '<value>' . ' '. '</value>';
                 $xml[] = '</field>';
                 $xml[] = '<field name="acompte*">';
-                $xml[] = '<value>' . number_format($order->package,2,",","") . '</value>';
-                $xml[] = '</field>';*/
+                $xml[] = '<value>' . ' ' . '</value>';
+                $xml[] = '</field>';
                 $departPrice = (empty($order->getDepartPrice())) ? $order->getDepartPrice() : '0';
                 $departReturn = (empty($order->getReturnPrice())) ? $order->getReturnPrice() : '0';
 
@@ -732,21 +732,18 @@ class PdfController extends AbstractController
                             $xml[] = '<field name="montant_accessoires*">';
                             $xml[] = '<value>' . number_format($prices_acc,2,",","") . '</value>';
                             $xml[] = '</field>';*/
-
-                /*            if( $order->rebuy_price > 0 ) {
-                                $xml[] = '<field name="prix_ht">';
-                                $xml[] = '<value>' . number_format($order->rebuy_price,2,",","") . '</value>';
-                                $xml[] = '</field>';
-                                $xml[] = '<field name="prix_ht*">';
-                                $xml[] = '<value>' . number_format($order->rebuy_price,2,",","") . '</value>';
-                                $xml[] = '</field>';
-                                $xml[] = '<field name="solde">';
-                                $xml[] = '<value>' . number_format($order->rebuy_price - $order->rate,2,",","") . '</value>';
-                                $xml[] = '</field>';
-                                $xml[] = '<field name="solde*">';
-                                $xml[] = '<value>' . number_format($order->rebuy_price - $order->rate,2,",","") . '</value>';
-                                $xml[] = '</field>';
-                            }*/
+                            $xml[] = '<field name="prix_ht">';
+                            $xml[] = '<value>' . number_format($order->getBasicPrice(),2,",","") . '</value>';
+                            $xml[] = '</field>';
+                            $xml[] = '<field name="prix_ht*">';
+                            $xml[] = '<value>' . number_format($order->getBasicPrice(),2,",","") . '</value>';
+                            $xml[] = '</field>';
+                            $xml[] = '<field name="solde">';
+                            $xml[] = '<value>' .'' . '</value>';
+                            $xml[] = '</field>';
+                            $xml[] = '<field name="solde*">';
+                            $xml[] = '<value>' .' ' . '</value>';
+                            $xml[] = '</field>';
                 /*
                                 $idx = 1;
                                 foreach( $order->accessories as $accessory ) {

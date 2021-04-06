@@ -137,6 +137,27 @@ class Customer
      */
     private $birth_postal;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $profession;
+
+    /**
+     * @return mixed
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * @param mixed $profession
+     */
+    public function setProfession($profession): void
+    {
+        $this->profession = $profession;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

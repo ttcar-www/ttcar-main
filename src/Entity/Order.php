@@ -343,7 +343,49 @@ class Order
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $profession;
+
+    /**
+     * @return mixed
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * @param mixed $profession
+     */
+    public function setProfession($profession): void
+    {
+        $this->profession = $profession;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $mark;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $promo_libelle;
+
+    /**
+     * @return mixed
+     */
+    public function getPromoLibelle()
+    {
+        return $this->promo_libelle;
+    }
+
+    /**
+     * @param mixed $promo_libelle
+     */
+    public function setPromoLibelle($promo_libelle): void
+    {
+        $this->promo_libelle = $promo_libelle;
+    }
 
     /**
      * @return mixed

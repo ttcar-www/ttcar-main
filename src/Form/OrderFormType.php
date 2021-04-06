@@ -86,6 +86,9 @@ class OrderFormType extends AbstractType
                 "label"=>"form_order.phone",
                 'translation_domain' => 'messages'
             ))
+            ->add('profession', TextType::class, array(
+                "label"=>"Profession"
+            ))
             ->add('nationality', EntityType::class, [
                 'class' => Nationality::class,
                 'choice_label' => 'getNameFr',
