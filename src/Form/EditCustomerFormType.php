@@ -49,6 +49,10 @@ class EditCustomerFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
+            ->add('profession', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
             ->add('birthdays_date', DateType::class, array(
                 'widget' => 'single_text',
                 'required' => true,

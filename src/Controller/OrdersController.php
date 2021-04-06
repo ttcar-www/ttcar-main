@@ -130,9 +130,10 @@ class OrdersController extends AbstractController
                 $order->setPromotions($promoPrice);
                 $order->setPrice($price);
                 $order->setItems(isset($_SESSION['itemsOrder']) ? $_SESSION['itemsOrder']: null);
-                $order->setLang('fr');
+                $order->setLang($request->getLocale());
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
+                $order->setPromoLibelle($promos->getLibelle());
 
                 if ($user) {
                     $order->setCustomerName($user->getName());
@@ -157,6 +158,7 @@ class OrdersController extends AbstractController
                     $order->setAdressCountryHue($user->getAdressCountryHue());
                     $order->setAdressCityHue($user->getAdressCityHue());
                     $order->setAdressCodeHue($user->getAdressCodeHue());
+                    $order->setProfession($user->getProfession());
                 }
 
 
@@ -249,7 +251,6 @@ class OrdersController extends AbstractController
 
     /**
      * @param $slices
-     * @param $days
      * @return object|null
      * Calcule des slices
      */
@@ -525,6 +526,7 @@ class OrdersController extends AbstractController
             }else {
                 $newCustomer->setNameYoung('NULL');
             }
+            $newCustomer->setProfession($order->getProfession());
 
             $newCustomer->setUser($newUser);
             $newUser->setIsCustomer(true);

@@ -44,6 +44,10 @@ class CustomerFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
+            ->add('profession', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
             ->add('adress_ue', TextType::class, array(
                 'required' => true,
                 'label' => false
