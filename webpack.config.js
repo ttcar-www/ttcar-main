@@ -101,6 +101,7 @@ Encore
 
     .addEntry('account', './assets/css/account.css')
     .addEntry('index', './assets/css/index.css')
+    .addEntry('order', './assets/css/order.css')
 
     .copyFiles([
         {from: './node_modules/ckeditor/', to: '@ckeditor/[path][name].[ext]', pattern: /\.(js|css)$/, includeSubdirectories: false},

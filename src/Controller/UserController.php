@@ -74,6 +74,25 @@ class UserController extends AbstractController
             ]);
     }
 
+
+    /**
+     * @Route("/view_order/{id}", name="view_order")
+     * @param $id
+     * @return Response
+     */
+    public function viewOrder($id): Response
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Order::class)
+            ->findOneBy(['id' => $id]);
+
+        return $this->render('main/view_order.html.twig',
+            [
+                'order'=>$order
+            ]);
+    }
+
+
     /**
      * @Route("/create_customer/", name="create_customer")
      * @param Request $request
