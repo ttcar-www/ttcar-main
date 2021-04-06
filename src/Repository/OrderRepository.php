@@ -31,6 +31,17 @@ class OrderRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return mixed
+     */
+    public function findAllByDate()
+    {
+        return $this->createQueryBuilder('j')
+            ->orderBy('j.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Order

@@ -88,7 +88,7 @@ class CarsController extends AbstractController
             $em->persist($car);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('create_price', ['id' => $car->getId()]);
         }
 
         return $this->render('form/create_car.html.twig', [
@@ -394,7 +394,7 @@ class CarsController extends AbstractController
             $em->persist($car);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('manage_cars');
         }
 
         return $this->render('form/create_price.html.twig', [
