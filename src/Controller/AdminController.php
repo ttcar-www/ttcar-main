@@ -336,4 +336,21 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('manage_accessory');
     }
+
+    /**
+     * @Route("/admin/view_order_admin/{id}", name="view_order_admin")
+     * @param $id
+     * @return Response
+     */
+    public function viewOrder($id): Response
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Order::class)
+            ->findOneBy(['id' => $id]);
+
+        return $this->render('admin/view_order.html.twig',
+            [
+                'order'=>$order
+            ]);
+    }
 }
