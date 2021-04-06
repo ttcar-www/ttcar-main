@@ -137,4 +137,34 @@ class UserController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/edit_customer_bo/{id}", name="edit_customer_bo")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function editCustomerBo(Request $request, $id): Response
+    {
+        $customer = $this->getDoctrine()
+            ->getRepository(Customer::class)
+            ->findOneBy(['user' => $id]);
+
+        $form = $this->createForm(
+            EditCustomerFormType::class,
+            $customer);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customer);
+            $em->flush();
+
+            return $this->redirectToRoute('manage_customer');
+        }
+        return $this->render('form/create_customer.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }

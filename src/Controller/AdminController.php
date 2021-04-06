@@ -77,6 +77,20 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/manage_customer", name="manage_customer")
+     * @return Response
+     */
+    public function manageCustomer(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Customer::class);
+        $customers = $repository->findAllByDate();
+
+        return $this->render('admin/manage_customer.html.twig', [
+            'customers' =>$customers
+        ]);
+    }
+
+    /**
      * @Route("/admin/manage_user", name="manage_user")
      * @return Response
      */
@@ -87,6 +101,20 @@ class AdminController extends AbstractController
 
         return $this->render('admin/manage_users.html.twig', [
             'users' =>$users
+        ]);
+    }
+
+    /**
+     * @Route("/admin/manage_order", name="manage_order")
+     * @return Response
+     */
+    public function manageOrder(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Order::class);
+        $orders = $repository->findAllByDate();
+
+        return $this->render('admin/manage_order.html.twig', [
+            'orders' =>$orders
         ]);
     }
 

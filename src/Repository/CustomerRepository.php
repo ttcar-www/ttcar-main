@@ -31,6 +31,17 @@ class CustomerRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return mixed
+     */
+    public function findAllByDate()
+    {
+        return $this->createQueryBuilder('j')
+            ->orderBy('j.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Customer[] Returns an array of Customer objects
     //  */

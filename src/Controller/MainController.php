@@ -363,7 +363,7 @@ class MainController extends AbstractController
                 $mark_labelle = 'Renault';
             }elseif ($data['mark_2'] == array('peugeot')) {
                 $mark_labelle = 'Peugeot';
-            }elseif ($data['mark_2'] == array('citroen')) {
+            }elseif ($data['mark_3'] == array('citroen')) {
                 $mark_labelle = 'Citroën';
             }else {
                 $mark_labelle = 'DS Automobile';
