@@ -97,6 +97,11 @@ class BlogController extends AbstractController
             $em->persist($post);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Article créé'
+            );
+
             return $this->redirectToRoute('manage_blog');
         }
         return $this->render('form/create_post.html.twig', [
@@ -158,6 +163,11 @@ class BlogController extends AbstractController
             $em->persist($post);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Article modifié'
+            );
+
             return $this->redirectToRoute('manage_blog');
         }
         return $this->render('form/create_post.html.twig', [
@@ -179,6 +189,11 @@ class BlogController extends AbstractController
 
         $entityManager->remove($post);
         $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Article supprimé'
+        );
 
         return $this->redirectToRoute('manage_user');
     }
@@ -206,6 +221,11 @@ class BlogController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($categoryPost);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Catégorie créé'
+            );
 
             return $this->redirectToRoute('manage_blog');
         }

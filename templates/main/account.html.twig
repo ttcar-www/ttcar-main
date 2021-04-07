@@ -12,6 +12,14 @@
             </ol>
         </nav>
         <!-- /Breadcrumb -->
+        {# read and display all flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-warning flash-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">

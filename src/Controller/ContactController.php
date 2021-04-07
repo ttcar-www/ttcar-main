@@ -42,6 +42,11 @@ class ContactController extends AbstractController
             $em->persist($contact);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Message envoyé'
+            );
+
             return $this->redirectToRoute('main');
         }
 
@@ -79,6 +84,11 @@ class ContactController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Message envoyé'
+            );
 
             return $this->redirectToRoute('main');
         }
@@ -154,6 +164,11 @@ class ContactController extends AbstractController
         $entityManager->remove($contact);
         $entityManager->flush();
 
+        $this->addFlash(
+            'success',
+            'Message supprimé'
+        );
+
         return $this->redirectToRoute('manage_contact');
     }
 
@@ -193,6 +208,11 @@ class ContactController extends AbstractController
 
         $entityManager->remove($contact);
         $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Message supprimé'
+        );
 
         return $this->redirectToRoute('manage_contact_car');
     }

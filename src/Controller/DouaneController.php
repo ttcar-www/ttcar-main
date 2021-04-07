@@ -93,7 +93,10 @@ class DouaneController extends AbstractController
             $em->persist($contact);
             $em->flush();
 
-            //Rajouter FlashBag success
+            $this->addFlash(
+                'success',
+                'Message envoyé'
+            );
 
             return $this->redirectToRoute('TTdouane');
         }
@@ -154,6 +157,12 @@ class DouaneController extends AbstractController
 
         $entityManager->remove($contact);
         $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Message supprimé'
+        );
+
 
         return $this->redirectToRoute('manage_contact');
     }

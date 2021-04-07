@@ -394,6 +394,11 @@ class CarsController extends AbstractController
             $em->persist($car);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Voiture créé'
+            );
+
             return $this->redirectToRoute('manage_cars');
         }
 
@@ -431,7 +436,13 @@ class CarsController extends AbstractController
             $em->persist($accessory);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+
+            $this->addFlash(
+                'success',
+                'Accéssoire créé'
+            );
+
+            return $this->redirectToRoute('manage_accessory');
         }
 
         return $this->render('form/create_accessory.html.twig', [
@@ -479,7 +490,12 @@ class CarsController extends AbstractController
             $em->persist($slice);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            $this->addFlash(
+                'success',
+                'Tranche créé'
+            );
+
+            return $this->redirectToRoute('manage_price');
         }
 
         return $this->render('form/create_slice.html.twig', [

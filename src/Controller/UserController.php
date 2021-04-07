@@ -40,7 +40,6 @@ class UserController extends AbstractController
                 $country_hue = $user->getAdressCountryHue()->getNameFr();
 
             }else{
-                //faire page create customer
                 $this->redirectToRoute('create_customer');
             }
         }
@@ -119,6 +118,11 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Profil créé'
+            );
+
             return $this->redirectToRoute('account');
         }
         return $this->render('form/create_customer.html.twig', [
@@ -150,6 +154,12 @@ class UserController extends AbstractController
             $em->persist($customer);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Profil modifié'
+            );
+
+
             return $this->redirectToRoute('account');
         }
         return $this->render('form/create_customer.html.twig', [
@@ -179,6 +189,12 @@ class UserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Client modifé'
+            );
+
 
             return $this->redirectToRoute('manage_customer');
         }

@@ -257,6 +257,11 @@ class AdminController extends AbstractController
             $em->persist($user);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Utilisateur modifié'
+            );
+
             return $this->redirectToRoute('manage_user');
         }
         return $this->render('form/edit_user.html.twig', [
@@ -278,6 +283,11 @@ class AdminController extends AbstractController
 
         $entityManager->remove($user);
         $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Utilisateur supprimé'
+        );
 
         return $this->redirectToRoute('manage_user');
     }
@@ -312,6 +322,11 @@ class AdminController extends AbstractController
             $em->persist($accessory);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Accessoire modifié'
+            );
+
             return $this->redirectToRoute('manage_accessory');
         }
         return $this->render('form/edit_accessory.html.twig', [
@@ -333,6 +348,11 @@ class AdminController extends AbstractController
 
         $entityManager->remove($accessory);
         $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Accessoire supprimé'
+        );
 
         return $this->redirectToRoute('manage_accessory');
     }
