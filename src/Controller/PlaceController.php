@@ -59,6 +59,12 @@ class PlaceController extends AbstractController
             $em->persist($place);
             $em->flush();
 
+
+            $this->addFlash(
+                'success',
+                'Lieu ajouté'
+            );
+
             return $this->redirectToRoute('manage_place');
         }
 
@@ -86,6 +92,12 @@ class PlaceController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($nationaity);
             $em->flush();
+
+
+            $this->addFlash(
+                'success',
+                'Nationalité ajouté'
+            );
 
             return $this->redirectToRoute('manage_nationality');
         }
@@ -116,6 +128,11 @@ class PlaceController extends AbstractController
             $em->persist($country);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Pays ajouté'
+            );
+
             return $this->redirectToRoute('manage_country');
         }
 
@@ -144,6 +161,11 @@ class PlaceController extends AbstractController
             $em->persist($reason);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Raison ajouté'
+            );
+
             return $this->redirectToRoute('manage_reason');
         }
 
@@ -167,6 +189,11 @@ class PlaceController extends AbstractController
         $entityManager->remove($place);
         $entityManager->flush();
 
+        $this->addFlash(
+            'success',
+            'Lieu supprimé'
+        );
+
         return $this->redirectToRoute('manage_place');
     }
 
@@ -185,6 +212,11 @@ class PlaceController extends AbstractController
         $entityManager->remove($country);
         $entityManager->flush();
 
+        $this->addFlash(
+            'success',
+            'Pays supprimé'
+        );
+
         return $this->redirectToRoute('manage_country');
     }
 
@@ -202,6 +234,12 @@ class PlaceController extends AbstractController
         $entityManager->remove($nationality);
         $entityManager->flush();
 
+
+        $this->addFlash(
+            'success',
+            'Nationalité supprimé'
+        );
+
         return $this->redirectToRoute('manage_nationality');
     }
 
@@ -218,6 +256,12 @@ class PlaceController extends AbstractController
 
         $entityManager->remove($reason);
         $entityManager->flush();
+
+
+        $this->addFlash(
+            'success',
+            'Raison supprimé'
+        );
 
         return $this->redirectToRoute('manage_reason');
     }
@@ -254,6 +298,11 @@ class PlaceController extends AbstractController
             $em->persist($place);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Lieu modifé'
+            );
+
             return $this->redirectToRoute('manage_place');
         }
         return $this->render('form/create_place.html.twig', [
@@ -286,6 +335,11 @@ class PlaceController extends AbstractController
             $em->persist($nationality);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Nationalité modifé'
+            );
+
             return $this->redirectToRoute('manage_nationality');
         }
         return $this->render('form/create_nationality.html.twig', [
@@ -317,6 +371,11 @@ class PlaceController extends AbstractController
             $em->persist($country);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Pays modifé'
+            );
+
             return $this->redirectToRoute('manage_country');
         }
         return $this->render('form/create_nationality.html.twig', [
@@ -347,6 +406,12 @@ class PlaceController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($reason);
             $em->flush();
+
+
+            $this->addFlash(
+                'success',
+                'Raison modifé'
+            );
 
             return $this->redirectToRoute('manage_reason');
         }

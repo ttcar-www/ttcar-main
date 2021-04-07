@@ -7,7 +7,14 @@
 <!-- Loader -->
 <div id="page-preloader"><span class="spinner"></span></div>
 <!-- Loader end -->
-
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-warning flash-{{ label }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 <section class="b-slider">
     <div id="carousel" class="slide carousel carousel-fade">
         <div class="carousel-inner">

@@ -74,7 +74,12 @@ class PromotionController extends AbstractController
             $em->persist($promo);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            $this->addFlash(
+                'success',
+                'Promotion ajoutée'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
         }
 
         return $this->render('form/create_promotion.html.twig', [
@@ -111,7 +116,12 @@ class PromotionController extends AbstractController
             $em->persist($promo);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            $this->addFlash(
+                'success',
+                'Promotion gamme créé'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
         }
 
         return $this->render('form/create_promotion.html.twig', [
@@ -148,7 +158,12 @@ class PromotionController extends AbstractController
             $em->persist($promo);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            $this->addFlash(
+                'success',
+                'Promotion marque ajouté'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
         }
 
         return $this->render('form/create_promotion.html.twig', [
@@ -178,7 +193,12 @@ class PromotionController extends AbstractController
             $em->persist($promo);
             $em->flush();
 
-            return $this->redirectToRoute('index_promotion');
+            $this->addFlash(
+                'success',
+                'Promotion modifié'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
         }
         return $this->render('form/edit_promo.html.twig', [
             'promo' =>$promo,
@@ -200,6 +220,11 @@ class PromotionController extends AbstractController
         $entityManager->remove($promo);
         $entityManager->flush();
 
-        return $this->redirectToRoute('index_promotion');
+        $this->addFlash(
+            'success',
+            'Promotion supprimé'
+        );
+
+        return $this->redirectToRoute('manage_promotion');
     }
 }

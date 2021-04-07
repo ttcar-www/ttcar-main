@@ -75,6 +75,12 @@ class MainController extends AbstractController
             $em->persist($newsletter);
             $em->flush();
 
+
+            $this->addFlash(
+                'success',
+                'Newsletter suivie'
+            );
+
             return $this->redirectToRoute('main');
         }
 
@@ -409,7 +415,13 @@ class MainController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('main');
+
+            $this->addFlash(
+                'success',
+                'Profil edité'
+            );
+
+            return $this->redirectToRoute('account');
         }
         return $this->render('form/edit_user_me.html.twig', [
             'user' =>$user,

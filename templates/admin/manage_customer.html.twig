@@ -1,6 +1,15 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block body %}
+<div class="group_text">
+    {# read and display all flash messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-warning flash-{{ label }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     <!-- Striped table start -->
     <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
         <div class="card">
@@ -36,4 +45,5 @@
         </div>
     </div>
     <!-- Striped table end -->
+</div>
 {% endblock %}
