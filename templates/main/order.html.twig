@@ -322,7 +322,7 @@
                                 </p>
                                 <p id="item"></p>
                                 <h3>TOTAL</h3>
-                                <h3 id="notAjax">{{ price }}€</h3>
+                                <h3 id="priceAjax">{{ price }}€</h3>
                                 <h3 id="results"></h3>
 
                             </div>
@@ -362,11 +362,12 @@
 
         <script>
             function ItemCalcule() {
-                let x = document.getElementById("notAjax");
+                let x = document.getElementById("priceAjax");
                 let nbPrice = parseInt({{ price }});
                 let arrayItems = {{ car.getItems|length }};
                 let total = 0;
                 let libelles = [];
+                let nbItems = [];
                 let undif = null;
 
                 {% for item in car.getItems %}
@@ -376,6 +377,7 @@
                 undif = parseInt(value{{ item.getId }});
                 if (undif !== 0) {
                     libelles.push('{{ item.getLibelle }}');
+                    nbItems.push(value{{ item.getId }});
                 }
 
                 {% endfor %}
@@ -389,7 +391,6 @@
                 }else if (arrayItems > 3) {
                     total = nbPrice + nb1 + nb2 + nb3 + nb4;
                 }
-
 
                 $.ajax({
                     url:{{ path('priceAjax') }},
@@ -411,11 +412,20 @@
                     data: {libelleItems: libelles},
                     success: function(libelles){
                         console.log(libelles);
-
                     }
                 });
-            }
 
+            $.ajax({
+                url:{{ path('countItemAjax') }},
+                type:"POST",
+                dataType:"json",
+                data: {countItem: nbItems},
+                success: function(nbItems){
+                    console.log('ok sloth');
+                    console.log(nbItems);
+                }
+            });
+        }
             function ClickModal() {
                 let x = document.getElementById("myModal");
                 let y = document.getElementById("modalClose");

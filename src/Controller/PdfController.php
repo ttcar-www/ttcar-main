@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Accessory;
 use App\Entity\Cars;
 use App\Entity\Country;
 use App\Entity\Mark;
@@ -27,7 +28,6 @@ class PdfController extends AbstractController
     public function dowloadPDFXml($id)
     {
         $projectDir = $this->getParameter('kernel.project_dir');
-
         $order = $this->getDoctrine()
             ->getRepository(Order::class)
             ->findOneBy(['id' => $id]);
@@ -77,8 +77,9 @@ class PdfController extends AbstractController
      * @param $id
      * @return string
      */
-    function ttcar_order_create_xfdf($id) {
-
+    function ttcar_order_create_xfdf($id)
+    {
+        $items= null;
         $order = $this->getDoctrine()
             ->getRepository(Order::class)
             ->findOneBy(['id' => $id]);
@@ -98,6 +99,14 @@ class PdfController extends AbstractController
         $reason = $this->getDoctrine()
             ->getRepository(Reason::class)
             ->findOneBy(['id' => $order->getReason()]);
+
+        if ($order->getItems()) {
+            foreach ($order->getItems() as $item) {
+                $items = $this->getDoctrine()
+                    ->getRepository(Accessory::class)
+                    ->findby(['libelle' => $item]);
+            }
+        }
 
         if( empty( $order ) ) return "";
 
@@ -319,119 +328,129 @@ class PdfController extends AbstractController
                 /*   $xml[] = '<field name="PrixCont">';
                    $xml[] = '<value>' . number_format($order->rate,2,","," ") . '</value>';
                    $xml[] = '</field>';*/
-                /*   $prices_acc = 0;
-                   $accessories = $order->accessories;*/
-                /*     foreach ($accessories as $accessory) {
-                         $prices_acc += $accessory->price * $accessory->quantity;
-                     }*/
-                  /* $xml[] = '<field name="PrixAccess">';
+                   $prices_acc = 0;
+                   $accessories = $items;
+                    foreach ($items as $item) {
+                        foreach ($order->getCountItems() as $countItem) {
+                            $prices_acc += $item->getPrice() * $countItem;
+                        }
+                    }
+                   $xml[] = '<field name="PrixAccess">';
                    $xml[] = '<value>' . number_format($prices_acc,2,","," ") . '</value>';
-                   $xml[] = '</field>';*/
+                   $xml[] = '</field>';
                    $xml[] = '<field name="FraisLiv">';
                    $xml[] = '<value>' . number_format($order->getDepartPrice()+$order->getReturnPrice(),2,","," ") . '</value>';
                    $xml[] = '</field>';
-                /*            if( $order->rebuy_price > 0 ) {
-                                $xml[] = '<field name="PrixModele">';
-                                $xml[] = '<value>' . number_format($order->rebuy_price,2,","," ") . '</value>';
-                                $xml[] = '</field>';
-                                $xml[] = '<field name="Texte2">';
-                                $xml[] = '<value>' . number_format($order->rebuy_price - $order->rate,2,","," ") . '</value>';
-                                $xml[] = '</field>';
-                            }*/
-                /* reset($accessories);*/
-                /*
-                                if (count($accessories)) {
+                   $xml[] = '<field name="PrixModele">';
+                   $xml[] = '<value>' . ' ' . '</value>';
+                   $xml[] = '</field>';
+                   $xml[] = '<field name="Texte2">';
+                   $xml[] = '<value>' . ' ' . '</value>';
+                   $xml[] = '</field>';
 
-                                    $accessory = current($accessories);
+                 reset($accessories);
+                   if (count($accessories)) {
+                       $accessory = current($accessories);
+                       foreach ($items as $item) {
+                           foreach ($order->getCountItems() as $countItem) {
+                               $xml[] = '<field name="Access1">';
+                               $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
+                               $xml[] = '</field>';
 
-                                    $xml[] = '<field name="Access1">';
-                                    $xml[] = '<value>' . mb_strtoupper($accessory->quantity . 'x ' . $accessory->name_fr) . '</value>';
-                                    $xml[] = '</field>';
+                               $xml[] = '<field name="accessR1">';
+                               $xml[] = '<value>' . $item->getLibelle() . '</value>';
+                               $xml[] = '</field>';
 
-                                    $xml[] = '<field name="accessR1">';
-                                    $xml[] = '<value>' . $accessory->name_fr . '</value>';
-                                    $xml[] = '</field>';
+                               $xml[] = '<field name="accessQT1">';
+                               $xml[] = '<value>' . $countItem . '</value>';
+                               $xml[] = '</field>';
 
-                                    $xml[] = '<field name="accessQT1">';
-                                    $xml[] = '<value>' . $accessory->quantity . '</value>';
-                                    $xml[] = '</field>';
+                               $xml[] = '<field name="accessPU1">';
+                               $xml[] = '<value>' . $item->getPrice() . '</value>';
+                               $xml[] = '</field>';
 
-                                    $xml[] = '<field name="accessPU1">';
-                                    $xml[] = '<value>' . $accessory->price . '</value>';
-                                    $xml[] = '</field>';
+                               $xml[] = '<field name="PrixAccess1">';
+                               $xml[] = '<value>' . ($accessory->getPrice() * $countItem) . '</value>';
+                               $xml[] = '</field>';
+                           }
+                       }
 
-                                    $xml[] = '<field name="PrixAccess1">';
-                                    $xml[] = '<value>' . ($accessory->price * $accessory->quantity)  . '</value>';
-                                    $xml[] = '</field>';*/
 
-                /*  if (count($accessories) > 1) {
-                      next($accessories);
-                      $accessory = current($accessories);
+                         if (count($accessories) > 1) {
+                             next($accessories);
+                             $accessory = current($accessories);
 
-                      $xml[] = '<field name="access2">';
-                      $xml[] = '<value>' . mb_strtoupper($accessory->quantity . 'x ' . $accessory->name_fr) . '</value>';
-                      $xml[] = '</field>';
+                             foreach ($items as $item) {
+                                 foreach ($order->getCountItems() as $countItem) {
+                                     $xml[] = '<field name="access2">';
+                                     $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="accessR2">';
-                      $xml[] = '<value>' . $accessory->name_fr . '</value>';
-                      $xml[] = '</field>';
+                                     $xml[] = '<field name="accessR2">';
+                                     $xml[] = '<value>' . $item->getLibelle() . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="accessQT2">';
-                      $xml[] = '<value>' . $accessory->quantity . '</value>';
-                      $xml[] = '</field>';
+                                     $xml[] = '<field name="accessQT2">';
+                                     $xml[] = '<value>' . $countItem . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="accessPU2">';
-                      $xml[] = '<value>' . $accessory->price . '</value>';
-                      $xml[] = '</field>';
+                                     $xml[] = '<field name="accessPU2">';
+                                     $xml[] = '<value>' . $item->getPrice() . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="PrixAccess2">';
-                      $xml[] = '<value>' . ($accessory->price * $accessory->quantity)  . '</value>';
-                      $xml[] = '</field>';
-                  }*/
+                                     $xml[] = '<field name="PrixAccess2">';
+                                     $xml[] = '<value>' . ($item->getPrice() * $countItem) . '</value>';
+                                     $xml[] = '</field>';
+                                 }
+                             }
+                         }
 
-                /*  if (count($accessories) > 2) {
-                      next($accessories);
-                      $accessory = current($accessories);
+                         if (count($accessories) > 2) {
+                             next($accessories);
+                             $accessory = current($accessories);
+                             foreach ($items as $item) {
+                                 foreach ($order->getCountItems() as $countItem) {
+                                     $xml[] = '<field name="Access3">';
+                                     $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="Access3">';
-                      $xml[] = '<value>' . mb_strtoupper($accessory->quantity . 'x ' . $accessory->name_fr) . '</value>';
-                      $xml[] = '</field>';
+                                     $xml[] = '<field name="accessR3">';
+                                     $xml[] = '<value>' . $item->getLibelle() . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="accessR3">';
-                      $xml[] = '<value>' . $accessory->name_fr . '</value>';
-                      $xml[] = '</field>';
+                                     $xml[] = '<field name="accessQT3">';
+                                     $xml[] = '<value>' . $countItem . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="accessQT3">';
-                      $xml[] = '<value>' . $accessory->quantity . '</value>';
-                      $xml[] = '</field>';
+                                     $xml[] = '<field name="accessPU3">';
+                                     $xml[] = '<value>' . $item->getPrice() . '</value>';
+                                     $xml[] = '</field>';
 
-                      $xml[] = '<field name="accessPU3">';
-                      $xml[] = '<value>' . $accessory->price . '</value>';
-                      $xml[] = '</field>';
-
-                      $xml[] = '<field name="PrixAccess3">';
-                      $xml[] = '<value>' . ($accessory->price * $accessory->quantity)  . '</value>';
-                      $xml[] = '</field>';
-                  }*/
-                /*  }*/
-                $xml[] = '<field name="postcode">';
-                $xml[] = '<value>' . mb_strtoupper($order->getPostalCode()) . '</value>';
-                $xml[] = '</field>';
-                $xml[] = '<field name="Obs1">';
-                $xml[] = '<value>'.$order->getPromoLibelle().', ", ", "Promotion(s): ", "" '.'</value>';
-                $xml[] = '</field>';
-                $xml[] = '<field name="Obs2">';
-                $xml[] = '<value></value>';
-                $xml[] = '</field>';
-                $xml[] = '<field name="adeurp">';
-                $xml[] = '<value>' . mb_strtoupper(preg_replace("/(\r\n|\n|\r)/", " ", $order->getAdress()) . ' ' . $order->getCity() . ' ' . $order->getPostalCode()) . '</value>';
-                $xml[] = '</field>';
-                $xml[] = '<field name="TelephoneFR">';
-                $xml[] = '<value>' . mb_strtoupper($order->getPhone()) . '</value>';
-                $xml[] = '</field>';
-                $xml[] = '<field name="datenaissancedept">';
-                $xml[] = '<value>' . mb_strtoupper($order->getBirthPostal()) . '</value>';
-                $xml[] = '</field>';
+                                     $xml[] = '<field name="PrixAccess3">';
+                                     $xml[] = '<value>' . ($item->getPrice() * $countItem) . '</value>';
+                                     $xml[] = '</field>';
+                                 }
+                             }
+                         }
+                         }
+                       $xml[] = '<field name="postcode">';
+                       $xml[] = '<value>' . mb_strtoupper($order->getPostalCode()) . '</value>';
+                       $xml[] = '</field>';
+                       $xml[] = '<field name="Obs1">';
+                       $xml[] = '<value>' . $order->getPromoLibelle() . ', ", ", "Promotion(s): ", "" ' . '</value>';
+                       $xml[] = '</field>';
+                       $xml[] = '<field name="Obs2">';
+                       $xml[] = '<value></value>';
+                       $xml[] = '</field>';
+                       $xml[] = '<field name="adeurp">';
+                       $xml[] = '<value>' . mb_strtoupper(preg_replace("/(\r\n|\n|\r)/", " ", $order->getAdress()) . ' ' . $order->getCity() . ' ' . $order->getPostalCode()) . '</value>';
+                       $xml[] = '</field>';
+                       $xml[] = '<field name="TelephoneFR">';
+                       $xml[] = '<value>' . mb_strtoupper($order->getPhone()) . '</value>';
+                       $xml[] = '</field>';
+                       $xml[] = '<field name="datenaissancedept">';
+                       $xml[] = '<value>' . mb_strtoupper($order->getBirthPostal()) . '</value>';
+                       $xml[] = '</field>';
                 break;
             case 'Peugeot':
             case 'Citroën':
@@ -721,50 +740,55 @@ class PdfController extends AbstractController
                 $xml[] = '<field name="total*">';
                 $xml[] = '<value>' . number_format($order->getPrice(),2,",","") . '</value>';
                 $xml[] = '</field>';
-                /*
-                                $prices_acc = 0;
-                                foreach( $order->accessories as $accessory ) {
-                                    $prices_acc += $accessory->price * $accessory->quantity;
-                                }*/
-                /*            $xml[] = '<field name="montant_accessoires">';
-                            $xml[] = '<value>' . number_format($prices_acc,2,",","") . '</value>';
-                            $xml[] = '</field>';
-                            $xml[] = '<field name="montant_accessoires*">';
-                            $xml[] = '<value>' . number_format($prices_acc,2,",","") . '</value>';
-                            $xml[] = '</field>';*/
-                            $xml[] = '<field name="prix_ht">';
-                            $xml[] = '<value>' . number_format($order->getBasicPrice(),2,",","") . '</value>';
-                            $xml[] = '</field>';
-                            $xml[] = '<field name="prix_ht*">';
-                            $xml[] = '<value>' . number_format($order->getBasicPrice(),2,",","") . '</value>';
-                            $xml[] = '</field>';
-                            $xml[] = '<field name="solde">';
-                            $xml[] = '<value>' .'' . '</value>';
-                            $xml[] = '</field>';
-                            $xml[] = '<field name="solde*">';
-                            $xml[] = '<value>' .' ' . '</value>';
-                            $xml[] = '</field>';
-                /*
-                                $idx = 1;
-                                foreach( $order->accessories as $accessory ) {
-                                    $xml[] = '<field name="accessoires'.$idx.'">';
-                                    $xml[] = '<value>' . mb_strtoupper($accessory->quantity . 'x ' . $accessory->name_fr) . '</value>';
-                                    $xml[] = '</field>';
-                                    $xml[] = '<field name="accessoires'.$idx.'*'.'">';
-                                    $xml[] = '<value>' . mb_strtoupper($accessory->quantity . 'x ' . $accessory->name_fr) . '</value>';
-                                    $xml[] = '</field>';
-                                    $idx+= 1;
-                                    if( $idx > 4 ) break;
-                                }*/
-                /*             $i = 0;
-                             for( $i = $idx; $i <= 4; $i++ ) {
-                                 $xml[] = '<field name="accessoires'.$i.'">';
-                                 $xml[] = '<value></value>';
-                                 $xml[] = '</field>';
-                                 $xml[] = '<field name="accessoires'.$i.'*'.'">';
-                                 $xml[] = '<value></value>';
-                                 $xml[] = '</field>';
-                             }*/
+
+            $prices_acc = 0;
+            $accessories = $items;
+
+            foreach ($items as $item) {
+                foreach ($order->getCountItems() as $countItem) {
+                    $prices_acc += $item->getPrice() * $countItem;
+                }
+            }
+                $xml[] = '<field name="montant_accessoires">';
+                $xml[] = '<value>' . number_format($prices_acc,2,",","") . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="montant_accessoires*">';
+                $xml[] = '<value>' . number_format($prices_acc,2,",","") . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="prix_ht">';
+                $xml[] = '<value>' . number_format($order->getBasicPrice(),2,",","") . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="prix_ht*">';
+                $xml[] = '<value>' . number_format($order->getBasicPrice(),2,",","") . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="solde">';
+                $xml[] = '<value>' .'' . '</value>';
+                $xml[] = '</field>';
+                $xml[] = '<field name="solde*">';
+                $xml[] = '<value>' .' ' . '</value>';
+                $xml[] = '</field>';
+                $idx = 1;
+            foreach ($items as $item) {
+                foreach ($order->getCountItems() as $countItem) {
+                    $xml[] = '<field name="accessoires' . $idx . '">';
+                    $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
+                    $xml[] = '</field>';
+                    $xml[] = '<field name="accessoires'.$idx.'*'.'">';
+                    $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
+                    $xml[] = '</field>';
+                    $idx+= 1;
+                }
+            }
+                    if( $idx > 4 ) break;
+                $i = 0;
+        for( $i = $idx; $i <= 4; $i++ ) {
+            $xml[] = '<field name="accessoires'.$i.'">';
+            $xml[] = '<value></value>';
+            $xml[] = '</field>';
+            $xml[] = '<field name="accessoires'.$i.'*'.'">';
+            $xml[] = '<value></value>';
+            $xml[] = '</field>';
+                             }
 
                 $xml[] = '<field name="fait_le">';
                 $xml[] = '<value>'. date("d/m/Y") .'</value>';

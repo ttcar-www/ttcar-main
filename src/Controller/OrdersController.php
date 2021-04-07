@@ -120,6 +120,7 @@ class OrdersController extends AbstractController
                 $order->setPromotions($promoPrice);
                 $order->setPrice($price);
                 $order->setItems(isset($_SESSION['itemsOrder']) ? $_SESSION['itemsOrder']: null);
+                $order->setCountItems(isset($_SESSION['countItems']) ? $_SESSION['countItems']: null);
                 $order->setLang($request->getLocale());
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
@@ -431,6 +432,21 @@ class OrdersController extends AbstractController
         $_SESSION['itemsOrder'] = $request->get('libelleItems');
 
         return $ajaxLibelle;
+
+    }
+
+    /**
+     * @Route("/countItemAjax/", name="countItemAjax")
+     * @param Request $request
+     * @return bool|Response
+     */
+    public function countItemAjax(Request $request)
+    {
+        $countItems = $this->json( $request->get('countItem'));
+
+        $_SESSION['countItems'] = $request->get('countItem');
+
+        return $countItems;
 
     }
 

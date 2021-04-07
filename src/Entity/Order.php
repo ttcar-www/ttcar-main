@@ -313,6 +313,11 @@ class Order
     protected $items;
 
     /**
+     * @ORM\Column(type="array")
+     */
+    protected $countItems;
+
+    /**
      * @ORM\Column(type="string")
      */
     private $planeDate2;
@@ -1007,5 +1012,22 @@ class Order
     public function setNationality($nationality): void
     {
         $this->nationality = $nationality;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getCountItems()
+    {
+        return $this->countItems;
+    }
+
+    /**
+     * @param mixed $countItems
+     */
+    public function setCountItems($countItems): void
+    {
+        $this->countItems = $countItems;
     }
 }
