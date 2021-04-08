@@ -77,6 +77,7 @@ contact_page:
   phne_subtilte: To modify a reservation, contact us directly by phone so that your request is processed quickly.
   fax: fax
   email: email
+  contactUs: Contact Us
 form_order:
   tilte: Your search returned
   tilteResult: results
@@ -133,3 +134,115 @@ form_order:
   adressCountryHue: Adress country hue
   adressNoUe: Adress no ue
   adressCodeHue: Adress code hue
+douane:
+  tiltle: CAR RENTAL
+  tt: Temporary Transit
+  w: W Export
+  douane: Douane
+  transport: Transport
+  newsletter: Newsletter
+  tiltle2: TTCAR DOUANE EXPORT
+  rent: LOCATION
+  cars: DE VOITURE
+  details: See details
+  wSubtilte: Le W Export permet de circuler maximum 4 mois en France Métropolitaine. Ce régime est ouvert aux particuliers ayant une résidence Hors France ou dans un DOM/TOM.
+  declaration: Customs declaration
+  declaSubtilte: The customs export declaration alone is reserved for vehicles already registered and intended for export outside the European Union.
+  transportSubtiltle: TT CAR TRANSIT offers you to take care of the maritime shipping of your vehicle to all destinations in the world.
+  tiltle3: Customs formalities for export
+  ttSubtilte: If you wish to acquire a new tax-free vehicle in mainland France, two types of registration are available to you depending on the conditions you meet:Temporary Transit and W Export.
+  list1: W export and temporary transit
+  list2: Short term insurance
+  list3: Maritime transport
+  list4: France registration
+  serviceTiltle: Discover our services
+  services: We offer a Temporary Transit or W Export registration service. Our company is also a Customs declarer approved by French Customs. We therefore carry out, in their name and with their agreement, customs export declarations. These services can be supplemented by Maritime Transport and / or Insurance *.
+  servicesSpan: (*) Insurance benefits only possible if we have processed your file.
+  btnSend: Send
+export:
+  p1: The W Export allows you to travel for a maximum of 4 months in Metropolitan France. This plan is open to individuals having a residence outside France or in a DOM / TOM. Companies can also benefit from it if they meet the same conditions. It is possible to register a vehicle in W Export if the owner is transferred or transfers his residence outside mainland France.
+  p2: Export destination and status
+  p3: W Export European Union (Company)
+  p4: Price:We offer a fixed price
+  p5: This price includes
+  li1: The provisional registration certificate valid for 4 months
+  li2: License plates
+  p6: Required documents
+  p7: Documents to be completed, dated, signed (same signature as on the identity document) and returned to us by post or left on site
+  li3: W Export mandate
+  li4: W Export registration request
+  p8: European Union for companies
+  p9: Additional supporting documents to be provided to finalize your file
+  li5: Copy of the passport or identity document, valid, of the Manager mentioned on the K.BIS or the articles of association
+  li6: Copy of a K.BIS extract or of the company's trade register less than two years old (accompanied by its official translation if necessary)
+  li7: Original purchase invoice excluding VAT mentioning the name and address of the company in the EU. and the annotation "VAT exemption article 262-ter 1 of the CGI"
+  li8: original mining report, stamped and signed by the concessionaire
+  btn1: European Union for individuals
+  h31: W Export International & Dom / Tom (Company)
+  btn2: W Export International & Dom / Tom for companies
+  h32: W Export European Union (Individual)
+  li9: Copy of passport or identity document, valid
+  li10: Proof of address of less than three months
+  btn3: W International Export & Dom / Tom for French individuals residing outside the European Union
+  h33: W Export International & Dom / Tom (French individual residing outside the European Union)
+  li11: Copy of valid passport OR valid CNI translated by a certified translator
+  btn4: W International Export & Dom / Tom for foreign individuals residing outside the European Union
+  h34: W Export International & Dom / Tom (Foreign individual residing outside the European Union)
+  btn5: W Export International & Dom / Tom for individuals residing in Dom / Com / Pom
+  h35: W Export International & Dom / Tom (Individual residing in Dom / Com / Pom)
+douanePage:
+  h11: Customs declaration
+  h51: Type of registration
+  btn1: Vehicle registered in WW
+  h31: Customs Export Declaration (WW registration)
+  h32: Customs Export Declaration
+  p1: Application conditions
+  li1: For an export destination outside the European Union.
+  li2: Copy of the certificate of conformity or PV des Mines (3 in 1)
+  li3: Copy of the provisional registration certificate
+  li4: Copy of valid passport
+  li5: Copy of the tax-free vehicle invoice
+  p2: WARNING:If your vehicle has never been registered, this service will not be accessible to you. Please use TT or W Export in this case.
+  btn2: Other types
+  h33: Customs Export Declaration (Other types of registration)
+  li6: Copy of the crossed out registration card dated and signed by the seller with the mention sold on ../../ ..
+  li7: Copy of the certificate of transfer (sale)
+  li8: Certificate of situation (not pledged)
+  li9: End of demonstration if demonstration vehicle (to be requested from the dealer) or declaration of purchase if vehicle to be bought back by the dealership
+  li10: Copy of valid passport
+  li11: Proof of address of less than three months
+  li12: Copy of the tax-free vehicle invoice
+  p3: WARNING:If your vehicle has never been registered, this service will not be accessible to you. Please use TT or W Export in this case.
+transport:
+  p1: For any other request, such as containerized transport for Réunion, please contact us specifying:the country of destination, the vehicle model and its value excluding taxes.
+  li7: TT Tourist engagement request
+  li8: Tourist TT Power
+  li9: TT Tourist Mandate
+  li10: Copy of passport or CNI, valid
+  li11: Copy of proof of residence:water bill, electricity bill, telephone less than 3 months old
+  li12: Copy of the Housing Tax or Land Tax for the previous year
+  li13: original mining report, stamped and signed by the concessionaire
+  li14: Original purchase invoice excluding VAT mentioning the name, first name and address of the buyer abroad or in the French overseas departments and territories and the annotation "VAT exemption article 262-1 of the CGI"
+  li15: Round trip plane tickets
+  p4: When we have the documents, it takes 24 to 48 hours to perform the TT.
+  btn2: Studies
+  h31: TT Student
+  li16: Buy a new passenger vehicle, never registered, in mainland France.
+  li17: Usually reside, as well as his parents, outside the EU or in a Dom / Tom for more than 6 months. <
+  li18: Complete secondary or higher education in mainland France.
+  li19: Not to exercise remunerated activity.
+  p5: ATTENTION:By carrying out a TT, the buyer agrees to export his vehicle at the end of his stay. If he cannot (breakdown, accident, repair, etc.), he should contact the Paris Principal customs office as soon as possible.
+  p6: Period of validity
+  p7: The "TT student" card is valid for the duration of the school year. It is NOT renewable. <
+  li20: Mission order or certificate of reassignment from the employer or certificate of honor if the client exercises a liberal profession or certificate of change of residence issued by the Town Hall
+  li21: TT Student Power
+  li22: TT Student Mandate
+  li23: Student attestation TT Student
+  li24: Parental certificate TT Student
+  li25: TT Student engagement request
+  li26: Copy of the student card
+  li27: Copy of the school certificate
+  li28: Copy of the residence permit or its receipt, for a student of foreign nationality
+  li29: Certificate of residence of parents issued by the Consulate or the Town Hall of their municipality
+  btn3: Mission or Internship
+  h32: TT Mission or Internship

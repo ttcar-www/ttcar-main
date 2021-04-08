@@ -3,7 +3,7 @@
 {% block body %}
 <section class="b-pageHeader">
     <div class="container">
-        <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">Transit temporaire</h1>
+        <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">{{ 'menu.temporary'|trans({}, 'messages') }}</h1>
      {#   <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
             <h3>Read Latest Auto News &amp; Reviews</h3>
         </div>#}
@@ -12,217 +12,217 @@
 
 <div class="b-blog s-shadow" style="margin-bottom: 15%">
     <div class="container">
-        <h3>Transit Temporaire</h3>
-        <p>Le régime douanier du « Transit Temporaire », dit « TT », permet aux bénéficiaires d’acquérir un véhicule neuf Hors Taxes pendant une durée déterminée par le bureau de douanes.</p>
+        <h3>{{ 'menu.temporary'|trans({}, 'messages') }}</h3>
+        <p>{{ 'tt.p1'|trans({}, 'messages') }}</p>
 
         <div class="row" style="text-align: center">
-            <h5>Motif de votre sejour</h5>
-            <button class="accordion">TT Touriste</button>
+            <h5>{{ 'tt.p2'|trans({}, 'messages') }}</h5>
+            <button class="accordion">{{ 'tt.btn1'|trans({}, 'messages') }}</button>
             <div class="panel">
                 <div>
-                    <p>Tarif : Nous proposons un forfait à <span style="font-weight: bold">300 € + Malus CO2.</span></p>
-                    <p>Ce tarif comprend :</p>
+                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € + Malus CO2.</span></p>
+                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
                     <ul>
-                        <li>La carte grise TT</li>
-                        <li>Les plaques d’immatriculation TT</li>
-                        <li> La déclaration douanière d’exportation</li>
+                        <li>- {{ 'tt.li1'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li2'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li3'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <div>
-                    <p>Conditions d’application :   </p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
                     <ul>
-                        <li>1. Uniquement valable pour les véhicules neufs de tourisme (VP).</li>
-                        <li>2. Personne de nationalité française ou étrangère résidant hors Union Européenne ou dans les DOM/TOM, depuis plus de 6 mois.</li>
-                        <li>3. Pour un séjour de 15 jours minimum à 6 mois maximum (la durée d'immatriculation ne peut pas être inférieure à 15 jours).</li>
+                        <li>1. {{ 'tt.li4'|trans({}, 'messages') }}</li>
+                        <li>2. {{ 'tt.li5'|trans({}, 'messages') }}.</li>
+                        <li>3. {{ 'tt.li6'|trans({}, 'messages') }}.</li>
                     </ul>
                 </div>
                 <br>
-                <p class="border_red">ATTENTION: En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…), il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.</p>
+                <p class="border_red">{{ 'tt.p3'|trans({}, 'messages') }}</p>
                 <div>
-                    <p>Documents nécessaires :</p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
 
-                       <p class="subtilble"> » Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</p>
+                       <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
                             <ul>
-                                <li>- Demande d’engagement TT Touriste</li>
-                                <li>- Pouvoir TT Touriste</li>
-                                <li>- Mandat TT Touriste</li>
+                                <li>- {{ 'tt.li7'|trans({}, 'messages') }}</li>
+                                <li>- {{ 'tt.li8'|trans({}, 'messages') }}</li>
+                                <li>- {{ 'tt.li9'|trans({}, 'messages') }}</li>
                             </ul>
                     <br>
-                    <p class="subtilble">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</p>
+                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Copie du passeport ou de la CNI, en cours de validité</li>
-                        <li>- Copie d’une preuve de résidence : facture d’eau, d’électricité, téléphone de moins de 3 mois</li>
-                        <li>- Copie de la Taxe d’Habitation ou de la Taxe Foncière de l’année précédente</li>
-                        <li>- PV des mines original, tamponné et signé par le concessionnaire</li>
-                        <li>- Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM et l’annotation « Exonération de TVA article 262-1 du CGI »</li>
-                        <li>- Billets d’avion aller/retour</li>
+                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li11'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li12'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li15'|trans({}, 'messages') }}</li>
                     </ul>
                         {#
                                         <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
                         #}
                 </div>
                 <br>
-                <p class="bold_red">Quand nous disposons des documents, il faut compter 24 à 48h pour effectuer le TT.</p>
+                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
             </div>
 
-            <button class="accordion">Etudes</button>
+            <button class="accordion">{{ 'tt.btn2'|trans({}, 'messages') }}</button>
             <div class="panel">
-                <h3>TT Etudiant</h3>
+                <h3>{{ 'tt.h31'|trans({}, 'messages') }}</h3>
                 <div>
-                    <p>Tarif : Nous proposons un forfait à <span style="font-weight: bold">300 € + Malus EcoTaxe.</span></p>
-                    <p>Ce tarif comprend :</p>
+                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € + Malus EcoTaxe.</span></p>
+                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
                     <ul>
-                        <li>La carte grise TT</li>
-                        <li>Les plaques d’immatriculation TT</li>
-                        <li> La déclaration douanière d’exportation</li>
+                        <li>{{ 'tt.li1'|trans({}, 'messages') }}</li>
+                        <li>{{ 'tt.li2'|trans({}, 'messages') }}</li>
+                        <li>{{ 'tt.li3'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <div>
-                    <p>Conditions d’application :   </p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
                     <ul>
-                        <li>1. Acheter un véhicule neuf de tourisme, jamais immatriculé, en France Métropolitaine.</li>
-                        <li>2. Résider habituellement, ainsi que ses parents, hors de l’UE ou dans un Dom/Tom depuis plus de 6 mois.</li>
-                        <li>3. Effectuer des études secondaires ou supérieures en France métropolitaine.</li>
-                        <li>4. Ne pas exercer d’activité rémunérée.</li>
+                        <li>1. {{ 'tt.li16'|trans({}, 'messages') }}</li>
+                        <li>2. {{ 'tt.li17'|trans({}, 'messages') }}</li>
+                        <li>3. {{ 'tt.li18'|trans({}, 'messages') }}</li>
+                        <li>4. {{ 'tt.li19'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <br>
-                <p class="border_red">ATTENTION: En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…), il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.</p>
+                <p class="border_red">{{ 'tt.p5'|trans({}, 'messages') }}</p>
                 <div>
-                    <p>Durée de validité : </p>
-                    <p class="bold_red">La carte « TT étudiant » est valable pendant la durée de l’année scolaire. Elle est NON renouvelable.</p>
+                    <p>{{ 'tt.p6'|trans({}, 'messages') }}: </p>
+                    <p class="bold_red">{{ 'tt.p7'|trans({}, 'messages') }}</p>
                 </div>
                 <div>
-                    <p>Documents nécessaires :</p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
 
-                    <p class="subtilble"> » Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</p>
+                    <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Pouvoir TT Étudiant</li>
-                        <li>- Mandat TT Étudiant</li>
-                        <li>- Attestation étudiant TT Étudiant</li>
-                        <li>- Attestation parentale TT Étudiant</li>
-                        <li>- Demande d’engagement TT Étudiant</li>
+                        <li>- {{ 'tt.li21'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li22'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li23'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li24'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li25'|trans({}, 'messages') }}</li>
                     </ul>
                     <br>
-                    <p class="subtilble">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</p>
+                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Copie du passeport ou de la CNI, en cours de validité</li>
-                        <li>- Copie de la carte étudiant</li>
-                        <li>- Copie du certificat de scolarité</li>
-                        <li>- Copie de la carte de séjour ou de son récépissé, pour un étudiant de nationalité étrangère</li>
-                        <li>- Certificat de résidence des parents émis par le Consulat ou la Mairie de leur commune</li>
-                        <li>- PV des mines original, tamponné et signé par le concessionnaire</li>
-                        <li>- Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM et l’annotation « Exonération de TVA article 262-1 du CGI »</li>
+                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li26'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li27'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li28'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li29'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
                     </ul>
                     {#
                     <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
                     #}
                 </div>
                 <br>
-                <p class="bold_red">Quand nous disposons des documents, il faut compter 24 à 48h pour effectuer le TT.</p>
+                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
             </div>
 
-            <button class="accordion">Mission ou Stage</button>
+            <button class="accordion">{{ 'tt.btn3'|trans({}, 'messages') }}</button>
             <div class="panel">
-                <h3>TT Mission ou Stage</h3>
+                <h3>{{ 'tt.h32'|trans({}, 'messages') }}</h3>
                 <div>
-                    <p>Tarif : Nous proposons un forfait à <span style="font-weight: bold">300 € +  Malus CO2.</span></p>
-                    <p>Ce tarif comprend :</p>
+                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € +  Malus CO2.</span></p>
+                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
                     <ul>
-                        <li>La carte grise TT</li>
-                        <li>Les plaques d’immatriculation TT</li>
-                        <li> La déclaration douanière d’exportation</li>
+                        <li>{{ 'tt.li1'|trans({}, 'messages') }}</li>
+                        <li>{{ 'tt.li2'|trans({}, 'messages') }}</li>
+                        <li>{{ 'tt.li3'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <div>
-                    <p>Conditions d’application :   </p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
                     <ul>
-                        <li>1. Uniquement valable pour les véhicules neufs de tourisme (VP).</li>
-                        <li>2. Résider habituellement hors de l’U.E. ou dans un Dom/Tom.</li>
-                        <li>3. Être détaché par un organisme privé ou public, en France métropolitaine, pour une durée d’un an maximum pour un stage ou deux ans pour une mission.</li>
+                        <li>1. {{ 'tt.li30'|trans({}, 'messages') }}.</li>
+                        <li>2. {{ 'tt.li31'|trans({}, 'messages') }}</li>
+                        <li>3. {{ 'tt.li32'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <br>
-                <p class="border_red">ATTENTION: En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…), il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.</p>
+                <p class="border_red">{{ 'tt.p5'|trans({}, 'messages') }}</p>
                 <div>
-                    <p>Durée de validité : </p>
-                    <p class="bold_red">Maximum un an pour un stage, deux ans pour une mission</p>
+                    <p>{{ 'tt.p6'|trans({}, 'messages') }}: </p>
+                    <p class="bold_red">{{ 'tt.p8'|trans({}, 'messages') }}</p>
                 </div>
                 <div>
-                    <p>Documents nécessaires :</p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
 
-                    <p class="subtilble"> » Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</p>
+                    <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Demande d’engagement TT Mission ou Stage</li>
-                        <li>- Pouvoir TT Mission ou Stage</li>
-                        <li>- Mandat TT Mission ou Stage</li>
+                        <li>- {{ 'tt.li33'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li34'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li35'|trans({}, 'messages') }}</li>
                     </ul>
                     <br>
-                    <p class="subtilble">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</p>
+                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Copie du passeport ou de la CNI, en cours de validité</li>
-                        <li>- PV des mines original, tamponné et signé par le concessionnaire</li>
-                        <li>- Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM et l’annotation « Exonération de TVA article 262-1 du CGI »</li>
-                        <li>- Copie de la carte de séjour pour les ressortissants étrangers, ou copie d’un justificatif de domicile de moins de 3 mois pour les résidents des DOM/TOM</li>
-                        <li>- Une attestation de la société ou de l’organisme étranger concernant le stage ou la mission</li>
-                        <li>- Une attestation de la société ou de l’organisme d’accueil en France métropolitaine</li>
+                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li36'|trans({}, 'messages') }}<</li>
+                        <li>- {{ 'tt.li37'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li38'|trans({}, 'messages') }}</li>
                     </ul>
                     {#
                     <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
                     #}
                 </div>
                 <br>
-                <p class="bold_red">Quand nous disposons des documents, il faut compter 24 à 48h pour effectuer le TT.</p>
+                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
             </div>
 
-            <button class="accordion">Dérogation</button>
+            <button class="accordion">{{ 'tt.btn4'|trans({}, 'messages') }}</button>
             <div class="panel">
-                <h3>TT Dérogatoire</h3>
+                <h3>{{ 'tt.h34'|trans({}, 'messages') }}</h3>
                 <div>
-                    <p>Tarif : Nous proposons un forfait à <span style="font-weight: bold">300 € +  Malus CO2.</span></p>
-                    <p>Ce tarif comprend :</p>
+                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € +  Malus CO2.</span></p>
+                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
                     <ul>
-                        <li>La carte grise TT</li>
-                        <li>Les plaques d’immatriculation TT</li>
-                        <li> La déclaration douanière d’exportation</li>
+                        <li>{{ 'tt.li1'|trans({}, 'messages') }}</li>
+                        <li>{{ 'tt.li2'|trans({}, 'messages') }}</li>
+                        <li>{{ 'tt.li3'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <div>
-                    <p>Conditions d’application :   </p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
                     <ul>
-                        <li>1. Ce régime est réservé aux personnes résidant en France métropolitaine et dont le départ définitif ou l’affectation hors de l’U.E. est prévue dans les 3 mois.</li>
-                        <li>2. Le véhicule « TT » doit être acheté neuf en France Métropolitaine.</li>
+                        <li>1. {{ 'tt.li39'|trans({}, 'messages') }}</li>
+                        <li>2. {{ 'tt.li40'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
                 <br>
-                <p class="border_red">ATTENTION: En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…), il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.</p>
+                <p class="border_red">{{ 'tt.p5'|trans({}, 'messages') }}</p>
                 <div>
-                    <p>Durée de validité : </p>
-                    <p class="bold_red">Le régime « TT dérogation » a une durée de validité de 3 mois maximum. Il s’adresse aux personnes déménageant de métropole à destination de l’étranger ou d’un Dom/Tom.</p>
+                    <p>{{ 'tt.p6'|trans({}, 'messages') }}: </p>
+                    <p class="bold_red">{{ 'tt.p9'|trans({}, 'messages') }}</p>
                 </div>
                 <div>
-                    <p>Documents nécessaires :</p>
+                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
 
-                    <p class="subtilble"> » Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</p>
+                    <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Demande d’engagement TT Dérogatoire</li>
-                        <li>- Pouvoir TT Dérogatoire</li>
-                        <li>- Mandat TT Dérogatoire</li>
+                        <li>- {{ 'tt.li41'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li42'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li43'|trans({}, 'messages') }}</li>
                     </ul>
                     <br>
-                    <p class="subtilble">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</p>
+                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
                     <ul>
-                        <li>- Copie du passeport ou de la CNI, en cours de validité</li>
-                        <li>- PV des mines original, tamponné et signé par le concessionnaire</li>
-                        <li>- Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM et l’annotation « Exonération de TVA article 262-1 du CGI »</li>
-                        <li>- Ordre de mission ou attestation de réaffectation de l’employeur ou attestation sur l’honneur si le client exerce une profession libérale ou certificat de changement de résidence émis par la Mairie</li>
+                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
+                        <li>- {{ 'tt.li20'|trans({}, 'messages') }}</li>
                     </ul>
                     {#
                     <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
                     #}
                 </div>
                 <br>
-                <p class="bold_red">Quand nous disposons des documents, il faut compter 24 à 48h pour effectuer le TT.</p>
+                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
             </div>
         </div>
     </div>

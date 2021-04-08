@@ -76,7 +76,7 @@
                     <div class="col-sm-3 col-xs-4">
                         <div class="b-nav__logo wow slideInLeft" data-wow-delay="0.3s">
                             <h3><a href="{{ path('TTdouane') }}">DOUANE<span>EXPORT</span></a></h3>
-                            <h2><a href="{{ path('TTdouane') }}">LOCATION DE VOITURE</a></h2>
+                            <h2><a href="{{ path('TTdouane') }}">{{ 'douane.tiltle'|trans({}, 'messages') }}</a></h2>
                         </div>
                     </div>
                 </div>
@@ -85,10 +85,10 @@
                 <div class="b-nav__list wow slideInRight" data-wow-delay="0.3s">
                     <div class="collapse navbar-collapse navbar-main-slide" id="nav">
                     <ul class="navbar-nav-menu">
-                            <li><a href="{{ path('transit') }}">Transit Temporaire</a></li>
-                            <li><a href="{{ path('export') }}">W Export</a></li>
-                            <li><a href="{{ path('douane') }}">Douane</a></li>
-                            <li><a href="{{ path('transport') }}">Transport</a></li>
+                            <li><a href="{{ path('transit') }}">{{ 'douane.tt'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('export') }}">{{ 'douane.w'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('douane') }}">{{ 'douane.douane'|trans({}, 'messages') }}</a></li>
+                            <li><a href="{{ path('transport') }}">{{ 'douane.transport'|trans({}, 'messages') }}</a></li>
                             <li><a href="{{ path('contactDouane') }}">{{ 'menu.contact'|trans({}, 'messages') }}</a></li>
                         </ul>
                     </div>
@@ -109,19 +109,19 @@
                 <div class="col-md-4 col-xs-12">
                     <aside class="b-info__aside wow zoomInLeft" data-wow-delay="0.3s">
                         <article class="b-info__aside-article">
-                            <h3>OPENING HOURS</h3>
+                            <h3>{{ 'contact_page.hours'|trans({}, 'messages') }}</h3>
                             <div class="b-info__aside-article-item">
-                                <h6>Sales Department</h6>
-                                <p>lundi-vendredi 9h00-17h00</p>
-                                <p> Fermé le Weekend et jours fériés</p>
+                                <h6>{{ 'contact_page.visit'|trans({}, 'messages') }}</h6>
+                                <p>{{ 'contact_page.mond'|trans({}, 'messages') }}</p>
+                                <p> {{ 'contact_page.close'|trans({}, 'messages') }}</p>
                             </div>
                         </article>
                         <article class="b-info__aside-article">
-                            <h3>Newsletter</h3>
-                            <form>
+                            <h3>{{ 'douane.newsletter'|trans({}, 'messages') }}</h3>
+                    {#        <form>
                                 <input type="text" id="name" name="name" required
                                        minlength="4" maxlength="8" size="10">
-                            </form>
+                            </form>#}
                         </article>
                     </aside>
                 </div>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-md-4 col-xs-12">
                     <address class="b-info__contacts wow slideInUp" data-wow-delay="0.3s">
-                        <p>Contact us</p>
+                        <p>{{ 'contact_page.contact'|trans({}, 'messages') }}</p>
                         <div class="b-info__contacts-item">
                             <span class="fa fa-map-marker"></span>
                             <em>2 Avenue de la Porte de Saint-Cloud,<br />
@@ -138,7 +138,7 @@
                         </div>
                         <div class="b-info__contacts-item">
                             <span class="fa fa-phone"></span>
-                            <em>Phone: +33 (0)1 40 71 72 65/57</em>
+                            <em>{{ 'contact_page.phone'|trans({}, 'messages') }} +33 (0)1 40 71 72 65/57</em>
                         </div>
                         <div class="b-info__contacts-item">
                             <span class="fa fa-fax"></span>
