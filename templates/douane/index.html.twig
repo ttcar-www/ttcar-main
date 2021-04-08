@@ -22,10 +22,10 @@
                 <img src="{{ asset('build/nightCars.jpg') }}" alt="sliderImg"  style="height: 800px"/>
                 <div class="container">
                     <div class="carousel-caption b-slider__info">
-                        <h3>TTCAR DOUANE EXPORT</h3>
-                        <h2>LOCATION <br/>DE VOITURE</h2>
-                        <p>Model 2015</p>
-                        <a class="btn m-btn" href="#">see details<span class="fa fa-angle-right"></span></a>
+                        <h3>{{ 'douane.tiltle2'|trans({}, 'messages') }}</h3>
+                        <h2>{{ 'douane.rent'|trans({}, 'messages') }} <br/>{{ 'douane.cars'|trans({}, 'messages') }}</h2>
+                        <p>A definir</p>
+                        <a class="btn m-btn" href="#">{{ 'douane.details'|trans({}, 'messages') }}<span class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
             </div>
@@ -42,10 +42,10 @@
                     <img class="img-responsive" src="{{ asset('build/location-de-voiture.png') }}" alt="wolks" />
 #}
                     <div class="b-world__item-val">
-                        <span class="b-world__item-val-title">WE OFFER</span>
+                        <span class="b-world__item-val-title">A DEFINIR</span>
                     </div>
-                        <h2>W Export</h2>
-                        <p>Le W Export permet de circuler maximum 4 mois en France Métropolitaine. Ce régime est ouvert aux particuliers ayant une résidence Hors France ou dans un DOM/TOM.</p>
+                        <h2>{{ 'douane.w'|trans({}, 'messages') }}</h2>
+                        <p>{{ 'douane.wSubtilte'|trans({}, 'messages') }}</p>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-12">
@@ -54,10 +54,10 @@
                     <img class="img-responsive"  src="media/370x200/mazda.jpg" alt="mazda" />
 #}
                     <div class="b-world__item-val">
-                        <span class="b-world__item-val-title">WE ARE THE</span>
+                        <span class="b-world__item-val-title">A DEFINIR</span>
                     </div>
-                    <h2>Déclaration Douane</h2>
-                    <p>La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés destinés à être exportés hors Union Européenne.</p>
+                    <h2>{{ 'douane.declaration'|trans({}, 'messages') }}</h2>
+                    <p>{{ 'douane.declaSubtilte'|trans({}, 'messages') }}</p>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-12">
@@ -66,10 +66,10 @@
                     <img class="img-responsive"  src="media/370x200/chevrolet.jpg" alt="chevrolet" />
 #}
                     <div class="b-world__item-val">
-                        <span class="b-world__item-val-title">OUR CUSTOMERS GET</span>
+                        <span class="b-world__item-val-title">A DEFINIR</span>
                     </div>
-                    <h2>Transport</h2>
-                    <p>TT CAR TRANSIT vous propose de prendre en charge l'expédition maritime de votre véhicule pour toutes destinations dans le monde.</p>
+                    <h2>{{ 'douane.transport'|trans({}, 'messages') }}</h2>
+                    <p>{{ 'douane.transportSubtiltle'|trans({}, 'messages') }}</p>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                                         <img src="{{ asset('build/transit-temporaire.png') }}" style="width: 80%">
                                     </a>
                                 </div>
-                                <h3>Transit Temporaire</h3>
+                                <h3>{{ 'douane.tt'|trans({}, 'messages') }}</h3>
                             </div>
                         </div>
                         <div class="col-xs-12 text-right visible-md visible-lg">
@@ -104,7 +104,7 @@
                                         <img src="{{ asset('build/location-de-voiture.png') }}" style="width: 80%">
                                     </a>
                                 </div>
-                                <h3>W Export</h3>
+                                <h3>{{ 'douane.w'|trans({}, 'messages') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -112,15 +112,14 @@
             </div>
             <div class="col-xs-12 col-md-6">
                 <div class="b-welcome__text wow zoomInUp" data-wow-delay="0.3s">
-                    <h2>Formalités douanières pour l’exportation</h2>
-                    <h3>TT Douane Export</h3>
-                    <p>Si vous souhaitez acquérir en France métropolitaine un véhicule neuf hors taxes, deux types d’immatriculations s’offrent à vous selon les conditions que vous remplissez: le Transit Temporaire et le W Export.</p>
-                    <p>Ipsum midne ultrices magn eu tempor quam dolor eustrl sem. Donec quis dolel Donec pede quam placerat alterl tristique faucibus posuere lobortis.</p>
+                    <h2>{{ 'douane.tiltle3'|trans({}, 'messages') }}</h2>
+                    <h3>{{ 'douane.tiltle2'|trans({}, 'messages') }}</h3>
+                    <p>{{ 'douane.ttSubtilte'|trans({}, 'messages') }}</p>
                     <ul>
-                        <li><span class="fa fa-check"></span> W export et transit temporaire </li>
-                        <li><span class="fa fa-check"></span> Assurance courte durée</li>
-                        <li><span class="fa fa-check"></span> Transport maritime</li>
-                        <li><span class="fa fa-check"></span> Immatriculation France</li>
+                        <li><span class="fa fa-check"></span> {{ 'douane.list1'|trans({}, 'messages') }}</li>
+                        <li><span class="fa fa-check"></span>{{ 'douane.list2'|trans({}, 'messages') }}</li>
+                        <li><span class="fa fa-check"></span> {{ 'douane.list3'|trans({}, 'messages') }}</li>
+                        <li><span class="fa fa-check"></span> {{ 'douane.list4'|trans({}, 'messages') }}</li>
                     </ul>
                 </div>
             </div>
@@ -134,7 +133,7 @@
                                         <img src="{{ asset('build/declaration-douane.png') }}" style="width: 80%">
                                     </a>
                                 </div>
-                                <h3>Déclaration douane</h3>
+                                <h3>{{ 'douane.declaration'|trans({}, 'messages') }}</h3>
                             </div>
                         </div>
                         <div class="col-xs-12 text-left visible-md visible-lg">
@@ -149,7 +148,7 @@
                                         <img src="{{ asset('build/transport-maritime.png') }}" style="width: 80%">
                                     </a>
                                 </div>
-                                <h3>Transport</h3>
+                                <h3>{{ 'douane.transport'|trans({}, 'messages') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -167,9 +166,9 @@
                         <span class="fa fa-usd"></span>
                     </div>
                     <div class="b-asks__first-info">
-                        <h2>Découvrir nos services</h2>
-                        <p>Nous proposons un service d’immatriculation en Transit Temporaire ou W Export. Notre société est aussi déclarant en Douane agrée par la Douane Française. Nous effectuons donc, en leur nom et avec leur accord, des Déclarations douanières d’exportation. Ces prestations peuvent être complémentées par un Transport Maritime et/ou une Assurance*.
-                           <span> (*) Prestations d’assurance possible uniquement si nous avons traité votre dossier.</span></p>
+                        <h2>{{ 'douane.serviceTiltle'|trans({}, 'messages') }}</h2>
+                        <p>{{ 'douane.services'|trans({}, 'messages') }}
+                           <span> {{ 'douane.servicesSpan'|trans({}, 'messages') }}</span></p>
                     </div>
                     <div class="b-asks__first-arrow">
                         <a href="#"><span class="fa fa-angle-right"></span></a>

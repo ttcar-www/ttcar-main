@@ -3,7 +3,7 @@
 {% block body %}
     <section class="b-pageHeader">
         <div class="container">
-            <h1 class=" wow zoomInLeft">Déclaration Douane</h1>
+            <h1 class=" wow zoomInLeft"> {{ 'douanePage.h11'|trans({}, 'messages') }}</h1>
             {#   <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
             <h3>Read Latest Auto News &amp; Reviews</h3>
         </div>#}
@@ -12,49 +12,48 @@
 
     <div class="b-blog s-shadow" style="margin-bottom: 15%">
         <div class="container" style="text-align: center">
-            <h3>Déclaration Douane</h3>
-            <p>La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés destinés à être exportés hors Union Européenne.</p>
+            <h3> {{ 'douane.declaration'|trans({}, 'messages') }}</h3>
+            <p> {{ 'douane.declaSubtilte'|trans({}, 'messages') }}</p>
             <div class="row">
-                <h5>» Type d’immatriculation:</h5>
+                <h5>»  {{ 'douanePage.h51'|trans({}, 'messages') }}:</h5>
 
-                <button class="accordion">Véhicule immatriculé en WW</button>
+                <button class="accordion">{{ 'douanePage.btn1'|trans({}, 'messages') }}</button>
                 <div class="panel">
-                    <h3>Déclaration Douanière d'Exportation
-                        (Immatriculation en WW)</h3>
+                    <h3>{{ 'douanePage.h31'|trans({}, 'messages') }}</h3>
                     <div>
-                        <p>Tarif : Nous proposons un forfait à <span style="font-weight: bold">100 €.</span></p>
-                        <p>Ce tarif comprend :</p>
+                        <p>{{ 'export.p4'|trans({}, 'messages') }} <span style="font-weight: bold">100 €.</span></p>
+                        <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
                         <ul>
-                            <li>La déclaration douanière d'exportation.</li>
+                            <li>{{ 'douanePage.h32'|trans({}, 'messages') }}.</li>
                         </ul>
                     </div>
                     <br>
                     <div>
-                        <p>Conditions d’application :   </p>
+                        <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
                         <ul>
-                            <li>1. Pour une destination d’export hors de l’Union Européenne.</li>
+                            <li>1. {{ 'douanePage.li1'|trans({}, 'messages') }}</li>
                        </ul>
                     </div>
                     <br>
                     <div>
-                        <p>Documents nécessaires :</p>
+                        <p>{{ 'export.p6'|trans({}, 'messages') }} :</p>
 
-                        <p class="subtilble"> » Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</p>
+                        <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
                         <ul>
-                            <li>- Mandat W Export</li>
-                            <li>- Demande d’immatriculation W Export</li>
+                            <li>- {{ 'export.li3'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'export.li4'|trans({}, 'messages') }}</li>
                         </ul>
                         <br>
-                        <p class="subtilble">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</p>
+                        <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
                         <ul>
-                            <li>- CCopie du certificat de conformité ou PV des Mines (3 en 1)</li>
-                            <li>- Copie du certificat provisoire d’immatriculation</li>
-                            <li>- Copie du passeport en cours de validité</li>
-                            <li>- Justificatif de domicile de moins de trois mois</li>
-                            <li>- Copie de la facture du véhicule hors taxe</li>
+                            <li>- {{ 'douanePage.li2'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li3'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li4'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'export.li10'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li5'|trans({}, 'messages') }}</li>
                         </ul>
                         <br>
-                        <p class="border_red">ATTENTION: Si votre véhicule n'a jamais été immatriculé, ce service ne vous sera pas accessible. Veuillez utiliser un TT ou un W Export dans ce cas.</p>
+                        <p class="border_red">{{ 'douanePage.p1'|trans({}, 'messages') }}</p>
 
                         {#
                         <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
@@ -62,46 +61,45 @@
                     </div>
                 </div>
 
-                <button class="accordion">Autres types</button>
+                <button class="accordion">{{ 'douanePage.btn2'|trans({}, 'messages') }}</button>
                 <div class="panel">
-                    <h3>Déclaration Douanière d'Exportation
-                        (Autres types d’immatriculation)</h3>
+                    <h3>{{ 'douanePage.h33'|trans({}, 'messages') }}</h3>
                     <div>
-                        <p>Tarif : Nous proposons un forfait à <span style="font-weight: bold">100 €.</span></p>
-                        <p>Ce tarif comprend :</p>
+                        <p>{{ 'export.p4'|trans({}, 'messages') }} <span style="font-weight: bold">100 €.</span></p>
+                        <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
                         <ul>
-                            <li>La déclaration douanière d'exportation.</li>
+                            <li>{{ 'douanePage.h32'|trans({}, 'messages') }}.</li>
                         </ul>
                     </div>
                     <br>
                     <div>
-                        <p>Conditions d’application :   </p>
+                        <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
                         <ul>
-                            <li>1. Pour une destination d’export hors de l’Union Européenne.</li>
+                            <li>1. {{ 'douanePage.li1'|trans({}, 'messages') }}</li>
                         </ul>
                     </div>
                     <br>
                     <div>
-                        <p>Documents nécessaires :</p>
+                        <p>{{ 'export.p6'|trans({}, 'messages') }} :</p>
 
-                        <p class="subtilble"> » Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</p>
+                        <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
                         <ul>
-                            <li>- Mandat W Export</li>
-                            <li>- Demande d’immatriculation W Export</li>
+                            <li>- {{ 'export.li3'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'export.li4'|trans({}, 'messages') }}</li>
                         </ul>
                         <br>
-                        <p class="subtilble">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</p>
+                        <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
                         <ul>
-                            <li>- Copie de la carte grise barrée datée et signée de la part du vendeur avec la mention vendu le ../../..</li>
-                            <li>- Copie du certificat de cession (vente)/li>
-                            <li>- Certificat de situation (non gage)</li>
-                            <li>- Fin de démonstration si véhicule de démonstration (à réclamer au concessionnaire) ou déclaration d’achat si véhicule racheter par la concession</li>
-                            <li>- Copie du passeport en cours de validité</li>
-                            <li>- Justificatif de domicile de moins de trois mois</li>
-                            <li>- Copie de la facture du véhicule hors taxe</li>
+                            <li>- {{ 'douanePage.li6'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li7'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li8'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li9'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li10'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li11'|trans({}, 'messages') }}</li>
+                            <li>- {{ 'douanePage.li12'|trans({}, 'messages') }}</li>
                         </ul>
                         <br>
-                        <p class="border_red">ATTENTION: Si votre véhicule n'a jamais été immatriculé, ce service ne vous sera pas accessible. Veuillez utiliser un TT ou un W Export dans ce cas.</p>
+                        <p class="border_red">{{ 'douanePage.p3'|trans({}, 'messages') }}</p>
 
                         {#
                         <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>

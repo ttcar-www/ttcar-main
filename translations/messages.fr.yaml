@@ -77,6 +77,7 @@ contact_page:
   phne_subtilte: Pour modifier une réservation, contactez-nous directement par téléphone pour que votre demande soit traitée rapidement.
   fax: fax
   email: email
+  contactUs: Nous contacter
 form_order:
   tilte: Votre recherche a trouvé
   tilteResult: voitures
@@ -133,3 +134,144 @@ form_order:
   adressCountryHue: Pays hors UE
   adressNoUe: Adresse hors UE
   adressCodeHue: Code postal hors UE
+douane:
+  tiltle: LOCATION DE VOITURE
+  tt: Transit Temporaire
+  w: W Export
+  douane: Douane
+  transport: Transport
+  newsletter: Newsletter
+  tiltle2: TTCAR DOUANE EXPORT
+  rent: LOCATION
+  cars: DE VOITURE
+  details: Voir le détail
+  wSubtilte: Le W Export permet de circuler maximum 4 mois en France Métropolitaine. Ce régime est ouvert aux particuliers ayant une résidence Hors France ou dans un DOM/TOM.
+  declaration: Déclaration Douane
+  declaSubtilte: La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés destinés à être exportés hors Union Européenne.
+  transportSubtiltle: TT CAR TRANSIT vous propose de prendre en charge l'expédition maritime de votre véhicule pour toutes destinations dans le monde.
+  tiltle3: Formalités douanières pour l’exportation
+  ttSubtilte: Si vous souhaitez acquérir en France métropolitaine un véhicule neuf hors taxes, deux types d’immatriculations s’offrent à vous selon les conditions que vous remplissez:le Transit Temporaire et le W Export.
+  list1: W export et transit temporaire
+  list2: Assurance courte durée
+  list3: Transport maritime
+  list4: Immatriculation France
+  serviceTiltle: Découvrir nos services
+  services: Nous proposons un service d’immatriculation en Transit Temporaire ou W Export. Notre société est aussi déclarant en Douane agrée par la Douane Française. Nous effectuons donc, en leur nom et avec leur accord, des Déclarations douanières d’exportation. Ces prestations peuvent être complémentées par un Transport Maritime et/ou une Assurance*.
+  servicesSpan: (*) Prestations d’assurance possible uniquement si nous avons traité votre dossier.
+  btnSend: Envoyer
+export:
+  p1: Le W Export permet de circuler maximum 4 mois en France Métropolitaine. Ce régime est ouvert aux particuliers ayant une résidence Hors France ou dans un DOM/TOM. Les Sociétés aussi peuvent en bénéficier si elles remplissent les mêmes conditions. Il est possible d’immatriculer un véhicule en W Export si le propriétaire est muté ou transfère sa résidence Hors France métropolitaine.
+  p2: Destination de l’export et status
+  p3: W Export Union Européenne (Société)
+  p4: Tarif :Nous proposons un forfait à
+  p5: Ce tarif comprend
+  li1: Le certificat provisoire d’immatriculation valable 4 mois
+  li2: Les plaques d’immatriculation
+  p6: Documents nécessaires
+  p7: Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place
+  li3: Mandat W Export
+  li4: Demande d’immatriculation W Export
+  p8: Union Européenne pour les sociétés
+  p9: Justificatifs supplémentaires à fournir pour finaliser votre dossier
+  li5: Copie du passeport ou pièce d’identité, en cours de validité, du Gérant mentionné sur le K.BIS ou les statuts
+  li6: Copie d’un extrait K.BIS ou du registre du commerce de la société de moins de deux ans (accompagnée de sa traduction officielle si nécessaire)
+  li7: Facture d’achat HT originale mentionnant le nom et l’adresse de l’entreprise dans l’U.E. et l’annotation « Exonération de TVA article 262-ter 1 du CGI »
+  li8: PV des mines original, tamponné et signé par le concessionnaire
+  btn1: Union Européenne pour les particuliers
+  h31: W Export International & Dom/Tom (Société)
+  btn2: W Export International & Dom/Tom pour les société
+  h32: W Export Union Européenne (Particulier)
+  li9: Copie du passeport ou pièce d’identité, en cours de validité
+  li10: Justificatif de domicile de moins de trois mois
+  btn3: W Export International & Dom/Tom pour les particulier français résidant hors Union Européenne
+  h33: W Export International & Dom/Tom (Particulier français résidant hors Union Européenne)
+  li11: Copie du passeport en cours de validité OU de la CNI en cours de validité traduite chez un traducteur agréé
+  btn4: W Export International & Dom/Tom pour les particulier étranger résidant hors Union Européenne
+  h34: W Export International & Dom/Tom (Particulier étranger résidant hors Union Européenne)
+  btn5: W Export International & Dom/Tom pour les particulier résidant dans les Dom/Com/Pom
+  h35: W Export International & Dom/Tom (Particulier résidant dans les Dom/Com/Pom)
+douanePage:
+  h11: Déclaration Douane
+  h51: Type d’immatriculation
+  btn1: Véhicule immatriculé en WW
+  h31: Déclaration Douanière d'Exportation (Immatriculation en WW)
+  h32: Déclaration Douanière d'Exportation
+  p1: Conditions d’application
+  li1: Pour une destination d’export hors de l’Union Européenne.
+  li2: Copie du certificat de conformité ou PV des Mines (3 en 1)
+  li3: Copie du certificat provisoire d’immatriculation
+  li4: Copie du passeport en cours de validité
+  li5: Copie de la facture du véhicule hors taxe
+  p2: ATTENTION:Si votre véhicule n'a jamais été immatriculé, ce service ne vous sera pas accessible. Veuillez utiliser un TT ou un W Export dans ce cas.
+  btn2: Autres types
+  h33: Déclaration Douanière d'Exportation (Autres types d’immatriculation)
+  li6: Copie de la carte grise barrée datée et signée de la part du vendeur avec la mention vendu le ../../..
+  li7: Copie du certificat de cession (vente)
+  li8: Certificat de situation (non gage)
+  li9: Fin de démonstration si véhicule de démonstration (à réclamer au concessionnaire) ou déclaration d’achat si véhicule racheter par la concession
+  li10: Copie du passeport en cours de validité
+  li11: Justificatif de domicile de moins de trois mois
+  li12: Copie de la facture du véhicule hors taxe
+  p3: ATTENTION:Si votre véhicule n'a jamais été immatriculé, ce service ne vous sera pas accessible. Veuillez utiliser un TT ou un W Export dans ce cas.
+transport:
+  p1: Pour toute autre demande, telle que le transport conteneurisé pour la Réunion, veuillez nous contacter en précisant:le pays de destination, le modèle de véhicule et sa valeur hors taxes.
+tt:
+  p1: Le régime douanier du « Transit Temporaire », dit « TT », permet aux bénéficiaires d’acquérir un véhicule neuf Hors Taxes pendant une durée déterminée par le bureau de douanes.
+  p2: Motif de votre sejour
+  btn1: TT Touriste
+  li1: La carte grise TT
+  li2: Les plaques d’immatriculation TT
+  li3: La déclaration douanière d’exportation
+  li4: Uniquement valable pour les véhicules neufs de tourisme (VP)
+  li5: Personne de nationalité française ou étrangère résidant hors Union Européenne ou dans les DOM/TOM, depuis plus de 6 mois.
+  li6: Pour un séjour de 15 jours minimum à 6 mois maximum (la durée d'immatriculation ne peut pas être inférieure à 15 jours).
+  p3: ATTENTION:En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…), il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.
+  li7: Demande d’engagement TT Touriste
+  li8: Pouvoir TT Touriste
+  li9: Mandat TT Touriste
+  li10: Copie du passeport ou de la CNI, en cours de validité
+  li11: Copie d’une preuve de résidence :facture d’eau, d’électricité, téléphone de moins de 3 mois
+  li12: Copie de la Taxe d’Habitation ou de la Taxe Foncière de l’année précédente
+  li13: PV des mines original, tamponné et signé par le concessionnaire
+  li14: Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM et l’annotation « Exonération de TVA article 262-1 du CGI »
+  li15: Billets d’avion aller/retour
+  p4: Quand nous disposons des documents, il faut compter 24 à 48h pour effectuer le TT.
+  btn2: Etudes
+  h31: TT Etudiant
+  li16: Acheter un véhicule neuf de tourisme, jamais immatriculé, en France Métropolitaine.
+  li17: Résider habituellement, ainsi que ses parents, hors de l’UE ou dans un Dom/Tom depuis plus de 6 mois.<
+  li18: Effectuer des études secondaires ou supérieures en France métropolitaine.
+  li19: Ne pas exercer d’activité rémunérée.
+  p5: ATTENTION:En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…), il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.
+  p6: Durée de validité
+  p7: La carte « TT étudiant » est valable pendant la durée de l’année scolaire. Elle est NON renouvelable.<
+  li20: Ordre de mission ou attestation de réaffectation de l’employeur ou attestation sur l’honneur si le client exerce une profession libérale ou certificat de changement de résidence émis par la Mairie
+  li21: Pouvoir TT Étudiant
+  li22: Mandat TT Étudiant
+  li23: Attestation étudiant TT Étudiant
+  li24: Attestation parentale TT Étudiant
+  li25: Demande d’engagement TT Étudiant
+  li26: Copie de la carte étudiant
+  li27: Copie du certificat de scolarité
+  li28: Copie de la carte de séjour ou de son récépissé, pour un étudiant de nationalité étrangère
+  li29: Certificat de résidence des parents émis par le Consulat ou la Mairie de leur commune
+  btn3: Mission ou Stage
+  h32: TT Mission ou Stage
+  li30: Uniquement valable pour les véhicules neufs de tourisme (VP).
+  li31: Résider habituellement hors de l’U.E. ou dans un Dom/Tom.
+  li32: Être détaché par un organisme privé ou public, en France métropolitaine, pour une durée d’un an maximum pour un stage ou deux ans pour une mission.
+  p8: Maximum un an pour un stage, deux ans pour une mission
+  li33: Demande d’engagement TT Mission ou Stage
+  li34: Pouvoir TT Mission ou Stage
+  li35: Mandat TT Mission ou Stage
+  li36: Copie de la carte de séjour pour les ressortissants étrangers, ou copie d’un justificatif de domicile de moins de 3 mois pour les résidents des DOM/TOM
+  li37: Une attestation de la société ou de l’organisme étranger concernant le stage ou la mission
+  li38: Une attestation de la société ou de l’organisme d’accueil en France métropolitaine
+  btn4: Dérogation
+  h34: TT Dérogatoire
+  li39: Ce régime est réservé aux personnes résidant en France métropolitaine et dont le départ définitif ou l’affectation hors de l’U.E. est prévue dans les 3 mois.
+  li40: Le véhicule « TT » doit être acheté neuf en France Métropolitaine.
+  p9: Le régime « TT dérogation » a une durée de validité de 3 mois maximum. Il s’adresse aux personnes déménageant de métropole à destination de l’étranger ou d’un Dom/Tom.
+  li41: Demande d’engagement TT Dérogatoire
+  li42: Pouvoir TT Dérogatoire
+  li43: Mandat TT Dérogatoire

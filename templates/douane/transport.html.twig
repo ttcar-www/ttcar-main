@@ -3,7 +3,7 @@
 {% block body %}
 <section class="b-pageHeader">
     <div class="container">
-        <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">Transit temporaire</h1>
+        <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">{{ 'menu.temporary'|trans({}, 'messages') }}</h1>
         {#   <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
             <h3>Read Latest Auto News &amp; Reviews</h3>
         </div>#}
@@ -12,12 +12,12 @@
 
 <div class="b-blog s-shadow" style="margin-bottom: 15%">
     <div class="container">
-        <h3>Transport</h3>
-        <p>TT CAR TRANSIT vous propose de prendre en charge l'expédition maritime de votre véhicule pour toutes destinations dans le monde.</p>
+        <h3>{{ 'douane.transport'|trans({}, 'messages') }}</h3>
+        <p>{{ 'douane.transportSubtiltle'|trans({}, 'messages') }}</p>
         <div class="row" style="text-align: center">
-            <h2>Transport Maritime</h2>
+            <h2>{{ 'douane.list3'|trans({}, 'messages') }}</h2>
             <img src="{{ asset('build/doc/dounaExport/de-transport-tarifs.png') }}" alt="tarif" width="60%" style="margin: 1%">
-            <p class="border_red">Pour toute autre demande, telle que le transport conteneurisé pour la Réunion, veuillez nous contacter en précisant: le pays de destination, le modèle de véhicule et sa valeur hors taxes.</p>
+            <p class="border_red">{{ 'transport.p1'|trans({}, 'messages') }}</p>
         </div>
     </div>
 </div>
