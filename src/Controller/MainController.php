@@ -8,6 +8,7 @@ use App\Entity\Mark;
 use App\Entity\Newsletter;
 use App\Entity\Place;
 use App\Entity\Price;
+use App\Entity\Promotions;
 use App\Entity\User;
 use App\Form\EditMeUserFormType;
 use App\Form\NewsletterFormType;
@@ -43,12 +44,24 @@ class MainController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Cars::class);
         $today = new \DateTime('@'.strtotime('now'));
         $repository_blog = $this->getDoctrine()->getRepository(Blog::class);
+        $repository_promotions = $this->getDoctrine()->getRepository(Promotions::class);
 
         $posts = $repository_blog->findThreeLast();
 
         $cars = $repository->findBy(
             ["is_online" => true]
         );
+        $cars_promo = [];
+        foreach ($cars as $car) {
+            $promos = $repository_promotions->findBy(
+                ["mark" => $car->getMark()]
+            );
+            foreach ($promos as $promo) {
+                if ($car->getMark() == $promo->getMark()) {
+                    array_push($cars_promo, $car);
+                }
+            }
+        }
 
         $formSearch= $this->getFormSearch($request);
 
@@ -87,6 +100,7 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig', [
             'cars' =>$cars,
             'posts' => $posts,
+            'cars_promo' => $cars_promo,
             'form_newsletter' => $form_newsletter->createView(),
             'formSearch' => $formSearch->createView()
         ]);
