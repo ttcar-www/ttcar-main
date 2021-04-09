@@ -120,7 +120,7 @@ class BlogController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Blog::class);
 
         $post = $repository->find($id);
-        $lastPost = $repository->findTwoLast();
+        $lastPost = $repository->findThreeLast();
         $categories = $repositoryCategory->findAll();
 
         return $this->render('main/post.html.twig', [
