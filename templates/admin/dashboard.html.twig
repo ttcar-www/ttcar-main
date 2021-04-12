@@ -72,7 +72,7 @@
                     <div id="coin_sales4" style="height: 240px; text-align: center;">
                         <p> 10 derniers jours :  +{{ contacts|length }} Contact non lu</p>
                         {% for contact in contacts %}
-                            <p> <span>{{ contact.getEmail }}  :</span> <span> {{  contact.getCreateAt|date("m/d/Y") }}</span></p>
+                            <p> <span>{{ contact.getEmail|u.truncate(10, ' ') }}  :</span> <span> {{  contact.getCreateAt|date("m/d/Y") }}</span></p>
                         {% endfor %}
                     </div>
                 </div>
