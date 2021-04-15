@@ -30,7 +30,10 @@ class UserController extends AbstractController
         $reason = null;
 
         if ($user){
-            if ($user->getIsCustomer()){
+            if ($user->getCustomer() === null){
+
+             return $this->redirectToRoute('create_customer');
+            }else{
                 $user = $this->getDoctrine()
                     ->getRepository(Customer::class)
                     ->findOneBy(['user' => $user->getId()]);
@@ -38,9 +41,6 @@ class UserController extends AbstractController
                 $nationality = $user->getNationality()->getNameFr();
                 $country_ue = $user->getAdressCountry()->getNameFr();
                 $country_hue = $user->getAdressCountryHue()->getNameFr();
-
-            }else{
-                $this->redirectToRoute('create_customer');
             }
         }
 
@@ -59,13 +59,17 @@ class UserController extends AbstractController
     public function profilOrder(): Response
     {
         $user = $this->getUser();
-        $customer = $this->getDoctrine()
-            ->getRepository(Customer::class)
-            ->findOneBy(['email' => $user->getEmail()]);
+        $orders = null;
+        if ($user->getCustomer() == true) {
+            $customer = $this->getDoctrine()
+                ->getRepository(Customer::class)
+                ->findOneBy(['email' => $user->getEmail()]);
 
-       $orders = $this->getDoctrine()
-            ->getRepository(Order::class)
-            ->findBy(['email' => $customer->getEmail()]);
+            $orders = $this->getDoctrine()
+                ->getRepository(Order::class)
+                ->findBy(['email' => $customer->getEmail()]);
+
+        }
 
         return $this->render('main/my_order.html.twig',
             [
