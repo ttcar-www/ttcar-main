@@ -502,4 +502,22 @@ class CarsController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+    /**
+     * @Route("/admin/delete_slice/{id}", name="delete_slice")
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function deleteSlice($id): RedirectResponse
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Slice::class);
+        $slice = $repository->find($id);
+
+        $entityManager->remove($slice);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('manage_slice');
+    }
 }

@@ -23,7 +23,7 @@
                                 <thead class="text-uppercase">
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Nom</th>
+                                    <th scope="col">Référence</th>
                                     <th scope="col">Valeur</th>
                                     <th scope="col">Date de debut</th>
                                     <th scope="col">Date de fin</th>
@@ -43,7 +43,7 @@
                                         <td>{{ price.getDateStartDelivery|date("m/d/Y") }}</td>
                                         <td>{{ price.getDateEndDelivery|date("m/d/Y") }}</td>
                                         <td>
-                                            <a href="{{ path('create_slice', { 'id': price.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                            <a href="{{ path('create_slice', { 'id': price.id }) }}"><i class="fas fa-plus-circle"></i>Ajouter une tranche</a>
 {#                                            <br>#}
 {#                                            <a href="{{ path('delete_price', { 'id': price.id }) }}"#}
 {#                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>#}

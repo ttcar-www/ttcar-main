@@ -12,198 +12,111 @@
 
     <div class="b-breadCumbs s-shadow">
         <div class="container wow zoomInUp" data-wow-delay="0.5s">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
-            <a href="#" class="b-breadCumbs__page m-active">Submit a Vehicle</a>
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Accueil</a><span class="fa fa-angle-right"></span>
+            <a href="#" class="b-breadCumbs__page m-active">Ajouter une voiture</a>
         </div>
     </div><!--b-breadCumbs-->
 
-
-    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-infoBar__progress-line clearfix">
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                                <div class="b-infoBar__progress-line-step-circle m-last">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-infoBar-->
 
     <div class="b-submit">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
                     <aside class="b-submit__aside">
+                        <h3>Step 1</h3>
                         <div class="b-submit__aside-step m-active wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 1</h3>
                             <div class="b-submit__aside-step-inner m-active clearfix">
-                                <div class="b-submit__aside-step-inner-icon">
-                                    <span class="fa fa-car"></span>
-                                </div>
                                 <div class="b-submit__aside-step-inner-info">
-                                    <h4>Add YOUR Vehicle</h4>
-                                    <p>Select your vehicle &amp; add info</p>
+                                    <h4>Détails de la voiture</h4>
+                                    <p>Informations sur la voiture</p>
                                     <div class="b-submit__aside-step-inner-info-triangle"></div>
                                 </div>
                             </div>
                         </div>
- {#                       <div class="b-submit__aside-step wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 2</h3>
-                            <div class="b-submit__aside-step-inner clearfix">
-                                <div class="b-submit__aside-step-inner-icon">
-                                    <span class="fa fa-list-ul"></span>
-                                </div>
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>select details</h4>
-                                    <p>Choose vehicle specifications</p>
-                                </div>
-                            </div>
-                        </div>#}
-  {#                      <div class="b-submit__aside-step wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 3</h3>
-                            <div class="b-submit__aside-step-inner clearfix">
-                                <div class="b-submit__aside-step-inner-icon">
-                                    <span class="fa fa-photo"></span>
-                                </div>
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>Photos &amp; videos</h4>
-                                    <p>Add images / videos of vehicle</p>
-                                </div>
-                            </div>
-                        </div>#}
-         {#               <div class="b-submit__aside-step wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 4</h3>
-                            <div class="b-submit__aside-step-inner clearfix">
-                                <div class="b-submit__aside-step-inner-icon">
-                                    <span class="fa fa-user"></span>
-                                </div>
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>Contact details</h4>
-                                    <p>Choose vehicle specifications</p>
-                                </div>
-                            </div>
-                        </div>#}
-  {#                      <div class="b-submit__aside-step wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 5</h3>
-                            <div class="b-submit__aside-step-inner clearfix">
-                                <div class="b-submit__aside-step-inner-icon">
-                                    <span class="fa fa-globe"></span>
-                                </div>
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>SUBMIT &amp; PUBLISH</h4>
-                                    <p>Add images / videos of vehicle</p>
-                                </div>
-                            </div>
-                        </div>#}
                     </aside>
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
                     <div class="b-submit__main">
                         <header class="s-headerSubmit s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-                            <h2 class="">Add Your Vehicle Details</h2>
+                            <h2 class="">Informations sur la voiture/h2>
                         </header>
                         {{ form_start(form) }}
                             <div class="row">
                                 <div class="col-md-6 col-xs-12">
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter name <span>*</span></label>
+                                        <label>Nom <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.name) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter desc <span>*</span></label>
+                                        <label>Description <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.description) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter Items<span>*</span></label>
+                                        <label>Accessoires<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.items) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter Start date<span>*</span></label>
+                                        <label>Date de debut<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.date_start) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter End Date<span>*</span></label>
+                                        <label>Date de fin<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.date_end) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter selling price<span>*</span></label>
+                                        <label>Prix de vente<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.sellingPrice) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter years <span>*</span></label>
+                                        <label>Année <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.years) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter coef en %<span>*</span></label>
+                                        <label>Marge en %<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.margin) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-contacts-check">
-                                        <label>Vehicle fuel<span>*</span></label>
+                                        <label>Carburant<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.fuel) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Roof rack <span>*</span></label>
+                                        <label>Prix de la Barre de toit<span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.roofRack) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Chains <span>*</span></label>
+                                        <label>Prix des Chaines <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.chains) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Passengers <span>*</span></label>
+                                        <label>Passagers <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.passenger) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Door <span>*</span></label>
+                                        <label>Portes <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.door) }}
                                         </div>
@@ -221,7 +134,7 @@
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Contact soon <span>*</span></label>
+                                        <label>Message sur la disponibilité <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.contactActived) }}
                                         </div>
@@ -233,13 +146,13 @@
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Luggage <span>*</span></label>
+                                        <label>Baguage <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.luggage) }}
                                         </div>
                                     </div>
                                     <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                        <label>Enter img <span>*</span></label>
+                                        <label>Image <span>*</span></label>
                                         <div class='s-relative'>
                                             {{ form_row(form.carImg) }}
                                         </div>
@@ -328,7 +241,7 @@
                                     </div>#}
                                 </div>
                             </div>
-                            <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.5s">Save &amp; PROCEED to next step<span class="fa fa-angle-right"></span></button>
+                            <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.5s">Sauvegarder<span class="fa fa-angle-right"></span></button>
                         {{ form_end(form) }}
                     </div>
                 </div>
