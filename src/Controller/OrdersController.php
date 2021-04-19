@@ -14,6 +14,7 @@ use App\Entity\TypePromo;
 use App\Entity\User;
 use App\Form\OrderFormType;
 use App\Form\OrderSimpleFormType;
+use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,8 +72,8 @@ class OrdersController extends AbstractController
             $today = new \DateTime('@' . strtotime('now'));
 
             // Calcule du nombres de jours
-            $nb_days = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
-
+            $betweenDate = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
+            $nb_days = $betweenDate +1;
             //Prix depart retour
             $price_depart = $this->getPriceDeparture();
             $price_return = $this->getPriceReturn();
@@ -560,8 +561,8 @@ class OrdersController extends AbstractController
             ->getRepository(Order::class)
             ->findOneBy(['id' => $id]);
 
-        $nb_days = $this->betdweenDate($order->getDepartDate(), $order->getReturnDate());
-
+        $betweenDate = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
+        $nb_days = $betweenDate +1;
 
         if (isset($_SESSION['priceOrder'])) {
             $order->setPrice($_SESSION['priceOrder']);
