@@ -25,6 +25,11 @@ class Place
     private $libelle;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $libelle_en;
+
+    /**
      * @ORM\OneToMany(targetEntity=Promotions::class, mappedBy="place_delivery")
      */
     private $promotion;
@@ -157,5 +162,22 @@ class Place
     public function setPlacePDF($placePDF): void
     {
         $this->placePDF = $placePDF;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getLibelleEn()
+    {
+        return $this->libelle_en;
+    }
+
+    /**
+     * @param mixed $libelle_en
+     */
+    public function setLibelleEn($libelle_en): void
+    {
+        $this->libelle_en = $libelle_en;
     }
 }

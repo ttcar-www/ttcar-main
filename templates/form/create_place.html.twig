@@ -82,9 +82,27 @@
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter libelle <span>*</span></label>
+                                    <label>Saisir le nom <span>*</span></label>
                                     <div class='s-relative'>
                                         {{ form_row(form.libelle) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Saisir le nom en Anglais<span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.libelle_en) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Saisir le Prix <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.price) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label> PDF <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.placePDF) }}
                                     </div>
                                 </div>
                             </div>
