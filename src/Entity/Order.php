@@ -346,6 +346,12 @@ class Order
     private $comment;
 
     /**
+     * @var string The hashed password
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $password;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $profession;
@@ -1030,4 +1036,20 @@ class Order
     {
         $this->countItems = $countItems;
     }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
 }
