@@ -49,12 +49,10 @@ class PlaceFormType extends AbstractType
                     new File([
                         'maxSize' => '1024k',
                         'mimeTypes' => [
-                            "image/jpeg",
-                            "image/png",
-                            "image/gif",
-                            "image/jpg"
+                            'application/pdf',
+                            'application/x-pdf'
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid img document',
+                        'mimeTypesMessage' => 'Please upload a valid pdf document',
                     ])
                 ],
             ])
