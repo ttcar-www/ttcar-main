@@ -9,9 +9,9 @@
                 <div class="single-report" style=" margin-bottom: 2%">
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
-                            <h4 class="header-title mb-0">Product Sold</h4>
+                            <h4 class="header-title mb-0">Commandes</h4>
                             <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 10 Days</option>
+                                <option selected="">10 derniers jours</option>
                             </select>
                         </div>
                     </div>
@@ -27,14 +27,14 @@
                 <div class="single-report">
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
-                            <h4 class="header-title mb-0">NCustomers</h4>
+                            <h4 class="header-title mb-0">Nouveau Clients</h4>
                             <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 10 Days</option>
+                                <option selected="">10 derniers jours</option>
                             </select>
                         </div>
                     </div>
                     <div id="coin_sales4" style="height: 240px; text-align: center;">
-                        <p> 10 derniers jours :  +{{ users|length }} New Customer</p>
+                        <p> 10 derniers jours :  +{{ users|length }} Clients</p>
                         {% for user in users %}
                             <p> {{ user.getUsername }} €</p>
                         {% endfor %}
@@ -45,14 +45,14 @@
                 <div class="single-report">
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
-                            <h4 class="header-title mb-0">Orders</h4>
+                            <h4 class="header-title mb-0">Commandes</h4>
                             <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 10 Days</option>
+                                <option selected="">10 derniers jours</option>
                             </select>
                         </div>
                     </div>
                     <div id="coin_sales4" style="height: 240px; text-align: center;">
-                        <p> 10 derniers jours :  +{{ orders|length }} New Order</p>
+                        <p> 10 derniers jours :  +{{ orders|length }} Commandes</p>
                         {% for order in orders %}
                             <p> <span>{{ order.id }}  :</span> <span> {{ order.price }} €</span></p>
                         {% endfor %}
@@ -63,14 +63,14 @@
                 <div class="single-report">
                     <div class="s-sale-inner pt--30 mb-3">
                         <div class="s-report-title d-flex justify-content-between">
-                            <h4 class="header-title mb-0">Contact</h4>
+                            <h4 class="header-title mb-0">Messages</h4>
                             <select class="custome-select border-0 pr-3">
-                                <option selected="">Last 10 Days</option>
+                                <option selected="">10 derniers jours</option>
                             </select>
                         </div>
                     </div>
                     <div id="coin_sales4" style="height: 240px; text-align: center;">
-                        <p> 10 derniers jours :  +{{ contacts|length }} Contact non lu</p>
+                        <p> 10 derniers jours :  +{{ contacts|length }} Messages</p>
                         {% for contact in contacts %}
                             <p> <span>{{ contact.getEmail|u.truncate(10, ' ') }}  :</span> <span> {{  contact.getCreateAt|date("m/d/Y") }}</span></p>
                         {% endfor %}
@@ -80,23 +80,23 @@
         </div>
     <div class="card mt-5">
         <div class="card-body">
-            <h4 class="header-title">Todays Order List</h4>
+            <h4 class="header-title">Commandes</h4>
             <div class="table-responsive">
                 <table class="dbkit-table">
                     <tbody>
                     <tr class="heading-td">
-                        <td>Name</td>
-                        <td>Order Code</td>
-                        <td>Order Status</td>
-                        <td>Order Price</td>
-                        <td>Order date</td>
+                        <td>Nom</td>
+                        <td>Code</td>
+                        <td>Status</td>
+                        <td>Prix</td>
+                        <td>Date</td>
                         <td>Action</td>
                     </tr>
                     {% for order in orders %}
                     <tr>
                         <td>{{  order.getCustomerName }}-{{  order.getCustomerUsername }}</td>
                         <td>{{  order.id }}</td>
-                        <td><span class="pending_dot">Pending</span></td>
+                        <td><span class="pending_dot">En attente</span></td>
                         <td>{{  order.getPrice }}</td>
                         <td>{{  order.getCreateDate|date("m/d/Y") }}</td>
                         <td>View Order</td>

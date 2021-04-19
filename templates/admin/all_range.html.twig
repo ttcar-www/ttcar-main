@@ -11,9 +11,9 @@
                             <img class="img-fluid mr-4" src="{{ asset('build/uploads/'~ mark.getMarkImg) }}" style="width: 20%">
                             <div class="media-body">
                                 <h4 class="mb-3">{{ mark.libelle }}</h4>
-                                <a href="{{ path('path_to_range',{ 'path': mark.id }) }}" class="btn btn-outline-success">Choice this range </a>
+                                <a href="{{ path('path_to_range',{ 'path': mark.id }) }}" class="btn btn-outline-success">Ajouter une voiture</a>
                                 <br><br>
-                                <a href="{{ path('create_mark_promo',{ 'id': mark.id }) }}" class="btn btn-outline-warning">Add Promotion </a>
+                                <a href="{{ path('create_mark_promo',{ 'id': mark.id }) }}" class="btn btn-outline-warning">Ajouté une promotion à la marque </a>
                             </div>
                         </div>
                     </div>
