@@ -25,6 +25,14 @@ class PlaceFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
+            ->add('libelle_en', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('price', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
             ->add('placePDF', FileType::class, [
                 'label' => false,
 
