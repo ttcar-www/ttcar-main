@@ -14,7 +14,7 @@ use App\Entity\TypePromo;
 use App\Entity\User;
 use App\Form\OrderFormType;
 use App\Form\OrderSimpleFormType;
-use DateInterval;
+use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,10 +39,11 @@ class OrdersController extends AbstractController
      * @param $id
      * @param PriceService $PriceService
      * @param AuthenticationUtils $authenticationUtils
+     * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      * @throws Exception
      */
-    public function index(Request $request, $id, PriceService $PriceService, AuthenticationUtils $authenticationUtils)
+    public function index(Request $request, $id, PriceService $PriceService, AuthenticationUtils $authenticationUtils, UserPasswordEncoderInterface $passwordEncoder)
     {
         //Gestion de l'erreur si la session est expiré
         if (empty($_SESSION['searchResult'])) {
@@ -96,6 +97,7 @@ class OrdersController extends AbstractController
                 $formOrder = $this->createForm(
                     OrderSimpleFormType::class,
                     $order);
+
             } else {
                 $user = null;
                 $formOrder = $this->createForm(
@@ -126,6 +128,7 @@ class OrdersController extends AbstractController
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
                 $order->setPromoLibelle($promos->getLibelle());
+                $order->setPassword($formOrder->get('plainPassword')->getData());
 
                 if ($user) {
                     $order->setCustomerName($user->getName());
@@ -478,7 +481,7 @@ class OrdersController extends AbstractController
             $newUser->setIsVerified(false);
             $newUser->setPassword($this->passwordEncoder->encodePassword(
                 $newUser,
-                'the_new_password'
+                $order->getPassword()
             ));
 
             $newCustomer = $this->newCustomer($newUser, $order);
@@ -537,10 +540,13 @@ class OrdersController extends AbstractController
 
             $newCustomer->setUser($newUser);
             $newUser->setIsCustomer(true);
+            $order->setPassword('NULL');
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($newCustomer);
             $em->persist($newUser);
+            $em->persist($order);
+
             $em->flush();
 
         }
