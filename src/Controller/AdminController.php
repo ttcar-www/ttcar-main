@@ -15,6 +15,7 @@ use App\Entity\Price;
 use App\Entity\Promotions;
 use App\Entity\Range;
 use App\Entity\Reason;
+use App\Entity\Slice;
 use App\Entity\User;
 use App\Form\ContactFormType;
 use App\Form\EditAccessoryFormType;
@@ -214,6 +215,20 @@ class AdminController extends AbstractController
 
         return $this->render('admin/manage_prices.html.twig', [
             'prices' =>$prices
+        ]);
+    }
+
+    /**
+     * @Route("/manage_slice", name="manage_slice")
+     */
+    public function manageSlice(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Slice::class);
+
+        $slices = $repository->findAll();
+
+        return $this->render('admin/manage_slice.html.twig', [
+            'slices' =>$slices
         ]);
     }
 

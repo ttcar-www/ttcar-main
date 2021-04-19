@@ -34,16 +34,20 @@ class PriceFormType extends AbstractType
                 'label' => false
             ))
             ->add('date_start', DateType::class, array(
-                'label' => false
+                'label' => false,
+                'widget' => 'single_text'
             ))
             ->add('date_end', DateType::class, array(
-                'label' => false
+                'label' => false,
+                'widget' => 'single_text'
             ))
             ->add('date_start_delivery', DateType::class, array(
-                'label' => false
+                'label' => false,
+                'widget' => 'single_text'
             ))
             ->add('date_end_delivery', DateType::class, array(
-                'label' => false
+                'label' => false,
+                'widget' => 'single_text'
             ))
         ;
     }
