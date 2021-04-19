@@ -128,7 +128,6 @@ class OrdersController extends AbstractController
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
                 $order->setPromoLibelle($promos->getLibelle());
-                $order->setPassword($formOrder->get('plainPassword')->getData());
 
                 if ($user) {
                     $order->setCustomerName($user->getName());
@@ -154,6 +153,8 @@ class OrdersController extends AbstractController
                     $order->setAdressCityHue($user->getAdressCityHue());
                     $order->setAdressCodeHue($user->getAdressCodeHue());
                     $order->setProfession($user->getProfession());
+                }else {
+                    $order->setPassword($formOrder->get('plainPassword')->getData());
                 }
 
 
