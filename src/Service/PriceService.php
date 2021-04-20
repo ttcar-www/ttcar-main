@@ -78,7 +78,7 @@ class PriceService
         $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
         $price = $car->getPrice()->getPrice();
 
-        // Adition des prix par rapport au lieux de départ et retour
+        // Addition des prix par rapport au lieux de départ et retour
         $total_place = $priceDepart + $priceReturn;
 
         $margin = $car->getMargin();
