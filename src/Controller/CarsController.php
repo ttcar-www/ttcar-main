@@ -396,10 +396,10 @@ class CarsController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Voiture créé'
+                'Voiture/prix créé'
             );
 
-            return $this->redirectToRoute('manage_cars');
+            return $this->redirectToRoute('create_slice', ['id' => $price->getId()]);
         }
 
         return $this->render('form/create_price.html.twig', [
