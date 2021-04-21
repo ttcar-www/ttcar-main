@@ -227,4 +227,24 @@ class PromotionController extends AbstractController
 
         return $this->redirectToRoute('manage_promotion');
     }
+
+    /**
+     * @Route("/admin/copyPromo/{id}", name="copyPromo")
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function copy($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $originalPromo = $this->getDoctrine()
+            ->getRepository(Promotions::class)
+            ->find($id);
+
+        $newPromo = clone $originalPromo;
+
+        $entityManager->persist($newPromo);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('edit_promo', ['id' => $newPromo->getId()]);
+    }
 }

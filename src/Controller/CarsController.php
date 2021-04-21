@@ -25,11 +25,13 @@ use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\Json;
 
 
 class CarsController extends AbstractController
@@ -519,5 +521,25 @@ class CarsController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('manage_slice');
+    }
+
+    /**
+     * @Route("/admin/copy/{id}", name="copy")
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function copy($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $originalCar = $this->getDoctrine()
+            ->getRepository(Cars::class)
+            ->find($id);
+
+        $newCar = clone $originalCar;
+
+        $entityManager->persist($newCar);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('edit_car', ['id' => $newCar->getId()]);
     }
 }
