@@ -59,6 +59,8 @@
                                         <td>
                                              <a href="{{ path('edit_promo', { 'id': promo.id }) }}"><i class="fas fa-edit"></i></a>
                                             <br>
+                                            <a href="{{ path('copyPromo', { 'id': promo.id }) }}"><i class="fas fa-copy"></i></a>
+                                            <br>
                                             <a href="{{ path('delete_promo', { 'id': promo.id }) }}"
                                                onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
                                         </td>

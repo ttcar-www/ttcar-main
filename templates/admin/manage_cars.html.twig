@@ -62,6 +62,8 @@
                                                onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
                                             <br>
                                             <a href="{{ path('detail_car', { 'id': car.id }) }}"><i class="fas fa-eye"></i></a>
+                                            <br>
+                                            <a href="{{ path('copy', { 'id': car.id }) }}"><i class="fas fa-copy"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}
