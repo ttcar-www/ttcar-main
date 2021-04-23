@@ -60,6 +60,11 @@ class Mark
      */
     private $slices;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $daySlices;
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
@@ -252,5 +257,22 @@ class Mark
         }
 
         return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getDaySlices()
+    {
+        return $this->daySlices;
+    }
+
+    /**
+     * @param mixed $daySlices
+     */
+    public function setDaySlices($daySlices): void
+    {
+        $this->daySlices = $daySlices;
     }
 }

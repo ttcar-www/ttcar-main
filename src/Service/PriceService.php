@@ -44,18 +44,9 @@ class PriceService
      */
     public function getPriceBySlice($slices) {
         $price = null;
-        foreach ($slices as $slice) {
 
-            switch ($slice->getType()) {
-                case '€':
-                    $price = $slice->getValue();
-                    return $price;
-                    break;
-                case '%':
-                    $price =  $slice->getValue()*($slice->getValue()/100);
-                    return $price;
-                    break;
-            }
+        foreach ($slices as $slice) {
+            $price = $slice->getValue();
             return $price;
         }
 

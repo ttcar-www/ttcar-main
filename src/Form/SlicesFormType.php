@@ -39,16 +39,6 @@ class SlicesFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
-            ->add('type', ChoiceType::class, [
-                'choices' => [
-                    '%' => '%',
-                    '€' => '€',
-                    'jours' => 'jours'
-                ],
-                'expanded' => false,
-                'multiple' => false,
-                'label' => false
-            ])
             ->add('operators', ChoiceType::class, [
                 'choices' => [
                     'Inférieur' => '<',

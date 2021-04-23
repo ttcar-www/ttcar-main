@@ -45,11 +45,6 @@ class Slice
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $type;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $operators;
 
     /**
@@ -158,22 +153,6 @@ class Slice
     public function setDays($days): void
     {
         $this->days = $days;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type): void
-    {
-        $this->type = $type;
     }
 
     /**

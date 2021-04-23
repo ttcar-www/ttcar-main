@@ -281,7 +281,7 @@ class CarsController extends AbstractController
             $em->persist($mark);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('manage_mark');
         }
 
         return $this->render('form/edit_mark.html.twig', [
