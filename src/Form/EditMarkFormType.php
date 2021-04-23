@@ -24,6 +24,10 @@ class EditMarkFormType extends AbstractType
             ->add('margin', NumberType::class, array(
                 'label' => false
             ))
+            ->add('daySlices', TextType::class, array(
+                'required' => true,
+                'label' => 'tranche de jours séparé par une virgule'
+            ))
             ->add('markImg', FileType::class, [
                 'label' => false,
 

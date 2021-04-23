@@ -233,6 +233,20 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/manage_mark", name="manage_mark")
+     */
+    public function manageMark(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Mark::class);
+
+        $marks = $repository->findAll();
+
+        return $this->render('admin/manage_mark.html.twig', [
+            'marks' =>$marks
+        ]);
+    }
+
+    /**
      * Manage range with back office
      * @Route("/path_to_range/{path}", name="path_to_range")
      * @param $path
