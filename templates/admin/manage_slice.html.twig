@@ -41,13 +41,8 @@
                                         <th scope="row">{{ slice.id }}</th>
                                         <td>{{ slice.getCodePrice }}</td>
                                         <td>{{ slice.value }}</td>
-                                        <td>{{ slice.type }}</td>
-                                        <td>{{ slice.operators }}</td>
                                         <td>{{ slice.getCodePrice }}</td>
-                                        <td>{{ slice.getDaysMin }}</td>
-                                        <td>{{ slice.getDaysMax }}</td>
                                         <td>{{ slice.getDays }}</td>
-                                        <td>{{ slice.type }}</td>
                                         <td><a href="{{ path('delete_slice', { 'id': slice.id }) }}" onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a></td>
                                     </tr>
                                 {% endfor %}

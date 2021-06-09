@@ -25,27 +25,12 @@ class Slice
     /**
      * @ORM\Column(type="integer")
      */
-    private $days_min;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $days_max;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $value;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $days;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $operators;
 
     /**
      * @ORM\ManyToOne(targetEntity=Price::class, inversedBy="slices")
@@ -70,30 +55,6 @@ class Slice
     public function setCodePrice(?string $code_price): self
     {
         $this->code_price = $code_price;
-
-        return $this;
-    }
-
-    public function getDaysMin(): ?int
-    {
-        return $this->days_min;
-    }
-
-    public function setDaysMin(int $days_min): self
-    {
-        $this->days_min = $days_min;
-
-        return $this;
-    }
-
-    public function getDaysMax(): ?int
-    {
-        return $this->days_max;
-    }
-
-    public function setDaysMax(int $days_max): self
-    {
-        $this->days_max = $days_max;
 
         return $this;
     }
@@ -153,21 +114,5 @@ class Slice
     public function setDays($days): void
     {
         $this->days = $days;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOperators()
-    {
-        return $this->operators;
-    }
-
-    /**
-     * @param mixed $operators
-     */
-    public function setOperators($operators): void
-    {
-        $this->operators = $operators;
     }
 }

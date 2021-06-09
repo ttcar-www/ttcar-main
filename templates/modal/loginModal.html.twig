@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal" id="myModal"  role="dialog" style="margin-top: 15%">
+<div class="modal" id="sliceModal"  role="dialog" style="margin-top: 15%">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,7 +22,6 @@
                     <input type="password" name="password" id="inputPassword" class="form-control" required>
                     <input type="hidden" name="_csrf_token"
                            value="{{ csrf_token('authenticate') }}">
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" onclick="CloseModal()">Close</button>
                 <input type="hidden" name="_target_path" value="{{ path('account') }}"/>
