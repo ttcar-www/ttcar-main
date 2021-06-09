@@ -57,55 +57,55 @@
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
                     <div class="b-submit__main">
-                        <header class="s-headerSubmit s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-                            <h2 class="">Ajouter une tranche au prix enregistré</h2>
-                        </header>
-                        {{ form_start(form) }}
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Code <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.code_price) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Jours minimun <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.days_min) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Jour maximum <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.days_max) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Valeur <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.value) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Opérateur de calcul<span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.operators) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Jours <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.days) }}
-                                    </div>
-                                </div>
+
+                        <div class="single-table">
+                            <div class="table-responsive">
+                                <table class="table table-striped text-center">
+                                    <thead class="text-uppercase">
+                                    <tr>
+                                        <th scope="col">       <!-- Modal -->
+                                            <button type="button" onclick="ClickModal()"><i class="fas fa-plus-circle"></i></button>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Jours</th>
+                                            {% for slice in slices %}
+                                            <td>{{ slice.getDays }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Valeur</th>
+                                            {% for slice in slices %}
+                                                <td>{{ slice.value }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.5s">Enregistrer<span class="fa fa-angle-right"></span></button>
-                        {{ form_end(form) }}
                     </div>
                 </div>
             </div>
         </div>
-    </div><!--b-submit-->
+    </div>
+    <!--b-submit-->
+    {{ include('modal/sliceModal.html.twig') }}
+
+    <script>
+        function ClickModal() {
+            let x = document.getElementById("sliceModal");
+            let y = document.getElementById("modalClose");
+
+            console.log('ok slothie')
+            x.style.display = "block";
+        }
+
+        function CloseModal() {
+            let x = document.getElementById("sliceModal");
+            x.style.display = "none";
+        }
+    </script>
+
 {% endblock %}

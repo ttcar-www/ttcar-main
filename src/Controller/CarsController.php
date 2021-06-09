@@ -461,20 +461,21 @@ class CarsController extends AbstractController
      */
     public function createSlice(Request $request, $id): Response
     {
-        $cars = $this->getDoctrine()
-            ->getRepository(Cars::class)
-            ->findBy(
-                ['price' => $id]
+        $mark = $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(
+                ['libelle' => $id]
             );
-
-        $mark = null;
-        foreach ($cars as $car){
-            $mark = $car->getMark();
-        }
 
         $price = $this->getDoctrine()
             ->getRepository(Price::class)
             ->find($id);
+
+        $slices = $this->getDoctrine()
+            ->getRepository(Slice::class)
+            ->findBy(
+                ['tarif' => $price]
+            );
 
         $slice = new Slice();
 
@@ -501,7 +502,9 @@ class CarsController extends AbstractController
         }
 
         return $this->render('form/create_slice.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'slices' => $slices,
+            'priceId' =>$price->getId()
         ]);
     }
 

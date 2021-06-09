@@ -10,32 +10,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PriceService
 {
-    /**
-     * @param $operator
-     * @return string|null
-     */
-    public function getOperators($operator) {
-
-        $operator_calcul = null;
-        switch ($operator) {
-            case '<':
-                $operator_calcul = '<';
-                return $operator_calcul;
-                break;
-            case '>':
-                $operator_calcul = '>';
-                return $operator_calcul;
-                break;
-            case '≥':
-                $operator_calcul = '>=';
-                return $operator_calcul;
-                break;
-            case '≤':
-                $operator_calcul = '=<';
-                return $operator_calcul;
-                break;
-        }
-    }
 
     /**
      * @param $slices
@@ -69,6 +43,7 @@ class PriceService
         $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
         $price = $car->getPrice()->getPrice();
 
+
         // Addition des prix par rapport au lieux de départ et retour
         $total_place = $priceDepart + $priceReturn;
 
@@ -88,8 +63,8 @@ class PriceService
             $days = $day_count - 21;
 
             foreach ($slices as $slice) {
-                $operator = $this->getOperators($slice->getOperators());
-                if ($day_count.$operator.$slice->getDaysMin()) {
+
+                if ($day_count > $slice->getDays()) {
                     $day_price = $this->getPriceBySlice($slices);
 
                     //Prix sans marge

@@ -27,11 +27,7 @@ class SlicesFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
-            ->add('days_min', NumberType::class, array(
-                'required' => true,
-                'label' => false
-            ))
-            ->add('days_max', NumberType::class, array(
+            ->add('days', NumberType::class, array(
                 'required' => true,
                 'label' => false
             ))
@@ -39,17 +35,6 @@ class SlicesFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
-            ->add('operators', ChoiceType::class, [
-                'choices' => [
-                    'Inférieur' => '<',
-                    'Inférieur ou égal' => '=<',
-                    'Supérieur' => '>',
-                    'Supérieur ou égal' => '≥'
-                ],
-                'expanded' => false,
-                'multiple' => false,
-                'label' => false
-            ])
             ->add('days', NumberType::class, array(
                 'required' => true,
                 'label' => false

@@ -204,23 +204,24 @@ class OrdersController extends AbstractController
         if (empty($promotions)) {
 
             return $price;
+        }else {
+            $type = $this->getDoctrine()
+                ->getRepository(TypePromo::class)
+                ->findOneBy(['id' => $promotions->getType()]);
+
+            switch ($type->getType()) {
+                case 'Euros':
+                    $price = $price - $promotions->getValue();
+                    return $price;
+                    break;
+                case '%':
+                    $price = $price - $price*($promotions->getValue()/100);
+                    return $price;
+                    break;
+            }
+            return $price;
+
         }
-
-                $type = $this->getDoctrine()
-                    ->getRepository(TypePromo::class)
-                    ->findOneBy(['id' => $promotions->getId()]);
-
-                switch ($type->getType()) {
-                    case 'Euros':
-                        $price = $price - $promotions->getValue();
-                        return $price;
-                        break;
-                    case '%':
-                        $price = $price - $price*($promotions->getValue()/100);
-                        return $price;
-                        break;
-                }
-                return $price;
     }
 
     /**
