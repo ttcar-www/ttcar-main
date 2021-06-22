@@ -498,7 +498,8 @@ class CarsController extends AbstractController
                 'Tranche créé'
             );
 
-            return $this->redirectToRoute('manage_price');
+            return $this->redirectToRoute('create_slice', ['id' => $id]);
+
         }
 
         return $this->render('form/create_slice.html.twig', [
