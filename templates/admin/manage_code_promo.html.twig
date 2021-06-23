@@ -1,0 +1,61 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="group_text">
+        <!-- Striped table start -->
+        {# read and display all flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-warning flash-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Tout les messages</h4>
+                    <a href="{{ path('create_code_promo') }}" style="color: blue" class="btn btn-light"><i class="fas fa-plus-circle"></i> Ajouté un code</a>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <thead class="text-uppercase">
+                                <tr>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Valeur</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for promotion in promotions %}
+                                    <tr>
+                                        {% if promotion.active == true %}
+                                            <td><i class="fas fa-check-circle" style="color: green"></i></td>
+                                        {% else %}
+                                            <td><i class="fas fa-times" style="color: red"></i></td>
+                                        {% endif %}
+                                        <th scope="row">{{ promotion.id }}</th>
+                                        <td>{{ promotion.code }}</td>
+                                        <td>{{ promotion.typePromo }}</td>
+                                        <td>{{ promotion.value }}</td>
+                                        <td>
+                                            <a href="{{ path('delete_promo_code', { 'id': promotion.id }) }}"
+                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                            <br>
+                                            <a href="{{ path('edit_promo_code', { 'id': promotion.id }) }}"><i class="far fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Striped table end -->
+    </div>
+{% endblock %}
