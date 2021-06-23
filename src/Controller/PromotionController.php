@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Mark;
+use App\Entity\PromoCode;
 use App\Entity\Promotions;
 use App\Entity\Range;
 use App\Entity\User;
+use App\Form\EditPromoCodeFormType;
 use App\Form\EditPromoFormType;
+use App\Form\PromoCodeFormType;
 use App\Form\PromotionFormType;
 use App\Form\UserEditFormType;
 use Knp\Component\Pager\PaginatorInterface;
@@ -246,5 +249,110 @@ class PromotionController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('edit_promo', ['id' => $newPromo->getId()]);
+    }
+
+    /**
+     * @Route("/admin/create_code_promo", name="create_code_promo")
+     * @param Request $request
+     * @return Response
+     */
+    public function codePromo(Request $request)
+    {
+        $codePromo = new PromoCode();
+
+        $form = $this->createForm(
+            PromoCodeFormType::class,
+            $codePromo);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($codePromo);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Promotion marque ajouté'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
+        }
+
+        return $this->render('form/promoCode.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/manage_code_promotion", name="manage_code_promotion")
+     */
+    public function manageCodePromo(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(PromoCode::class);
+        $promotions = $repository->findAll();
+
+
+        return $this->render('admin/manage_code_promo.html.twig', [
+            'promotions' => $promotions
+        ]);
+    }
+
+    /**
+     * @Route("/admin/edit_promo_code/{id}", name="edit_promo_code")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function editPromoCode(Request $request, $id): Response
+    {
+        $promo = $this->getDoctrine()
+            ->getRepository(PromoCode::class)
+            ->find($id);
+
+        $form = $this->createForm(
+            EditPromoCodeFormType::class,
+            $promo);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($promo);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Code Promotion modifié'
+            );
+
+            return $this->redirectToRoute('manage_code_promotion');
+        }
+        return $this->render('form/promoCode.html.twig', [
+            'promo' =>$promo,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/delete_promo_code/{id}", name="delete_promo_code")
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function deletePromoCode($id): RedirectResponse
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(PromoCode::class);
+        $promo = $repository->find($id);
+
+        $entityManager->remove($promo);
+        $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Code Promotion supprimé'
+        );
+
+        return $this->redirectToRoute('manage_promotion');
     }
 }
