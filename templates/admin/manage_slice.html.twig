@@ -37,7 +37,11 @@
                                         <td>{{ slice.getCodePrice }}</td>
                                         <td>{{ slice.value }}</td>
                                         <td>{{ slice.getDays }}</td>
-                                        <td><a href="{{ path('delete_slice', { 'id': slice.id }) }}" onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a></td>
+                                        <td>
+                                            <a href="{{ path('delete_slice', { 'id': slice.id }) }}" onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                            <a href="{{ path('edit_slice', { 'id': slice.id }) }}"> <i class="far fa-edit"></i></a>
+
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

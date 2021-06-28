@@ -3,6 +3,7 @@
 // src/Service/FileUploader.php
 namespace App\Service;
 
+use App\Entity\Cars;
 use App\Entity\Place;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -43,7 +44,6 @@ class PriceService
         $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
         $price = $car->getPrice()->getPrice();
 
-
         // Addition des prix par rapport au lieux de départ et retour
         $total_place = $priceDepart + $priceReturn;
 
@@ -61,12 +61,15 @@ class PriceService
         }elseif ($day_count > 21 AND isset($slices)) {
             //Prix avec tranches appliquées
             $days = $day_count - 21;
+            $countSlice = count($slices);
+            $day_price = null;
+            $i = 0;
 
             foreach ($slices as $slice) {
-
                 if ($day_count > $slice->getDays()) {
-                    $day_price = $this->getPriceBySlice($slices);
-
+                    if(++$i === $countSlice) {
+                        $day_price = $slice->getValue();
+                    }
                     //Prix sans marge
                     $total = $price + $day_price * $days + $total_place;
 

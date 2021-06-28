@@ -15,6 +15,7 @@ use App\Form\CarsFormType;
 use App\Form\EditCarFormType;
 use App\Form\EditMarkFormType;
 use App\Form\EditRangeFormType;
+use App\Form\EditSliceFormType;
 use App\Form\MarkFormType;
 use App\Form\PlaceFormType;
 use App\Form\PriceFormType;
@@ -23,6 +24,10 @@ use App\Form\RangeFormType;
 use App\Form\SlicesFormType;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -32,6 +37,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\Json;
+use Symfony\Component\Validator\Constraints\Length;
 
 
 class CarsController extends AbstractController
@@ -464,26 +470,62 @@ class CarsController extends AbstractController
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
             ->findOneBy(
-                ['libelle' => $id]
+                ['id' => $id]
             );
 
         $price = $this->getDoctrine()
             ->getRepository(Price::class)
-            ->find($id);
+            ->findOneBy(['id' => $id]);
 
+    $priceId = $price->getId();
         $slices = $this->getDoctrine()
             ->getRepository(Slice::class)
             ->findBy(
-                ['tarif' => $price]
+                [], ['days' => 'ASC']
             );
+
+
+        $slicesArray = [];
+        $countSlice = count($slices);
+        $i = 0;
+        $minDay = 0;
+
+        foreach ( $slices as $slice ) {
+            if ($slice->getTarif()->getId() == $priceId) {
+                array_push($slicesArray, $slice);
+            }
+            if(++$i === $countSlice) {
+                $minDay = $slice->getDays();
+            }
+        }
 
         $slice = new Slice();
 
-        $form = $this->createForm(
-            SlicesFormType::class,
-            $slice);
+        $form = $this->createFormBuilder($slice)
+            ->add('id', HiddenType::class, array(
+                'required' => true,
+            ))
+            ->add('code_price', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('value', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false,
+                'data' => $minDay
+            ))
+            ->getForm();
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $slice->setTarif($price);
@@ -504,8 +546,39 @@ class CarsController extends AbstractController
 
         return $this->render('form/create_slice.html.twig', [
             'form' => $form->createView(),
-            'slices' => $slices,
+            'slices' => $slicesArray,
             'priceId' =>$price->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/edit_slice/{id}", name="edit_slice")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function editSlice(Request $request, $id): Response
+    {
+        $slice = $this->getDoctrine()
+            ->getRepository(Slice::class)
+            ->find($id);
+
+        $form = $this->createForm(
+            EditSliceFormType::class,
+            $slice);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($slice);
+            $em->flush();
+
+            return $this->redirectToRoute('manage_slice');
+        }
+        return $this->render('form/edit_slice.html.twig', [
+            'slices' =>$slice,
+            'form' => $form->createView()
         ]);
     }
 
