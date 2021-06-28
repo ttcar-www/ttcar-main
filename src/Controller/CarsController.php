@@ -552,6 +552,98 @@ class CarsController extends AbstractController
     }
 
     /**
+     * @Route("/create_slice_by_car/{id}", name="create_slice_by_car")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function createSliceByCar(Request $request, $id): Response
+    {
+        $mark = $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(
+                ['libelle' => $id]
+            );
+
+        $price = $this->getDoctrine()
+            ->getRepository(Price::class)
+            ->findOneBy(['id' => $id]);
+
+        $priceId = $price->getId();
+        $slices = $this->getDoctrine()
+            ->getRepository(Slice::class)
+            ->findBy(
+                [], ['days' => 'ASC']
+            );
+
+
+        $slicesArray = [];
+        $countSlice = count($slices);
+        $i = 0;
+        $minDay = 0;
+
+        foreach ( $slices as $slice ) {
+            if ($slice->getTarif()->getId() == $priceId) {
+                array_push($slicesArray, $slice);
+            }
+            if(++$i === $countSlice) {
+                $minDay = $slice->getDays();
+            }
+        }
+
+        $slice = new Slice();
+
+        $form = $this->createFormBuilder($slice)
+            ->add('id', HiddenType::class, array(
+                'required' => true,
+            ))
+            ->add('code_price', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('value', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false,
+                'data' => $minDay
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $slice->setTarif($price);
+            $slice->setMark($mark);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($slice);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Tranche créé'
+            );
+
+            return $this->redirectToRoute('create_slice', ['id' => $id]);
+
+        }
+
+        return $this->render('form/create_slice.html.twig', [
+            'form' => $form->createView(),
+            'slices' => $slicesArray,
+            'priceId' =>$price->getId()
+        ]);
+    }
+
+    /**
      * @Route("/admin/edit_slice/{id}", name="edit_slice")
      * @param Request $request
      * @param $id

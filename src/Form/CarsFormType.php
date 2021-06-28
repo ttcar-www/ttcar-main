@@ -86,8 +86,8 @@ class CarsFormType extends AbstractType
             ))
             ->add('clim', ChoiceType::class, [
                 'choices' => [
-                    'Oui' => 'true',
-                    'Non' => 'false'
+                    'Oui' => '1',
+                    'Non' => '0'
                 ],
                 'expanded' => true,
                 'multiple' => false,
@@ -95,8 +95,8 @@ class CarsFormType extends AbstractType
             ])
             ->add('contactActived', ChoiceType::class, [
                 'choices' => [
-                    'Oui' => 'true',
-                    'Non' => 'false'
+                    'Oui' => '1',
+                    'Non' => '0'
                 ],
                 'expanded' => true,
                 'multiple' => false,
