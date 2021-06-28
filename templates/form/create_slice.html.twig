@@ -69,6 +69,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <tr>
+                                        <th scope="row">Code</th>
+                                        {% for slice in slices %}
+                                            <td>{{ slice.getCodePrice }}</td>
+                                        {% endfor %}
+                                    </tr>
                                         <tr>
                                             <th scope="row">Jours</th>
                                             {% for slice in slices %}

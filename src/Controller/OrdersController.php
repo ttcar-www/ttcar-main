@@ -56,7 +56,7 @@ class OrdersController extends AbstractController
 
             $car = $this->getDoctrine()
                 ->getRepository(Cars::class)
-                ->find($id);
+                ->findOneBy(['id' => $id]);
 
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
@@ -352,55 +352,6 @@ class OrdersController extends AbstractController
             ->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']]);
 
         $total = $place_return->getPrice();
-
-        return $total;
-    }
-
-    /**
-     * @param $car
-     * @param $day_count
-     * @return float|int|null
-     * Calcule le prix hors promotion
-     */
-    public function getPriceOrder($car, $day_count)
-    {
-        $total = null;
-        $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
-        $price = $car->getPrice()->getPrice();
-
-        // Adition des prix par rapport au lieux de départ et retour
-        $total_place = $this->getPriceDeparture() + $this->getPriceReturn();
-
-        $margin = $car->getMargin();
-
-        if ($day_count < 21){
-            //Prix sans marge
-            $total = $price + $total_place;
-
-            if ($car->getPrice()->getLibelle() == 2) {
-                // Prix avec marge
-                $total = $price + $price*($margin/100) + $total_place;
-            }
-
-        }elseif ($day_count > 21 AND isset($slices)) {
-            //Prix avec tranches appliquées
-            $days = $day_count - 21;
-
-            foreach ($slices as $slice) {
-                $operator = $this->getOperators($slice->getOperators());
-                if ($day_count.$operator.$slice->getDaysMin()) {
-                    $day_price = $this->getPriceBySlice($slices);
-
-                    //Prix sans marge
-                    $total = $price + $day_price * $days + $total_place;
-
-                    if ($car->getPrice()->getLibelle() == 2) {
-                        // Prix avec marge
-                        $total = $total + $price*($margin/100);
-                    }
-                }
-            }
-        }
 
         return $total;
     }

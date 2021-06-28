@@ -19,23 +19,6 @@ class SliceRepository extends ServiceEntityRepository
         parent::__construct($registry, Slice::class);
     }
 
-    // /**
-    //  * @return Slice[] Returns an array of Slice objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
     /*
     public function findOneBySomeField($value): ?Slice
     {

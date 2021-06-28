@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="b-pageHeader">
+        <div class="container">
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Modifier des tranches de prix</h1>
+            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
+                <h3>Modifier une tranche</h3>
+            </div>
+        </div>
+    </section><!--b-pageHeader-->
+
+    <div class="b-breadCumbs s-shadow">
+        <div class="container wow zoomInUp" data-wow-delay="0.5s">
+            <a href="{{ path('main') }}" class="b-breadCumbs__page">Accueil</a><span class="fa fa-angle-right"></span>
+            <a href="#" class="b-breadCumbs__page m-active">Modifier une tranche</a>
+        </div>
+    </div><!--b-breadCumbs-->
+
+    <div class="b-submit">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+                    <aside class="b-submit__aside">
+                        <div class="b-submit__aside-step wow zoomInUp" data-wow-delay="0.5s">
+                            <h3>Step 1</h3>
+                            <div class="b-submit__aside-step-inner clearfix">
+                                <div class="b-submit__aside-step-inner-info">
+                                    <h4>Modifier une tranche</h4>
+                                    <p>Modifier une tranche au prix enregistré</p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
+                    <div class="b-submit__main">
+
+                        <div class="modal-body">
+                            <header class="s-headerSubmit s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
+                                <h2 class="">Modifier une tranche</h2>
+                            </header>
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                        <label>Code <span>*</span></label>
+                                        <div class='s-relative'>
+                                            {{ form_row(form.code_price) }}
+                                        </div>
+                                    </div>
+                                    <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                        <label>Jours <span>*</span></label>
+                                        <div class='s-relative'>
+                                            {{ form_row(form.days) }}
+                                        </div>
+                                    </div>
+                                    <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                        <label>Valeur <span>*</span></label>
+                                        <div class='s-relative'>
+                                            {{ form_row(form.value) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn m-btn">Enregistrer<span class="fa fa-angle-right"></span></button>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--b-submit-->
+{% endblock %}
