@@ -366,7 +366,14 @@ class MainController extends AbstractController
 
     public function getMarkSession($data) {
 
-        if (isset($data['mark_1'])) {
+        $mark_session = null;
+        if (isset($_SESSION['searchResult']['Ajaxmark'])) {
+            $mark_session = $_SESSION['searchResult']['Ajaxmark'];
+        }
+
+        if ($mark_session != null) {
+            $mark_labelle = $mark_session;
+        }elseif  (isset($data['mark_1'])) {
             if ($data['mark_1'] == array('renault')) {
                 $mark_labelle = 'Renault';
             }elseif ($data['mark_2'] == array('peugeot')) {
@@ -377,7 +384,7 @@ class MainController extends AbstractController
                 $mark_labelle = 'DS Automobile';
             }
         }else {
-            $mark_labelle = $data['mark'];
+            $mark_labelle = 'renault';
         }
 
         return $mark_labelle;
@@ -467,7 +474,7 @@ class MainController extends AbstractController
     {
         $mark = $this->json( $request->get('mark'));
 
-        $_SESSION['searchResult']['mark'] = $request->get('mark');
+        $_SESSION['searchResult']['Ajaxmark'] = $request->get('mark');
 
 
         return $mark;
