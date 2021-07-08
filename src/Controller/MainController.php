@@ -199,18 +199,6 @@ class MainController extends AbstractController
         $placeReturn = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']]);
 
         return $this->createFormBuilder()
-            ->add('mark', ChoiceType::class, [
-                'choices' => [
-                    'Renault' => 'Renault',
-                    'Peugeot' => 'Peugeot',
-                    'Citroën' => 'Citroën',
-                    'DS Auto' => 'DS Automobile'
-                ],
-                'data' => $_SESSION['searchResult']['mark'],
-                'required' => true,
-                'multiple' => false,
-                'label' => false
-            ])
             ->add('placeDepart', EntityType::class, [
                 'class' => Place::class,
                 'choice_label' => 'getLibelle',
@@ -469,6 +457,23 @@ class MainController extends AbstractController
             'cars' => $cars
         ]);
     }
+
+    /**
+     * @Route("/change_mark/", name="change_mark")
+     * @param Request $request
+     * @return bool|Response
+     */
+    public function changeMark(Request $request)
+    {
+        $mark = $this->json( $request->get('mark'));
+
+        $_SESSION['searchResult']['mark'] = $request->get('mark');
+
+
+        return $mark;
+
+    }
+
 
     /**
      * @Route("/change_locale/{locale}", name="change_locale")

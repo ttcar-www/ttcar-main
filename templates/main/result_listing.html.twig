@@ -153,7 +153,13 @@
                                     <div class="b-items__aside-main-body-item">
                                         <label>SELECT A MAKE</label>
                                         <div>
-                                            {{ form_row(formSearch.mark) }}
+                                            <select name="item" id="mark"  onclick="ButtonVoid()">
+                                                <option value="1">Renault</option>
+                                                <option value="2">Peugeot</option>
+                                                <option value="3">Citroën</option>
+                                                <option value="4">DS Auto</option>
+                                            </select>
+                                            <a href="javascript:void(0)" onclick="ChangeMark()" id="markLoader" style="display: none; align-content: center"><i class="fas fa-sync-alt"></i></a>
                                         </div>
                                     </div>
                                     <div class="b-items__aside-main-body-item">
@@ -219,4 +225,44 @@
             </div>
         </div>
     </div><!--b-items-->
+
+    <script>
+        function ButtonVoid() {
+            let loader = document.getElementById('markLoader');
+            console.log(loader)
+            loader.style.display = "block";
+        }
+
+            function ChangeMark() {
+            let mark = document.getElementById('mark').value;
+            let mark_libelle = null;
+
+            if (mark === '1') {
+                mark_libelle = 'Renault'
+            }
+            if (mark === '2') {
+                mark_libelle = 'Peugeot'
+            }
+            if (mark === '3') {
+                mark_libelle = 'Citroën'
+            }
+            if (mark === '4') {
+                mark_libelle = 'DS Auto'
+            }
+
+            $.ajax({
+                url:{{ path('change_mark') }},
+                type:"POST",
+                dataType:"json",
+                data: {mark: mark_libelle},
+                success: function(mark_libelle){
+                    console.log(mark_libelle)
+                    document.location.reload();
+                }
+            });
+
+        }
+
+    </script>
+
 {% endblock %}
