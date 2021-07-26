@@ -73,18 +73,21 @@
                                     <tbody>
                                     <tr>
                                         <th scope="row">Code</th>
+                                        <td>Prix de base</td>
                                         {% for slice in slices %}
                                             <td>{{ slice.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Jours</th>
+                                        <td>21</td>
                                         {% for slice in slices %}
                                             <td>{{ slice.getDays }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Valeur</th>
+                                        <td>{{ originalPriceSupplier }}</td>
                                         {% for slice in slices %}
                                             <td>{{ slice.value }}</td>
                                         {% endfor %}
@@ -96,25 +99,27 @@
                                     <tr>
                                         <th scope="col">       <!-- Modal -->
                                             <h3>Tranches CLIENT</h3>
-
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <th scope="row">Code</th>
+                                        <td>Prix de base</td>
                                         {% for sliceCusto in slicesCustomer %}
                                             <td>{{ sliceCusto.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Jours</th>
+                                        <td>21</td>
                                         {% for sliceCusto in slicesCustomer %}
                                             <td>{{ sliceCusto.getDays }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Valeur</th>
+                                        <td>{{ originalPrice }}</td>
                                         {% for sliceCusto in slicesCustomer %}
                                             <td>{{ sliceCusto.value }}</td>
                                         {% endfor %}

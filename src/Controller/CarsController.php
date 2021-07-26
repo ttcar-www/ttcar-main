@@ -495,6 +495,10 @@ class CarsController extends AbstractController
                 ['id' => $_SESSION['id_car_price']]
             );
 
+        $originalPrice = $car->getPrice()->getPrice();
+        $originalPriceSupplier = $car->getPriceSupplier()->getPrice();
+
+
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
             ->findOneBy(
@@ -595,7 +599,9 @@ class CarsController extends AbstractController
             'form' => $form->createView(),
             'slices' => $slicesArray,
             'slicesSupplier' => $slicesSupplier,
-            'priceId' =>$price->getId()
+            'originalPrice' => $originalPrice,
+            'originalPriceSupplier' => $originalPriceSupplier,
+            'priceId' => $price->getId()
         ]);
     }
 
@@ -626,6 +632,9 @@ class CarsController extends AbstractController
             ->findBy(
                 ['tarif' => $priceCustomer->getId()], ['days' => 'ASC']
             );
+
+        $originalPrice = $priceCustomer->getPrice();
+        $originalPriceSupplier = $price->getPrice();
 
         $priceId = $price->getId();
 
@@ -697,6 +706,8 @@ class CarsController extends AbstractController
         return $this->render('form/create_slice_supplier.html.twig', [
             'form' => $form->createView(),
             'slices' => $slicesArray,
+            'originalPrice' => $originalPrice,
+            'originalPriceSupplier' => $originalPriceSupplier,
             'slicesCustomer' =>$slicesCustomer,
             'priceId' =>$price->getId()
         ]);

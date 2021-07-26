@@ -73,18 +73,21 @@
                                     <tbody>
                                     <tr>
                                         <th scope="row">Code</th>
+                                        <td>Prix de base</td>
                                         {% for slice in slices %}
                                             <td>{{ slice.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>
                                         <tr>
                                             <th scope="row">Jours</th>
+                                            <td>21</td>
                                             {% for slice in slices %}
                                             <td>{{ slice.getDays }}</td>
                                             {% endfor %}
                                         </tr>
                                         <tr>
                                             <th scope="row">Valeur</th>
+                                            <td>{{ originalPrice }}</td>
                                             {% for slice in slices %}
                                                 <td>{{ slice.value }}</td>
                                             {% endfor %}
@@ -105,17 +108,20 @@
                                         <th scope="row">Code</th>
 
                                         {% for sliceSupplier in slicesSupplier %}
+                                            <td>Prix de base</td>
                                             <td>{{ sliceSupplier.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Jours</th>
+                                        <td>21</td>
                                         {% for sliceSupplier in slicesSupplier %}
                                             <td>{{ sliceSupplier.getDays }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Valeur</th>
+                                        <td>{{ originalPriceSupplier }}</td>
                                         {% for sliceSupplier in slicesSupplier %}
                                             <td>{{ sliceSupplier.value }}</td>
                                         {% endfor %}
