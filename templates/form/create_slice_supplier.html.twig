@@ -3,7 +3,7 @@
 {% block body %}
     <section class="b-pageHeader">
         <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Ajouter des tranches de prix</h1>
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Ajouter des tranches de prix FOURNISSEUR</h1>
             <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
                 <h3>Add Your Vehicle In Our Listings</h3>
             </div>
@@ -64,9 +64,9 @@
                                     <thead class="text-uppercase">
                                     <tr>
                                         <th scope="col">       <!-- Modal -->
-                                            <button type="button" onclick="ClickModal()"><i class="fas fa-plus-circle"></i>Prix Client</button>
-                                            <a href="{{ path('create_slice_supplier', { 'id': priceId }) }}"><i class="fas fa-plus-circle"></i>Prix Founisseur</a>
-                                            <h3>Tranches client</h3>
+                                            <button type="button" onclick="ClickModal()"><i class="fas fa-plus-circle"></i>Prix Fournisseur</button>
+                                            <a href="{{ path('create_slice', { 'id': priceId }) }}"><i class="fas fa-plus-circle"></i>Prix Client</a>
+                                            <h3>Tranches FOURNISSEUR</h3>
                                         </th>
                                     </tr>
                                     </thead>
@@ -77,25 +77,25 @@
                                             <td>{{ slice.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>
-                                        <tr>
-                                            <th scope="row">Jours</th>
-                                            {% for slice in slices %}
+                                    <tr>
+                                        <th scope="row">Jours</th>
+                                        {% for slice in slices %}
                                             <td>{{ slice.getDays }}</td>
-                                            {% endfor %}
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Valeur</th>
-                                            {% for slice in slices %}
-                                                <td>{{ slice.value }}</td>
-                                            {% endfor %}
-                                        </tr>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Valeur</th>
+                                        {% for slice in slices %}
+                                            <td>{{ slice.value }}</td>
+                                        {% endfor %}
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <table class="table table-striped text-center">
                                     <thead class="text-uppercase">
                                     <tr>
                                         <th scope="col">       <!-- Modal -->
-                                            <h3>Tranches Fournisseur</h3>
+                                            <h3>Tranches CLIENT</h3>
 
                                         </th>
                                     </tr>
@@ -103,21 +103,20 @@
                                     <tbody>
                                     <tr>
                                         <th scope="row">Code</th>
-
-                                        {% for sliceSupplier in slicesSupplier %}
-                                            <td>{{ sliceSupplier.getCodePrice }}</td>
+                                        {% for sliceCusto in slicesCustomer %}
+                                            <td>{{ sliceCusto.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Jours</th>
-                                        {% for sliceSupplier in slicesSupplier %}
-                                            <td>{{ sliceSupplier.getDays }}</td>
+                                        {% for sliceCusto in slicesCustomer %}
+                                            <td>{{ sliceCusto.getDays }}</td>
                                         {% endfor %}
                                     </tr>
                                     <tr>
                                         <th scope="row">Valeur</th>
-                                        {% for sliceSupplier in slicesSupplier %}
-                                            <td>{{ sliceSupplier.value }}</td>
+                                        {% for sliceCusto in slicesCustomer %}
+                                            <td>{{ sliceCusto.value }}</td>
                                         {% endfor %}
                                     </tr>
                                     </tbody>
@@ -130,18 +129,18 @@
         </div>
     </div>
     <!--b-submit-->
-    {{ include('modal/sliceModal.html.twig') }}
+    {{ include('modal/sliceSupplierModal.html.twig') }}
 
     <script>
         function ClickModal() {
-            let x = document.getElementById("sliceModal");
-            let y = document.getElementById("modalClose");
+            let x = document.getElementById("sliceSupplierModal");
+            let y = document.getElementById("CloseSupplierModal");
 
             x.style.display = "block";
         }
 
         function CloseModal() {
-            let x = document.getElementById("sliceModal");
+            let x = document.getElementById("sliceSupplierModal");
             x.style.display = "none";
         }
     </script>

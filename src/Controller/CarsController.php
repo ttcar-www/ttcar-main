@@ -7,8 +7,10 @@ use App\Entity\Cars;
 use App\Entity\Mark;
 use App\Entity\Place;
 use App\Entity\Price;
+use App\Entity\PriceSupplier;
 use App\Entity\Range;
 use App\Entity\Slice;
+use App\Entity\SliceSupplier;
 use App\Entity\TypePromo;
 use App\Form\AccessoryFormType;
 use App\Form\CarsFormType;
@@ -386,6 +388,7 @@ class CarsController extends AbstractController
             ->find($id);
 
         $price = new Price();
+        $priceSupplier = new PriceSupplier();
 
         $form = $this->createForm(
             PriceFormType::class,
@@ -394,13 +397,32 @@ class CarsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $priceSupplierForm = $form->get('priceSupplierValue')->getData();
+            $dateStartForm = $form->get('date_start')->getData();
+            $dateEndForm = $form->get('date_end')->getData();
+            $dateStartDeliveryForm = $form->get('date_start_delivery')->getData();
+            $dateEndDeliveryForm = $form->get('date_end_delivery')->getData();
+
             $price->addCar($car);
-            $car->setPrice($price);
+
+            $priceSupplier->setPrice($priceSupplierForm);
+            $priceSupplier->setDateStart($dateStartForm);
+            $priceSupplier->setDateEnd($dateEndForm);
+            $priceSupplier->setDateStartDelivery($dateStartDeliveryForm);
+            $priceSupplier->setDateEndDelivery($dateEndDeliveryForm);
 
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($price);
+
             $em->persist($car);
+
+            $em->persist($priceSupplier);
             $em->flush();
+
+            $_SESSION['id_price'] = $price->getId();
+            $_SESSION['id_price_supplier'] = $priceSupplier->getId();
+            $_SESSION['id_car_price'] = $car->getId();
 
             $this->addFlash(
                 'success',
@@ -467,6 +489,12 @@ class CarsController extends AbstractController
      */
     public function createSlice(Request $request, $id): Response
     {
+        $car = $this->getDoctrine()
+            ->getRepository(Cars::class)
+            ->findOneBy(
+                ['id' => $_SESSION['id_car_price']]
+            );
+
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
             ->findOneBy(
@@ -475,13 +503,33 @@ class CarsController extends AbstractController
 
         $price = $this->getDoctrine()
             ->getRepository(Price::class)
-            ->findOneBy(['id' => $id]);
+            ->findOneBy(['id' => $_SESSION['id_price']]);
 
-    $priceId = $price->getId();
+        $priceSupplier = $this->getDoctrine()
+            ->getRepository(PriceSupplier::class)
+            ->findOneBy(['id' => $_SESSION['id_price_supplier']]);
+
+        $slicesSupplier = $this->getDoctrine()
+            ->getRepository(SliceSupplier::class)
+            ->findBy(
+                ['price' => $priceSupplier->getId()], ['days' => 'ASC']
+            );
+
+        $em = $this->getDoctrine()->getManager();
+
+        $priceId = $price->getId();
+
+        //UPDATE CAR WITH PRICE AND SUPPLIERPRICE ID
+        $car->setPrice($price);
+        $car->setPriceSupplier($priceSupplier);
+        $priceSupplier->setPriceCustomer($price);
+        $em->persist($car);
+        $em->flush();
+
         $slices = $this->getDoctrine()
             ->getRepository(Slice::class)
             ->findBy(
-                [], ['days' => 'ASC']
+                ['tarif' => $priceId], ['days' => 'ASC']
             );
 
 
@@ -531,7 +579,6 @@ class CarsController extends AbstractController
             $slice->setTarif($price);
             $slice->setMark($mark);
 
-            $em = $this->getDoctrine()->getManager();
             $em->persist($slice);
             $em->flush();
 
@@ -547,6 +594,110 @@ class CarsController extends AbstractController
         return $this->render('form/create_slice.html.twig', [
             'form' => $form->createView(),
             'slices' => $slicesArray,
+            'slicesSupplier' => $slicesSupplier,
+            'priceId' =>$price->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/create_slice_supplier/{id}", name="create_slice_supplier")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function createSliceSupplier(Request $request, $id): Response
+    {
+        $mark = $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(
+                ['id' => $id]
+            );
+
+        $price = $this->getDoctrine()
+            ->getRepository(PriceSupplier::class)
+            ->findOneBy(['id' => $_SESSION['id_price_supplier']]);
+
+        $priceCustomer = $this->getDoctrine()
+            ->getRepository(Price::class)
+            ->findOneBy(['id' => $_SESSION['id_price']]);
+
+        $slicesCustomer = $this->getDoctrine()
+            ->getRepository(Slice::class)
+            ->findBy(
+                ['tarif' => $priceCustomer->getId()], ['days' => 'ASC']
+            );
+
+        $priceId = $price->getId();
+
+        $slices = $this->getDoctrine()
+            ->getRepository(SliceSupplier::class)
+            ->findBy(
+                ['price' => $price->getId()], ['days' => 'ASC']
+            );
+
+        $slicesArray = [];
+        $countSlice = count($slices);
+        $i = 0;
+        $minDay = 0;
+
+        foreach ( $slices as $slice ) {
+            if ($slice->getPrice()->getId() == $priceId) {
+                array_push($slicesArray, $slice);
+            }
+            if(++$i === $countSlice) {
+                $minDay = $slice->getDays();
+            }
+        }
+
+        $sliceSupplier = new SliceSupplier();
+
+        $form = $this->createFormBuilder($sliceSupplier)
+            ->add('id', HiddenType::class, array(
+                'required' => true,
+            ))
+            ->add('code_price', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('value', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false,
+                'data' => $minDay
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $sliceSupplier->setPrice($price);
+            $sliceSupplier->setMark($mark);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($sliceSupplier);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Tranche créé'
+            );
+
+            return $this->redirectToRoute('create_slice_supplier', ['id' => $id]);
+
+        }
+
+        return $this->render('form/create_slice_supplier.html.twig', [
+            'form' => $form->createView(),
+            'slices' => $slicesArray,
+            'slicesCustomer' =>$slicesCustomer,
             'priceId' =>$price->getId()
         ]);
     }

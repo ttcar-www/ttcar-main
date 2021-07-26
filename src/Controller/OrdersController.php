@@ -172,9 +172,6 @@ class OrdersController extends AbstractController
             // last username entered by the user
             $lastUsername = $authenticationUtils->getLastUsername();
 
-
-
-
       return $this->render('main/order.html.twig', [
           'car' => $car,
           'nb_days' => $nb_days,

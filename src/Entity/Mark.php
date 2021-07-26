@@ -60,6 +60,11 @@ class Mark
      */
     private $slices;
 
+    /**
+     * @ORM\OneToMany(targetEntity=SliceSupplier::class, mappedBy="mark")
+     */
+    private $slicesSupplier;
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
@@ -252,6 +257,23 @@ class Mark
         }
 
         return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getSlicesSupplier()
+    {
+        return $this->slicesSupplier;
+    }
+
+    /**
+     * @param mixed $slicesSupplier
+     */
+    public function setSlicesSupplier($slicesSupplier): void
+    {
+        $this->slicesSupplier = $slicesSupplier;
     }
 
 }
