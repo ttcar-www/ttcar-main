@@ -23,14 +23,17 @@ class PriceFormType extends AbstractType
             ))
             ->add('libelle', ChoiceType::class, [
                 'choices' => [
-                    'Prix référence de base' => '1',
-                    'Prix net agent' => '2'
+                    'Prix Client' => '1',
+                    'Prix Fournisseur' => '2'
                 ],
                 'expanded' => false,
                 'multiple' => false,
                 'label' => false
             ])
             ->add('price', NumberType::class, array(
+                'label' => false
+            ))
+            ->add('priceSupplierValue', NumberType::class, array(
                 'label' => false
             ))
             ->add('date_start', DateType::class, array(

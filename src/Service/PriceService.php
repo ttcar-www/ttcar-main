@@ -43,20 +43,23 @@ class PriceService
         $total = null;
         $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
         $price = $car->getPrice()->getPrice();
+        $margin = $car->getMargin();
+
+        if ($car->getPrice()->getLibelle() == 2) {
+
+            var_dump($car->getPriceSupplier());die();
+            $slices = ($car->getPriceSupplier()->getSlices()) ? $car->getPrice()->getSlices() : null;
+            $price = $car->getPriceSupplier()->getPrice();
+            $margin = 0;
+        }
 
         // Addition des prix par rapport au lieux de départ et retour
         $total_place = $priceDepart + $priceReturn;
-
-        $margin = $car->getMargin();
 
         if ($day_count < 21){
             //Prix sans marge
             $total = $price + $total_place;
 
-            if ($car->getPrice()->getLibelle() == 2) {
-                // Prix avec marge
-                $total = $price + $price*($margin/100) + $total_place;
-            }
 
         }elseif ($day_count > 21 AND isset($slices)) {
             //Prix avec tranches appliquées

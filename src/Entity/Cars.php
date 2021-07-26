@@ -138,6 +138,11 @@ class Cars
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=PriceSupplier::class, inversedBy="car")
+     */
+    private $priceSupplier;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
@@ -486,5 +491,21 @@ class Cars
     public function setDescription($description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceSupplier()
+    {
+        return $this->priceSupplier;
+    }
+
+    /**
+     * @param mixed $priceSupplier
+     */
+    public function setPriceSupplier($priceSupplier): void
+    {
+        $this->priceSupplier = $priceSupplier;
     }
 }

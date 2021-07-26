@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\PriceRepository;
+use App\Repository\PriceSupplierRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PriceRepository::class)
+ * @ORM\Entity(repositoryClass=PriceSupplierRepository::class)
  */
-class Price
+class PriceSupplier
 {
     /**
      * @ORM\Id
@@ -18,11 +18,6 @@ class Price
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $libelle;
 
     /**
      * @ORM\Column(type="integer")
@@ -49,27 +44,20 @@ class Price
      */
     private $date_end_delivery;
 
-
     /**
-     * @ORM\Column(type="integer")
-     *
-     */
-    private $priceSupplierValue;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Cars::class, mappedBy="price")
+     * @ORM\OneToMany(targetEntity=Cars::class, mappedBy="priceSupplier")
      */
     private $car;
 
     /**
-     * @ORM\OneToMany(targetEntity=Slice::class, mappedBy="tarif")
+     * @ORM\OneToMany(targetEntity=SliceSupplier::class, mappedBy="price")
      */
     private $slices;
 
     /**
-     * @ORM\OneToMany(targetEntity=PriceSupplier::class, mappedBy="price_customer")
+     * @ORM\ManyToOne(targetEntity=Price::class, inversedBy="priceSupplier")
      */
-    private $priceSupplier;
+    private $price_customer;
 
     public function __construct()
     {
@@ -80,18 +68,6 @@ class Price
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLibelle(): ?string
-    {
-        return $this->libelle;
-    }
-
-    public function setLibelle(string $libelle): self
-    {
-        $this->libelle = $libelle;
-
-        return $this;
     }
 
     public function getPrice(): ?int
@@ -218,33 +194,17 @@ class Price
     /**
      * @return mixed
      */
-    public function getPriceSupplier()
+    public function getPriceCustomer()
     {
-        return $this->priceSupplier;
+        return $this->price_customer;
     }
 
     /**
-     * @param mixed $priceSupplier
+     * @param mixed $price_customer
      */
-    public function setPriceSupplier($priceSupplier): void
+    public function setPriceCustomer($price_customer): void
     {
-        $this->priceSupplier = $priceSupplier;
+        $this->price_customer = $price_customer;
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getPriceSupplierValue()
-    {
-        return $this->priceSupplierValue;
-    }
-
-    /**
-     * @param mixed $priceSupplierValue
-     */
-    public function setPriceSupplierValue($priceSupplierValue): void
-    {
-        $this->priceSupplierValue = $priceSupplierValue;
-    }
 }
