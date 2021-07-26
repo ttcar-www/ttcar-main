@@ -46,8 +46,7 @@ class PriceService
         $margin = $car->getMargin();
 
         if ($car->getPrice()->getLibelle() == 2) {
-
-            var_dump($car->getPriceSupplier());die();
+            
             $slices = ($car->getPriceSupplier()->getSlices()) ? $car->getPrice()->getSlices() : null;
             $price = $car->getPriceSupplier()->getPrice();
             $margin = 0;
