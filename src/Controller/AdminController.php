@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Accessory;
 use App\Entity\Blog;
+use App\Entity\Cars;
 use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\Customer;
@@ -224,8 +225,27 @@ class AdminController extends AbstractController
     public function manageSlice(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Slice::class);
-
         $slices = $repository->findAll();
+
+        $arraySlices = [];
+
+        foreach ($slices as $slice) {
+            $car = $this->getDoctrine()
+                ->getRepository(Cars::class)
+                ->findOneBy(['price' => $slice->getTarif()->getId()]);
+
+            if (isset($car)) {
+/*                array_push($arrayPrice, $order->getPrice());*/
+                $arraySlices = [
+                    'id' => $slice->getId(),
+                    'carName' => $car->getName(),
+                    'OriginalPrice' => $slice->getTarif()->getPrice(),
+                    'value' => $slice->getValue(),
+                    'days' =>$slice->getDays()
+                ];
+            }
+
+        }
 
         return $this->render('admin/manage_slice.html.twig', [
             'slices' =>$slices
