@@ -495,10 +495,6 @@ class CarsController extends AbstractController
                 ['id' => $_SESSION['id_car_price']]
             );
 
-        $originalPrice = $car->getPrice()->getPrice();
-        $originalPriceSupplier = $car->getPriceSupplier()->getPrice();
-
-
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
             ->findOneBy(
@@ -518,6 +514,10 @@ class CarsController extends AbstractController
             ->findBy(
                 ['price' => $priceSupplier->getId()], ['days' => 'ASC']
             );
+
+        $originalPrice = $car->getPrice()->getPrice();
+        $originalPriceSupplier = $priceSupplier->getPrice();
+
 
         $em = $this->getDoctrine()->getManager();
 
