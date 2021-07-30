@@ -65,7 +65,6 @@
                                     <tr>
                                         <th scope="col">       <!-- Modal -->
                                             <button type="button" onclick="ClickModal()"><i class="fas fa-plus-circle"></i>Prix Client</button>
-                                            <a href="{{ path('create_slice_supplier', { 'id': priceId }) }}"><i class="fas fa-plus-circle"></i>Prix Founisseur</a>
                                             <h3>Tranches client</h3>
                                         </th>
                                     </tr>
@@ -106,9 +105,8 @@
                                     <tbody>
                                     <tr>
                                         <th scope="row">Code</th>
-
+                                        <td>Prix de base</td>
                                         {% for sliceSupplier in slicesSupplier %}
-                                            <td>Prix de base</td>
                                             <td>{{ sliceSupplier.getCodePrice }}</td>
                                         {% endfor %}
                                     </tr>

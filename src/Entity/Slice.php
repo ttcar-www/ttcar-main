@@ -42,6 +42,13 @@ class Slice
      */
     private $mark;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     */
+    private $priceSupplierValue;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,5 +121,21 @@ class Slice
     public function setDays($days): void
     {
         $this->days = $days;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriceSupplierValue()
+    {
+        return $this->priceSupplierValue;
+    }
+
+    /**
+     * @param mixed $priceSupplierValue
+     */
+    public function setPriceSupplierValue($priceSupplierValue): void
+    {
+        $this->priceSupplierValue = $priceSupplierValue;
     }
 }
