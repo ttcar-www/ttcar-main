@@ -49,21 +49,14 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">Action</th>
+                                            <td><i class="fas fa-ban" style="color: red"></i></td>
                                             {% for slice in slices %}
                                                 <td><a href="{{ path('edit_slice', { 'id': slice.id }) }}"><i class="fas fa-edit"></i></a></td>
                                             {% endfor %}
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <table class="table table-striped text-center">
-                                    <thead class="text-uppercase">
-                                    <tr>
                                         <th scope="col">       <!-- Modal -->
                                             <h3>Tranches Fournisseur</h3>
                                         </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
                                     <tr>
                                         <th scope="row">Code</th>
                                         <td>Prix de base</td>
@@ -87,6 +80,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Action</th>
+                                        <td><i class="fas fa-ban" style="color: red"></i></td>
                                         {% for sliceSupplier in slicesSupplier %}
                                             <td><a href="{{ path('edit_slice_supplier', { 'id': sliceSupplier.id }) }}"><i class="fas fa-edit"></i></a></td>
                                         {% endfor %}
