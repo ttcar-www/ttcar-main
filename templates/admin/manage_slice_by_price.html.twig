@@ -23,6 +23,7 @@
                             <table class="table table-striped text-center">
                                 <thead class="text-uppercase">
                                 <tr>
+                                    <th scope="col">Status</th>
                                     <th scope="col">ID</th>
                                     <th scope="col">Voiture</th>
                                     <th scope="col">Prix Client</th>
@@ -33,13 +34,14 @@
                                 <tbody>
                                 {% for car in cars %}
                                     <tr>
+                                        <th><i class="fas fa-check-circle" style="color: green"></i></th>
                                         <th>{{ car.getPrice.id }}</th>
                                         <th>{{ car.getName }}</th>
                                         <th>{{ car.getPrice.getPrice }}€</th>
                                         <th>{{ car.getPrice.getPriceSupplierValue }}€</th>
                                         {% if car.getPrice.getPriceSupplierValue > 0  %}
                                         <td>
-                                            <a href="{{ path('manage_slice', { 'id': car.getPrice.id }) }}"> Voir les tranches de prix</a>
+                                            <a href="{{ path('manage_slice', { 'id': car.getPrice.id }) }}" class="btn btn-outline-primary"> Voir les tranches de prix</a>
                                         </td>
                                             {% else %}
                                                 <td><i class="fas fa-ban" style="color: red"></i></td>
