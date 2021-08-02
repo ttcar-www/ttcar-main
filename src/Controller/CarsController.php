@@ -739,6 +739,37 @@ class CarsController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/edit_slice_supplier/{id}", name="edit_slice_supplier")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function editSliceSupplier(Request $request, $id): Response
+    {
+        $slice = $this->getDoctrine()
+            ->getRepository(SliceSupplier::class)
+            ->find($id);
+
+        $form = $this->createForm(
+            EditSliceFormType::class,
+            $slice);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($slice);
+            $em->flush();
+
+            return $this->redirectToRoute('manage_slice');
+        }
+        return $this->render('form/edit_slice.html.twig', [
+            'slices' =>$slice,
+            'form' => $form->createView()
+        ]);
+    }
+
 
     /**
      * @Route("/admin/delete_slice/{id}", name="delete_slice")

@@ -15,43 +15,88 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Toutes les tranches de prix</h4>
-{#
-                    <a href="{{ path('create_work') }}" style="color: darkslategrey; margin-left: 5%" class="btn btn-light"><i class="fas fa-map-marked-alt"></i> Ajouté une raison</a>
-#}
-                    <div class="single-table">
-                        <div class="table-responsive">
-                            <table class="table table-striped text-center">
-                                <thead class="text-uppercase">
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Code</th>
-                                    <th scope="col">Valeur</th>
-                                    <th scope="col">Nombre de jours</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for slice in slices %}
-                                    {{ dump(slice) }}
+                        <div class="single-table">
+                            <div class="table-responsive">
+                                <table class="table table-striped text-center">
+                                    <thead class="text-uppercase">
                                     <tr>
-                                  {#      <th scope="row">{{ slice.id }}</th>
-                                        <td>{{ slice.getCodePrice }}</td>
-                                        <td>{{ slice.value }}</td>
-                                        <td>{{ slice.getDays }}</td>
-                                        <td>
-                                            <a href="{{ path('delete_slice', { 'id': slice.id }) }}" onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
-                                            <a href="{{ path('edit_slice', { 'id': slice.id }) }}"> <i class="far fa-edit"></i></a>
-#}
-                                        </td>
+                                        <th scope="col">       <!-- Modal -->
+                                            <h3>Tranches client</h3>
+                                        </th>
                                     </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Code</th>
+                                            <td>Prix de base</td>
+                                            {% for slice in slices %}
+                                                <td>{{ slice.getCodePrice }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Jours</th>
+                                            <td>21</td>
+                                            {% for slice in slices %}
+                                                <td>{{ slice.getDays }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Valeur</th>
+                                            <td>{{ originalPrice }}</td>
+                                            {% for slice in slices %}
+                                                <td>{{ slice.value }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Action</th>
+                                            {% for slice in slices %}
+                                                <td><a href="{{ path('edit_slice', { 'id': slice.id }) }}"><i class="fas fa-edit"></i></a></td>
+                                            {% endfor %}
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped text-center">
+                                    <thead class="text-uppercase">
+                                    <tr>
+                                        <th scope="col">       <!-- Modal -->
+                                            <h3>Tranches Fournisseur</h3>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Code</th>
+                                        <td>Prix de base</td>
+                                        {% for sliceSupplier in slicesSupplier %}
+                                            <td>{{ sliceSupplier.getCodePrice }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Jours</th>
+                                        <td>21</td>
+                                        {% for sliceSupplier in slicesSupplier %}
+                                            <td>{{ sliceSupplier.getDays }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Valeur</th>
+                                        <td>{{ originalPriceSupplier }}</td>
+                                        {% for sliceSupplier in slicesSupplier %}
+                                            <td>{{ sliceSupplier.value }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Action</th>
+                                        {% for sliceSupplier in slicesSupplier %}
+                                            <td><a href="{{ path('edit_slice_supplier', { 'id': sliceSupplier.id }) }}"><i class="fas fa-edit"></i></a></td>
+                                        {% endfor %}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Striped table end -->
     </div>
 {% endblock %}
