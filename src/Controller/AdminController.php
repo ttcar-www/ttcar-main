@@ -13,10 +13,12 @@ use App\Entity\Nationality;
 use App\Entity\Order;
 use App\Entity\Place;
 use App\Entity\Price;
+use App\Entity\PriceSupplier;
 use App\Entity\Promotions;
 use App\Entity\Range;
 use App\Entity\Reason;
 use App\Entity\Slice;
+use App\Entity\SliceSupplier;
 use App\Entity\User;
 use App\Form\ContactFormType;
 use App\Form\EditAccessoryFormType;
@@ -30,6 +32,8 @@ use App\Form\UserFormType;
 use App\Service\FileUploader;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -220,35 +224,72 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/manage_slice", name="manage_slice")
+     * @Route("/manage_slice/{id}", name="manage_slice")
+     * @param Request $request
+     * @param $id
+     * @return Response
      */
-    public function manageSlice(): Response
+    public function manageSlice(Request $request, $id): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Slice::class);
-        $slices = $repository->findAll();
+        $price = $this->getDoctrine()
+            ->getRepository(Price::class)
+            ->findOneBy(['id' => $id]);
 
-        $arraySlices = [];
 
-        foreach ($slices as $slice) {
-            $car = $this->getDoctrine()
-                ->getRepository(Cars::class)
-                ->findOneBy(['price' => $slice->getTarif()->getId()]);
+        $priceSupplier = $this->getDoctrine()
+            ->getRepository(PriceSupplier::class)
+            ->findOneBy(['price_customer' => $price->getId()]);
 
-            if (isset($car)) {
-/*                array_push($arrayPrice, $order->getPrice());*/
-                $arraySlices = [
-                    'id' => $slice->getId(),
-                    'carName' => $car->getName(),
-                    'OriginalPrice' => $slice->getTarif()->getPrice(),
-                    'value' => $slice->getValue(),
-                    'days' =>$slice->getDays()
-                ];
+        $slicesSupplier = $this->getDoctrine()
+            ->getRepository(SliceSupplier::class)
+            ->findBy(
+                ['price' => $priceSupplier->getId()], ['days' => 'ASC']
+            );
+
+        $originalPrice = $price->getPrice();
+        $originalPriceSupplier = $priceSupplier->getPrice();
+
+        $slices = $this->getDoctrine()
+            ->getRepository(Slice::class)
+            ->findBy(
+                ['tarif' => $price->getId()], ['days' => 'ASC']
+            );
+
+
+        $slicesArray = [];
+        $countSlice = count($slices);
+        $i = 0;
+        $minDay = 0;
+
+        foreach ( $slices as $slice ) {
+            if ($slice->getTarif()->getId() == $price->getId()) {
+                array_push($slicesArray, $slice);
             }
-
+            if(++$i === $countSlice) {
+                $minDay = $slice->getDays();
+            }
         }
 
         return $this->render('admin/manage_slice.html.twig', [
-            'slices' =>$slices
+            'slices' => $slicesArray,
+            'slicesSupplier' => $slicesSupplier,
+            'originalPrice' => $originalPrice,
+            'originalPriceSupplier' => $originalPriceSupplier,
+            'priceId' => $price->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/manage_slice_by_price", name="manage_slice_by_price")
+     */
+    public function manageSliceByPrice(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Cars::class);
+
+        $cars = $repository->findAll();
+
+        return $this->render('admin/manage_slice_by_price.html.twig', [
+            'cars' =>$cars
         ]);
     }
 
