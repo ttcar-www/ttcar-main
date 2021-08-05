@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Country;
 use App\Entity\Nationality;
 use App\Entity\Place;
+use App\Entity\PlaceExtra;
 use App\Entity\Reason;
 use App\Form\CategoryPostFormType;
 use App\Form\CountryFormType;
@@ -13,6 +14,7 @@ use App\Form\EditNationalityFormType;
 use App\Form\EditPlaceFormType;
 use App\Form\EditPostFormType;
 use App\Form\EditReasonFormType;
+use App\Form\ExtraPlaceFormType;
 use App\Form\NationalityFormType;
 use App\Form\NewPostFormType;
 use App\Form\PlaceFormType;
@@ -35,9 +37,11 @@ class PlaceController extends AbstractController
      * @param Request $request
      * @param FileUploader $fileUploader
      * @return Response
+     * @throws Exception
      */
     public function createPlace(Request $request, FileUploader $fileUploader): Response
     {
+        $today = new \DateTime('@'.strtotime('now'));
         $place = new Place();
 
         $form = $this->createForm(
@@ -46,6 +50,8 @@ class PlaceController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $place->setCreateAt($today);
 
             /** @var UploadedFile $place_pdf */
             $place_pdf = $form->get('placePDF')->getData();
@@ -65,10 +71,54 @@ class PlaceController extends AbstractController
                 'Lieu ajouté'
             );
 
-            return $this->redirectToRoute('manage_place');
+            return $this->redirectToRoute('create_extra_place', ['id' => $place->getId()]);
         }
 
         return $this->render('form/create_place.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/create_extra_place/{id}", name="create_extra_place")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     * @throws Exception
+     */
+    public function createExtraPlace(Request $request, $id): Response
+    {
+
+        $place = $this->getDoctrine()
+            ->getRepository(Place::class)
+            ->findOneBy(['id' => $id]);
+
+        $extraPlace = new PlaceExtra();
+
+        $form = $this->createForm(
+            ExtraPlaceFormType::class,
+            $extraPlace);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $extraPlace->setCreateAt(new \DateTimeImmutable($request->get('time')));
+            $extraPlace->addPlace($place);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($extraPlace);
+            $em->flush();
+
+
+            $this->addFlash(
+                'success',
+                'Lieu ajouté'
+            );
+
+            return $this->redirectToRoute('manage_place');
+        }
+
+        return $this->render('form/create_place_extra.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -177,16 +227,22 @@ class PlaceController extends AbstractController
 
     /**
      * @Route("/admin/delete_place/{id}", name="delete_place")
+     * @param Request $request
      * @param $id
      * @return RedirectResponse
+     * @throws Exception
      */
-    public function deletePlace($id): RedirectResponse
+    public function deletePlace(Request $request, $id): RedirectResponse
     {
+        $today = new \DateTime('@'.strtotime('now'));
+
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Place::class);
         $place = $repository->find($id);
 
-        $entityManager->remove($place);
+        $place->setDeleteAt(new \DateTimeImmutable($request->get('time')));
+
+        $entityManager->persist($place);
         $entityManager->flush();
 
         $this->addFlash(
@@ -272,9 +328,12 @@ class PlaceController extends AbstractController
      * @param $id
      * @param FileUploader $fileUploader
      * @return Response
+     * @throws Exception
      */
     public function editPlace(Request $request, $id, FileUploader $fileUploader): Response
     {
+        $today = new \DateTime('@'.strtotime('now'));
+
         $place = $this->getDoctrine()
             ->getRepository(Place::class)
             ->find($id);
@@ -285,6 +344,7 @@ class PlaceController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $place->setUpdateAt($today);
 
             /** @var UploadedFile $place_pdf */
             $place_pdf = $form->get('placePDF')->getData();

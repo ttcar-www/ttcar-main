@@ -131,7 +131,7 @@ class AdminController extends AbstractController
     public function managePlace(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Place::class);
-        $places = $repository->findAll();
+        $places = $repository->findBy(['delete_at' => NULL]);
 
         return $this->render('admin/manage_place.html.twig', [
             'places' =>$places

@@ -2,13 +2,10 @@
 
 namespace App\Form;
 
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -19,6 +16,30 @@ class EditPlaceFormType extends AbstractType
     {
         $builder
             ->add('libelle', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('libelle_en', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('latitude', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('longitude', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('full_adress_fr', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('full_adress_en', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('price', NumberType::class, array(
                 'required' => true,
                 'label' => false
             ))
@@ -38,12 +59,10 @@ class EditPlaceFormType extends AbstractType
                     new File([
                         'maxSize' => '1024k',
                         'mimeTypes' => [
-                            "image/jpeg",
-                            "image/png",
-                            "image/gif",
-                            "image/jpg"
+                            'application/pdf',
+                            'application/x-pdf'
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid img document',
+                        'mimeTypesMessage' => 'Please upload a valid pdf document',
                     ])
                 ],
             ])

@@ -2,8 +2,6 @@
 
 namespace App\Form;
 
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,6 +24,22 @@ class PlaceFormType extends AbstractType
                 'label' => false
             ))
             ->add('libelle_en', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('latitude', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('longitude', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('full_adress_fr', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('full_adress_en', TextType::class, array(
                 'required' => true,
                 'label' => false
             ))

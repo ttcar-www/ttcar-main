@@ -3,9 +3,9 @@
 {% block body %}
     <section class="b-pageHeader">
         <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Submit Your Vehicle</h1>
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Details du lieu</h1>
             <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Add Your Vehicle In Our Listings</h3>
+                <h3>Ajouté les détails d'un lieu</h3>
             </div>
         </div>
     </section><!--b-pageHeader-->
@@ -66,7 +66,7 @@
                                     <span class="fa fa-car"></span>
                                 </div>
                                 <div class="b-submit__aside-step-inner-info">
-                                    <h4>Add YOUR Place</h4>
+                                    <h4>Ajouter les options</h4>
                                     <div class="b-submit__aside-step-inner-info-triangle"></div>
                                 </div>
                             </div>
@@ -76,57 +76,33 @@
                 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
                     <div class="b-submit__main">
                         <header class="s-headerSubmit s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-                            <h2 class="">Add Your Vehicle Details</h2>
+                            <h2 class="">Ajouter les Options au Lieu</h2>
                         </header>
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir le nom <span>*</span></label>
+                                    <label>Choisir la marque <span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.libelle) }}
+                                        {{ form_row(form.brand_id) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir le nom en Anglais<span>*</span></label>
+                                    <label>Saisir la limite de jours<span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.libelle_en) }}
+                                        {{ form_row(form.days_limit) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir la Latitude<span>*</span></label>
+                                    <label>Option 1<span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.latitude) }}
+                                        {{ form_row(form.extra_1) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir la Longitude<span>*</span></label>
+                                    <label>Option 2<span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.longitude) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir l'adresse en français<span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.full_adress_fr) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir l'adresse en anglais<span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.full_adress_en) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir le Prix <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.price) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label> PDF <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.placePDF) }}
+                                        {{ form_row(form.extra_2) }}
                                     </div>
                                 </div>
                             </div>
