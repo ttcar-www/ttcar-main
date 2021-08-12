@@ -331,7 +331,7 @@ class OrdersController extends AbstractController
     {
         $place_depart = $this->getDoctrine()
             ->getRepository(Place::class)
-            ->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']]);
+            ->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']->getLibelle()]);
 
         $total = $place_depart->getPrice();
 
@@ -346,7 +346,7 @@ class OrdersController extends AbstractController
     {
         $place_return = $this->getDoctrine()
             ->getRepository(Place::class)
-            ->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']]);
+            ->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']->getLibelle()]);
 
         $total = $place_return->getPrice();
 

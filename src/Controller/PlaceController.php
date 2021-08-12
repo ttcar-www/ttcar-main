@@ -10,6 +10,7 @@ use App\Entity\Reason;
 use App\Form\CategoryPostFormType;
 use App\Form\CountryFormType;
 use App\Form\EditCountryFormType;
+use App\Form\EditExtraPlaceFormType;
 use App\Form\EditNationalityFormType;
 use App\Form\EditPlaceFormType;
 use App\Form\EditPostFormType;
@@ -88,7 +89,6 @@ class PlaceController extends AbstractController
      */
     public function createExtraPlace(Request $request, $id): Response
     {
-
         $place = $this->getDoctrine()
             ->getRepository(Place::class)
             ->findOneBy(['id' => $id]);
@@ -105,8 +105,13 @@ class PlaceController extends AbstractController
             $extraPlace->setCreateAt(new \DateTimeImmutable($request->get('time')));
             $extraPlace->addPlace($place);
 
+            $place->setBrandId($extraPlace->getBrandId());
+
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($extraPlace);
+            $em->persist($place);
+
             $em->flush();
 
 
@@ -224,6 +229,75 @@ class PlaceController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/edit_extra_place/{id}", name="edit_extra_place")
+     * @param Request $request
+     * @param $id
+     * @param FileUploader $fileUploader
+     * @return Response
+     * @throws Exception
+     */
+    public function editExtraPlace(Request $request, $id): Response
+    {
+        $today = new \DateTimeImmutable('@'.strtotime('now'));
+
+        $place = $this->getDoctrine()
+            ->getRepository(PlaceExtra::class)
+            ->find($id);
+
+        $form = $this->createForm(
+            EditExtraPlaceFormType::class,
+            $place);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $place->setUpdateAt($today);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($place);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Extra modifé'
+            );
+
+            return $this->redirectToRoute('manage_place');
+        }
+        return $this->render('form/create_place_extra.html.twig', [
+            'place' =>$place,
+            'form' => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/delete_extra_place/{id}", name="delete_extra_place")
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function deleteExtraPlace(Request $request, $id): RedirectResponse
+    {
+        $today = new \DateTime('@'.strtotime('now'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(PlaceExtra::class);
+        $place = $repository->find($id);
+
+        $place->setDeleteAt(new \DateTimeImmutable($request->get('time')));
+
+        $entityManager->persist($place);
+        $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Lieu supprimé'
+        );
+
+        return $this->redirectToRoute('manage_place');
+    }
 
     /**
      * @Route("/admin/delete_place/{id}", name="delete_place")

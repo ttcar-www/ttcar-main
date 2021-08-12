@@ -89,6 +89,11 @@ class Place
      */
     private $Place;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Mark::class, inversedBy="places")
+     */
+    private $brand_id;
+
     public function __construct()
     {
         $this->promotion = new ArrayCollection();
@@ -360,5 +365,21 @@ class Place
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBrandId()
+    {
+        return $this->brand_id;
+    }
+
+    /**
+     * @param mixed $brand_id
+     */
+    public function setBrandId($brand_id): void
+    {
+        $this->brand_id = $brand_id;
     }
 }

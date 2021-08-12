@@ -7,11 +7,13 @@ use App\Entity\Cars;
 use App\Entity\Mark;
 use App\Entity\Newsletter;
 use App\Entity\Place;
+use App\Entity\PlaceExtra;
 use App\Entity\Price;
 use App\Entity\Promotions;
 use App\Entity\User;
 use App\Form\EditMeUserFormType;
 use App\Form\NewsletterFormType;
+use App\Form\SearchFormType;
 use App\Repository\BlogRepository;
 use App\Service\PriceService;
 use Exception;
@@ -21,6 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,14 +66,13 @@ class MainController extends AbstractController
             }
         }
 
-        $formSearch= $this->getFormSearch($request);
+        $formSearch = $this->createForm(SearchFormType::class);
 
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
             $data = $this->getDataSearch($formSearch->getData());
             return $this->redirectToRoute('listing');
-
         }
 
         $newsletter = new Newsletter();
@@ -107,82 +109,20 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/placeAjax/", name="placeAjax")
      * @param Request $request
-     * @return FormInterface
-     * @throws Exception
-     *
+     * @return bool|Response
      */
-    private function getFormSearch(Request $request)
+    public function ajaxPlace(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->add('mark_1', ChoiceType::class, [
-                'choices' => ['Renault' => 'renault'],
-                'expanded' => true,
-                'required' => false,
-                'multiple' => true,
-                'label' => false
-            ])
-            ->add('mark_2', ChoiceType::class, [
-                'choices' => ['Peugeot' => 'peugeot'],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => false,
-                'required' => false
-            ])
-            ->add('mark_3', ChoiceType::class, [
-                'choices' => ['Citroën' => 'citroen'],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => false,
-                'required' => false
-            ])
-            ->add('mark_4', ChoiceType::class, [
-                'choices' => ['DS Auto' => 'ds auto'],
-                'expanded' => true,
-                'multiple' => true,
-                'label' => false,
-                'required' => false
-            ])
-            ->add('placeDepart', EntityType::class, [
-                'class' => Place::class,
-                'choice_label' => 'getLibelle',
-                'expanded' => false,
-                'multiple' => false,
-                'label' => false
-            ])
-            ->add('date_start', DateType::class, array(
-                'widget' => 'single_text',
-                'label' => false,
-                // prevents rendering it as type="date", to avoid HTML5 date pickers
-                'html5' => false,
-                // adds a class that can be selected in JavaScript
-                'attr' => ['class' => 'datepicker-dateStart'],
-                'format' => 'dd/MM/yyyy'
-            ))
-            ->add('placeReturn', EntityType::class, [
-                'class' => Place::class,
-                'choice_label' => 'getLibelle',
-                'expanded' => false,
-                'multiple' => false,
-                'label' => false
-            ])
-            ->add('date_end', DateType::class, array(
-                'widget' => 'single_text',
-                'label' => false,
-                // prevents rendering it as type="date", to avoid HTML5 date pickers
-                'html5' => false,
-                // adds a class that can be selected in JavaScript
-                'attr' => ['class' => 'datepicker-dateEnd'],
-                'format' => 'dd/MM/yyyy'
-            ))
-            ->add('promo', NumberType::class, array(
-                'label' => 'promo',
-                'required' => false
-            ))
+       $places =  $this->getDoctrine()
+            ->getRepository(Place::class)
+            ->findBy(['brand_id' => $request->get('mark')]);
 
-            ->getForm();
-
-        return $form;
+       foreach ($places as $place) {
+           $output[] = array('id' => $place->getId(),'libelle' => $place->getLibelle());
+       }
+        return new JsonResponse($output);
     }
 
     /**
@@ -195,8 +135,14 @@ class MainController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Place::class);
 
-        $placeDepart = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']]);
-        $placeReturn = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']]);
+
+
+        $placeDepart = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']->getLibelle()]);
+        $placeReturn = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']->getLibelle()]);
+
+        $places =  $this->getDoctrine()
+            ->getRepository(Place::class)
+            ->findBy(['brand_id' => $_SESSION['searchResult']['mark']]);
 
         return $this->createFormBuilder()
             ->add('placeDepart', EntityType::class, [
@@ -239,9 +185,11 @@ class MainController extends AbstractController
      */
     public function getPriceDeparture()
     {
+
+        $placeSession = $_SESSION['searchResult']['placeDepart'];
         $place_depart = $this->getDoctrine()
             ->getRepository(Place::class)
-            ->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']]);
+            ->findOneBy(['libelle' => $placeSession->getLibelle()]);
 
         $total = $place_depart->getPrice();
 
@@ -254,9 +202,10 @@ class MainController extends AbstractController
      */
     public function getPriceReturn()
     {
+        $placeSession = $_SESSION['searchResult']['placeReturn'];
         $place_return = $this->getDoctrine()
             ->getRepository(Place::class)
-            ->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']]);
+            ->findOneBy(['libelle' => $placeSession->getLibelle()]);
 
         $total = $place_return->getPrice();
 
@@ -348,14 +297,12 @@ class MainController extends AbstractController
 
     public function getDataSearch($data) {
 
-        $mark_labelle = $this->getMarkSession($data);
-
         $data = [
-            'mark' =>$mark_labelle,
+            'mark' =>$data['mark'],
             'dateStart' =>$data['date_start'],
             'dateEnd' =>$data['date_end'],
-            'placeDepart' =>$data['placeDepart']->getLibelle(),
-            'placeReturn' =>$data['placeReturn']->getLibelle(),
+            'placeDepart' =>$data['placeDepart'],
+            'placeReturn' =>$data['placeReturn'],
             'promo' =>$data['promo'],
         ];
 
@@ -366,28 +313,15 @@ class MainController extends AbstractController
 
     public function getMarkSession($data) {
 
+
         $mark_session = null;
-        if (isset($_SESSION['searchResult']['Ajaxmark'])) {
-            $mark_session = $_SESSION['searchResult']['Ajaxmark'];
-        }
-
-        if ($mark_session != null) {
-            $mark_labelle = $mark_session;
-        }elseif  (isset($data['mark_1'])) {
-            if ($data['mark_1'] == array('renault')) {
-                $mark_labelle = 'Renault';
-            }elseif ($data['mark_2'] == array('peugeot')) {
-                $mark_labelle = 'Peugeot';
-            }elseif ($data['mark_3'] == array('citroen')) {
-                $mark_labelle = 'Citroën';
-            }else {
-                $mark_labelle = 'DS Automobile';
-            }
+        if (isset($_SESSION['searchResult']['mark'])) {
+            $mark_session = $_SESSION['searchResult']['mark']->getLibelle();
         }else {
-            $mark_labelle = 'renault';
+            $mark_session = 'Renault';
         }
 
-        return $mark_labelle;
+        return $mark_session;
     }
 
 
@@ -398,7 +332,6 @@ class MainController extends AbstractController
      */
     public function groupe(Request $request): Response
     {
-
         return $this->render('main/group.html.twig');
     }
 

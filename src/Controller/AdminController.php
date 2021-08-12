@@ -12,6 +12,7 @@ use App\Entity\Mark;
 use App\Entity\Nationality;
 use App\Entity\Order;
 use App\Entity\Place;
+use App\Entity\PlaceExtra;
 use App\Entity\Price;
 use App\Entity\PriceSupplier;
 use App\Entity\Promotions;
@@ -135,6 +136,35 @@ class AdminController extends AbstractController
 
         return $this->render('admin/manage_place.html.twig', [
             'places' =>$places
+        ]);
+    }
+
+    /**
+     * @Route("/admin/manage_extra_place/{id}", name="manage_extra_place")
+     * @param $id
+     * @return Response
+     */
+    public function manageExtraPlace($id): Response
+    {
+        $extraPlaces = $this->getDoctrine()->getRepository(PlaceExtra::class)->findBy(['deleted_at' => null]);
+        $placeName = $this->getDoctrine()->getRepository(Place::class)->findOneBy(['id'=> $id]);
+
+        foreach ($extraPlaces as $place) {
+            $placeMany = $place->getPlace();
+            foreach ($placeMany as $onePlace) {
+                if ($onePlace->getLibelle() == $placeName->getLibelle()) {
+                    $extraPlacesArray[] = array(
+                        'id' => $place->getId(),
+                        'extra1' => $place->getExtra1(),
+                        'extra2' => $place->getExtra2(),
+                        'daysLimit' => $place->getDaysLimit()
+                    );
+                }
+            }
+        }
+
+        return $this->render('admin/manage_extra_place.html.twig', [
+            'extraPlacesArray' =>$extraPlacesArray
         ]);
     }
 
