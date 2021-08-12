@@ -55,29 +55,29 @@
                             <label for="type1" class="b-search__main-type-svg">
                                 <img src="{{ asset('/build/renauttrans.png') }}" width="100%">
                             </label>
-                            <h5><label for="type1"> {{ form_row(formSearch.mark_1) }}</label></h5>
+                            <h5><label for="type1"> {{ form_row(formSearch.mark) }}</label></h5>
                         </div>
-                            <div class="col-xs-2">
+                          {#  <div class="col-xs-2">
                                 <input id="type1" type="radio" name="type" />
                                 <label for="type1" class="b-search__main-type-svg">
                                     <img src="{{ asset('/build/peugeottrans.png') }}" width="50%">
                                 </label>
                                 <h5><label for="type1">{{ form_row(formSearch.mark_2) }}</label></h5>
-                            </div>
-                            <div class="col-xs-2">
+                            </div>#}
+                          {#  <div class="col-xs-2">
                                 <input id="type1" type="radio" name="type" />
                                 <label for="type1" class="b-search__main-type-svg">
                                     <img src="{{ asset('/build/citroentrans.png') }}" width="50%">
                                 </label>
                                 <h5><label for="type1">{{ form_row(formSearch.mark_3) }}</label></h5>
-                            </div>
-                            <div class="col-xs-2">
+                            </div>#}
+                            {#<div class="col-xs-2">
                                 <input id="type1" type="radio" name="type" />
                                 <label for="type1" class="b-search__main-type-svg">
                                     <img src="{{ asset('/build/dstrans.png') }}" width="70%">
                                 </label>
                                 <h5><label for="type1"> {{ form_row(formSearch.mark_4) }}</label></h5>
-                            </div>
+                            </div>#}
                             <div class="col-xs-2 col-md-offset-2" data-tooltip="Nous contacter pour un délais plus court">
                                 <p class="delay">Délai de livraison : <span>21 Jours</span></p>
                             </div>
@@ -418,6 +418,8 @@
 
             //DatePicker Search
             $(document).ready(function() {
+                document.getElementById("cookieBar").style.display = "none";
+
                 $('.datepicker-dateStart').datepicker({
                     format: 'dd/mm/yyyy',
                     startDate: '+21d',
@@ -428,12 +430,49 @@
                     format: 'dd/mm/yyyy',
                     startDate: '+1m'
                 });
+
+
+                let placeReturn = document.getElementsByClassName("placeReturn");
+                let placeDepart = document.getElementsByClassName("placeDepart");
+
+                $(placeReturn).attr('disabled', 'disabled');
+                $(placeDepart).attr('disabled', 'disabled');
+
+                let renault = document.querySelector("#search_form_mark");
+
+                renault.addEventListener("change", function() {
+                    $.ajax({
+                        url: {{  path('placeAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: this.value},
+                        success: function(place){
+                            console.log(place)
+                            // the next thing you want to do
+                            let places = $('#search_form_placeDepart');
+                            let placesReturn = $('#search_form_placeReturn');
+
+                            places.empty();
+                            placesReturn.empty();
+
+                            $(placeReturn).attr('disabled', false);
+                            $(placeDepart).attr('disabled', false);
+
+                            for (let i = 0; i < place.length; i++) {
+                                console.log(place[i])
+                                places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                                placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                                console.log(document.querySelector("#search_form_placeDepart").value)
+                            }
+                        }
+                    });
+                })
             });
 
-            //CookieBar
+/*            //CookieBar
             function CookieBar() {
                 document.getElementById("cookieBar").style.display = "none";
-            }
+            }*/
 
             // Caroussel cars
 

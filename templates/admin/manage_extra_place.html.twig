@@ -14,39 +14,34 @@
         <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Tout les lieux de livraisons</h4>
+                    <h4 class="header-title">Extra du lieu</h4>
+{#
                     <a href="{{ path('create_place') }}" style="color: darkslategrey; margin-left: 5%" class="btn btn-light"><i class="fas fa-map-marked-alt"></i> Ajouté un lieu</a>
+#}
                     <div class="single-table">
                         <div class="table-responsive">
                             <table class="table table-striped text-center">
                                 <thead class="text-uppercase">
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Nom FR</th>
-                                    <th scope="col">Longétude</th>
-                                    <th scope="col">Lattitude</th>
-                                    <th scope="col">Prix</th>
-                                    <th scope="col">Extra</th>
+                                    <th scope="col">Extra 1</th>
+                                    <th scope="col">Extra 2</th>
+                                    <th scope="col">Jour limite</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for place in places %}
+                                {% for extraPlace in extraPlacesArray %}
                                     <tr>
-                                        <th scope="row">{{ place.id }}</th>
-                                        <td>{{ place.libelle }}</td>
-                                        <td>{{ place.longitude }}</td>
-                                        <td>{{ place.latitude }}</td>
-                                        <td>{{ place.price }}</td>
-                                        <td>{{ place.getPlace.count }}</td>
+                                        <th scope="row">{{ extraPlace.id }}</th>
+                                        <td>{{ extraPlace.extra1 }}</td>
+                                        <td>{{ extraPlace.extra2 }}</td>
+                                        <td>{{ extraPlace.daysLimit }}</td>
+
                                         <td>
-                                            {% if place.getPlace.count > 0 %}
-                                            <a href="{{ path('manage_extra_place', { 'id': place.id() }) }}"> <i class="far fa-eye"></i></a>
-                                                <br>
-                                            {% endif %}
-                                            <a href="{{ path('edit_place', { 'id': place.id }) }}"> <i class="far fa-edit"></i></a>
+                                            <a href="{{ path('edit_extra_place', { 'id': extraPlace.id }) }}"> <i class="far fa-edit"></i></a>
                                             <br>
-                                            <a href="{{ path('delete_place', { 'id': place.id }) }}"
+                                            <a href="{{ path('delete_extra_place', { 'id': extraPlace.id }) }}"
                                                onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
                                         </td>
                                     </tr>

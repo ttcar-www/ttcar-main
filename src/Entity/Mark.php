@@ -36,6 +36,11 @@ class Mark
     private $extra_place;
 
     /**
+     * @ORM\OneToMany(targetEntity=Place::class, mappedBy="brand_id")
+     */
+    private $places;
+
+    /**
      * @ORM\OneToMany(targetEntity=Range::class, mappedBy="mark")
      */
     private $ranges;
@@ -298,4 +303,19 @@ class Mark
         $this->extra_place = $extra_place;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPlaces()
+    {
+        return $this->places;
+    }
+
+    /**
+     * @param mixed $places
+     */
+    public function setPlaces($places): void
+    {
+        $this->places = $places;
+    }
 }
