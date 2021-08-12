@@ -113,10 +113,10 @@ class OrdersController extends AbstractController
 
                 $order->setCarLibelle($car->getName());
                 $order->setCreateDate($today);
-                $order->setDepartPlace($_SESSION['searchResult']['placeDepart']);
+                $order->setDepartPlace($_SESSION['searchResult']['placeDepart']->getlibelle());
                 $order->setDepartPrice($price_depart);
                 $order->setDepartDate($_SESSION['searchResult']['dateStart']);
-                $order->setReturnPlace($_SESSION['searchResult']['placeReturn']);
+                $order->setReturnPlace($_SESSION['searchResult']['placeReturn']->getlibelle());
                 $order->setReturnPrice($price_return);
                 $order->setReturnDate($_SESSION['searchResult']['dateEnd']);
                 $order->setBasicPrice($price);
@@ -127,7 +127,11 @@ class OrdersController extends AbstractController
                 $order->setLang($request->getLocale());
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
-                $order->setPromoLibelle($promos->getLibelle());
+                if ($promos != null) {
+                    $order->setPromoLibelle($promos->getLibelle());
+                }else {
+                    $order->setPromoLibelle('null');
+                }
 
                 if ($user) {
                     $order->setCustomerName($user->getName());
