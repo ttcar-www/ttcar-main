@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Accessory;
 use App\Entity\Cars;
-use App\Entity\Country;
 use App\Entity\Customer;
 use App\Entity\Mark;
 use App\Entity\Order;
@@ -16,8 +15,9 @@ use App\Entity\TypePromo;
 use App\Entity\User;
 use App\Form\OrderFormType;
 use App\Form\OrderSimpleFormType;
-use App\Form\RegistrationFormType;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +45,7 @@ class OrdersController extends AbstractController
      * @return Response
      * @throws Exception
      */
-    public function index(Request $request, $id, PriceService $PriceService, AuthenticationUtils $authenticationUtils, UserPasswordEncoderInterface $passwordEncoder)
+    public function index(Request $request, $id, PriceService $PriceService, AuthenticationUtils $authenticationUtils, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         //Gestion de l'erreur si la session est expiré
         if (empty($_SESSION['searchResult'])) {
@@ -77,7 +77,7 @@ class OrdersController extends AbstractController
             array_push($accessArray, $access);
         }
 
-            $today = new \DateTime('@' . strtotime('now'));
+            $today = new DateTime('@' . strtotime('now'));
 
             // Calcule du nombres de jours
             $betweenDate = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
@@ -91,8 +91,6 @@ class OrdersController extends AbstractController
             //promo
             $promos = $this->getPromoOrder($car->getMark());
             $promoPrice = $this->getPricePromo($car->getMark(), $price);
-            $user = null;
-
             $order = new Order();
 
             // Utilisateur
@@ -129,8 +127,8 @@ class OrdersController extends AbstractController
                 $order->setBasicPrice($price);
                 $order->setPromotions($promoPrice);
                 $order->setPrice($price);
-                $order->setItems(isset($_SESSION['itemsOrder']) ? $_SESSION['itemsOrder']: null);
-                $order->setCountItems(isset($_SESSION['countItems']) ? $_SESSION['countItems']: null);
+                $order->setItems($_SESSION['itemsOrder'] ?? null);
+                $order->setCountItems($_SESSION['countItems'] ?? null);
                 $order->setLang($request->getLocale());
                 $order->setCountDays($nb_days);
                 $order->setMark($mark->getLibelle());
@@ -202,7 +200,7 @@ class OrdersController extends AbstractController
     /**
      * @param $car
      * @param $price
-     * @return object|null
+     * @return float|int|object|null
      * Calcule des promotions
      */
     public function getPricePromo($car, $price) {
@@ -219,13 +217,9 @@ class OrdersController extends AbstractController
 
             switch ($type->getType()) {
                 case 'Euros':
-                    $price = $price - $promotions->getValue();
-                    return $price;
-                    break;
+                    return $price - $promotions->getValue();
                 case '%':
-                    $price = $price - $price*($promotions->getValue()/100);
-                    return $price;
-                    break;
+                    return $price - $price*($promotions->getValue()/100);
             }
             return $price;
 
@@ -241,21 +235,13 @@ class OrdersController extends AbstractController
         $operator_calcul = null;
         switch ($operator) {
             case '<':
-                $operator_calcul = '<';
-                return $operator_calcul;
-                break;
+                return '<';
             case '>':
-                $operator_calcul = '>';
-                return $operator_calcul;
-                break;
+                return '>';
             case '≥':
-                $operator_calcul = '>=';
-                return $operator_calcul;
-                break;
+                return '>=';
             case '≤':
-                $operator_calcul = '=<';
-                return $operator_calcul;
-                break;
+                return '=<';
         }
     }
 
@@ -264,14 +250,13 @@ class OrdersController extends AbstractController
      * @return object|null
      * Calcule des slices
      */
-    public function getPriceBySlice($slices) {
+    public function getPriceBySlice($slices): ?object
+    {
         $price = null;
 
         foreach ($slices as $slice) {
-            $price = $slice->getValue();
-            return $price;
+            return $slice->getValue();
         }
-
 
         return $price;
     }
@@ -304,8 +289,8 @@ class OrdersController extends AbstractController
      * @return object|null
      * Calcule des promotions
      */
-    public function getPromoOrder($id) {
-
+    public function getPromoOrder($id): ?array
+    {
         $promotions = $this->getDoctrine()
             ->getRepository(Promotions::class)
             ->findBy(['mark' => $id]);
@@ -329,9 +314,7 @@ class OrdersController extends AbstractController
     {
         $interval = $date_1->diff($date_2);
 
-        $days = $interval->format('%a');
-
-        return $days;
+        return $interval->format('%a');
     }
 
     /**
@@ -363,9 +346,7 @@ class OrdersController extends AbstractController
             }
         }
 
-        $total = $place_depart->getPrice() + $priceExtra;
-
-        return $total;
+        return $place_depart->getPrice() + $priceExtra;
     }
 
     /**
@@ -396,18 +377,15 @@ class OrdersController extends AbstractController
                 }
             }
         }
-        $total = $place_return->getPrice() + $priceExtra;
-
-        return $total;
+        return $place_return->getPrice() + $priceExtra;
     }
-
 
     /**
      * @Route("/priceAjax/", name="priceAjax")
      * @param Request $request
-     * @return bool|Response
+     * @return JsonResponse
      */
-    public function ajaxAction(Request $request)
+    public function ajaxAction(Request $request): JsonResponse
     {
         $ajaxPrice = $this->json( $request->get('price'));
 
@@ -421,9 +399,9 @@ class OrdersController extends AbstractController
     /**
      * @Route("/itemsAjax/", name="itemsAjax")
      * @param Request $request
-     * @return bool|Response
+     * @return JsonResponse
      */
-    public function ajaxItems(Request $request)
+    public function ajaxItems(Request $request): JsonResponse
     {
         $ajaxLibelle = $this->json( $request->get('libelleItems'));
 
@@ -436,9 +414,9 @@ class OrdersController extends AbstractController
     /**
      * @Route("/countItemAjax/", name="countItemAjax")
      * @param Request $request
-     * @return bool|Response
+     * @return JsonResponse
      */
-    public function countItemAjax(Request $request)
+    public function countItemAjax(Request $request): JsonResponse
     {
         $countItems = $this->json( $request->get('countItem'));
 
@@ -454,11 +432,10 @@ class OrdersController extends AbstractController
      * @return Customer|null
      * @throws Exception
      */
-    public function newUser($order)
+    public function newUser($order): ?Customer
     {
-        $today = new \DateTime('@'.strtotime('now'));
+        $today = new DateTime('@'.strtotime('now'));
 
-        $newUser = null;
         $newCustomer = null;
 
         $user = $this->getDoctrine()
@@ -494,7 +471,7 @@ class OrdersController extends AbstractController
      * @return Customer|null
      * @throws Exception
      */
-    public function newCustomer($newUser, $order)
+    public function newCustomer($newUser, $order): ?Customer
     {
         $newCustomer = null;
 
@@ -544,18 +521,16 @@ class OrdersController extends AbstractController
             $em->flush();
 
         }
-
         return $newCustomer;
-
     }
 
     /**
      * @Route("/createOrder/{id}", name="createOrder")
      * @param $id
-     * @return bool|Response
+     * @return Response
      * @throws Exception
      */
-    public function createOrder($id)
+    public function createOrder($id): Response
     {
         $order = $this->getDoctrine()
             ->getRepository(Order::class)

@@ -7,22 +7,20 @@ use App\Entity\Nationality;
 use App\Entity\Place;
 use App\Entity\PlaceExtra;
 use App\Entity\Reason;
-use App\Form\CategoryPostFormType;
 use App\Form\CountryFormType;
 use App\Form\EditCountryFormType;
 use App\Form\EditExtraPlaceFormType;
 use App\Form\EditNationalityFormType;
 use App\Form\EditPlaceFormType;
-use App\Form\EditPostFormType;
 use App\Form\EditReasonFormType;
 use App\Form\ExtraPlaceFormType;
 use App\Form\NationalityFormType;
-use App\Form\NewPostFormType;
 use App\Form\PlaceFormType;
 use App\Form\ReasonFormType;
 use App\Service\FileUploader;
+use DateTime;
+use DateTimeImmutable;
 use Exception;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,7 +40,7 @@ class PlaceController extends AbstractController
      */
     public function createPlace(Request $request, FileUploader $fileUploader): Response
     {
-        $today = new \DateTime('@'.strtotime('now'));
+        $today = new DateTime('@'.strtotime('now'));
         $place = new Place();
 
         $form = $this->createForm(
@@ -102,7 +100,7 @@ class PlaceController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $extraPlace->setCreateAt(new \DateTimeImmutable($request->get('time')));
+            $extraPlace->setCreateAt(new DateTimeImmutable($request->get('time')));
             $extraPlace->addPlace($place);
 
             $place->setBrandId($extraPlace->getBrandId());
@@ -233,13 +231,12 @@ class PlaceController extends AbstractController
      * @Route("/admin/edit_extra_place/{id}", name="edit_extra_place")
      * @param Request $request
      * @param $id
-     * @param FileUploader $fileUploader
      * @return Response
      * @throws Exception
      */
     public function editExtraPlace(Request $request, $id): Response
     {
-        $today = new \DateTimeImmutable('@'.strtotime('now'));
+        $today = new DateTimeImmutable('@'.strtotime('now'));
 
         $place = $this->getDoctrine()
             ->getRepository(PlaceExtra::class)
@@ -280,13 +277,11 @@ class PlaceController extends AbstractController
      */
     public function deleteExtraPlace(Request $request, $id): RedirectResponse
     {
-        $today = new \DateTime('@'.strtotime('now'));
-
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(PlaceExtra::class);
         $place = $repository->find($id);
 
-        $place->setDeleteAt(new \DateTimeImmutable($request->get('time')));
+        $place->setDeleteAt(new DateTimeImmutable($request->get('time')));
 
         $entityManager->persist($place);
         $entityManager->flush();
@@ -308,13 +303,11 @@ class PlaceController extends AbstractController
      */
     public function deletePlace(Request $request, $id): RedirectResponse
     {
-        $today = new \DateTime('@'.strtotime('now'));
-
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Place::class);
         $place = $repository->find($id);
 
-        $place->setDeleteAt(new \DateTimeImmutable($request->get('time')));
+        $place->setDeleteAt(new DateTimeImmutable($request->get('time')));
 
         $entityManager->persist($place);
         $entityManager->flush();
@@ -406,7 +399,7 @@ class PlaceController extends AbstractController
      */
     public function editPlace(Request $request, $id, FileUploader $fileUploader): Response
     {
-        $today = new \DateTime('@'.strtotime('now'));
+        $today = new DateTime('@'.strtotime('now'));
 
         $place = $this->getDoctrine()
             ->getRepository(Place::class)

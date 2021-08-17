@@ -6,19 +6,16 @@ use App\Entity\Mark;
 use App\Entity\PromoCode;
 use App\Entity\Promotions;
 use App\Entity\Range;
-use App\Entity\User;
 use App\Form\EditPromoCodeFormType;
 use App\Form\EditPromoFormType;
 use App\Form\PromoCodeFormType;
 use App\Form\PromotionFormType;
-use App\Form\UserEditFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class PromotionController extends AbstractController
 {
@@ -236,7 +233,7 @@ class PromotionController extends AbstractController
      * @param $id
      * @return RedirectResponse
      */
-    public function copy($id)
+    public function copy($id): RedirectResponse
     {
         $entityManager = $this->getDoctrine()->getManager();
         $originalPromo = $this->getDoctrine()
@@ -256,7 +253,7 @@ class PromotionController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function codePromo(Request $request)
+    public function codePromo(Request $request): Response
     {
         $codePromo = new PromoCode();
 

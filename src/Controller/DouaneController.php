@@ -4,16 +4,13 @@ namespace App\Controller;
 
 use App\Entity\ContactDouane;
 use App\Form\ContactDouaneFormType;
+use DateTime;
 use Exception;
-use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Knp\Component\Pager\PaginatorInterface;
 
 
 class DouaneController extends AbstractController
@@ -22,7 +19,7 @@ class DouaneController extends AbstractController
      * @Route("/TTdouaneExport/", name="TTdouane")
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
 
         return $this->render('douane/index.html.twig');
@@ -32,7 +29,7 @@ class DouaneController extends AbstractController
      * @Route("/TTdouaneExport/transit", name="transit")
      * @return Response
      */
-    public function transit()
+    public function transit(): Response
     {
 
         return $this->render('douane/transit.html.twig');
@@ -42,7 +39,7 @@ class DouaneController extends AbstractController
      * @Route("/TTdouaneExport/export", name="export")
      * @return Response
      */
-    public function export()
+    public function export(): Response
     {
 
         return $this->render('douane/export.html.twig');
@@ -52,7 +49,7 @@ class DouaneController extends AbstractController
      * @Route("/TTdouaneExport/douane", name="douane")
      * @return Response
      */
-    public function douane()
+    public function douane(): Response
     {
 
         return $this->render('douane/douane.html.twig');
@@ -62,7 +59,7 @@ class DouaneController extends AbstractController
      * @Route("/TTdouaneExport/transport", name="transport")
      * @return Response
      */
-    public function transport()
+    public function transport(): Response
     {
 
         return $this->render('douane/transport.html.twig');
@@ -74,10 +71,10 @@ class DouaneController extends AbstractController
      * @return Response
      * @throws Exception
      */
-    public function contact(Request $request)
+    public function contact(Request $request): Response
     {
         $contact = new ContactDouane();
-        $date = new \DateTime('@'.strtotime('now'));
+        $date = new DateTime('@'.strtotime('now'));
 
         $form = $this->createForm(
             ContactDouaneFormType::class,
@@ -125,10 +122,9 @@ class DouaneController extends AbstractController
     /**
      * @Route("/admin/view_contact_douane/{id}", name="view_contact_douane")
      * @param $id
-     * @param Request $request
      * @return Response
      */
-    public function viewContactDouane($id, Request $request): Response
+    public function viewContactDouane($id): Response
     {
         $repository = $this->getDoctrine()->getRepository(ContactDouane::class);
         $contact = $repository->find($id);
