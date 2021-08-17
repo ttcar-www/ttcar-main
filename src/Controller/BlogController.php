@@ -8,6 +8,7 @@ use App\Form\CategoryPostFormType;
 use App\Form\EditPostFormType;
 use App\Form\NewPostFormType;
 use App\Service\FileUploader;
+use DateTime;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -71,7 +72,7 @@ class BlogController extends AbstractController
      */
     public function createPost(Request $request, FileUploader $fileUploader): Response
     {
-        $today = new \DateTime('@'.strtotime('now'));
+        $today = new DateTime('@'.strtotime('now'));
 
         $post = new Blog();
 
@@ -201,14 +202,11 @@ class BlogController extends AbstractController
     /**
      * @Route("/create_category_post/", name="create_category_post")
      * @param Request $request
-     * @param FileUploader $fileUploader
      * @return Response
      * @throws Exception
      */
-    public function createCategoryPost(Request $request, FileUploader $fileUploader): Response
+    public function createCategoryPost(Request $request): Response
     {
-        $today = new \DateTime('@'.strtotime('now'));
-
         $categoryPost = new CategoryPost();
 
         $form = $this->createForm(

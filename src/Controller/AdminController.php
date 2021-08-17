@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Accessory;
-use App\Entity\Blog;
 use App\Entity\Cars;
 use App\Entity\Contact;
 use App\Entity\Country;
@@ -15,32 +14,19 @@ use App\Entity\Place;
 use App\Entity\PlaceExtra;
 use App\Entity\Price;
 use App\Entity\PriceSupplier;
-use App\Entity\Promotions;
 use App\Entity\Range;
 use App\Entity\Reason;
 use App\Entity\Slice;
 use App\Entity\SliceSupplier;
 use App\Entity\User;
-use App\Form\ContactFormType;
 use App\Form\EditAccessoryFormType;
-use App\Form\EditPostFormType;
-use App\Form\NewPostFormType;
-use App\Form\PromotionFormType;
-use App\Form\RegistrationFormType;
-use App\Form\TtcarFormType;
 use App\Form\UserEditFormType;
-use App\Form\UserFormType;
 use App\Service\FileUploader;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -255,11 +241,10 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/manage_slice/{id}", name="manage_slice")
-     * @param Request $request
      * @param $id
      * @return Response
      */
-    public function manageSlice(Request $request, $id): Response
+    public function manageSlice($id): Response
     {
         $price = $this->getDoctrine()
             ->getRepository(Price::class)
@@ -289,8 +274,6 @@ class AdminController extends AbstractController
         $slicesArray = [];
         $countSlice = count($slices);
         $i = 0;
-        $minDay = 0;
-
         foreach ( $slices as $slice ) {
             if ($slice->getTarif()->getId() == $price->getId()) {
                 array_push($slicesArray, $slice);
@@ -304,6 +287,7 @@ class AdminController extends AbstractController
             'slices' => $slicesArray,
             'slicesSupplier' => $slicesSupplier,
             'originalPrice' => $originalPrice,
+            'minDay' => $minDay,
             'originalPriceSupplier' => $originalPriceSupplier,
             'priceId' => $price->getId()
         ]);

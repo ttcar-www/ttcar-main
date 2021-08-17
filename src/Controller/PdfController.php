@@ -3,20 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Accessory;
-use App\Entity\Cars;
 use App\Entity\Country;
-use App\Entity\Mark;
 use App\Entity\Nationality;
 use App\Entity\Order;
 use App\Entity\Reason;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Asset\PathPackage;
-use Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 
 class PdfController extends AbstractController

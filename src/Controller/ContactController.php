@@ -7,6 +7,7 @@ use App\Entity\Contact;
 use App\Entity\ContactCars;
 use App\Form\ContactByCarFormType;
 use App\Form\ContactFormType;
+use DateTime;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -19,14 +20,14 @@ class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
-     * @param $request
+     * @param Request $request
      * @return Response
      * @throws Exception
      */
     public function contact(Request $request): Response
     {
         $contact = new Contact();
-        $date = new \DateTime('@'.strtotime('now'));
+        $date = new DateTime('@'.strtotime('now'));
 
         $form = $this->createForm(
             ContactFormType::class,
@@ -65,7 +66,7 @@ class ContactController extends AbstractController
     public function contactByCar(Request $request, $id): Response
     {
         $contact = new ContactCars();
-        $date = new \DateTime('@'.strtotime('now'));
+        $date = new DateTime('@'.strtotime('now'));
         $car = $this->getDoctrine()
             ->getRepository(Cars::class)
             ->findOneBy(['id' => $id]);
@@ -131,10 +132,9 @@ class ContactController extends AbstractController
     /**
      * @Route("/admin/view_contact{id}", name="view_contact")
      * @param $id
-     * @param Request $request
      * @return Response
      */
-    public function viewContact($id, Request $request): Response
+    public function viewContact($id): Response
     {
         $repository = $this->getDoctrine()->getRepository(Contact::class);
         $contact = $repository->find($id);
@@ -176,10 +176,9 @@ class ContactController extends AbstractController
     /**
      * @Route("/admin/view_contact_car/{id}", name="view_contact_car")
      * @param $id
-     * @param Request $request
      * @return Response
      */
-    public function viewContactCar($id, Request $request): Response
+    public function viewContactCar($id): Response
     {
         $repository = $this->getDoctrine()->getRepository(ContactCars::class);
         $contact = $repository->find($id);

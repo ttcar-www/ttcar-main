@@ -7,20 +7,17 @@ use App\Entity\Cars;
 use App\Entity\Mark;
 use App\Entity\Newsletter;
 use App\Entity\Place;
-use App\Entity\PlaceExtra;
 use App\Entity\Price;
 use App\Entity\Promotions;
-use App\Entity\Range;
 use App\Entity\User;
 use App\Form\EditMeUserFormType;
 use App\Form\NewsletterFormType;
 use App\Form\SearchFormType;
-use App\Repository\BlogRepository;
 use App\Service\PriceService;
+use DateTime;
 use Exception;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormInterface;
@@ -39,14 +36,14 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      * @param TranslatorInterface $translator
-     * @param $request
+     * @param Request $request
      * @return Response
      * @throws Exception
      */
     public function index(TranslatorInterface $translator, Request $request): Response
     {
         $repository = $this->getDoctrine()->getRepository(Cars::class);
-        $today = new \DateTime('@'.strtotime('now'));
+        $today = new DateTime('@'.strtotime('now'));
         $repository_blog = $this->getDoctrine()->getRepository(Blog::class);
         $repository_promotions = $this->getDoctrine()->getRepository(Promotions::class);
 
@@ -112,7 +109,7 @@ class MainController extends AbstractController
     /**
      * @Route("/placeAjax/", name="placeAjax")
      * @param Request $request
-     * @return bool|Response
+     * @return Response
      */
     public function ajaxPlace(Request $request)
     {
@@ -127,23 +124,14 @@ class MainController extends AbstractController
     }
 
     /**
-     * @param Request $request
      * @return FormInterface
-     * @throws Exception
-     *
      */
-    private function getFormSearchListing(Request $request)
+    private function getFormSearchListing()
     {
         $repository = $this->getDoctrine()->getRepository(Place::class);
 
-
-
         $placeDepart = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']->getLibelle()]);
         $placeReturn = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']->getLibelle()]);
-
-        $places =  $this->getDoctrine()
-            ->getRepository(Place::class)
-            ->findBy(['brand_id' => $_SESSION['searchResult']['mark']]);
 
         return $this->createFormBuilder()
             ->add('placeDepart', EntityType::class, [
@@ -192,9 +180,7 @@ class MainController extends AbstractController
             ->getRepository(Place::class)
             ->findOneBy(['libelle' => $placeSession->getLibelle()]);
 
-        $total = $place_depart->getPrice();
-
-        return $total;
+        return $place_depart->getPrice();
     }
 
     /**
@@ -208,9 +194,7 @@ class MainController extends AbstractController
             ->getRepository(Place::class)
             ->findOneBy(['libelle' => $placeSession->getLibelle()]);
 
-        $total = $place_return->getPrice();
-
-        return $total;
+        return $place_return->getPrice();
     }
 
     /**
@@ -223,13 +207,13 @@ class MainController extends AbstractController
      */
     public function listingResult(Request $request, PriceService $PriceService, PaginatorInterface $paginator): Response
     {
-        $today = new \DateTime('@'.strtotime('now'));
+        $today = new DateTime('@'.strtotime('now'));
         $nb_days = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
 
         $price_depart = $this->getPriceDeparture();
         $price_return = $this->getPriceReturn();
 
-        $mark_labelle = $this->getMarkSession($_SESSION['searchResult']);
+        $mark_labelle = $this->getMarkSession();
 
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
@@ -263,7 +247,7 @@ class MainController extends AbstractController
             array_push($carsResult, $price_car);
         }
 
-        $formSearch= $this->getFormSearchListing($request);
+        $formSearch= $this->getFormSearchListing();
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
@@ -289,9 +273,7 @@ class MainController extends AbstractController
     {
         $interval = $date_1->diff($date_2);
 
-        $days = $interval->format('%a');
-
-        return $days;
+        return $interval->format('%a');
 
     }
 
@@ -312,10 +294,7 @@ class MainController extends AbstractController
         return $data;
     }
 
-    public function getMarkSession($data) {
-
-
-        $mark_session = null;
+    public function getMarkSession() {
         if (isset($_SESSION['searchResult']['mark'])) {
             $mark_session = $_SESSION['searchResult']['mark']->getLibelle();
         }else {
@@ -328,10 +307,9 @@ class MainController extends AbstractController
 
     /**
      * @Route("/groupe", name="groupe")
-     * @param $request
      * @return Response
      */
-    public function groupe(Request $request): Response
+    public function groupe(): Response
     {
         return $this->render('main/group.html.twig');
     }
@@ -402,14 +380,12 @@ class MainController extends AbstractController
     /**
      * @Route("/change_mark/", name="change_mark")
      * @param Request $request
-     * @return bool|Response
+     * @return Response
      */
-    public function changeMark(Request $request)
+    public function changeMark(Request $request): Response
     {
         $mark = $this->json( $request->get('mark'));
-
         $_SESSION['searchResult']['Ajaxmark'] = $request->get('mark');
-
 
         return $mark;
 
@@ -422,7 +398,7 @@ class MainController extends AbstractController
      * @param Request $request
      * @return RedirectResponse
      */
-    public function changeLocale($locale, Request $request)
+    public function changeLocale($locale, Request $request): RedirectResponse
     {
         // On stocke la langue dans la session
         $request->getSession()->set('_locale', $locale);

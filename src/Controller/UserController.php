@@ -4,14 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Order;
-use App\Entity\User;
 use App\Form\CustomerFormType;
 use App\Form\EditCustomerFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 

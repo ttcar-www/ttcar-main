@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Accessory;
 use App\Entity\Cars;
 use App\Entity\Mark;
-use App\Entity\Place;
 use App\Entity\Price;
 use App\Entity\PriceSupplier;
 use App\Entity\Range;
@@ -19,27 +18,19 @@ use App\Form\EditMarkFormType;
 use App\Form\EditRangeFormType;
 use App\Form\EditSliceFormType;
 use App\Form\MarkFormType;
-use App\Form\PlaceFormType;
 use App\Form\PriceFormType;
 use App\Form\PromoTypeFormType;
 use App\Form\RangeFormType;
-use App\Form\SlicesFormType;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\Validator\Constraints\Json;
-use Symfony\Component\Validator\Constraints\Length;
 
 
 class CarsController extends AbstractController
@@ -793,7 +784,7 @@ class CarsController extends AbstractController
      * @param $id
      * @return RedirectResponse
      */
-    public function copy($id)
+    public function copy($id): RedirectResponse
     {
         $entityManager = $this->getDoctrine()->getManager();
         $originalCar = $this->getDoctrine()
