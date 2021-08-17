@@ -584,7 +584,7 @@ class CarsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $slice->setTarif($price);
-            $slice->setMark($mark);
+            $slice->setMark($car->getMark());
 
             $sliceSupplier->setPrice($priceSupplier);
             $sliceSupplier->setCodePrice($form->get('code_price')->getData());
