@@ -143,6 +143,11 @@ class Cars
      */
     private $priceSupplier;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $minDays;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
@@ -507,5 +512,22 @@ class Cars
     public function setPriceSupplier($priceSupplier): void
     {
         $this->priceSupplier = $priceSupplier;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getMinDays()
+    {
+        return $this->minDays;
+    }
+
+    /**
+     * @param mixed $minDays
+     */
+    public function setMinDays($minDays): void
+    {
+        $this->minDays = $minDays;
     }
 }

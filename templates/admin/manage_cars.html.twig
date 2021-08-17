@@ -30,6 +30,7 @@
                                     <th scope="col">Marge</th>
                                     <th scope="col">Essence</th>
                                     <th scope="col">Barre</th>
+                                    <th scope="col">Jours minimum</th>
                                     <th scope="col">Accessoires</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -49,6 +50,7 @@
                                         <td>{{ car.margin }}%</td>
                                         <td>{{ car.fuel }}</td>
                                         <td>{{ car.roofRack }}€</td>
+                                        <td>{{ car.minDays }}/J</td>
                                         <td>
                                             {% if  car.items %}
                                                 {% for item in car.getItems %}

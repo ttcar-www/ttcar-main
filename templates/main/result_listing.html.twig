@@ -229,7 +229,6 @@
     <script>
         function ButtonVoid() {
             let loader = document.getElementById('markLoader');
-            console.log(loader)
             loader.style.display = "block";
         }
 
@@ -256,7 +255,6 @@
                 dataType:"json",
                 data: {mark: mark_libelle},
                 success: function(mark_libelle){
-                    console.log(mark_libelle)
                     document.location.reload();
                 }
             });

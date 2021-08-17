@@ -415,7 +415,6 @@
         {{ parent() }}
 
         <script>
-
             //DatePicker Search
             $(document).ready(function() {
                 document.getElementById("cookieBar").style.display = "none";
@@ -431,7 +430,7 @@
                     startDate: '+1m'
                 });
 
-
+                // Place Ajax
                 let placeReturn = document.getElementsByClassName("placeReturn");
                 let placeDepart = document.getElementsByClassName("placeDepart");
 
@@ -439,6 +438,7 @@
                 $(placeDepart).attr('disabled', 'disabled');
 
                 let renault = document.querySelector("#search_form_mark");
+                console.log(renault.value)
 
                 renault.addEventListener("change", function() {
                     $.ajax({
@@ -447,8 +447,6 @@
                         dataType:"json",
                         data: {mark: this.value},
                         success: function(place){
-                            console.log(place)
-                            // the next thing you want to do
                             let places = $('#search_form_placeDepart');
                             let placesReturn = $('#search_form_placeReturn');
 
@@ -459,23 +457,21 @@
                             $(placeDepart).attr('disabled', false);
 
                             for (let i = 0; i < place.length; i++) {
-                                console.log(place[i])
                                 places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
                                 placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
-                                console.log(document.querySelector("#search_form_placeDepart").value)
                             }
                         }
                     });
                 })
             });
 
-/*            //CookieBar
+            /*
+             //CookieBar
             function CookieBar() {
                 document.getElementById("cookieBar").style.display = "none";
             }*/
 
             // Caroussel cars
-
             let w = document.getElementById("renault");
             let x = document.getElementById("peugeot");
             let y = document.getElementById("citroen");
@@ -486,7 +482,6 @@
                 x.style.display = "block";
                 y.style.display = "block";
                 z.style.display = "block";
-
             }
             function ClickRenault() {
                 w.style.display = "block";

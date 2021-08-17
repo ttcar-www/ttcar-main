@@ -44,6 +44,9 @@ class CarsFormType extends AbstractType
             ->add('margin', NumberType::class, array(
                 'label' => false
             ))
+            ->add('minDays', NumberType::class, array(
+                'label' => false
+            ))
             ->add('date_start', DateType::class, array(
                 'label' => false,
                 'widget' => 'single_text'
