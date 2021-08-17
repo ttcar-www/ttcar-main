@@ -10,6 +10,7 @@ use App\Entity\Place;
 use App\Entity\PlaceExtra;
 use App\Entity\Price;
 use App\Entity\Promotions;
+use App\Entity\Range;
 use App\Entity\User;
 use App\Form\EditMeUserFormType;
 use App\Form\NewsletterFormType;

@@ -28,6 +28,15 @@ class EditRangeFormType extends AbstractType
                 'choice_label' => 'getLibelle',
                 'multiple' => false
             ])
+            ->add('extraCost', ChoiceType::class, [
+                'choices' => [
+                    '1' => '1',
+                    '2' => '0'
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'label' => 'ExtraCost'
+            ])
             ->add('rangeImg', FileType::class, [
                 'label' => false,
 

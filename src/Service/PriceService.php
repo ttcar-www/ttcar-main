@@ -24,8 +24,6 @@ class PriceService
             $price = $slice->getValue();
             return $price;
         }
-
-
         return $price;
     }
 
