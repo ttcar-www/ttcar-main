@@ -9,7 +9,9 @@ use App\Entity\Customer;
 use App\Entity\Mark;
 use App\Entity\Order;
 use App\Entity\Place;
+use App\Entity\PlaceExtra;
 use App\Entity\Promotions;
+use App\Entity\Range;
 use App\Entity\TypePromo;
 use App\Entity\User;
 use App\Form\OrderFormType;
@@ -62,6 +64,11 @@ class OrdersController extends AbstractController
             ->getRepository(Mark::class)
             ->findOneBy(['id' => $car->getMark()]);
 
+
+        $range = $this->getDoctrine()
+            ->getRepository(Range::class)
+            ->findOneBy(['id' => $car->getRanges()]);
+
         $accessArray = [];
         foreach ($car->getItems() as $item) {
             $access = $this->getDoctrine()
@@ -76,8 +83,8 @@ class OrdersController extends AbstractController
             $betweenDate = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
             $nb_days = $betweenDate +1;
             //Prix depart retour
-            $price_depart = $this->getPriceDeparture();
-            $price_return = $this->getPriceReturn();
+            $price_depart = $this->getPriceDeparture($range->getExtraCost());
+            $price_return = $this->getPriceReturn($range->getExtraCost());
 
             $price = $PriceService->getPriceOrder($car, $nb_days, $price_depart, $price_return);
 
@@ -328,31 +335,68 @@ class OrdersController extends AbstractController
     }
 
     /**
+     * @param $extra
      * @return mixed
      * Retourne la différence entre deux date en int
      */
-    public function getPriceDeparture()
+    public function getPriceDeparture($extra)
     {
         $place_depart = $this->getDoctrine()
             ->getRepository(Place::class)
             ->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']->getLibelle()]);
 
-        $total = $place_depart->getPrice();
+        $extraPlaces = $this->getDoctrine()->getRepository(PlaceExtra::class)->findBy(['deleted_at' => null]);
+        $priceExtra = 0;
+
+        foreach ($extraPlaces as $justPlace) {
+            $placeMany = $justPlace->getPlace();
+            foreach ($placeMany as $onePlace) {
+                if ($onePlace->getLibelle() == $place_depart->getLibelle()) {
+                    foreach ($onePlace->getPlace() as $extraCost) {
+                        if ($extra == true) {
+                            $priceExtra = $extraCost->getExtra1();
+                        }else {
+                            $priceExtra = $extraCost->getExtra2();
+                        }
+                    }
+                }
+            }
+        }
+
+        $total = $place_depart->getPrice() + $priceExtra;
 
         return $total;
     }
 
     /**
+     * @param $extra
      * @return mixed
      * Retourne la différence entre deux date en int
      */
-    public function getPriceReturn()
+    public function getPriceReturn($extra)
     {
         $place_return = $this->getDoctrine()
             ->getRepository(Place::class)
             ->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']->getLibelle()]);
 
-        $total = $place_return->getPrice();
+        $extraPlaces = $this->getDoctrine()->getRepository(PlaceExtra::class)->findBy(['deleted_at' => null]);
+        $priceExtra = 0;
+
+        foreach ($extraPlaces as $justPlace) {
+            $placeMany = $justPlace->getPlace();
+            foreach ($placeMany as $onePlace) {
+                if ($onePlace->getLibelle() == $place_return->getLibelle()) {
+                    foreach ($onePlace->getPlace() as $extraCost) {
+                        if ($extra == true) {
+                            $priceExtra = $extraCost->getExtra1();
+                        }else {
+                            $priceExtra = $extraCost->getExtra2();
+                        }
+                    }
+                }
+            }
+        }
+        $total = $place_return->getPrice() + $priceExtra;
 
         return $total;
     }

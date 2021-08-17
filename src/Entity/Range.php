@@ -46,6 +46,11 @@ class Range
      */
     private $promotions;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $extraCost;
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
@@ -152,5 +157,22 @@ class Range
         }
 
         return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getExtraCost()
+    {
+        return $this->extraCost;
+    }
+
+    /**
+     * @param mixed $extraCost
+     */
+    public function setExtraCost($extraCost): void
+    {
+        $this->extraCost = $extraCost;
     }
 }
