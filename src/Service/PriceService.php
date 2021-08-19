@@ -44,6 +44,7 @@ class PriceService
         $margin = $car->getMargin();
 
         if ($car->getPrice()->getLibelle() == 2) {
+            
             //PRIX FOURNISSEUR ACTIVE SANS MARGE
             $slices = ($car->getPriceSupplier()->getSlices()) ? $car->getPrice()->getSlices() : null;
             $price = $car->getPriceSupplier()->getPrice();
@@ -54,11 +55,11 @@ class PriceService
         $total_place = $priceDepart + $priceReturn;
 
         if ($day_count < 21){
+
             //Prix sans marge
             $total = $price + $total_place;
-
-
         }elseif ($day_count > 21 AND isset($slices)) {
+
             //Prix avec tranches appliquées
             $days = $day_count - 21;
             $countSlice = count($slices);
@@ -70,6 +71,7 @@ class PriceService
                     if(++$i === $countSlice) {
                         $day_price = $slice->getValue();
                     }
+
                     //Prix sans marge
                     $total = $price + $day_price * $days + $total_place;
 
@@ -80,7 +82,6 @@ class PriceService
                 }
             }
         }
-
         return $total;
     }
 
