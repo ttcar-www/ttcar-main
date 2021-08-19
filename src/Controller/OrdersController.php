@@ -89,8 +89,8 @@ class OrdersController extends AbstractController
             $price = $PriceService->getPriceOrder($car, $nb_days, $price_depart, $price_return);
 
             //promo
-            $promos = $this->getPromoOrder($car->getMark());
-            $promoPrice = $this->getPricePromo($car->getMark(), $price);
+            $promos = null;
+            $promoPrice = null;
             $order = new Order();
 
             // Utilisateur
