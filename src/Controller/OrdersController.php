@@ -221,7 +221,7 @@ class OrdersController extends AbstractController
                 case '%':
                     return $price - $price*($promotions->getValue()/100);
             }
-            return $price;
+            return null;
 
         }
     }
