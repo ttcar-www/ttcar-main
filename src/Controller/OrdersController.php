@@ -180,9 +180,6 @@ class OrdersController extends AbstractController
             // last username entered by the user
             $lastUsername = $authenticationUtils->getLastUsername();
 
-        var_dump($price);
-
-
         return $this->render('main/order.html.twig', [
           'car' => $car,
           'nb_days' => $nb_days,
@@ -192,7 +189,7 @@ class OrdersController extends AbstractController
           'id' => $id,
           'price_depart'=> $price_depart,
           'price_return'=> $price_return,
-          'price' =>$promoPrice,
+          'price' =>$price,
           'last_username' => $lastUsername,
           'error' => $error,
           'formOrder' => $formOrder->createView()
