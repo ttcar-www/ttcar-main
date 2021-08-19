@@ -272,7 +272,7 @@ class OrdersController extends AbstractController
     public function getCounDays($countDays, $car) {
         $promotions = $this->getPromoOrder($car);
 
-        foreach ($promotions as $promo) {
+/*        foreach ($promotions as $promo) {
             $type = $this->getDoctrine()
                 ->getRepository(TypePromo::class)
                 ->findOneBy(['id' => $promo->getType()]);
@@ -281,9 +281,9 @@ class OrdersController extends AbstractController
                 $countDays = $countDays - $promo->getValue();
             }
 
-        }
+        }*/
 
-        return $countDays;
+        return null;
     }
 
     /**
@@ -293,7 +293,7 @@ class OrdersController extends AbstractController
      */
     public function getPromoOrder($id): ?array
     {
-        $promotions = $this->getDoctrine()
+ /*       $promotions = $this->getDoctrine()
             ->getRepository(Promotions::class)
             ->findBy(['mark' => $id]);
 
@@ -301,9 +301,9 @@ class OrdersController extends AbstractController
             if ($promo->getStartDate() <= $_SESSION['searchResult']['dateStart'] and $promo->getEndDate() >= $_SESSION['searchResult']['dateEnd']) {
                 $promotions = $promo;
             }
-        }
+        }*/
 
-        return $promotions;
+        return null;
     }
 
     /**
