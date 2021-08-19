@@ -87,9 +87,6 @@ class OrdersController extends AbstractController
             $price_return = $this->getPriceReturn($range->getExtraCost());
 
             $price = $PriceService->getPriceOrder($car, $nb_days, $price_depart, $price_return);
-
-            var_dump($price);
-
             //promo
             $promos = null;
             $promoPrice = null;
@@ -183,7 +180,10 @@ class OrdersController extends AbstractController
             // last username entered by the user
             $lastUsername = $authenticationUtils->getLastUsername();
 
-      return $this->render('main/order.html.twig', [
+        var_dump($price);
+
+
+        return $this->render('main/order.html.twig', [
           'car' => $car,
           'nb_days' => $nb_days,
           'promos' => $promos,
