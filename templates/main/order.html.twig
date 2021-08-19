@@ -308,8 +308,7 @@
                             <h2 class="s-title wow zoomInUp">{{ 'form_order.detail'|trans({}, 'messages') }}</h2>
                             <div class="b-items__aside-sell-info">
                                 <h3>{{ 'form_order.price'|trans({}, 'messages') }} </h3>
-                                {% set price_without = price - price_depart - price_return %}
-                                <p> {{ 'form_order.forfait'|trans({}, 'messages') }} {{nb_days}} {{ 'form_order.days'|trans({}, 'messages') }} : {{ price_without }}€ </p>
+                                <p> {{ 'form_order.forfait'|trans({}, 'messages') }} {{nb_days}} {{ 'form_order.days'|trans({}, 'messages') }} : {{ price }}€ </p>
                                 <p>{{ 'form_order.deliveryStart'|trans({}, 'messages') }} :
                                     {% if price_depart == 0 %}
                                         {{ 'form_order.free'|trans({}, 'messages') }} !
