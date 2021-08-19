@@ -346,13 +346,13 @@
                                         <br>
                                         <span><i class="fas fa-check" style="color: green"></i>{{ 'form_order.freeDelivery'|trans({}, 'messages') }}</span>
                                         <br><span style="color: red"><i class="fas fa-check" style="color: green"></i>
-                                            {% if  promos|length < 1 %}
+                                {#            {% if  promos|length < 1 %}
                                                 {% for promo in promos %}
                                                     {{ promo.description }} : {{ promo.getValue }}€
                                                 {% endfor %}
                                             {% else %}
                                                 {{ promos.description }} : {{ promos.getValue }}€
-                                            {% endif %}
+                                            {% endif %}#}
                                         </span>
                                     </p>
                                 </div>
