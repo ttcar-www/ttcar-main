@@ -207,7 +207,7 @@ class OrdersController extends AbstractController
 
         $promotions = $this->getPromoOrder($car);
 
-        if (empty($promotions)) {
+    /*    if (empty($promotions)) {
 
             return $price;
         }else {
@@ -223,7 +223,9 @@ class OrdersController extends AbstractController
             }
             return null;
 
-        }
+        }*/
+
+        return null;
     }
 
     /**
