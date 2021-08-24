@@ -711,6 +711,10 @@ class CarsController extends AbstractController
             ->getRepository(Slice::class)
             ->find($id);
 
+        $price = $this->getDoctrine()
+            ->getRepository(Price::class)
+            ->findOneBy(['id' => $slice->getTarif()]);
+
         $form = $this->createForm(
             EditSliceFormType::class,
             $slice);
@@ -722,7 +726,7 @@ class CarsController extends AbstractController
             $em->persist($slice);
             $em->flush();
 
-            return $this->redirectToRoute('manage_slice');
+            return $this->redirectToRoute('manage_slice', ['id' => $price->getId()]);
         }
         return $this->render('form/edit_slice.html.twig', [
             'slices' =>$slice,
@@ -742,6 +746,14 @@ class CarsController extends AbstractController
             ->getRepository(SliceSupplier::class)
             ->find($id);
 
+        $priceSupplier = $this->getDoctrine()
+            ->getRepository(PriceSupplier::class)
+            ->findOneBy(['id' => $slice->getPrice()]);
+
+        $price = $this->getDoctrine()
+            ->getRepository(Price::class)
+            ->findOneBy(['id' => $priceSupplier->getPriceCustomer()]);
+
         $form = $this->createForm(
             EditSliceFormType::class,
             $slice);
@@ -753,7 +765,7 @@ class CarsController extends AbstractController
             $em->persist($slice);
             $em->flush();
 
-            return $this->redirectToRoute('manage_slice');
+            return $this->redirectToRoute('manage_slice', ['id' => $price->getId()]);
         }
         return $this->render('form/edit_slice.html.twig', [
             'slices' =>$slice,

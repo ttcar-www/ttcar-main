@@ -40,11 +40,6 @@ class Place
     private $promotion_departure;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $price;
-
-    /**
      * @ORM\Column(type="string")
      */
     private $latitude;
@@ -176,22 +171,6 @@ class Place
         }
 
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price): void
-    {
-        $this->price = $price;
     }
 
     /**
