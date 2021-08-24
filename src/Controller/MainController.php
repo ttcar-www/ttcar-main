@@ -7,6 +7,7 @@ use App\Entity\Cars;
 use App\Entity\Mark;
 use App\Entity\Newsletter;
 use App\Entity\Place;
+use App\Entity\PlaceExtra;
 use App\Entity\Price;
 use App\Entity\Promotions;
 use App\Entity\User;
@@ -113,9 +114,17 @@ class MainController extends AbstractController
      */
     public function ajaxPlace(Request $request)
     {
-       $places =  $this->getDoctrine()
-            ->getRepository(Place::class)
-            ->findBy(['brand_id' => $request->get('mark')]);
+        $psa = [2, 3, 4];
+
+        if ($request->get('mark') == 1) {
+            $places =  $this->getDoctrine()
+                ->getRepository(Place::class)
+                ->findBy(['id' => 'Renault']);
+        }else {
+            $places =  $this->getDoctrine()
+                ->getRepository(Place::class)
+                ->findBy(['id' => $psa]);
+        }
 
        foreach ($places as $place) {
            $output[] = array('id' => $place->getId(),'libelle' => $place->getLibelle());
@@ -169,35 +178,6 @@ class MainController extends AbstractController
     }
 
     /**
-     * @return mixed
-     * Retourne la différence entre deux date en int
-     */
-    public function getPriceDeparture()
-    {
-
-        $placeSession = $_SESSION['searchResult']['placeDepart'];
-        $place_depart = $this->getDoctrine()
-            ->getRepository(Place::class)
-            ->findOneBy(['libelle' => $placeSession->getLibelle()]);
-
-        return $place_depart->getPrice();
-    }
-
-    /**
-     * @return mixed
-     * Retourne la différence entre deux date en int
-     */
-    public function getPriceReturn()
-    {
-        $placeSession = $_SESSION['searchResult']['placeReturn'];
-        $place_return = $this->getDoctrine()
-            ->getRepository(Place::class)
-            ->findOneBy(['libelle' => $placeSession->getLibelle()]);
-
-        return $place_return->getPrice();
-    }
-
-    /**
      * @Route("/listing", name="listing")
      * @param Request $request
      * @param PriceService $PriceService
@@ -209,9 +189,6 @@ class MainController extends AbstractController
     {
         $today = new DateTime('@'.strtotime('now'));
         $nb_days = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
-
-        $price_depart = $this->getPriceDeparture();
-        $price_return = $this->getPriceReturn();
 
         $mark_labelle = $this->getMarkSession();
 
@@ -243,7 +220,7 @@ class MainController extends AbstractController
 
         $carsResult = [];
         foreach ($cars as $car) {
-            $price_car = $PriceService->getPriceOrder($car, $nb_days, $price_depart, $price_return);
+            $price_car = $PriceService->getPriceOrder($car, $nb_days);
             array_push($carsResult, $price_car);
         }
 

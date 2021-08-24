@@ -36,7 +36,7 @@ class PriceService
      * @return float|int|null
      * Calcule le prix hors promotion
      */
-    public function getPriceOrder($car, $day_count, $priceDepart, $priceReturn)
+    public function getPriceOrder($car, $day_count)
     {
         $total = null;
         $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
@@ -51,15 +51,7 @@ class PriceService
             $margin = 0;
         }
 
-        // Addition des prix par rapport au lieux de départ et retour
-        $total_place = $priceDepart + $priceReturn;
-
-        if ($day_count < 21){
-
-            //Prix sans marge
-            $total = $price + $total_place;
-        }elseif ($day_count > 21 AND isset($slices)) {
-
+        if ($day_count > 21 AND isset($slices)) {
             //Prix avec tranches appliquées
             $days = $day_count - 21;
             $countSlice = count($slices);
@@ -73,7 +65,7 @@ class PriceService
                     }
 
                     //Prix sans marge
-                    $total = $price + $day_price * $days + $total_place;
+                    $total = $price + $day_price * $days;
 
                     if ($car->getPrice()->getLibelle() == 2) {
                         // Prix avec marge

@@ -20,9 +20,9 @@ class PlaceExtra
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Mark::class, inversedBy="extra_place")
+     * @ORM\Column(type="integer")
      */
-    private $brand_id;
+    private $brand;
 
     /**
      * @ORM\Column(type="integer")
@@ -165,20 +165,19 @@ class PlaceExtra
         return $this;
     }
 
-
     /**
      * @return mixed
      */
-    public function getBrandId()
+    public function getBrand()
     {
-        return $this->brand_id;
+        return $this->brand;
     }
 
     /**
-     * @param mixed $brand_id
+     * @param mixed $brand
      */
-    public function setBrandId($brand_id): void
+    public function setBrand($brand): void
     {
-        $this->brand_id = $brand_id;
+        $this->brand = $brand;
     }
 }
