@@ -347,7 +347,7 @@ class OrdersController extends AbstractController
             }
         }
 
-        return $place_depart->getPrice() + $priceExtra;
+        return $priceExtra;
     }
 
     /**
@@ -378,7 +378,7 @@ class OrdersController extends AbstractController
                 }
             }
         }
-        return $place_return->getPrice() + $priceExtra;
+        return $priceExtra;
     }
 
     /**

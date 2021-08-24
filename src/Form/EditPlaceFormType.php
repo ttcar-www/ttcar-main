@@ -39,10 +39,6 @@ class EditPlaceFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
-            ->add('price', NumberType::class, array(
-                'required' => true,
-                'label' => false
-            ))
             ->add('placePDF', FileType::class, [
                 'label' => false,
 

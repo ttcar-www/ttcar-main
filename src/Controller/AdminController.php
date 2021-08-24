@@ -250,10 +250,10 @@ class AdminController extends AbstractController
             ->getRepository(Price::class)
             ->findOneBy(['id' => $id]);
 
-
         $priceSupplier = $this->getDoctrine()
             ->getRepository(PriceSupplier::class)
             ->findOneBy(['price_customer' => $price->getId()]);
+
 
         $slicesSupplier = $this->getDoctrine()
             ->getRepository(SliceSupplier::class)
@@ -273,6 +273,7 @@ class AdminController extends AbstractController
 
         $slicesArray = [];
         $countSlice = count($slices);
+        $minDay = null;
         $i = 0;
         foreach ( $slices as $slice ) {
             if ($slice->getTarif()->getId() == $price->getId()) {
