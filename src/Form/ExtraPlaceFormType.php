@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Mark;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -21,9 +22,11 @@ class ExtraPlaceFormType extends AbstractType
             ->add('id', HiddenType::class, array(
                 'required' => true,
             ))
-            ->add('brand_id', EntityType::class, [
-                'class' => Mark::class,
-                'choice_label' => 'getLibelle',
+            ->add('brand', ChoiceType::class, [
+                'choices' => [
+                    'Renault' => '1',
+                    'PSA' => '2'
+                ],
                 'expanded' => true,
                 'multiple' => false,
                 'label' => false

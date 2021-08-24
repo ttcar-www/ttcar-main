@@ -31,11 +31,6 @@ class Mark
     private $cars;
 
     /**
-     * @ORM\OneToMany(targetEntity=PlaceExtra::class, mappedBy="brand_id")
-     */
-    private $extra_place;
-
-    /**
      * @ORM\OneToMany(targetEntity=Place::class, mappedBy="brand_id")
      */
     private $places;
@@ -284,23 +279,6 @@ class Mark
     public function setSlicesSupplier($slicesSupplier): void
     {
         $this->slicesSupplier = $slicesSupplier;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getExtraPlace()
-    {
-        return $this->extra_place;
-    }
-
-    /**
-     * @param mixed $extra_place
-     */
-    public function setExtraPlace($extra_place): void
-    {
-        $this->extra_place = $extra_place;
     }
 
     /**
