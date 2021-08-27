@@ -119,7 +119,7 @@ class MainController extends AbstractController
         if ($request->get('mark') == 1) {
             $places =  $this->getDoctrine()
                 ->getRepository(Place::class)
-                ->findBy(['id' => 'Renault']);
+                ->findBy(['id' => 1]);
         }else {
             $places =  $this->getDoctrine()
                 ->getRepository(Place::class)

@@ -438,7 +438,7 @@
                 $(placeDepart).attr('disabled', 'disabled');
 
                 let renault = document.querySelector("#search_form_mark");
-                console.log(renault.value)
+                console.log(this.value)
 
                 renault.addEventListener("change", function() {
                     $.ajax({
@@ -447,6 +447,8 @@
                         dataType:"json",
                         data: {mark: this.value},
                         success: function(place){
+
+                            console.log(this.value)
                             let places = $('#search_form_placeDepart');
                             let placesReturn = $('#search_form_placeReturn');
 
