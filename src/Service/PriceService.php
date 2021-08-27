@@ -39,42 +39,49 @@ class PriceService
     public function getPriceOrder($car, $day_count)
     {
         $total = null;
-        $slices = ($car->getPrice()->getSlices()) ? $car->getPrice()->getSlices() : null;
-        $price = $car->getPrice()->getPrice();
         $margin = $car->getMargin();
+        $days = $day_count - 21;
 
         if ($car->getPrice()->getLibelle() == 2) {
-
             //PRIX FOURNISSEUR ACTIVE SANS MARGE
-            $slices = ($car->getPriceSupplier()->getSlices()) ? $car->getPrice()->getSlices() : null;
+            $slices = $car->getPriceSupplier()->getSlices();
             $price = $car->getPriceSupplier()->getPrice();
-            $margin = 0;
-        }
-
-        if ($day_count > 21 AND isset($slices)) {
-            //Prix avec tranches appliquées
-            $days = $day_count - 21;
-            $countSlice = count($slices);
-            $day_price = null;
-            $i = 0;
 
             foreach ($slices as $slice) {
-                if ($day_count > $slice->getDays()) {
-                    if(++$i === $countSlice) {
-                        $day_price = $slice->getValue();
-                    }
+
+                if ($slice->getDays() > $day_count && $day_count < $slice->getDays()) {
+                    $day_price = $slice->getValue();
+
+                    //TODO sélectionner la tranche !
 
                     //Prix sans marge
-                    $total = $price + $day_price * $days;
+                    $totalSlice = $day_price * $days;
+                    $total = $totalSlice + $price;
 
-                    if ($car->getPrice()->getLibelle() == 2) {
-                        // Prix avec marge
-                        $total = $total + $price*($margin/100);
-                    }
+                    return $total;
                 }
             }
+        } elseif ($car->getPrice()->getLibelle() == 1){
+            $slices = $car->getPrice()->getSlices();
+            $price = $car->getPrice()->getPrice();
+            foreach ($slices as $slice) {
+
+                if ($slice->getDays() > $day_count && $day_count < $slice->getDays()) {
+                    $day_price = $slice->getValue();
+
+                    //TODO sélectionner la tranche !
+
+                    //Prix sans marge
+                    $totalSlice = $day_price * $days;
+                    $total = $totalSlice + $price;
+
+                    return $total;
+
+                }
+            }
+
         }
-        return $total;
+        return $price;
     }
 
 }
