@@ -41,6 +41,7 @@ class PriceService
         $total = null;
         $margin = $car->getMargin();
         $days = $day_count - 21;
+        $i = 0;
 
         if ($car->getPrice()->getLibelle() == 2) {
             //PRIX FOURNISSEUR ACTIVE SANS MARGE
@@ -48,39 +49,35 @@ class PriceService
             $price = $car->getPriceSupplier()->getPrice();
 
             foreach ($slices as $slice) {
+                if ($i == 1) {
+                    if ($slice->getDays() > $day_count && $day_count < $slice->getDays()) {
+                        $day_price = $slice->getValue();
 
-                if ($slice->getDays() > $day_count && $day_count < $slice->getDays()) {
-                    $day_price = $slice->getValue();
+                        //Prix sans marge
+                        $totalSlice = $day_price * $days;
+                        $total = $totalSlice + $price;
 
-                    //TODO sélectionner la tranche !
-
-                    //Prix sans marge
-                    $totalSlice = $day_price * $days;
-                    $total = $totalSlice + $price;
-
-                    return $total;
+                        return $total;
+                    }
                 }
+                $i ++;
             }
         } elseif ($car->getPrice()->getLibelle() == 1){
             $slices = $car->getPrice()->getSlices();
             $price = $car->getPrice()->getPrice();
             foreach ($slices as $slice) {
+                    if ($slice->getDays() >= $day_count && $day_count < $slice->getDays()) {
+                        $day_price = $slice->getValue();
 
-                if ($slice->getDays() > $day_count && $day_count < $slice->getDays()) {
-                    $day_price = $slice->getValue();
+                        //Prix sans marge
+                        $totalSlice = $day_price * $days;
+                        $total = $totalSlice + $price;
 
-                    //TODO sélectionner la tranche !
+                        return $total;
 
-                    //Prix sans marge
-                    $totalSlice = $day_price * $days;
-                    $total = $totalSlice + $price;
-
-                    return $total;
-
+                    }
                 }
             }
-
-        }
         return $price;
     }
 
