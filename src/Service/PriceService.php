@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use App\Entity\Cars;
+use App\Entity\Order;
 use App\Entity\Place;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -43,13 +44,17 @@ class PriceService
         $days = $day_count - 21;
         $i = 0;
 
-        if ($car->getPrice()->getLibelle() == 2) {
-            //PRIX FOURNISSEUR ACTIVE SANS MARGE
-            $slices = $car->getPriceSupplier()->getSlices();
+        if ($car->getPrice()->getLibelle() == 1) {
             $price = $car->getPriceSupplier()->getPrice();
 
+            if ($day_count <= Order::minDays ) {
+                return $price;
+            }
+
+            //PRIX FOURNISSEUR ACTIVE SANS MARGE
+            $slices = $car->getPriceSupplier()->getSlices();
+
             foreach ($slices as $slice) {
-                if ($i == 1) {
                     if ($slice->getDays() > $day_count && $day_count < $slice->getDays()) {
                         $day_price = $slice->getValue();
 
@@ -57,17 +62,22 @@ class PriceService
                         $totalSlice = $day_price * $days;
                         $total = $totalSlice + $price;
 
-                        return $total;
+                        return round($total + ($total * ($margin/100)));
                     }
-                }
-                $i ++;
             }
         } elseif ($car->getPrice()->getLibelle() == 1){
-            $slices = $car->getPrice()->getSlices();
             $price = $car->getPrice()->getPrice();
+
+            if ($day_count <= Order::minDays ) {
+                return $price;
+            }
+
+            $slices = $car->getPrice()->getSlices();
             foreach ($slices as $slice) {
-                    if ($slice->getDays() >= $day_count && $day_count < $slice->getDays()) {
+                    if ($slice->getDays() >= $day_count) {
                         $day_price = $slice->getValue();
+
+                        //todo tranche avant / Max 365 et dernière tranche
 
                         //Prix sans marge
                         $totalSlice = $day_price * $days;

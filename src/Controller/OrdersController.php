@@ -86,7 +86,9 @@ class OrdersController extends AbstractController
             $price_depart = $this->getPriceDeparture($range->getExtraCost());
             $price_return = $this->getPriceReturn($range->getExtraCost());
 
-            $price = $PriceService->getPriceOrder($car, $nb_days, $price_depart, $price_return);
+            $totalService = $PriceService->getPriceOrder($car, $nb_days);
+
+            $price = $totalService + $price_return + $price_depart;
 
             //promo
             $promos = null;

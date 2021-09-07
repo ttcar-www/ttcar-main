@@ -14,6 +14,8 @@ use App\Validator as AcmeAssert;
  */
 class Order
 {
+    const minDays = 21;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
