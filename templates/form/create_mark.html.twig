@@ -83,19 +83,37 @@
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter libelle <span>*</span></label>
+                                    <label>Saisir le libelle <span>*</span></label>
                                     <div class='s-relative'>
                                         {{ form_row(form.libelle) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter Margin in % <span>*</span></label>
+                                    <label>Saisir la marge en % <span>*</span></label>
                                     <div class='s-relative'>
                                         {{ form_row(form.margin) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter mark image <span>*</span></label>
+                                    <label>Saisir le délais de livraison <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.deliveryDays) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Saisir le minimum de jours <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.minDays) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Saisir le maximum de jours <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.maxDays) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Selectionner l'image de marquer <span>*</span></label>
                                     <div class='s-relative'>
                                         {{ form_row(form.markImg) }}
                                     </div>

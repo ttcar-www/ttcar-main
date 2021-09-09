@@ -119,9 +119,23 @@ class AdminController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Place::class);
         $places = $repository->findBy(['delete_at' => NULL]);
+        $arrayRenaut = [];
+        $arrayPSA = [];
+
+        foreach ($places as $place) {
+            $extras = $place->getPlace();
+            foreach ($extras as $extra) {
+                if ($extra->getBrand() == 1) {
+                    array_push($arrayRenaut, $place);
+                }else {
+                    array_push($arrayPSA, $place);
+                }
+            }
+        }
 
         return $this->render('admin/manage_place.html.twig', [
-            'places' =>$places
+            'arrayRenaut' =>$arrayRenaut,
+            'arrayPSA' => $arrayPSA
         ]);
     }
 

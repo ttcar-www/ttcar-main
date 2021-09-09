@@ -24,6 +24,15 @@ class EditMarkFormType extends AbstractType
             ->add('margin', NumberType::class, array(
                 'label' => false
             ))
+            ->add('deliveryDays', NumberType::class, array(
+                'label' => false
+            ))
+            ->add('maxDays', NumberType::class, array(
+                'label' => false
+            ))
+            ->add('minDays', NumberType::class, array(
+                'label' => false
+            ))
             ->add('markImg', FileType::class, [
                 'label' => false,
 

@@ -70,6 +70,21 @@ class Mark
      */
     private $slicesSupplier;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $deliveryDays;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $maxDays;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $minDays;
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
@@ -296,4 +311,54 @@ class Mark
     {
         $this->places = $places;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getDeliveryDays()
+    {
+        return $this->deliveryDays;
+    }
+
+    /**
+     * @param mixed $deliveryDays
+     */
+    public function setDeliveryDays($deliveryDays): void
+    {
+        $this->deliveryDays = $deliveryDays;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaxDays()
+    {
+        return $this->maxDays;
+    }
+
+    /**
+     * @param mixed $maxDays
+     */
+    public function setMaxDays($maxDays): void
+    {
+        $this->maxDays = $maxDays;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMinDays()
+    {
+        return $this->minDays;
+    }
+
+    /**
+     * @param mixed $minDays
+     */
+    public function setMinDays($minDays): void
+    {
+        $this->minDays = $minDays;
+    }
+
 }

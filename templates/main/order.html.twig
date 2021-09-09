@@ -97,15 +97,24 @@
                                             <div class="col-sm-3">
                                                 <p class="card-text"> {{ item.getLibelle }} : {{ item.getPrice }}€ </p>
                                             </div>
+                                            {% if item.getLibelle == "Plein d'essence" %}
                                             <div class="col-sm-3">
                                                 <select name="item" id="item-{{ item.getId }}">
                                                     <option value="0">--Please choose an option--</option>
                                                     <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
                                                 </select>
                                             </div>
+                                            {% else %}
+                                                <div class="col-sm-3">
+                                                    <select name="item" id="item-{{ item.getId }}">
+                                                        <option value="0">--Please choose an option--</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                                {% endif %}
                                         </div>
                                     {% endfor %}
                                     <div class="card-footer text-muted text-center">
