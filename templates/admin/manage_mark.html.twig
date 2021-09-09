@@ -23,6 +23,10 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nom</th>
+                                    <th scope="col">Délais de livraison</th>
+                                    <th scope="col">Jours minimum</th>
+                                    <th scope="col">Jours maximum</th>
+                                    <th scope="col">Marge</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -31,6 +35,10 @@
                                     <tr>
                                         <th scope="row">{{ mark.id }}</th>
                                         <td>{{ mark.libelle }}</td>
+                                        <td>{{ mark.deliveryDays }}</td>
+                                        <td>{{ mark.minDays }}</td>
+                                        <td>{{ mark.maxDays }}</td>
+                                        <td>{{ mark.margin }}</td>
                                         <td>
                                             <a href="{{ path('edit_mark', { 'id': mark.id }) }}"> <i class="far fa-edit"></i></a>
                                         </td>

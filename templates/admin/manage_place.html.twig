@@ -30,7 +30,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for place in places %}
+                                <th scope="col">
+                                    <h3>Renault</h3>
+                                </th>
+                                {% for place in arrayRenaut %}
                                     <tr>
                                         <th scope="row">{{ place.id }}</th>
                                         <td>{{ place.libelle }}</td>
@@ -40,6 +43,28 @@
                                         <td>
                                             {% if place.getPlace.count > 0 %}
                                             <a href="{{ path('manage_extra_place', { 'id': place.id() }) }}"> <i class="far fa-eye"></i></a>
+                                                <br>
+                                            {% endif %}
+                                            <a href="{{ path('edit_place', { 'id': place.id }) }}"> <i class="far fa-edit"></i></a>
+                                            <br>
+                                            <a href="{{ path('delete_place', { 'id': place.id }) }}"
+                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                <th scope="col">
+                                    <h3>PSA</h3>
+                                </th>
+                                {% for place in arrayPSA %}
+                                    <tr>
+                                        <th scope="row">{{ place.id }}</th>
+                                        <td>{{ place.libelle }}</td>
+                                        <td>{{ place.longitude }}</td>
+                                        <td>{{ place.latitude }}</td>
+                                        <td>{{ place.getPlace.count }}</td>
+                                        <td>
+                                            {% if place.getPlace.count > 0 %}
+                                                <a href="{{ path('manage_extra_place', { 'id': place.id() }) }}"> <i class="far fa-eye"></i></a>
                                                 <br>
                                             {% endif %}
                                             <a href="{{ path('edit_place', { 'id': place.id }) }}"> <i class="far fa-edit"></i></a>

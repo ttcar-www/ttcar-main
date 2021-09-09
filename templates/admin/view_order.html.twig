@@ -12,6 +12,12 @@
                 <div class="col-7"> <span id="heading">Date</span><br> <span id="details">{{ order.getCreateDate|date("m/d/Y") }}</span> </div>
                 <div class="col-5 pull-right"> <span id="heading">Order No.</span><br> <span id="details">{{ order.id }}</span> </div>
             </div>
+            <div class="row">
+                <div class="col-7"> <span id="heading">Adresse</span><br> <span id="details">{{ order.adress }} <br>
+                    {{ order.adressCityHue }} {{ order.adressCodeHue }}</span> </div>
+                <div class="col-5 pull-right"> <span id="heading">Numero de téléphone</span><br> <span id="details">{{ order.phone }}</span> </div>
+                <div class="col-5 pull-right"> <span id="heading">Email</span><br> <span id="details">{{ order.email }}</span> </div>
+            </div>
         </div>
         <div class="pricing">
             <div class="row">
