@@ -37,7 +37,7 @@ class SearchFormType extends AbstractType
                 'choice_label' => 'getLibelle',
                 'expanded' => false,
                 'multiple' => false,
-                'placeholder' => 'Département (Choisir une marque)',
+                'placeholder' => '(Choisir une marque)',
                 'required' => false,
                 'attr' => ['class' => 'placeDepart']
             ])

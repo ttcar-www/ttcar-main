@@ -337,6 +337,18 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/manage_doc", name="manage_doc")
+     */
+    public function manageDoc(): Response
+    {
+        $minDays = Order::minDays;
+
+        return $this->render('admin/manage_doc.html.twig', [
+            'minDays' =>$minDays
+        ]);
+    }
+
+    /**
      * Manage range with back office
      * @Route("/path_to_range/{path}", name="path_to_range")
      * @param $path
