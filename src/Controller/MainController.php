@@ -133,6 +133,23 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/markAjax/", name="markAjax")
+     * @param Request $request
+     * @return Response
+     */
+    public function ajaxMark(Request $request)
+    {
+        $mark =  $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(['id' => $request->get('mark')]);
+
+        $output[] = array('minDate' => $mark->getMinDays(),'maxDate' => $mark->getMaxDays());
+
+
+        return new JsonResponse($output);
+    }
+
+    /**
      * @return FormInterface
      */
     private function getFormSearchListing()

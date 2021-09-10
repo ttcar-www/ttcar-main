@@ -44,20 +44,21 @@
                     <h2>{{ 'search_tilte'|trans({}, 'messages') }}</h2>
                 </div>
                 <div class="b-search__main-type wow zoomInUp" >
-                    <div class="col-xs-12 col-md-2 s-noLeftPadding">
-                        <h4>Select vehicle type</h4>
-                    </div>
                     {{ form_start(formSearch) }}
                     <div class="col-xs-12 col-md-10">
                         <div class="row">
-                        <div class="col-xs-2">
-                            <input id="type1" type="radio" name="type" />
+                            <div class="col-xs-6">
+                     {#       <input id="type1" type="radio" name="type" />
                             <label for="type1" class="b-search__main-type-svg">
                                 <img src="{{ asset('/build/renauttrans.png') }}" width="100%">
-                            </label>
+                            </label>#}
+{#
                             <h5><label for="type1"> {{ form_row(formSearch.mark) }}</label></h5>
+#}
+                                <label for="type1" class="b-search__main-type-svg">Choisir une marque</label>
+                                <div  style="color: black"> {{ form_row(formSearch.mark) }}</div>
                         </div>
-                            <div class="col-xs-2 col-md-offset-2" data-tooltip="Nous contacter pour un délais plus court">
+                            <div class="col-xs-6">
                                 <p class="delay">Délai de livraison : <span>21 Jours</span></p>
                             </div>
                         </div>
@@ -92,7 +93,7 @@
                         </div>
                         <div class="col-md-4 col-xs-12 text-left s-noPadding">
                             <div class="b-search__main-form-submit" style="margin-top: 15%">
-                                <button type="submit" class="btn m-btn">Search the Vehicle<span class="fa fa-angle-right"></span></button>
+                                <button type="submit" class="btn m-btn" id="seachButton">Search the Vehicle<span class="fa fa-angle-right"></span></button>
                             </div>
                             {{ form_end(formSearch) }}
                         </div>
@@ -398,16 +399,11 @@
             $(document).ready(function() {
                 document.getElementById("cookieBar").style.display = "none";
 
-                $('.datepicker-dateStart').datepicker({
-                    format: 'dd/mm/yyyy',
-                    startDate: '+21d',
-                    endDate: '+6M'
-                });
+                $("#seachButton").prop("disabled",true);
 
-                $('.datepicker-dateEnd').datepicker({
-                    format: 'dd/mm/yyyy',
-                    startDate: '+1m'
-                });
+                $(".m-firstSelects").hide();
+                $(".m-secondSelects").hide();
+
 
                 // Place Ajax
                 let placeReturn = document.getElementsByClassName("placeReturn");
@@ -427,7 +423,6 @@
                         data: {mark: this.value},
                         success: function(place){
 
-                            console.log(this.value)
                             let places = $('#search_form_placeDepart');
                             let placesReturn = $('#search_form_placeReturn');
 
@@ -441,6 +436,37 @@
                                 places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
                                 placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
                             }
+                        }
+                });
+                    $.ajax({
+                        url: {{  path('markAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: this.value},
+                        success: function(data){
+
+                            let minDate = data[0]['minDate']
+                            let maxDate = data[0]['maxDate']
+
+                            let maxDatePicker = '+'+maxDate+'D'
+
+                            $('.datepicker-dateStart').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+21d',
+                                endDate: '+6M'
+                            });
+
+                            $('.datepicker-dateEnd').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+1M',
+                                endDate: maxDatePicker
+                            });
+
+
+                            $("#seachButton").prop("disabled",false);
+                            $(".m-firstSelects").show('slow');
+                            $(".m-secondSelects").show('slow');
+
                         }
                     });
                 })
