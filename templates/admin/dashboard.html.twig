@@ -99,7 +99,7 @@
                         <td><span class="pending_dot">En attente</span></td>
                         <td>{{  order.getPrice }}</td>
                         <td>{{  order.getCreateDate|date("m/d/Y") }}</td>
-                        <td>View Order</td>
+                        <td><a href="{{ path('view_order_admin', { 'id': order.id }) }}">View Order</a></td>
                     </tr>
                     {% endfor %}
                     </tbody>
