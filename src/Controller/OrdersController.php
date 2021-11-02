@@ -101,11 +101,17 @@ class OrdersController extends AbstractController
                     ->getRepository(Customer::class)
                     ->findOneBy(['user' => $this->getUser()->getId()]);
 
-                $formOrder = $this->createForm(
-                    OrderSimpleFormType::class,
-                    $order);
-
+                if ($user == null) {
+                    $formOrder = $this->createForm(
+                        OrderFormType::class,
+                        $order);
+                } else {
+                    $formOrder = $this->createForm(
+                        OrderSimpleFormType::class,
+                        $order);
+                }
             } else {
+
                 $user = null;
                 $formOrder = $this->createForm(
                     OrderFormType::class,

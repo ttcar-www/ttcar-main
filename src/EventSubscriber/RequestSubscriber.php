@@ -24,7 +24,7 @@ class RequestSubscriber implements EventSubscriberInterface
     {
         $request = $event->getRequest();
         if (
-            !$event->isMasterRequest()
+            !$event->isMainRequest()
             || $request->isXmlHttpRequest()
             || 'app_login' === $request->attributes->get('_route')
         ) {
