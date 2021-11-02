@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Country;
+use App\Entity\Mark;
 use App\Entity\Nationality;
 use App\Entity\Place;
 use App\Entity\PlaceExtra;
@@ -103,7 +104,11 @@ class PlaceController extends AbstractController
             $extraPlace->setCreateAt(new DateTimeImmutable($request->get('time')));
             $extraPlace->addPlace($place);
 
-            $place->setBrandId($extraPlace->getBrandId());
+            $brand = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => $extraPlace->getBrand()]);
+
+            $place->setBrandId($brand);
 
             $em = $this->getDoctrine()->getManager();
 

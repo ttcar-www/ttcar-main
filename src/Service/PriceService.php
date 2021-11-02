@@ -65,7 +65,8 @@ class PriceService
                         return round($total + ($total * ($margin/100)));
                     }
             }
-        } elseif ($car->getPrice()->getLibelle() == 1){
+        } elseif ($car->getPrice()->getLibelle() == 2){
+
             $price = $car->getPrice()->getPrice();
 
             if ($day_count <= Order::minDays ) {
