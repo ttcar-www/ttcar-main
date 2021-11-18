@@ -9,6 +9,7 @@ use App\Entity\Mark;
 use App\Entity\Order;
 use App\Entity\Place;
 use App\Entity\PlaceExtra;
+use App\Entity\PromoCode;
 use App\Entity\Promotions;
 use App\Entity\Range;
 use App\Entity\TypePromo;
@@ -89,6 +90,26 @@ class OrdersController extends AbstractController
             $totalService = $PriceService->getPriceOrder($car, $nb_days);
 
             $price = $totalService + $price_return + $price_depart;
+
+        /*    if (isset($_SESSION['searchResult']['promo'])) {
+                $codePromo = $this->getDoctrine()
+                    ->getRepository(PromoCode::class)
+                    ->findOneBy(['code' => $_SESSION['searchResult']['promo']]);
+
+                if (isset($codePromo)) {
+                    switch ($codePromo->getTypePromo()) {
+                        case '%':
+                           return $price + ($price * ($codePromo->getValue()/100));
+                            break;
+                        case '€':
+                            return $price - $codePromo->getValue();
+                            break;
+                        case 'Jour':
+                           return $nb_days - $codePromo->getValue();
+                            break;
+                    }
+                }
+            }*/
 
             //promo
             $promos = null;
