@@ -21,7 +21,7 @@ class PromoCodeFormType extends AbstractType
             ->add('id', HiddenType::class, array(
                 'required' => true,
             ))
-            ->add('code', TextType::class, array(
+            ->add('code', NumberType::class, array(
                 'required' => true,
                 'label' => false
             ))
