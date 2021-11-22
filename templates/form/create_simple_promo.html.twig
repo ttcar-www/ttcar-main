@@ -3,9 +3,9 @@
 {% block body %}
     <section class="b-pageHeader">
         <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Details du lieu</h1>
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Submit Your Vehicle</h1>
             <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Ajouté les détails d'un lieu</h3>
+                <h3>Add Your Vehicle In Our Listings</h3>
             </div>
         </div>
     </section><!--b-pageHeader-->
@@ -66,7 +66,7 @@
                                     <span class="fa fa-car"></span>
                                 </div>
                                 <div class="b-submit__aside-step-inner-info">
-                                    <h4>Ajouter les options</h4>
+                                    <h4>Add YOUR Promotions</h4>
                                     <div class="b-submit__aside-step-inner-info-triangle"></div>
                                 </div>
                             </div>
@@ -76,39 +76,69 @@
                 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
                     <div class="b-submit__main">
                         <header class="s-headerSubmit s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-                            <h2 class="">Ajouter les Options au Lieu</h2>
+                            <h2 class="">Add Your Vehicle Details</h2>
                         </header>
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Choisir la marque <span>*</span></label>
+                                    <label>Enter libelle <span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.brand) }}
+                                        {{ form_row(form.libelle) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Saisir la limite de jours<span>*</span></label>
+                                    <label>Enter value <span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.days_limit) }}
+                                        {{ form_row(form.value) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Option 1<span>*</span></label>
+                                    <label>Enter desc <span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.extra_1) }}
+                                        {{ form_row(form.description) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Option 2<span>*</span></label>
+                                    <label>Enter type <span>*</span></label>
                                     <div class='s-relative'>
-                                        {{ form_row(form.extra_2) }}
+                                        {{ form_row(form.type) }}
                                     </div>
                                 </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label style="color: red">Offre Gratuit<span>*</span></label>
-                                    <div class='s-relative' style="color: red">
-                                        {{ form_row(form.free) }}
+                                    <label>Enter start Date <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.start_date) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter End Date <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.end_date) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Start delivery <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.start_delivery) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter End delivery <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.end_delivery) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Place depart <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.place_departure) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Place delivery <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.place_delivery) }}
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Mark;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -28,6 +29,7 @@ class ExtraPlaceFormType extends AbstractType
                     'PSA' => '2'
                 ],
                 'expanded' => true,
+                'mapped' => false,
                 'multiple' => false,
                 'label' => false
             ])
@@ -39,6 +41,16 @@ class ExtraPlaceFormType extends AbstractType
                 'required' => true,
                 'label' => false
             ))
+            ->add('free', ChoiceType::class, [
+                'choices' => [
+                    'Yes' => true,
+                    'No' => false
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'data' => false,
+                'label' => false
+            ])
             ->add('days_limit', NumberType::class, array(
                 'required' => true,
                 'label' => false

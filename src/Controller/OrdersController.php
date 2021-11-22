@@ -115,7 +115,7 @@ class OrdersController extends AbstractController
             $promos = null;
             $promoPrice = null;
             $order = new Order();
-
+            
             // Utilisateur
             if ($this->getUser()) {
                 $user = $this->getDoctrine()

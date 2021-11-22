@@ -26,6 +26,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Extra 1</th>
                                     <th scope="col">Extra 2</th>
+                                    <th scope="col">Gratuit</th>
                                     <th scope="col">Jour limite</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -36,6 +37,13 @@
                                         <th scope="row">{{ extraPlace.id }}</th>
                                         <td>{{ extraPlace.extra1 }}</td>
                                         <td>{{ extraPlace.extra2 }}</td>
+                                        <td>
+                                            {% if extraPlace.free %}
+                                                <i class="fas fa-check-circle" style="color: green"></i>
+                                            {% else %}
+                                                <i class="fas fa-ban" style="color: red"></i>
+                                            {% endif %}
+                                        </td>
                                         <td>{{ extraPlace.daysLimit }}</td>
 
                                         <td>

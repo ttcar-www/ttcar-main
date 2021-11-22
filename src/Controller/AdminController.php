@@ -157,7 +157,8 @@ class AdminController extends AbstractController
                         'id' => $place->getId(),
                         'extra1' => $place->getExtra1(),
                         'extra2' => $place->getExtra2(),
-                        'daysLimit' => $place->getDaysLimit()
+                        'daysLimit' => $place->getDaysLimit(),
+                        'free' => $place->getFree()
                     );
                 }
             }

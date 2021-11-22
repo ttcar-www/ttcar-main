@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Mark;
+use App\Entity\Place;
 use App\Entity\PromoCode;
 use App\Entity\Promotions;
 use App\Entity\Range;
@@ -10,6 +11,7 @@ use App\Form\EditPromoCodeFormType;
 use App\Form\EditPromoFormType;
 use App\Form\PromoCodeFormType;
 use App\Form\PromotionFormType;
+use App\Form\SimplePromoFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -146,13 +148,54 @@ class PromotionController extends AbstractController
         $promo = new Promotions();
 
         $form = $this->createForm(
-            PromotionFormType::class,
+            SimplePromoFormType::class,
             $promo);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
             $promo->setMark($mark);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($promo);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Promotion marque ajouté'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
+        }
+
+        return $this->render('form/create_simple_promo.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/create_place_promo/{id}", name="create_place_promo")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function createPlacePromo(Request $request, $id): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Place::class);
+
+        $place = $repository->findOneBy(
+            ['id' => $id]
+        );
+
+        $promo = new Promotions();
+
+        $form = $this->createForm(
+            PromotionFormType::class,
+            $promo);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($promo);

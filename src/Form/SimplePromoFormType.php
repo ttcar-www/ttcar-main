@@ -16,7 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class PromotionFormType extends AbstractType
+class SimplePromoFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -24,13 +24,6 @@ class PromotionFormType extends AbstractType
             ->add('id', HiddenType::class, array(
                 'required' => true,
             ))
-            ->add('mark', EntityType::class, [
-                'class' => Mark::class,
-                'choice_label' => 'getLibelle',
-                'expanded' => false,
-                'multiple' => false,
-                'label' => false
-            ])
             ->add('libelle', TextType::class, array(
                 'required' => true,
                 'label' => false
