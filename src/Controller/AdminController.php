@@ -245,12 +245,12 @@ class AdminController extends AbstractController
      */
     public function managePrice(): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Price::class);
+        $repository = $this->getDoctrine()->getRepository(Cars::class);
 
         $prices = $repository->findAll();
 
         return $this->render('admin/manage_prices.html.twig', [
-            'prices' =>$prices
+            'cars' =>$prices
         ]);
     }
 
