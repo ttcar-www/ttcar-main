@@ -72,6 +72,9 @@ class PromotionController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $promo->setPlaceDelivery(null);
+            $promo->setPlaceDeparture(null);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($promo);
             $em->flush();
@@ -203,7 +206,7 @@ class PromotionController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Promotion marque ajouté'
+                'Promotion place ajouté'
             );
 
             return $this->redirectToRoute('manage_promotion');

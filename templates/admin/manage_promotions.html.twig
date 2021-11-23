@@ -46,8 +46,13 @@
                                         <td>{{ promo.getEndDate|date("m/d/Y") }}</td>
                                         <td>{{ promo.getStartDelivery|date("m/d/Y") }}</td>
                                         <td>{{ promo.getEndDelivery|date("m/d/Y") }}</td>
-                                        <td>{{ promo.getPlaceDelivery.getLibelle }}</td>
+                                            {% if promo.placeDelivery is not null %}
+                                       <td> {{ promo.getPlaceDelivery.getLibelle }} </td>
                                         <td>{{ promo.getPlaceDeparture.getLibelle }}</td>
+                                            {% else %}
+                                               <td><i class="fas fa-ban" style="color: red"></i></td>
+                                                <td><i class="fas fa-ban" style="color: red"></i></td>
+                                            {% endif %}
                                         <td>{{ promo.type.getType }}</td>
                                         <td>
                                             {% if promo.mark %}

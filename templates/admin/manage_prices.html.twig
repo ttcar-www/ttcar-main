@@ -31,6 +31,7 @@
                                     <th scope="col">Date de fin</th>
                                     <th scope="col">Date de livraison</th>
                                     <th scope="col">Date de réceptions</th>
+                                    <th scope="col">Promotion</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -47,7 +48,14 @@
                                         <td>{{ car.price.getDateStartDelivery|date("m/d/Y") }}</td>
                                         <td>{{ car.price.getDateEndDelivery|date("m/d/Y") }}</td>
                                         <td>
-                                            <a href="{{ path('edit_price', { 'id': car.price.id }) }}" class="btn btn-outline-primary""><i class="far fa-edit"></i></a>
+                                        {% if car.price.promo > 0 %}
+                                            {{ car.price.promo }} %
+                                            {% else %}
+                                                <i class="fas fa-ban" style="color: red"></i>
+                                                {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('edit_price', { 'id': car.price.id }) }}" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

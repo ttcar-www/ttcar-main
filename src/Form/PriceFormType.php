@@ -52,6 +52,10 @@ class PriceFormType extends AbstractType
                 'label' => false,
                 'widget' => 'single_text'
             ))
+            ->add('promo', NumberType::class, array(
+                'label' => false,
+                'required' => false
+            ))
         ;
     }
 

@@ -57,6 +57,12 @@ class Price
     private $priceSupplierValue;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     */
+    private $promo;
+
+    /**
      * @ORM\OneToMany(targetEntity=Cars::class, mappedBy="price")
      */
     private $car;
@@ -246,5 +252,21 @@ class Price
     public function setPriceSupplierValue($priceSupplierValue): void
     {
         $this->priceSupplierValue = $priceSupplierValue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPromo()
+    {
+        return $this->promo;
+    }
+
+    /**
+     * @param mixed $promo
+     */
+    public function setPromo($promo): void
+    {
+        $this->promo = $promo;
     }
 }
