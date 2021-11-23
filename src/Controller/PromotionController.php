@@ -11,6 +11,7 @@ use App\Form\EditPromoCodeFormType;
 use App\Form\EditPromoFormType;
 use App\Form\PromoCodeFormType;
 use App\Form\PromotionFormType;
+use App\Form\PromotionPlaceFormType;
 use App\Form\SimplePromoFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -88,6 +89,39 @@ class PromotionController extends AbstractController
         }
 
         return $this->render('form/create_promotion.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/create_promotion_place", name="create_promotion_place")
+     * @param Request $request
+     * @return Response
+     */
+    public function createPromotionPlace(Request $request): Response
+    {
+        $promo = new Promotions();
+
+        $form = $this->createForm(
+            PromotionPlaceFormType::class,
+            $promo);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($promo);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Promotion ajoutée'
+            );
+
+            return $this->redirectToRoute('manage_promotion');
+        }
+
+        return $this->render('form/create_promo_place.html.twig', [
             'form' => $form->createView()
         ]);
     }

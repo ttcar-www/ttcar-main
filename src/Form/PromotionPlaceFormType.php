@@ -54,6 +54,22 @@ class PromotionPlaceFormType extends AbstractType
             ->add('end_delivery', DateType::class, array(
                 'label' => false
             ))
+            ->add('place_delivery', EntityType::class, [
+                'class' => Place::class,
+                'choice_label' => 'getLibelle',
+                'expanded' => false,
+                'required' => false,
+                'multiple' => false,
+                'label' => false
+            ])
+            ->add('place_departure', EntityType::class, [
+                'class' => Place::class,
+                'choice_label' => 'getLibelle',
+                'expanded' => false,
+                'required' => false,
+                'multiple' => false,
+                'label' => false
+            ])
             ->add('type', EntityType::class, [
                 'class' => TypePromo::class,
                 'choice_label' => 'getType',
