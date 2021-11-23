@@ -15,6 +15,7 @@ use App\Form\AccessoryFormType;
 use App\Form\CarsFormType;
 use App\Form\EditCarFormType;
 use App\Form\EditMarkFormType;
+use App\Form\EditPriceFormType;
 use App\Form\EditRangeFormType;
 use App\Form\EditSliceFormType;
 use App\Form\MarkFormType;
@@ -608,94 +609,42 @@ class CarsController extends AbstractController
     }
 
     /**
-     * @Route("/create_slice_by_car/{id}", name="create_slice_by_car")
+     * @Route("/admin/edit_price/{id}", name="edit_price")
      * @param Request $request
      * @param $id
      * @return Response
      */
-    public function createSliceByCar(Request $request, $id): Response
+    public function editPrice(Request $request, $id): Response
     {
-        $mark = $this->getDoctrine()
-            ->getRepository(Mark::class)
-            ->findOneBy(
-                ['libelle' => $id]
-            );
-
         $price = $this->getDoctrine()
             ->getRepository(Price::class)
-            ->findOneBy(['id' => $id]);
+            ->find($id);
 
-        $priceId = $price->getId();
-        $slices = $this->getDoctrine()
-            ->getRepository(Slice::class)
-            ->findBy(
-                [], ['days' => 'ASC']
-            );
+        $priceSupplier = $this->getDoctrine()
+            ->getRepository(PriceSupplier::class)
+            ->findOneBy(['price_customer' => $id]);
 
-
-        $slicesArray = [];
-        $countSlice = count($slices);
-        $i = 0;
-        $minDay = 0;
-
-        foreach ( $slices as $slice ) {
-            if ($slice->getTarif()->getId() == $priceId) {
-                array_push($slicesArray, $slice);
-            }
-            if(++$i === $countSlice) {
-                $minDay = $slice->getDays();
-            }
-        }
-
-        $slice = new Slice();
-
-        $form = $this->createFormBuilder($slice)
-            ->add('id', HiddenType::class, array(
-                'required' => true,
-            ))
-            ->add('code_price', TextType::class, array(
-                'required' => true,
-                'label' => false
-            ))
-            ->add('days', NumberType::class, array(
-                'required' => true,
-                'label' => false
-            ))
-            ->add('value', NumberType::class, array(
-                'required' => true,
-                'label' => false
-            ))
-            ->add('days', NumberType::class, array(
-                'required' => true,
-                'label' => false,
-                'data' => $minDay
-            ))
-            ->getForm();
+        $form = $this->createForm(
+            EditPriceFormType::class,
+            $price);
 
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $slice->setTarif($price);
-            $slice->setMark($mark);
+            $priceSupplier->setPrice($form->get('priceSupplierValue')->getData());
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($slice);
+
+            $em->persist($price);
+            $em->persist($priceSupplier);
+
             $em->flush();
 
-            $this->addFlash(
-                'success',
-                'Tranche créé'
-            );
-
-            return $this->redirectToRoute('create_slice', ['id' => $id]);
-
+            return $this->redirectToRoute('manage_price', ['id' => $price->getId()]);
         }
-
-        return $this->render('form/create_slice.html.twig', [
-            'form' => $form->createView(),
-            'slices' => $slicesArray,
-            'priceId' =>$price->getId()
+        return $this->render('form/create_price.html.twig', [
+            'price' =>$price,
+            'form' => $form->createView()
         ]);
     }
 

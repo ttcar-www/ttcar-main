@@ -3,9 +3,9 @@
 {% block body %}
     <section class="b-pageHeader">
         <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Ajouter une promotions</h1>
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Submit Your Vehicle</h1>
             <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Ajouter une promotions</h3>
+                <h3>Add Your Vehicle In Our Listings</h3>
             </div>
         </div>
     </section><!--b-pageHeader-->
@@ -16,6 +16,43 @@
             <a href="#" class="b-breadCumbs__page m-active">Submit a Mark</a>
         </div>
     </div><!--b-breadCumbs-->
+
+
+    <div class="b-infoBar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
+                        <div class="b-infoBar__progress-line clearfix">
+                            <div class="b-infoBar__progress-line-step">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                </div>
+                            </div>
+                            <div class="b-infoBar__progress-line-step">
+                                <div class="b-infoBar__progress-line-step-circle">
+                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                </div>
+                                <div class="b-infoBar__progress-line-step-circle m-last">
+                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--b-infoBar-->
 
     <div class="b-submit">
         <div class="container">
@@ -44,12 +81,6 @@
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter Mark <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.mark) }}
-                                    </div>
-                                </div>
                                 <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
                                     <label>Enter libelle <span>*</span></label>
                                     <div class='s-relative'>
@@ -96,6 +127,18 @@
                                     <label>Enter End delivery <span>*</span></label>
                                     <div class='s-relative'>
                                         {{ form_row(form.end_delivery) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Place depart <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.place_departure) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Place delivery <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.place_delivery) }}
                                     </div>
                                 </div>
                             </div>

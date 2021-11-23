@@ -157,7 +157,8 @@ class AdminController extends AbstractController
                         'id' => $place->getId(),
                         'extra1' => $place->getExtra1(),
                         'extra2' => $place->getExtra2(),
-                        'daysLimit' => $place->getDaysLimit()
+                        'daysLimit' => $place->getDaysLimit(),
+                        'free' => $place->getFree()
                     );
                 }
             }
@@ -244,12 +245,12 @@ class AdminController extends AbstractController
      */
     public function managePrice(): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Price::class);
+        $repository = $this->getDoctrine()->getRepository(Cars::class);
 
         $prices = $repository->findAll();
 
         return $this->render('admin/manage_prices.html.twig', [
-            'prices' =>$prices
+            'cars' =>$prices
         ]);
     }
 

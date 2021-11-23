@@ -39,12 +39,14 @@
                                         <td>{{ place.libelle }}</td>
                                         <td>{{ place.longitude }}</td>
                                         <td>{{ place.latitude }}</td>
-                                        <td>{{ place.getPlace.count }}</td>
-                                        <td>
-                                            {% if place.getPlace.count > 0 %}
-                                            <a href="{{ path('manage_extra_place', { 'id': place.id() }) }}"> <i class="far fa-eye"></i></a>
+                                        <td>  {% if place.getPlace.count > 0 %}
+                                                <a href="{{ path('manage_extra_place', { 'id': place.id() }) }}"> <i class="far fa-eye"></i></a>
                                                 <br>
+                                            {% else %}
+                                                <i class="fas fa-ban" style="color: red"></i>
                                             {% endif %}
+                                        </td>
+                                        <td>
                                             <a href="{{ path('edit_place', { 'id': place.id }) }}"> <i class="far fa-edit"></i></a>
                                             <br>
                                             <a href="{{ path('delete_place', { 'id': place.id }) }}"
@@ -61,12 +63,14 @@
                                         <td>{{ place.libelle }}</td>
                                         <td>{{ place.longitude }}</td>
                                         <td>{{ place.latitude }}</td>
-                                        <td>{{ place.getPlace.count }}</td>
-                                        <td>
-                                            {% if place.getPlace.count > 0 %}
+                                        <td>  {% if place.getPlace.count > 0 %}
                                                 <a href="{{ path('manage_extra_place', { 'id': place.id() }) }}"> <i class="far fa-eye"></i></a>
                                                 <br>
+                                            {% else %}
+                                                <i class="fas fa-ban" style="color: red"></i>
                                             {% endif %}
+                                        </td>
+                                        <td>
                                             <a href="{{ path('edit_place', { 'id': place.id }) }}"> <i class="far fa-edit"></i></a>
                                             <br>
                                             <a href="{{ path('delete_place', { 'id': place.id }) }}"

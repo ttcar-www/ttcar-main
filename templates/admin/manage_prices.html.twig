@@ -23,30 +23,39 @@
                                 <thead class="text-uppercase">
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Voiture</th>
                                     <th scope="col">Référence</th>
-                                    <th scope="col">Valeur</th>
+                                    <th scope="col">Prix Client</th>
+                                    <th scope="col">Prix Fournisseur</th>
                                     <th scope="col">Date de debut</th>
                                     <th scope="col">Date de fin</th>
                                     <th scope="col">Date de livraison</th>
                                     <th scope="col">Date de réceptions</th>
+                                    <th scope="col">Promotion</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for price in prices %}
+                                {% for car in cars %}
                                     <tr>
-                                        <th scope="row">{{ price.id }}</th>
-                                        <td>{{ price.libelle }}</td>
-                                        <td>{{ price.price }}</td>
-                                        <td>{{ price.getDateStart|date("m/d/Y") }}</td>
-                                        <td>{{ price.getDateEnd|date("m/d/Y") }}</td>
-                                        <td>{{ price.getDateStartDelivery|date("m/d/Y") }}</td>
-                                        <td>{{ price.getDateEndDelivery|date("m/d/Y") }}</td>
+                                        <th scope="row">{{ car.price.id }}</th>
+                                        <th>{{ car.getName }}</th>
+                                        <td>{{ car.price.libelle }}</td>
+                                        <td><b>{{ car.price.price }}€</b></td>
+                                        <td><b>{{ car.price.priceSupplierValue }}€</b></td>
+                                        <td>{{ car.price.getDateStart|date("m/d/Y") }}</td>
+                                        <td>{{ car.price.getDateEnd|date("m/d/Y") }}</td>
+                                        <td>{{ car.price.getDateStartDelivery|date("m/d/Y") }}</td>
+                                        <td>{{ car.price.getDateEndDelivery|date("m/d/Y") }}</td>
                                         <td>
-                                            <a href="{{ path('create_slice', { 'id': price.id }) }}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i> Ajouter une tranche</a>
-{#                                            <br>#}
-{#                                            <a href="{{ path('delete_price', { 'id': price.id }) }}"#}
-{#                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>#}
+                                        {% if car.price.promo > 0 %}
+                                            {{ car.price.promo }} %
+                                            {% else %}
+                                                <i class="fas fa-ban" style="color: red"></i>
+                                                {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{{ path('edit_price', { 'id': car.price.id }) }}" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

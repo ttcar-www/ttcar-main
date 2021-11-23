@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Order;
+use App\Entity\User;
 use App\Form\CustomerFormType;
 use App\Form\EditCustomerFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -100,8 +101,6 @@ class UserController extends AbstractController
      */
     public function createCustomer(Request $request): Response
     {
-        $user = $this->getUser();
-
         $customer = new Customer();
 
         $form = $this->createForm(
@@ -111,8 +110,14 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findOneBy(['id' => $this->getUser()]);
+
             $user->setIsCustomer(true);
-            $customer->setUser($user->getId());
+
+            $customer->setUser($user);
+            $customer->setEmail($user->getEmail());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);

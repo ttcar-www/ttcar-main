@@ -57,14 +57,13 @@ class OrdersController extends AbstractController
            return $this->redirectToRoute('main');
         }
 
-            $car = $this->getDoctrine()
-                ->getRepository(Cars::class)
-                ->findOneBy(['id' => $id]);
+        $car = $this->getDoctrine()
+           ->getRepository(Cars::class)
+           ->findOneBy(['id' => $id]);
 
         $mark = $this->getDoctrine()
             ->getRepository(Mark::class)
             ->findOneBy(['id' => $car->getMark()]);
-
 
         $range = $this->getDoctrine()
             ->getRepository(Range::class)
@@ -83,6 +82,7 @@ class OrdersController extends AbstractController
             // Calcule du nombres de jours
             $betweenDate = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
             $nb_days = $betweenDate +1;
+
             //Prix depart retour
             $price_depart = $this->getPriceDeparture($range->getExtraCost());
             $price_return = $this->getPriceReturn($range->getExtraCost());
@@ -91,6 +91,12 @@ class OrdersController extends AbstractController
 
             $price = $totalService + $price_return + $price_depart;
 
+            //promo
+            $promoPrice = $this->getPricePromo($car, $price, $nb_days);
+            $promos = null;
+
+
+        // codePromo
         /*    if (isset($_SESSION['searchResult']['promo'])) {
                 $codePromo = $this->getDoctrine()
                     ->getRepository(PromoCode::class)
@@ -111,10 +117,8 @@ class OrdersController extends AbstractController
                 }
             }*/
 
-            //promo
-            $promos = null;
-            $promoPrice = null;
-            $order = new Order();
+
+        $order = new Order();
 
             // Utilisateur
             if ($this->getUser()) {
@@ -214,6 +218,7 @@ class OrdersController extends AbstractController
           'car' => $car,
           'nb_days' => $nb_days,
           'promos' => $promos,
+          'promoPrice' => $promoPrice,
           'user' => $user,
           'accessArray' => $accessArray,
           'id' => $id,
@@ -227,32 +232,71 @@ class OrdersController extends AbstractController
   }
 
     /**
+     * @param $id
+     * @return object|null
+     * Calcule des promotions
+     */
+    public function getPromoOrder($id): ?array
+    {
+        /*       $promotions = $this->getDoctrine()
+                   ->getRepository(Promotions::class)
+                   ->findBy(['mark' => $id]);
+
+               foreach ($promotions as $promo) {
+                   if ($promo->getStartDate() <= $_SESSION['searchResult']['dateStart'] and $promo->getEndDate() >= $_SESSION['searchResult']['dateEnd']) {
+                       $promotions = $promo;
+                   }
+               }*/
+
+        return null;
+    }
+
+    /**
      * @param $car
      * @param $price
+     * @param $nb_day
      * @return float|int|object|null
      * Calcule des promotions
      */
-    public function getPricePromo($car, $price) {
+    public function getPricePromo($car, $price, $nb_day)
+    {
+        $promotionsMark = $this->getDoctrine()
+            ->getRepository(Promotions::class)
+            ->findBy(['mark' => $car->getMark()->getId()]);
 
-        $promotions = $this->getPromoOrder($car);
+        $promoRange = $this->getDoctrine()
+            ->getRepository(Range::class)
+            ->findBy(['id' => $car->getRanges()->getId()]);
 
-    /*    if (empty($promotions)) {
+        if (isset($promotionsMark)) {
+            // 1. promotions sur marque OK
 
-            return $price;
-        }else {
-            $type = $this->getDoctrine()
-                ->getRepository(TypePromo::class)
-                ->findOneBy(['id' => $promotions->getType()]);
+            foreach ( $promotionsMark as $promo ) {
 
-            switch ($type->getType()) {
-                case 'Euros':
-                    return $price - $promotions->getValue();
-                case '%':
-                    return $price - $price*($promotions->getValue()/100);
+                if ($promo->getStartDelivery() <= $_SESSION['searchResult']['dateStart'] and $promo->getEndDelivery() >= $_SESSION['searchResult']['dateEnd']) {
+                    if ($promo->getType()->getType() == 'Jour' and $nb_day < 21) {
+                        return $this->getCounDays($promo, $nb_day);
+                    } else {
+                        return $this->getType($promo, $price);
+                    }
+                }
             }
-            return null;
+        } elseif ( isset( $promoRange) ) {
+            // 2. promotions sur gammes OK
 
-        }*/
+            foreach ( $promoRange as $itemRange) {
+                if ($itemRange->getStartDelivery() <= $_SESSION['searchResult']['dateStart'] and $itemRange->getEndDelivery() >= $_SESSION['searchResult']['dateEnd']) {
+
+                    foreach ($itemRange->getPromotions() as $rangePromo ) {
+                        if ($rangePromo->getType()->getType() == 'Jour' and $nb_day < 21) {
+                            return $this->getCounDays($promo, $nb_day);
+                        }else {
+                            return $this->getType($rangePromo, $price);
+                        }
+                    }
+                }
+            }
+        }
 
         return null;
     }
@@ -276,6 +320,37 @@ class OrdersController extends AbstractController
         }
     }
 
+
+    /**
+     * @param $type
+     * @param $price
+     * @return float|int|void
+     */
+    public function getType($promo, $price) {
+
+        switch ($promo->getType()->getType()) {
+            case '€':
+                return $price - $promo->getValue();
+            case '%':
+                return $price - $price*($promo->getValue()/100);
+        }
+    }
+
+
+    /**
+     * @param $countDays
+     * @param $car
+     * @return mixed
+     * Retourne le nombres de jours en cas de promotions
+     */
+    public function getCounDays($nb_day, $promo) {
+        $countDays = $countDays - $promo->getValue();
+        if ($countDays > 21 ) {
+            return 21;
+        }
+        return $countDays;
+    }
+
     /**
      * @param $slices
      * @return object|null
@@ -290,49 +365,6 @@ class OrdersController extends AbstractController
         }
 
         return $price;
-    }
-
-    /**
-     * @param $countDays
-     * @param $car
-     * @return mixed
-     * Retourne le nombres de jours en cas de promotions
-     */
-    public function getCounDays($countDays, $car) {
-        $promotions = $this->getPromoOrder($car);
-
-/*        foreach ($promotions as $promo) {
-            $type = $this->getDoctrine()
-                ->getRepository(TypePromo::class)
-                ->findOneBy(['id' => $promo->getType()]);
-
-            if ($type->getType() == 'Jours' and $countDays < 21) {
-                $countDays = $countDays - $promo->getValue();
-            }
-
-        }*/
-
-        return null;
-    }
-
-    /**
-     * @param $id
-     * @return object|null
-     * Calcule des promotions
-     */
-    public function getPromoOrder($id): ?array
-    {
- /*       $promotions = $this->getDoctrine()
-            ->getRepository(Promotions::class)
-            ->findBy(['mark' => $id]);
-
-        foreach ($promotions as $promo) {
-            if ($promo->getStartDate() <= $_SESSION['searchResult']['dateStart'] and $promo->getEndDate() >= $_SESSION['searchResult']['dateEnd']) {
-                $promotions = $promo;
-            }
-        }*/
-
-        return null;
     }
 
     /**
@@ -363,14 +395,18 @@ class OrdersController extends AbstractController
         $priceExtra = 0;
 
         foreach ($extraPlaces as $justPlace) {
-            $placeMany = $justPlace->getPlace();
-            foreach ($placeMany as $onePlace) {
-                if ($onePlace->getLibelle() == $place_depart->getLibelle()) {
-                    foreach ($onePlace->getPlace() as $extraCost) {
-                        if ($extra == true) {
-                            $priceExtra = $extraCost->getExtra1();
-                        }else {
-                            $priceExtra = $extraCost->getExtra2();
+            if ($justPlace->getFree()) {
+                return 0;
+            } else {
+                $placeMany = $justPlace->getPlace();
+                foreach ($placeMany as $onePlace) {
+                    if ($onePlace->getLibelle() == $place_depart->getLibelle()) {
+                        foreach ($onePlace->getPlace() as $extraCost) {
+                            if ($extra == true) {
+                                $priceExtra = $extraCost->getExtra1();
+                            }else {
+                                $priceExtra = $extraCost->getExtra2();
+                            }
                         }
                     }
                 }
@@ -395,14 +431,18 @@ class OrdersController extends AbstractController
         $priceExtra = 0;
 
         foreach ($extraPlaces as $justPlace) {
-            $placeMany = $justPlace->getPlace();
-            foreach ($placeMany as $onePlace) {
-                if ($onePlace->getLibelle() == $place_return->getLibelle()) {
-                    foreach ($onePlace->getPlace() as $extraCost) {
-                        if ($extra == true) {
-                            $priceExtra = $extraCost->getExtra1();
-                        }else {
-                            $priceExtra = $extraCost->getExtra2();
+            if ($justPlace->getFree()) {
+                return 0;
+            } else {
+                $placeMany = $justPlace->getPlace();
+                foreach ($placeMany as $onePlace) {
+                    if ($onePlace->getLibelle() == $place_return->getLibelle()) {
+                        foreach ($onePlace->getPlace() as $extraCost) {
+                            if ($extra == true) {
+                                $priceExtra = $extraCost->getExtra1();
+                            }else {
+                                $priceExtra = $extraCost->getExtra2();
+                            }
                         }
                     }
                 }

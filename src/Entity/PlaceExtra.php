@@ -55,6 +55,11 @@ class PlaceExtra
     private $deleted_at;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $free;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Place::class, inversedBy="Place")
      */
     private $Place;
@@ -179,5 +184,21 @@ class PlaceExtra
     public function setBrand($brand): void
     {
         $this->brand = $brand;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFree()
+    {
+        return $this->free;
+    }
+
+    /**
+     * @param mixed $free
+     */
+    public function setFree($free): void
+    {
+        $this->free = $free;
     }
 }

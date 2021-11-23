@@ -3,9 +3,9 @@
 {% block body %}
     <section class="b-pageHeader">
         <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Ajouter une promotions</h1>
+            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Ajouter une promotions avec lieux</h1>
             <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Ajouter une promotions</h3>
+                <h3>Ajouter une promotions avec lieux</h3>
             </div>
         </div>
     </section><!--b-pageHeader-->
@@ -29,7 +29,7 @@
                                     <span class="fa fa-car"></span>
                                 </div>
                                 <div class="b-submit__aside-step-inner-info">
-                                    <h4>Add YOUR Promotions</h4>
+                                    <h4>Ajouter une promotions avec lieux</h4>
                                     <div class="b-submit__aside-step-inner-info-triangle"></div>
                                 </div>
                             </div>
@@ -96,6 +96,18 @@
                                     <label>Enter End delivery <span>*</span></label>
                                     <div class='s-relative'>
                                         {{ form_row(form.end_delivery) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Place depart <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.place_departure) }}
+                                    </div>
+                                </div>
+                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
+                                    <label>Enter Place delivery <span>*</span></label>
+                                    <div class='s-relative'>
+                                        {{ form_row(form.place_delivery) }}
                                     </div>
                                 </div>
                             </div>
