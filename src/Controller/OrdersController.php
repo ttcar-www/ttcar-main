@@ -83,12 +83,14 @@ class OrdersController extends AbstractController
             $betweenDate = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
             $nb_days = $betweenDate +1;
 
-            //Prix depart retour
+            //Prix depart / retour
             $price_depart = $this->getPriceDeparture($range->getExtraCost());
             $price_return = $this->getPriceReturn($range->getExtraCost());
 
+            // prix hors promo
             $totalService = $PriceService->getPriceOrder($car, $nb_days);
 
+            //prix avec depart / retour
             $price = $totalService + $price_return + $price_depart;
 
             //promo
