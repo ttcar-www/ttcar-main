@@ -99,6 +99,8 @@ Encore
     .addEntry('owl_theme', './assets/owl-carousel/owl.theme.css')
     .addEntry('owl_transitions', './assets/owl-carousel/owl.transitions.css')
 
+    .addEntry('refonteV1', './assets/css/refonte_ttcar.css')
+
     .addEntry('account', './assets/css/account.css')
     .addEntry('index', './assets/css/index.css')
     .addEntry('order', './assets/css/order.css')
