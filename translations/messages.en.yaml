@@ -12,6 +12,7 @@ menu:
   range: Cars
   contact: Contact
   promo: Sold
+  presentation: Presentation
 login:
   registre: Registre
   login: Login

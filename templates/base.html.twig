@@ -28,24 +28,42 @@
             {{ encore_entry_link_tags('owl_css') }}
             {{ encore_entry_link_tags('account') }}
         {% endblock %}
-        <link rel="icon" type="image" href="{{ asset('build/tt-groupimg.png') }}" />
+        <link rel="icon" type="image" href="{{ asset('build/images/tt-groupimg.5f2a4f9d.png') }}" />
+        <style>
+            .active_locale {
+                color: rgba(247,42,54,1); !important;
+            }
+        </style>
     </head>
     <body>
     <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">
-        <img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" />
+        <img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" />
         <nav id="nav_1">
             <ul>
                 <li><a href="{{ path('main') }}">Transit Temporaire</a></li>
                 <li><a href="#">Location</a></li>
                 <li><a href="{{ path('douane') }}">Douane Export</a></li>
             </ul>
+            <svg class="polygon_1" viewBox="0 0 26 11">
+                <path id="polygon_1" d="M 12.99999904632568 0 L 26 11 L 0 11 Z">
+                </path>
+            </svg>
         </nav>
         <nav id="nav_2">
             <ul>
-                <li id="nav_btn"><a href="{{ path('account') }}"><i class="fas fa-user"></i> Mon compte</a></li>
-                <li id="nav_btn"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> Contact</a></li>
-                <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}">FR</a></li>
-                <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
+                {% if app.user %}
+                <li id="nav_btn"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+                {% else %}
+                <li id="nav_btn"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
+                {% endif %}
+                <li id="nav_btn"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                {% if app.request.locale == 'fr' %}
+                    <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                    <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
+                    {% else %}
+                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}">FR</a></li>
+                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header><!--b-topBar-->
@@ -53,8 +71,8 @@
         <span class="span_header">Un véhicule en TT pour <br>votre séjour en Europe</span>
         <nav id="sub_nav">
             <ul>
-                <li><a href="#">Réservation</a></li>
-                <li><a href="#">Présentation</a></li>
+                <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
+                <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
                 <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
                 <li><a href="{{ path('index_promotion') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
                 <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
