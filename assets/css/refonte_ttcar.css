@@ -39,7 +39,7 @@ Base HEADER
 }
 
 #nav_2 {
-    left: 950px;
+    left: 995px;
     top: 28px;
     position: absolute;
     overflow: visible;
@@ -308,7 +308,7 @@ Base FOOTER
     position: absolute;
     width: 708px;
     height: 106px;
-    left: 340px;
+    left: 390px;
     top: 156px;
     overflow: visible;
 }
@@ -373,8 +373,9 @@ Base FOOTER
     position: absolute;
     width: 891px;
     height: 158px;
-    left: 205px;
+    left: 265px;
     top: 260px;
+    opacity: 0.841;
     overflow: visible;
     border-radius: 40px;
     background-color: #436d8f;
@@ -410,14 +411,15 @@ Base FOOTER
     overflow: visible;
     width: 891px;
     height: 386px;
-    left: 207px;
+    left: 265px;
     top: 450px;
+    opacity: 0.841;
 }
 .search_promo_banner {
     position: absolute;
     width: 891px;
     height: 112px;
-    left: 206px;
+    left: 265px;
     top: 872px;
     overflow: visible;
 }
