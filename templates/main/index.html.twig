@@ -15,71 +15,100 @@
         {% endfor %}
     {% endfor %}
 <style>
-    .newsletter_banner {
-        width: 1962px;
-        margin-top: 70px;
-        height: 143px;
-        background-color: rgba(250,250,250,1);
+    .carroussel_div {
+        margin-top: 120px;
+    }
+    .carroussel {
+        width: 100%;
+        height: 307px;
+        margin-bottom: 55px;
+        border: solid 2px #f5f5f5;
+        border-radius: 65px;
     }
 
-    .newsletter_tilte {
-        margin-left: 430px;
-        margin-top: -70px;
-        width: 265px;
+    .carroussel_promo_span {
+        height: 38px;
+        background-color: rgba(247,43,55,1);
+        border-radius: 20%;
+        left: 80px;
+        top: 200px;
+        position: absolute;
+        overflow: visible;
+        width: 101px;
+        white-space: nowrap;
+        line-height: 22px;
+        margin-top: -4px;
+        text-align: center;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        color: rgba(255,255,255,1);
+        padding: 2%;
+    }
+
+    .carroussel_info {
+        margin-left: 114px;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .owl-wrapper-outer {
+        height: 289px;
+    }
+
+
+    .carroussel_name  a{
+        width: 91px;
+        white-space: nowrap;
+        line-height: 22px;
+        margin-top: -4px;
+        text-align: center;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        color: rgba(52,95,138,1);
+    }
+
+    .carroussel_subtilte {
+        line-height: 22px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        color: rgba(52,95,138,1);
+    }
+
+    .carroussel_btn_div {
+        margin-left: 400px;
+        margin-bottom: 50px;
+    }
+
+    .carroussel_btn {
+        width: 186px;
+        height: 73px;
+        box-shadow: 0 2px 5px rgb(52 95 138);
         white-space: nowrap;
         text-align: left;
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;
-        color: rgba(52,95,138,1);
+        color: rgba(247,43,55,1);
+        padding: 15px;
+        border-radius: 15px;
+        margin-right: 70px;
     }
 
-    .newsletter_img {
-        opacity: 0.154;
-        height: 68px;
-        margin-left: 205px;
-        margin-top: 35px;
-    }
-
-    .newsletter_subtilte {
-        margin-left: 430px;
+    .carroussel_btn span {
         white-space: nowrap;
         text-align: left;
         font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
         font-size: 16px;
-        color: rgba(52,95,138,1);
-    }
-
-    .newsletter_form {
-        margin-top: -20px;
-    }
-
-    .newsletter_form button{
-        margin-top: -120px;
-    }
-
-    .form_news {
-        width: 307px;
-        height: 48px;
-        margin-left: 760px;
-        margin-top: -30px;
-        background-color: rgba(242,242,242,1);
-        border: none;
-        border-radius: 40px;
-    }
-
-    .newsletter_btn1 {
-        margin-top: -35px;
-    }
-
-    .newsletter_btn {
-        width: 78px;
-        height: 48px;
-        margin-left: 1115px;
-        border-radius: 30px;
-        background-color: rgb(52 95 138);
-        color: rgba(255,255,255,1);
+        color: rgba(247,43,55,1);
     }
 </style>
     <div class="img_search">
@@ -119,7 +148,37 @@
             </path>
         </svg>
     </div>
-    <div class="carroussel"></div>
+    <div class="carroussel_div">
+        <div class="carroussel_btn_div">
+            <span class="carroussel_btn">Renault</span>
+            <span class="carroussel_btn">Peugeot</span>
+            <span class="carroussel_btn">Citroën</span>
+            <span class="carroussel_btn">DS Auto</span>
+        </div>
+        <div class="carroussel">
+            <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
+                {% for car in cars_promo %}
+                    <div class="carroussel_cars">
+                        <div class="b-featured__item wow rotateIn">
+                            <a href="{{ path('detail_car', { 'id': car.id }) }}">
+                                <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
+                                {#                            <span class="m-premium">Premium</span>#}
+                            </a>
+                            <div class="carroussel_promo_span"> PROMO !</div>
+                            <div class="carroussel_info">
+                                <div class="carroussel_name">
+                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
+                                </div>
+                                <div class="carroussel_subtilte">
+                                    {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <div class="tt_info">
         <div class="video_tt">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -589,7 +648,7 @@
 
         <script>
             //DatePicker Search
-            $(document).ready(function() {
+/*            $(document).ready(function() {
                 document.getElementById("cookieBar").style.display = "none";
 
                 $("#seachButton").prop("disabled",true);
@@ -610,7 +669,7 @@
 
                 renault.addEventListener("change", function() {
                     $.ajax({
-                        url: {{  path('placeAjax') }},
+                        url: {#{{  path('placeAjax') }}#},
                         type:"POST",
                         dataType:"json",
                         data: {mark: this.value},
@@ -632,7 +691,7 @@
                         }
                 });
                     $.ajax({
-                        url: {{  path('markAjax') }},
+                        url: {#{{  path('markAjax') }}#},
                         type:"POST",
                         dataType:"json",
                         data: {mark: this.value},
@@ -663,50 +722,13 @@
                         }
                     });
                 })
-            });
+            });*/
 
             /*
              //CookieBar
             function CookieBar() {
                 document.getElementById("cookieBar").style.display = "none";
             }*/
-
-            // Caroussel cars
-            let w = document.getElementById("renault");
-            let x = document.getElementById("peugeot");
-            let y = document.getElementById("citroen");
-            let z = document.getElementById("dsauto");
-
-            function ClickAll() {
-                w.style.display = "block";
-                x.style.display = "block";
-                y.style.display = "block";
-                z.style.display = "block";
-            }
-            function ClickRenault() {
-                w.style.display = "block";
-                x.style.display = "none";
-                y.style.display = "none";
-                z.style.display = "none";
-            }
-            function ClickPeugeot() {
-                x.style.display = "block";
-                w.style.display = "none";
-                y.style.display = "none";
-                z.style.display = "none";
-            }
-            function ClickCitroen() {
-                y.style.display = "block";
-                w.style.display = "none";
-                x.style.display = "none";
-                z.style.display = "none";
-            }
-            function ClickDs() {
-                z.style.display = "block";
-                w.style.display = "none";
-                x.style.display = "none";
-                y.style.display = "none";
-            }
         </script>
     {% endblock %}
 {% endblock %}
