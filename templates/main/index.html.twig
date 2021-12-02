@@ -15,101 +15,69 @@
         {% endfor %}
     {% endfor %}
 <style>
-    .carroussel_div {
-        margin-top: 120px;
+    .search_promo_banner_info {
+        left: 250px;
+        position: absolute;
+        top: 30px;
     }
-    .carroussel {
-        width: 100%;
-        height: 307px;
-        margin-bottom: 55px;
-        border: solid 2px #f5f5f5;
-        border-radius: 65px;
+    .promo_banner_promo {
+        width: 137px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        color: rgba(247,43,55,1);
     }
 
-    .carroussel_promo_span {
-        height: 38px;
-        background-color: rgba(247,43,55,1);
-        border-radius: 20%;
-        left: 80px;
-        top: 200px;
+    .promo_banner_value {
+        left: 0;
+        top: 25px;
         position: absolute;
         overflow: visible;
-        width: 101px;
+        width: 141px;
         white-space: nowrap;
-        line-height: 22px;
-        margin-top: -4px;
         text-align: center;
         font-family: Montserrat;
         font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
-        color: rgba(255,255,255,1);
-        padding: 2%;
-    }
-
-    .carroussel_info {
-        margin-left: 114px;
-        margin-top: 20px;
-        width: 100%;
-    }
-
-    .owl-wrapper-outer {
-        height: 289px;
-    }
-
-
-    .carroussel_name  a{
-        width: 91px;
-        white-space: nowrap;
-        line-height: 22px;
-        margin-top: -4px;
-        text-align: center;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
+        font-size: 12px;
         color: rgba(52,95,138,1);
     }
 
-    .carroussel_subtilte {
-        line-height: 22px;
+    .promo_banner_date {
+        left: 215px;
+        top: 1px;
+        position: absolute;
+        overflow: visible;
+        width: 95px;
+        white-space: nowrap;
+        text-align: center;
         font-family: Montserrat;
-        font-style: normal;
+        font-style: italic;
         font-weight: normal;
-        font-size: 11px;
+        font-size: 9px;
         color: rgba(52,95,138,1);
     }
 
-    .carroussel_btn_div {
-        margin-left: 400px;
-        margin-bottom: 50px;
-    }
-
-    .carroussel_btn {
-        width: 186px;
-        height: 73px;
-        box-shadow: 0 2px 5px rgb(52 95 138);
+    .promo_banner_btn {
+        background-color: rgba(52,95,138,1);
+        left: 225px;
+        top: 35px;
+        padding: 5px;
+        border-radius: 30px;
+        position: absolute;
+        overflow: visible;
+        width: 80px;
         white-space: nowrap;
-        text-align: left;
+        text-align: center;
         font-family: Montserrat;
         font-style: normal;
         font-weight: bold;
-        font-size: 16px;
-        color: rgba(247,43,55,1);
-        padding: 15px;
-        border-radius: 15px;
-        margin-right: 70px;
+        font-size: 10px;
+        color: rgba(255,255,255,1);
     }
 
-    .carroussel_btn span {
-        white-space: nowrap;
-        text-align: left;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        color: rgba(247,43,55,1);
-    }
 </style>
     <div class="img_search">
         <img src="{{ asset('build/search_imgZoom.png') }}" alt="sliderImg" />
@@ -139,6 +107,12 @@
         </div>
         <div class="search_promo_banner">
             <img src="{{ asset('build/quick-banner.png') }}" alt="sliderImg" />
+            <div class="search_promo_banner_info">
+                <span class="promo_banner_promo">Offre Promo !</span>
+                <span class="promo_banner_value"><b>20 %</b> lorem ipsum dolor <br> Lorem ipsum dolor</span>
+                <span class="promo_banner_date"> Offre valable du <br><b>20/12/21</b> au <b>20/01/22</b></span>
+                <span class="promo_banner_btn">Je participe</span>
+            </div>
         </div>
     </div>
     <div class="btn_promo_home">
@@ -151,9 +125,9 @@
     <div class="carroussel_div">
         <div class="carroussel_btn_div">
             <span class="carroussel_btn">Renault</span>
-            <span class="carroussel_btn">Peugeot</span>
-            <span class="carroussel_btn">Citroën</span>
-            <span class="carroussel_btn">DS Auto</span>
+            <span class="carroussel_btn" style="color: rgba(52,95,138,1)">Peugeot</span>
+            <span class="carroussel_btn" style="color: rgba(52,95,138,1)">Citroën</span>
+            <span class="carroussel_btn" style="color: rgba(52,95,138,1)">DS Auto</span>
         </div>
         <div class="carroussel">
             <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
@@ -242,7 +216,7 @@
                     </div>
                     <div class="blog_text">
                         <span class="item_blog_tilte">{{ post.title }}</span>
-                        <div class="item_text">{{ post.content|raw }}</div>
+                        <div class="item_text">{{ post.content |u.truncate(200, '...')|raw }}</div>
                         <a href="{{ path('see_post', { 'id': post.id }) }}" class="blog_btn">Lire la suite <span class="fa fa-angle-right"></span></a>
                     </div>
                 </div>
