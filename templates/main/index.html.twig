@@ -16,6 +16,174 @@
     {% endfor %}
 <style>
 
+#search_form_mark {
+    margin-left: 190px;
+    width: 100%;
+    margin-top: -35px;
+}
+.search_depart {
+    position: absolute;
+    width: 824px;
+    height: 65px;
+    left: 50px;
+    top: 45px;
+    overflow: visible;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(52,95,138,1);
+}
+
+.search_depart span {
+    display: inline-block;
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding-top: 18px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#search_form_placeDepart {
+    position: absolute;
+    overflow: visible;
+    width: 366px;
+    height: 65px;
+    padding: 15px;
+    left: 180px;
+    border-radius: 30px;
+    top: 0;
+}
+
+#search_form_date_start {
+    position: absolute;
+    width: 266px;
+    height: 65px;
+    left: 558px;
+    top: 0;
+    overflow: visible;
+    border-radius: 30px;
+}
+
+.search_return {
+    position: absolute;
+    width: 824px;
+    height: 65px;
+    left: 50px;
+    top: 135px;
+    overflow: visible;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(52,95,138,1);
+    padding: 15px;
+}
+
+.search_return span {
+    display: inline-block;
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding-top: 18px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#search_form_placeReturn {
+    position: absolute;
+    width: 366px;
+    height: 65px;
+    left: 180px;
+    overflow: visible;
+    border-radius: 30px;
+    top: 0;
+}
+
+#search_form_date_end {
+    position: absolute;
+    width: 266px;
+    height: 65px;
+    left: 558px;
+    top: 0;
+    overflow: visible;
+    border-radius: 30px;
+}
+
+.trait {
+    width: 100%;
+    margin-top: 210px;
+}
+
+.search_promo_btn {
+    position: absolute;
+    width: 370px;
+    height: 65px;
+    left: 45px;
+    top: 295px;
+    overflow: visible;
+}
+
+.search_promo_btn span {
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding-top: 18px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#search_form_promo {
+    position: absolute;
+    overflow: visible;
+    width: 216px;
+    height: 38px;
+    left: 200px;
+    top: -10px;
+    border-radius: 30px;
+}
+
+.btn_search_send button {
+    left: 650px;
+    top: 260px;
+    position: absolute;
+    overflow: visible;
+    width: 180px;
+    height: 80px;
+    padding: 18px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(247,43,55,1);
+    border-radius: 40px;
+    border: none;
+    background-color: rgba(255,255,255,1);
+}
+
 </style>
     <div class="img_search">
         <img src="{{ asset('build/search_imgZoom.png') }}" alt="sliderImg" />
@@ -26,23 +194,34 @@
             <span class="span_step2">2</span>
             <span class="span_step3">3</span>
         </div>
+        {{ form_start(formSearch) }}
         <div class="search_mark">
             <div class="tilte_mark">
                 <span>Sélectionnez <br> une marque</span>
+                {{ form_row(formSearch.mark) }}
             </div>
         </div>
         <div class="search_data">
             <div class="search_depart">
-
+                <span>Livraison</span>
+                {{ form_row(formSearch.placeDepart) }}
+                {{ form_row(formSearch.date_start) }}
             </div>
             <div class="search_return">
-
+                <span>Retour</span>
+                {{ form_row(formSearch.placeReturn) }}
+                {{ form_row(formSearch.date_end) }}
             </div>
+            <img src="{{ asset('build/search_trait.png') }}" class="trait">
             <div class="search_promo_btn">
-
+                <span>Code spécial</span>
+                {{ form_row(formSearch.promo) }}
             </div>
-            <span class="trait"></span>
+            <div class="btn_search_send">
+                <button>Voir nos tarifs   ></button>
+            </div>
         </div>
+        {{ form_end(formSearch) }}
         <div class="search_promo_banner">
             <img src="{{ asset('build/quick-banner.png') }}" alt="sliderImg" />
             <div class="search_promo_banner_info">
@@ -248,14 +427,10 @@
 
         <script>
             //DatePicker Search
-/*            $(document).ready(function() {
+            $(document).ready(function() {
                 document.getElementById("cookieBar").style.display = "none";
 
                 $("#seachButton").prop("disabled",true);
-
-                $(".m-firstSelects").hide();
-                $(".m-secondSelects").hide();
-
 
                 // Place Ajax
                 let placeReturn = document.getElementsByClassName("placeReturn");
@@ -269,7 +444,7 @@
 
                 renault.addEventListener("change", function() {
                     $.ajax({
-                        url: {#{{  path('placeAjax') }}#},
+                        url: {{  path('placeAjax') }},
                         type:"POST",
                         dataType:"json",
                         data: {mark: this.value},
@@ -291,7 +466,7 @@
                         }
                 });
                     $.ajax({
-                        url: {#{{  path('markAjax') }}#},
+                        url: {{  path('markAjax') }},
                         type:"POST",
                         dataType:"json",
                         data: {mark: this.value},
@@ -322,7 +497,7 @@
                         }
                     });
                 })
-            });*/
+            });
 
             /*
              //CookieBar
