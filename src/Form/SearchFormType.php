@@ -28,7 +28,7 @@ class SearchFormType extends AbstractType
             ->add('mark', EntityType::class, [
                 'class' => Mark::class,
                 'choice_label' => 'getLibelle',
-                'expanded' => false,
+                'expanded' => true,
                 'multiple' => false,
                 'label' => false
             ])
@@ -37,14 +37,16 @@ class SearchFormType extends AbstractType
                 'choice_label' => 'getLibelle',
                 'expanded' => false,
                 'multiple' => false,
-                'placeholder' => '(Choisir une marque)',
+                'placeholder' => 'Choisissez une ville',
                 'required' => false,
+                'label' => false,
                 'attr' => ['class' => 'placeDepart']
             ])
             ->add('date_start', DateType::class, array(
                 'widget' => 'single_text',
                 'label' => false,
                 'html5' => false,
+                'placeholder' => 'Choisissez une date',
                 'attr' => ['class' => 'datepicker-dateStart'],
                 'format' => 'dd/MM/yyyy'
             ))
@@ -53,7 +55,8 @@ class SearchFormType extends AbstractType
                 'choice_label' => 'getLibelle',
                 'expanded' => false,
                 'multiple' => false,
-                'placeholder' => 'Département (Choisir une marque)',
+                'label' => false,
+                'placeholder' => 'Choisissez une ville',
                 'required' => false,
                 'attr' => ['class' => 'placeDepart']
             ])
@@ -65,7 +68,7 @@ class SearchFormType extends AbstractType
                 'format' => 'dd/MM/yyyy'
             ))
             ->add('promo', NumberType::class, array(
-                'label' => 'promo',
+                'label' => false,
                 'required' => false
             ))
         ;

@@ -5,9 +5,10 @@
         <title>{% block title %}TTcar Transit{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('bootstrap_css') }}
+            {{ encore_entry_link_tags('refonteV1') }}
             {{ encore_entry_link_tags('animate') }}
             {{ encore_entry_link_tags('blog') }}
-            {{ encore_entry_link_tags('bootstrap') }}
             {{ encore_entry_link_tags('colors') }}
             {{ encore_entry_link_tags('demo') }}
             {{ encore_entry_link_tags('compare') }}
@@ -26,121 +27,85 @@
             {{ encore_entry_link_tags('theme') }}
             {{ encore_entry_link_tags('owl_css') }}
             {{ encore_entry_link_tags('account') }}
-
-
         {% endblock %}
-        <link rel="icon" type="image" href="{{ asset('build/tt-groupimg.png') }}" />
+        <link rel="icon" type="image" href="{{ asset('build/images/tt-groupimg.5f2a4f9d.png') }}" />
+        <style>
+            .active_locale {
+                color: rgba(247,42,54,1); !important;
+            }
+        </style>
     </head>
     <body>
+    <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">
+        <img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" />
+        <nav id="nav_1">
+            <ul>
+                <li><a href="{{ path('main') }}">Transit Temporaire</a></li>
+                <li><a href="{{ path('resacar') }}">Location</a></li>
+                <li><a href="{{ path('douane') }}">Douane Export</a></li>
+            </ul>
+            <svg class="polygon_1" viewBox="0 0 26 11">
+                <path id="polygon_1" d="M 12.99999904632568 0 L 26 11 L 0 11 Z">
+                </path>
+            </svg>
+        </nav>
+        <nav id="nav_2">
+            <ul>
+                {% if app.user %}
+                <li id="nav_btn"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+                {% else %}
+                <li id="nav_btn"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
+                {% endif %}
+                <li id="nav_btn"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                {% if app.request.locale == 'fr' %}
+                    <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                    <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
+                    {% else %}
+                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}">FR</a></li>
+                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header><!--b-topBar-->
+    <div class="sub_nav">
+        <span class="span_header">Un véhicule en TT pour <br>votre séjour en Europe</span>
+        <nav id="sub_nav">
+            <ul>
+                <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
+                <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
+                <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
+                <li><a href="{{ path('index_promotion') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
+                <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
+            </ul>
 
-<header class="b-topBar wow slideInDown" data-wow-delay="0.7s">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-xs-6">
-                <div class="b-topBar__addr">
-                    <span class="fa fa-map-marker"></span>
-                    2 Avenue de la Porte de Saint-Cloud, Paris
-                </div>
-            </div>
-            <div class="col-md-2 col-xs-6">
-                <div class="b-topBar__tel">
-                    <span class="fa fa-phone"></span>
-                    +33 (0)1 40 71 72 65/57
-                </div>
-            </div>
-            <div class="col-md-4 col-xs-6">
-                <nav class="b-topBar__nav">
-                    <ul>
-                        {% if app.user %}
-                            <li><a href="#" onclick="toogleMenu()">{{ 'menu.compte'|trans({}, 'messages') }}
-                                    <i class="fas fa-angle-double-down" onclick="toogleMenu()" style="margin-left: 15px"></i>
-                                </a></li>
-                            <li id="toogle_menu" style="display: none">
-                                <a href="{{ path('account') }}">{{ 'menu.profil'|trans({}, 'messages') }}</a>
-                                <a href="{{ path('my_order') }}">{{ 'menu.booking'|trans({}, 'messages') }}</a>
-                                <a href="{{ path('app_logout') }}">{{ 'login.logout'|trans({}, 'messages') }}</a>
-                            </li>
-                        {% else %}
-                            <li><a href="{{ path('app_login') }}">{{ 'login.login'|trans({}, 'messages') }}</a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-md-2 col-xs-6">
-                <div class="b-topBar__lang">
-                    <div class="dropdown">
-                       <a href="{{ path('change_locale',{ 'locale': 'fr' }) }}"><i class="fas fa-globe-europe"></i> FR /</a>
-                        <a href="{{ path('change_locale',{ 'locale': 'en' }) }}" >EN</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </nav>
     </div>
-</header><!--b-topBar-->
 
-<nav class="b-nav">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3 col-xs-4">
-                <div class=" wow slideInLeft" data-wow-delay="0.3s">
-                    <a href="{{ path('main') }}">
-                    <img src="{{ asset('build/tt-groupimg.png') }}" class="home_logo" alt="ttcar" />
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-9 col-xs-8">
-                <div class="b-nav__list wow slideInRight" data-wow-delay="0.3s">
-                    <div class="collapse navbar-collapse navbar-main-slide" id="nav">
-                        <ul class="navbar-nav-menu">
-                            <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('index_promotion') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('blog') }}">Blog</a></li>
-                            <li><a href="{{ path('contact') }}">{{ 'menu.contact'|trans({}, 'messages') }}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+
 <!--b-nav-->
   {% block body %}
 
     {% endblock %}
 {% block footer %}
-<footer class="b-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="b-footer__company wow fadeInLeft" data-wow-delay="0.3s">
-                    <div class="b-nav__logo">
-                        <a href="{{ path('main') }}">
-                            <img src="{{ asset('build/tt-groupimg.png') }}" class="home_logo_footer" alt="ttcar"/>
-                        </a>
-                    </div>
-                    <p>&copy; 2015 Designed by Templines</p>
-                </div>
+<footer class="footer_v1">
+    <div class="container_footer">
+        <div class="rowm">
+           <div class="media_footer">
+               <a href="#" id="media_logo"><i class="fab fa-facebook-f"></i></a>
+               <a href="#" id="media_logo2"><i class="fab fa-instagram"></i></a>
+           </div>
+            <div class="footer_nav">
+                <span class="span_footer_red">Besoin d'aide ?</span>
+                <span class="span_footer_number">01 40 71 72 40</span>
+                <a href="#" class="span_footer_mail">Par mail</a>
+                <a href="#" class="span_footer_inline_help">Aide en ligne</a>
             </div>
-            <div class="col-xs-8">
-                <div class="b-footer__content wow fadeInRight" data-wow-delay="0.3s">
-                    <div class="b-footer__content-social">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/ttcartransit/"><i class="fab fa-instagram-square"></i></a>
-                        <a href="https://twitter.com/ttcartransit"><i class="fab fa-twitter-square"></i></a>
-                        <a href="https://www.youtube.com/user/ttcarfrance"><i class="fab fa-youtube-square"></i></a>
-                    </div>
-                    <nav class="b-footer__content-nav">
-                        <ul>
-                            <li><a href="{{ path('main') }}">{{ 'menu.compte'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('main') }}">{{ 'menu.temporary'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('contact') }}">{{ 'menu.contact'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('dashboard') }}">{{ 'menu.admin'|trans({}, 'messages') }}</a></li>
-                            <li><a href="{{ path('app_logout') }}">{{ 'login.logout'|trans({}, 'messages') }}</a></li>
-                        </ul>
-                    </nav>
-                </div>
+            <div class="footer_nav2">
+                <a href="#" class="span_footer_subnav">Qui sommes-nous</a>
+                <a href="#" class="span_footer_subnav">Mentions légales</a>
+                <a href="#" class="span_footer_subnav">CGU</a>
+                <a href="#" class="span_footer_subnav">Presse</a>
+                <a href="#" class="span_footer_subnav">Centres de livraison</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,311 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('index') }}
+    {% endblock %}
+
+    {# read and display all flash messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-warning flash-{{ label }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <style>
+
+        #search_form_mark {
+            margin-left: 190px;
+            width: 100%;
+            margin-top: -35px;
+        }
+        .search_depart {
+            position: absolute;
+            width: 824px;
+            height: 65px;
+            left: 50px;
+            top: 45px;
+            overflow: visible;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(52,95,138,1);
+        }
+
+        .search_depart span {
+            display: inline-block;
+            border-radius: 40px;
+            background-color: rgba(52,95,138,1);
+            height: 60px;
+            width: 170px;
+            padding-top: 18px;
+            padding-left: 40px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255,255,255,1);
+        }
+
+        #search_form_placeDepart {
+            position: absolute;
+            overflow: visible;
+            width: 366px;
+            height: 65px;
+            padding: 15px;
+            left: 180px;
+            border-radius: 30px;
+            top: 0;
+        }
+
+        #search_form_date_start {
+            position: absolute;
+            width: 266px;
+            height: 65px;
+            left: 558px;
+            top: 0;
+            overflow: visible;
+            border-radius: 30px;
+        }
+
+        .search_return {
+            position: absolute;
+            width: 824px;
+            height: 65px;
+            left: 50px;
+            top: 135px;
+            overflow: visible;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(52,95,138,1);
+            padding: 15px;
+        }
+
+        .search_return span {
+            display: inline-block;
+            border-radius: 40px;
+            background-color: rgba(52,95,138,1);
+            height: 60px;
+            width: 170px;
+            padding-top: 18px;
+            padding-left: 40px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255,255,255,1);
+        }
+
+        #search_form_placeReturn {
+            position: absolute;
+            width: 366px;
+            height: 65px;
+            left: 180px;
+            overflow: visible;
+            border-radius: 30px;
+            top: 0;
+        }
+
+        #search_form_date_end {
+            position: absolute;
+            width: 266px;
+            height: 65px;
+            left: 558px;
+            top: 0;
+            overflow: visible;
+            border-radius: 30px;
+        }
+
+        .trait {
+            width: 100%;
+            margin-top: 210px;
+        }
+
+        .search_promo_btn {
+            position: absolute;
+            width: 370px;
+            height: 65px;
+            left: 45px;
+            top: 295px;
+            overflow: visible;
+        }
+
+        .search_promo_btn span {
+            border-radius: 40px;
+            background-color: rgba(52,95,138,1);
+            height: 60px;
+            width: 170px;
+            padding-top: 18px;
+            padding-left: 40px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255,255,255,1);
+        }
+
+        #search_form_promo {
+            position: absolute;
+            overflow: visible;
+            width: 216px;
+            height: 38px;
+            left: 200px;
+            top: -10px;
+            border-radius: 30px;
+        }
+
+        .btn_search_send button {
+            left: 650px;
+            top: 260px;
+            position: absolute;
+            overflow: visible;
+            width: 180px;
+            height: 80px;
+            padding: 18px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgba(247,43,55,1);
+            border-radius: 40px;
+            border: none;
+            background-color: rgba(255,255,255,1);
+        }
+
+        .polygon_1 {
+            margin-left: 240px;
+        }
+
+        .btn_search_send a{
+            left: 650px;
+            top: 260px;
+            position: absolute;
+            overflow: visible;
+            width: 180px;
+            height: 80px;
+            padding: 18px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgba(247,43,55,1);
+            border-radius: 40px;
+            border: none;
+            background-color: rgba(255,255,255,1);
+        }
+    </style>
+    <div class="img_search">
+        <img src="{{ asset('build/search_imgZoom.png') }}" alt="sliderImg" />
+    </div>
+    <div class="search_bar_V1">
+        <div class="step_search">
+            <span class="span_step1">1</span>
+            <span class="span_step2">2</span>
+            <span class="span_step3">3</span>
+        </div>
+        <div class="search_mark">
+            <div class="tilte_mark">
+                <span>Sélectionnez <br> une marque</span>
+                <label for="horns">Renault</label>
+                <input type="checkbox" id="horns" name="horns">
+                <label for="Peugeot">Peugeot</label>
+                <input type="checkbox" id="Peugeot" name="Peugeot">
+                <label for="Citroen">Citroen</label>
+                <input type="checkbox" id="Citroen" name="Citroen">
+                <label for="DS">DS Auto</label>
+                <input type="checkbox" id="DS" name="DS">
+
+            </div>
+        </div>
+        <div class="search_data">
+            <div class="search_depart">
+                <span>Livraison</span>
+                <input type="text" id="name" name="name" required
+                       minlength="4" maxlength="8" size="10">
+                <input type="date" id="start" name="trip-start"
+                       value="2018-07-22"
+                       min="2023-01-01" max="2022-12-31">
+            </div>
+            <div class="search_return">
+                <span>Retour</span>
+                <input type="text" id="name" name="name" required
+                       minlength="4" maxlength="8" size="10">
+                <input type="date" id="start" name="trip-start"
+                       value="2018-07-22"
+                       min="2023-01-01" max="2022-12-31">
+            </div>
+            <img src="{{ asset('build/search_trait.png') }}" class="trait">
+            <div class="search_promo_btn">
+                <span>Code spécial</span>
+                <input type="text" id="name" name="name" required
+                       minlength="4" maxlength="8" size="10">
+            </div>
+            <div class="btn_search_send">
+                <a href="{{ path('resacar_search') }}" id="searchBtn">Voir nos tarifs</a>
+{#
+                <button id="searchBtn">Voir nos tarifs></button>
+#}
+            </div>
+        </div>
+        <div class="search_promo_banner">
+            <img src="{{ asset('build/quick-banner.png') }}" alt="sliderImg" />
+            <div class="search_promo_banner_info">
+                <span class="promo_banner_promo">Offre Promo !</span>
+                <span class="promo_banner_value"><b>20 %</b> lorem ipsum dolor <br> Lorem ipsum dolor</span>
+                <span class="promo_banner_date"> Offre valable du <br><b>20/12/21</b> au <b>20/01/22</b></span>
+                <span class="promo_banner_btn">Je participe</span>
+            </div>
+        </div>
+    </div>
+    <div class="btn_info">
+        <span class="btn_info_booking">Réserver </span>
+        <span class="btn_info_question">Une question ?</span>
+    </div>
+    <div class="avantage" style="margin-bottom: 10%">
+        <div class="avantage_tilte">AVANTAGES DE LA LOCATION</div>
+        <div class="avantage_carroussel">
+            <div class="av1">
+                <span class="item_avantage"><img src="{{ asset('build/Group_84.png') }}" alt="item"></span>
+                <span class="avantage_text">Véhicule neufs</span>
+            </div>
+            <div class="av2">
+                <span class="item_avantage2"><img src="{{ asset('build/Group_92.png') }}" alt="item"></span>
+                <span class="avantage_text2">Kilométrage <br> illimité</span>
+            </div>
+            <div class="av3">
+                <span class="item_avantage3"><img src="{{ asset('build/Group_82.png') }}" alt="item"></span>
+                <span class="avantage_text3">Assistance 7j/7 <br> et 24h/24</span>
+            </div>
+            <div class="av4">
+                <span class="item_avantage4"><img src="{{ asset('build/Group_88.png') }}" alt="item"></span>
+                <span class="avantage_text4">Assurance multirisques <br>sans franchise</span>
+            </div>
+            <div class="av5">
+                <span class="item_avantage5"><img src="{{ asset('build/Group_90.png') }}" alt="item"></span>
+                <span class="avantage_text5">GPS <br>gratuit</span>
+            </div>
+            <div class="av6">
+                <span class="item_avantage6"><img src="{{ asset('build/Group_86.png') }}" alt="item"></span>
+                <span class="avantage_text6">24 mois de garantie <br> constructeur</span>
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+
+    {% endblock %}
+{% endblock %}
