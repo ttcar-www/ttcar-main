@@ -198,7 +198,10 @@
         <div class="search_mark">
             <div class="tilte_mark">
                 <span>Sélectionnez <br> une marque</span>
-                {{ form_row(formSearch.mark) }}
+                {{ form_row(formSearch.mark, { 'attr': {'class': 'mark_search'} }) }}
+               {# {% if formSearch.vars.value.i is not null %}
+                    <img src="{{ asset('upload/dir/' ~ formSearch.vars.value.image) }}" />
+                {% endif %}#}
             </div>
         </div>
         <div class="search_data">
@@ -218,7 +221,7 @@
                 {{ form_row(formSearch.promo) }}
             </div>
             <div class="btn_search_send">
-                <button>Voir nos tarifs   ></button>
+                <button id="searchBtn">Voir nos tarifs   ></button>
             </div>
         </div>
         {{ form_end(formSearch) }}
@@ -349,7 +352,7 @@
             {{ form_start(form_newsletter) }}
             {{ form_row(form_newsletter.email, { 'attr': {'class': 'form_news'} }) }}
             <div class="newsletter_btn1">
-                <button type="submit" class="newsletter_btn">OK</button>
+                <button type="submit" class="newsletter_btn" id="seachButton">OK</button>
             </div>
             {{ form_end(form_newsletter) }}
         </div>
@@ -428,26 +431,44 @@
         <script>
             //DatePicker Search
             $(document).ready(function() {
+/*
                 document.getElementById("cookieBar").style.display = "none";
-
+*/
                 $("#seachButton").prop("disabled",true);
+
 
                 // Place Ajax
                 let placeReturn = document.getElementsByClassName("placeReturn");
                 let placeDepart = document.getElementsByClassName("placeDepart");
+                let dateDepart = document.getElementById("search_form_date_start");
+                let dateReturn = document.getElementById("search_form_date_end");
+                let btnSearch = document.getElementById("searchBtn");
+
+
 
                 $(placeReturn).attr('disabled', 'disabled');
                 $(placeDepart).attr('disabled', 'disabled');
+                $(dateDepart).attr('disabled', 'disabled');
+                $(dateReturn).attr('disabled', 'disabled');
+                $(btnSearch).attr('disabled', 'disabled');
 
-                let renault = document.querySelector("#search_form_mark");
-                console.log(this.value)
+                let renault = document.querySelector("#search_form_mark_1");
+                let peugeot = document.querySelector("#search_form_mark_2");
+                let citroen = document.querySelector("#search_form_mark_3");
+                let psa = document.querySelector("#search_form_mark_4");
 
-                renault.addEventListener("change", function() {
+                console.log(renault.value)
+
+                let valueMark = null;
+
+                $("#search_form_mark_1").change(function(){
+                    console.log('change renault');
+                    valueMark = 1;
                     $.ajax({
                         url: {{  path('placeAjax') }},
                         type:"POST",
                         dataType:"json",
-                        data: {mark: this.value},
+                        data: {mark: valueMark},
                         success: function(place){
 
                             let places = $('#search_form_placeDepart');
@@ -464,12 +485,12 @@
                                 placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
                             }
                         }
-                });
+                    });
                     $.ajax({
                         url: {{  path('markAjax') }},
                         type:"POST",
                         dataType:"json",
-                        data: {mark: this.value},
+                        data: {mark: valueMark},
                         success: function(data){
 
                             let minDate = data[0]['minDate']
@@ -496,14 +517,180 @@
 
                         }
                     });
-                })
-            });
 
-            /*
-             //CookieBar
-            function CookieBar() {
-                document.getElementById("cookieBar").style.display = "none";
-            }*/
+                });
+
+                $("#search_form_mark_2").change(function(){
+                    valueMark = 2;
+                    $.ajax({
+                        url: {{  path('placeAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: valueMark},
+                        success: function(place){
+
+                            let places = $('#search_form_placeDepart');
+                            let placesReturn = $('#search_form_placeReturn');
+
+                            places.empty();
+                            placesReturn.empty();
+
+                            $(placeReturn).attr('disabled', false);
+                            $(placeDepart).attr('disabled', false);
+
+                            for (let i = 0; i < place.length; i++) {
+                                places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                                placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                            }
+                        }
+                    });
+                    $.ajax({
+                        url: {{  path('markAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: valueMark},
+                        success: function(data){
+
+                            let minDate = data[0]['minDate']
+                            let maxDate = data[0]['maxDate']
+
+                            let maxDatePicker = '+'+maxDate+'D'
+
+                            $('.datepicker-dateStart').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+21d',
+                                endDate: '+6M'
+                            });
+
+                            $('.datepicker-dateEnd').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+1M',
+                                endDate: maxDatePicker
+                            });
+
+
+                            $("#seachButton").prop("disabled",false);
+                            $(".m-firstSelects").show('slow');
+                            $(".m-secondSelects").show('slow');
+
+                        }
+                    });
+                });
+                $("#search_form_mark_3").change(function(){
+                    valueMark = 3;
+                    $.ajax({
+                        url: {{  path('placeAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: valueMark},
+                        success: function(place){
+
+                            let places = $('#search_form_placeDepart');
+                            let placesReturn = $('#search_form_placeReturn');
+
+                            places.empty();
+                            placesReturn.empty();
+
+                            $(placeReturn).attr('disabled', false);
+                            $(placeDepart).attr('disabled', false);
+
+                            for (let i = 0; i < place.length; i++) {
+                                places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                                placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                            }
+                        }
+                    });
+                    $.ajax({
+                        url: {{  path('markAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: valueMark},
+                        success: function(data){
+
+                            let minDate = data[0]['minDate']
+                            let maxDate = data[0]['maxDate']
+
+                            let maxDatePicker = '+'+maxDate+'D'
+
+                            $('.datepicker-dateStart').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+21d',
+                                endDate: '+6M'
+                            });
+
+                            $('.datepicker-dateEnd').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+1M',
+                                endDate: maxDatePicker
+                            });
+
+
+                            $("#seachButton").prop("disabled",false);
+                            $(".m-firstSelects").show('slow');
+                            $(".m-secondSelects").show('slow');
+
+                        }
+                    });
+                });
+                $("#search_form_mark_4").change(function(){
+                    valueMark = 4;
+                    $.ajax({
+                        url: {{  path('placeAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: valueMark},
+                        success: function(place){
+
+                            let places = $('#search_form_placeDepart');
+                            let placesReturn = $('#search_form_placeReturn');
+
+                            places.empty();
+                            placesReturn.empty();
+
+                            $(placeReturn).attr('disabled', false);
+                            $(placeDepart).attr('disabled', false);
+
+                            for (let i = 0; i < place.length; i++) {
+                                places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                                placesReturn.append('<option value=' + place[i]['id'] + ' id=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');
+                            }
+                        }
+                    });
+                    $.ajax({
+                        url: {{  path('markAjax') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {mark: valueMark},
+                        success: function(data){
+
+                            let minDate = data[0]['minDate']
+                            let maxDate = data[0]['maxDate']
+
+                            let maxDatePicker = '+'+maxDate+'D'
+
+                            $('.datepicker-dateStart').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+21d',
+                                endDate: '+6M'
+                            });
+
+                            $('.datepicker-dateEnd').datepicker({
+                                format: 'dd/mm/yyyy',
+                                startDate: '+1M',
+                                endDate: maxDatePicker
+                            });
+
+
+                            $("#seachButton").prop("disabled",false);
+                            $(".m-firstSelects").show('slow');
+                            $(".m-secondSelects").show('slow');
+
+                        }
+                    });
+                });
+
+                console.log(valueMark);
+            });
         </script>
     {% endblock %}
 {% endblock %}
