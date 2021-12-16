@@ -2,265 +2,325 @@
 
 {% block body %}
     <style>
-        .btn_contact:hover {
-            background-color: yellow; !important;
+        .footer_v1 {
+            margin-top: 2122px;
+        }
+        .container_result {
+            width: 100%;
+            height: 100%;
+        }
+        .img_new {
+            width: 100%;
+            height: 833px;
+        }
+        .div_result_search {
+            position: absolute;
+            width: 1041px;
+            height: 294px;
+            left: 60px;
+            top: 289px;
+            background: rgba(52,95,138,1);
+            opacity: 0.837;
+            border-radius: 30px;
+        }
+        .div_info_search {
+            position: absolute;
+            padding: 25px;
+            width: 229px;
+            height: 294px;
+            left: 1150px;
+            top: 289px;
+            background: rgba(52,95,138,1);
+            opacity: 0.837;
+            border-radius: 30px;
+        }
+        .price_info {
+            width: 106px;
+            white-space: nowrap;
+            line-height: 20px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(255,255,255,1);
+        }
+        .ul_info li {
+            line-height: 22px;
+            margin-top: 5px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            color: rgba(255,255,255,1);
+        }
+        .result_search {
+            background-color: rgba(255,255,255,1);
+            filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+            position: absolute;
+            overflow: visible;
+            width: 1059px;
+            height: 60px;
+            left: 55px;
+            border-radius: 20px;
+            top: 603px;
+        }
+        .filtre {
+            background-color: rgba(52,95,138,1);;
+            position: absolute;
+            overflow: visible;
+            width: 186px;
+            height: 100%;
+            border-radius: 20px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(255,255,255,1);
+            padding: 20px;
+        }
+        .cars {
+            position: absolute;
+            overflow: visible;
+            width: 1041px;
+            height: 100%;
+            left: 65px;
+            border-radius: 20px;
+            top: 675px;
+            background-color: white;
+        }
+        .car_result {
+            padding: 30px;
+            border: solid 2px grey;
+            border-radius: 20px;
+        }
+        .car_container {
+
+        }
+        .car_tilte  {
+            width: 323px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 26px;
+            color: rgba(52,95,138,1);
+            margin-top: 15px;
+        }
+        .car_desc {
+            line-height: 20px;
+            margin-top: 15px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            color: rgba(52,95,138,1);
+            width: 417px;
+            height: 120px;
+        }
+        .car_icon {
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .car_icon span {
+            margin-left: 15px;
+            width: 11px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 9px;
+            color: rgba(52,95,138,1);
+        }
+        .car_img {
+            position: absolute;
+            filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+            overflow: visible;
+            width: 435px;
+            height: 274px;
+            left: 520px;
+            top: 40px;
+            border-radius: 20px;
+            padding: 18px;
+        }
+
+        .car_btn {
+            background-color: rgb(240 240 240);
+            margin-top: 44px;
+            height: 120px;
+            padding: 35px;
+            width: 1040px;
+            margin-left: -30px;
+            border-radius: 15px;
+        }
+
+        .btn_car {
+            left: 64px;
+            top: 380px;
+            position: absolute;
+            overflow: visible;
+            width: 237px;
+            font-family: Montserrat;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 15px;
+            color: rgba(52,95,138,1);
+        }
+        .dispo {
+            white-space: nowrap;
+            line-height: 22px;
+            margin-top: -5px;
+            text-align: center;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 12px;
+            color: rgba(255,255,255,1);
+            background-color: red;
+            padding: 10px;
+            border-radius: 30px;
+        }
+        .soon {
+            width: 291px;
+            height: 42px;
+            background-color: white;
+            border-radius: 20px;
+            margin-left: 550px;
+            padding: 15px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(52,95,138,1);
+        }
+        .contact {
+            width: 291px;
+            height: 42px;
+            background-color: white;
+            border-radius: 20px;
+            margin-left: 550px;
+            padding: 15px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(52,95,138,1);
+        }
+        .btn_price {
+            margin-left: 550px;
+            overflow: visible;
+            width: 90px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            color: rgba(247,43,55,1);
+        }
+        .reservez {
+            width: 291px;
+            height: 42px;
+            background-color: rgb(52 95 138);;
+            border-radius: 20px;
+            margin-left: 65px;
+            padding: 15px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgba(255,255,255,1);
         }
     </style>
-<section class="b-pageHeader">
-    <div class="container">
-        <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Auto Listings</h1>
-        <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-            <h3>{{ 'form_order.tilte'|trans({}, 'messages') }} {{  cars|length }} {{ 'form_order.tilteResult'|trans({}, 'messages') }}</h3>
+    <div class="container_result">
+
+<div class="img_new">
+    <img src="{{ asset('build/img04.png') }}" alt="ttcar_search">
+</div>
+    <div class="step_search">
+        <span class="span_step1">1</span>
+        <span class="span_step2">2</span>
+        <span class="span_step3">3</span>
+    </div>
+    <div class="div_result_search"></div>
+    <div class="div_info_search">
+        <span class="price_info">Ce prix inclut :</span>
+        <br>
+        <ul class="ul_info">
+            <li> <img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un forfait 6 jours</li>
+            <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un véhicule neuf</li>
+            <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assurance multirisques
+                sans franchise</li>
+            <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Le kilométrage illimité</li>
+            <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assistance 7j / 7
+                et 24h / 24</li>
+            <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Les frais de livraison
+                et de restitution</li>
+        </ul>
+    </div>
+        <div class="result_search">
+            <span class="filtre">Filtrer par :</span>
+        </div>
+        <div class="cars">
+            {% for car in pagination %}
+                <div class="car_result">
+              <div class="car_container">
+                <span class="dispo">Disponible !</span>
+                <div class="car_tilte">{{ car.mark.getlibelle }}</div>
+                <div class="car_desc">
+                    Le design intérieur gagne en attractivité. Dacia Sandero inaugure une nouvelle planche de bord carbone
+                    foncé ou bi-ton (selon versions) à l’instrumentation complète et au traité moderne avec des contours
+                    de cadrans chromés (selon versions) et des commandes dont l’ergonomie a été complètement repensée.
+                </div>
+                <div class="car_icon">
+                    <span>
+                        <img src="{{ asset('build/Groupe_259.png') }}" alt="car" class="car_icon">
+                        x {{ car.door }}
+                    </span>
+                    <span>
+                        <img src="{{ asset('build/Groupe_261.png') }}" alt="car" class="car_icon">
+                        x {{ car.door }}
+                    </span>
+                    <span>
+                        <img src="{{ asset('build/Groupe_263.png') }}" alt="car" class="car_icon">
+                        x {{ car.door }}
+                    </span>
+                    <span>
+                        <img src="{{ asset('build/Groupe_265.png') }}" alt="car" class="car_icon">
+                    </span>
+                    <span>
+                        <img src="{{  asset('build/Groupe_267.png') }}" alt="car" class="car_icon">
+                    </span>
+                </div>
+             </div>
+                <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="car" class="car_img">
+                    <span class="btn_car">{{ car.name|u.truncate(25, '...') }}</span>
+                <div class="car_btn">
+                    {% if car.getDateStart > today %}
+                    <a href="#" class="soon">Disponible à partir du : 01 Apr 2022</a>
+                {% elseif car.isContactActived == true %}
+                    <a href="#" class="contact">Contact</a>
+                {% else %}
+                    <span class="btn_price">{{ carsResult[loop.index-1]}}€
+                    <a href="{{ path('order', { 'id': car.id }) }}" class="reservez">Reservez</a>
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
         </div>
     </div>
-</section><!--b-pageHeader-->
-
-<div class="b-breadCumbs s-shadow">
-    <div class="container wow zoomInUp" data-wow-delay="0.5s">
-        <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
-    </div>
-</div><!--b-breadCumbs-->
-
-    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-infoBar__progress-line clearfix">
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <a href="#" onclick="history.back(-1)">
-                                    <div class="b-infoBar__progress-line-step-circle">
-                                        <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                                <div class="b-infoBar__progress-line-step-circle m-last">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-infoBar-->
-
-{#    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-xs-12">
-                    <div class="b-infoBar__select wow zoomInUp" data-wow-delay="0.5s">
-                        <form method="post" action="/">
-                            <div class="b-infoBar__select-one">
-                                <span class="b-infoBar__select-one-title">SHOW ON PAGE</span>
-                                <select name="select1" class="m-select">
-                                    <option value="" selected="">10 items</option>
-                                </select>
-                                <span class="fa fa-caret-down"></span>
-                            </div>
-                            <div class="b-infoBar__select-one">
-                                <span class="b-infoBar__select-one-title">SORT BY</span>
-                                <select name="select2" class="m-select">
-                                    <option value="" selected="">Old Added</option>
-                                    <option value="" selected="">Last Added</option>
-                                </select>
-                                <span class="fa fa-caret-down"></span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-infoBar-->#}
-
-    <div class="b-items">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-sm-8 col-xs-12">
-                    <div class="row">
-                        {% for car in pagination %}
-                            <div class="col-lg-4 col-md-6 col-xs-12">
-                                <div class="b-items__cell wow zoomInUp">
-                                    <div class="b-items__cars-one-img">
-                                        <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" style="width: 110%;">
-                                        <a class="b-items__cars-one-img-video">{{ car.mark.getlibelle }}</a>
-                                        <span class="b-items__cars-one-img-type m-premium">PREMIUM</span>
-                                    </div>
-                                    <div class="b-items__cell-info">
-                                        <div class="s-lineDownLeft b-items__cell-info-title">
-                                            <h2 class="">{{ car.name|u.truncate(25, '...') }}</h2>
-                                        </div>
-                                        {#
-                                                                        <p>{{ car.desc }}</p>
-                                        #}
-                                        <div class="row m-smallPadding">
-                                            <div class="col-xs-6">
-                                                <ul>
-                                                    <li>{{ car.years }}</li>
-                                                    <li>{{ car.door }} Doors</li>
-                                                    <li>{{ car.transmission }} </li>
-                                                    <li>{{ car.fuel }}</li>
-                                                </ul>
-                                                <h5 class="b-items__cell-info-price">{{ carsResult[loop.index-1]}}€</h5>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <div class="b-items__cell-info-km">
-                                                    <i class="fas fa-search-plus"></i>
-                                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">View details</a>
-                                                </div>
-                                            </div>
-                                                <div class="b-items__cell-info-km" style="margin-left: 0;margin-top: 60%;">
-                                                    {% if car.getDateStart > today %}
-                                                        <p class="btn btn-secondary btn-lg btn-block btn_contact">Dispo le {{ car.getDateStart|date("m/d/Y") }}<span class="fa fa-angle-right"></span></p>
-                                                    {% elseif car.isContactActived == true %}
-                                                        <a href="{{ path('contactByCar', { 'id': car.id }) }}" class="btn btn-secondary btn-lg btn-block">Contact<span class="fa fa-angle-right"></span></a>
-                                                    {% else %}
-                                                        <a href="{{ path('order', { 'id': car.id }) }}" class="btn btn-secondary btn-lg btn-block">Choisir<span class="fa fa-angle-right"></span></a>
-                                                    {% endif %}
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="b-items__pagination">
-                        <div class="b-items__pagination-main wow zoomInUp" data-wow-delay="0.5s">
-                            {{ knp_pagination_render(pagination) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-4 col-xs-12">
-                    <aside class="b-items__aside">
-                        <h2 class="s-title wow zoomInUp">REFINE YOUR SEARCH</h2>
-                        <div class="b-items__aside-main wow zoomInUp">
-                            {{ form_start(formSearch) }}
-                            <div class="b-items__aside-main-body">
-                                    <div class="b-items__aside-main-body-item">
-                                        <label>SELECT A MAKE</label>
-                                        <div>
-                                            <select name="item" id="mark"  onclick="ButtonVoid()">
-                                                <option value="1">Renault</option>
-                                                <option value="2">Peugeot</option>
-                                                <option value="3">Citroën</option>
-                                                <option value="4">DS Auto</option>
-                                            </select>
-                                            <a href="javascript:void(0)" onclick="ChangeMark()" id="markLoader" style="display: none; align-content: center"><i class="fas fa-sync-alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="b-items__aside-main-body-item">
-                                        <label>SELECT A Depart info</label>
-                                        <div style="color: black">
-                                            {{ form_row(formSearch.date_start) }}
-                                        </div>
-                                        <br>
-                                        {{ form_row(formSearch.placeDepart) }}
-                                    </div>
-                                    <div class="b-items__aside-main-body-item">
-                                        <label>Date de Retour</label>
-                                        <div style="color: black">
-                                            {{ form_row(formSearch.date_end) }}
-                                        </div>
-                                        <br>
-                                        {{ form_row(formSearch.placeReturn) }}
-                                    </div>
-                                    <div class="b-items__aside-main-body-item">
-                                        <label>Have Promo ?</label>
-                                        <div>
-                                            {{ form_row(formSearch.promo) }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <footer class="b-items__aside-main-footer">
-                                    <button type="submit" class="btn m-btn">FILTER VEHICLES<span class="fa fa-angle-right"></span></button><br />
-                                  {#  <a href="">RESET ALL FILTERS</a>#}
-                                </footer>
-                            {{ form_end(formSearch) }}
-                        </div>
-                        <div class="b-items__aside-sell wow zoomInUp">
-                            <div class="b-items__aside-sell-info">
-                                <h3>Ce prix inclut :</h3>
-                                <p>
-                                  <span><i class="fas fa-check" style="color: green"></i>Un forfait {{ nb_days }} jours</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>Un véhicule neuf</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>Le kilométrage illimité</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>L'assurance multirisques sans franchise</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>L'assistance 7j / 7 et 24h / 24</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>Les frais de livraison et de restitution</span>
-                                </p>
-                            </div>
-                        </div>
-                       {# <div class="b-items__aside-sell wow zoomInUp" data-wow-delay="0.5s">
-                            <div class="b-items__aside-sell-info">
-                                <h3>SELL YOUR CAR</h3>
-                                <p>
-                                    Nam tellus enimds eleifend dignis lsim
-                                    biben edum tristique sed metus fusce
-                                    Maecenas lobortis.
-                                </p>
-                                <a href="submit1.html" class="btn m-btn">REGISTER NOW<span class="fa fa-angle-right"></span></a>
-                            </div>
-                        </div>#}
-                    </aside>
-                </div>
-            </div>
-        </div>
-    </div><!--b-items-->
-
-    <script>
-        function ButtonVoid() {
-            let loader = document.getElementById('markLoader');
-            loader.style.display = "block";
-        }
-
-            function ChangeMark() {
-            let mark = document.getElementById('mark').value;
-            let mark_libelle = null;
-
-            if (mark === '1') {
-                mark_libelle = 'Renault'
-            }
-            if (mark === '2') {
-                mark_libelle = 'Peugeot'
-            }
-            if (mark === '3') {
-                mark_libelle = 'Citroën'
-            }
-            if (mark === '4') {
-                mark_libelle = 'DS Auto'
-            }
-
-            $.ajax({
-                url:{{ path('change_mark') }},
-                type:"POST",
-                dataType:"json",
-                data: {mark: mark_libelle},
-                success: function(mark_libelle){
-                    document.location.reload();
-                }
-            });
-
-        }
-
-    </script>
-
 {% endblock %}
