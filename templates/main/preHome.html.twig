@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    .polygon_1 {
+        display: none;
+    }
+</style>
+    <div class="preHome_img">
+        <img src="{{ asset('build/shutterstock_1298528866.png') }}" alt="sliderImg" width="1500" height="950"/>
+        <div class="key">
+            <img src="{{ asset('build/transit-temporaire_cs.png') }}" class="logo">
+            <div class="preHome_info">
+                <div class="preHome_col1">
+                    <img src="{{ asset('build/Groupe_249.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Kilométrage </span>
+                    <br>
+                    <span class="preHome_text">illimité</span>
+                </div>
+                <div class="preHome_col2">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">2ème conducteur</span>
+                    <br>
+                    <span class="preHome_text">gratuit</span>
+                </div>
+                <div class="preHome_col3">
+                    <img src="{{ asset('build/Groupe_241_b.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Sans franchise</span>
+                    <br>
+                    <span class="preHome_text">en cas d’accident et de vol</span>
+                </div>
+                <div class="preHome_col4">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Plus de 500 points</span>
+                    <br>
+                    <span class="preHome_text">de livraison et retour en France</span>
+                </div>
+            </div>
+            <a href="{{ path('resacar') }}" class="preHome_btn">Accéder au site</a>
+        </div>
+        <div class="ttcar">
+            <img src="{{ asset('build/transit-temporaire_cs.png') }}" class="logo">
+            <div class="preHome_info_ttcar">
+                <div class="preHome_col1">
+                    <img src="{{ asset('build/Groupe_249.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Véhicules neufs </span>
+                    <br>
+                    <span class="preHome_text"></span>
+                </div>
+                <div class="preHome_col2">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Kilométrage </span>
+                    <br>
+                    <span class="preHome_text">illimité</span>
+                </div>
+                <div class="preHome_col3">
+                    <img src="{{ asset('build/Groupe_241_b.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Assurance multi</span>
+                    <br>
+                    <span class="preHome_text">sans franchise</span>
+                </div>
+                <div class="preHome_col4">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Assistance </span>
+                    <br>
+                    <span class="preHome_text">7j/7 et 24h/24</span>
+                </div>
+                <div class="preHome_col5">
+                    <img src="{{ asset('build/Groupe_241_b.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Assurance multi</span>
+                    <br>
+                    <span class="preHome_text">sans franchise</span>
+                </div>
+                <div class="preHome_col6">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Assistance </span>
+                    <br>
+                    <span class="preHome_text">7j/7 et 24h/24</span>
+                </div>
+            </div>
+            <a href="{{ path('main') }}" class="preHome_btn_ttcar">Accéder au site</a>
+        </div>
+        <div class="douane">
+            <img src="{{ asset('build/transit-temporaire_cs.png') }}" class="logo">
+            <div class="preHome_info">
+                <div class="preHome_col1">
+                    <img src="{{ asset('build/Groupe_249.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">W export </span>
+                    <br>
+                    <span class="preHome_text">et transit temporaire</span>
+                </div>
+                <div class="preHome_col2">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Assurance </span>
+                    <br>
+                    <span class="preHome_text">courte durée</span>
+                </div>
+                <div class="preHome_col3">
+                    <img src="{{ asset('build/Groupe_241_b.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Transport</span>
+                    <br>
+                    <span class="preHome_text">maritime</span>
+                </div>
+                <div class="preHome_col4">
+                    <img src="{{ asset('build/Groupe_257.png') }}" class="preHome_icon">
+                    <span class="preHome_tilte">Immatriculation </span>
+                    <br>
+                    <span class="preHome_text">France</span>
+                </div>
+            </div>
+            <a href="{{ path('douane') }}" class="preHome_btn">Accéder au site</a>
+        </div>
+
+    </div>
+    <div class="prehome_footer">
+        <div class="col1">
+            <span class="tilte_foot">TTCAR</span>
+            <p class="text_foot">
+                TTCar Transit est spécialisé dans la location TT, vente hors taxes de véhicules depuis plus de 45 ans.
+                Nous sommes partenaires des grands constructeurs automobiles : Peugeot (Peugeot Open Europe TT),
+                Renault (Renault Eurodrive TT), Citroën (Citroën Europass TT) et DS TT. Nous assurons la gestion des centres
+                de livraison et de retour de voitures TT à Roissy Charles de Gaulle, Aéroport d’Orly et Aéroport de Nice.
+                Vous n’avez donc qu’un seul interlocuteur de la commande jusqu’à la restitution de votre voiture TT.
+                Pour bénéficier de nos services d’experts du transit temporaire, vous devez être résident étranger (toutes nationalités),
+                avoir votre résidence principale hors de l’union européenne ou dans les DOM-TOM. Nos formules : achat-rachat, comprennent le kilométrage illimité,
+                une assurance tous risques sans franchise, l’assistance 24/24h, un véhicule neuf avec 24 mois de garantie et - dans la grande majorité des cas - un GPS gratuit.
+            </p>
+        </div>
+        <div class="col2">
+            <span class="tilte_foot">KeyServices International</span>
+            <p class="text_foot">
+                Key Services International, c’est notre offre de location de voitures pour expatriés à tarifs imbattables.
+                Pour des durées de 1 à 180 jours, destinée aux personnes résidant hors France métropolitaine, notre offre de
+                location de voitures avec kilométrage illimité est disponible dans plus de 500 points de livraison en France
+                (Aéroports Paris Charles de Gaulle, Marseille Gare Saint Charles, etc…), chez les grands loueurs de voitures.
+                Nos forfaits comprennent l’assurance sans franchise en cas d’accident à partir de 14 jours, le second conducteur gratuit,
+                les frais d’immatriculation et d’aéroport dès la troisième journée de location.
+            </p>
+        </div>
+    </div>
+{% endblock %}

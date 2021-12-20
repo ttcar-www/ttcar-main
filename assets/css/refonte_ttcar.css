@@ -1106,3 +1106,397 @@ Base FOOTER
     background-color: rgb(52 95 138);
     color: rgba(255,255,255,1);
 }
+
+
+/*    ttcar_home   */
+
+
+#search_form_mark {
+    margin-left: 190px;
+    width: 100%;
+    margin-top: -35px;
+}
+.search_depart {
+    position: absolute;
+    width: 824px;
+    height: 65px;
+    left: 50px;
+    top: 45px;
+    overflow: visible;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(52,95,138,1);
+}
+
+.search_depart span {
+    display: inline-block;
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding-top: 18px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#search_form_placeDepart {
+    position: absolute;
+    overflow: visible;
+    width: 366px;
+    height: 65px;
+    padding: 15px;
+    left: 180px;
+    border-radius: 30px;
+    top: 0;
+}
+
+#search_form_date_start {
+    position: absolute;
+    width: 266px;
+    height: 65px;
+    left: 558px;
+    top: 0;
+    overflow: visible;
+    border-radius: 30px;
+}
+
+.search_return {
+    position: absolute;
+    width: 824px;
+    height: 65px;
+    left: 50px;
+    top: 135px;
+    overflow: visible;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(52,95,138,1);
+    padding: 15px;
+}
+
+.search_return span {
+    display: inline-block;
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding-top: 18px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#search_form_placeReturn {
+    position: absolute;
+    width: 366px;
+    height: 65px;
+    left: 180px;
+    overflow: visible;
+    border-radius: 30px;
+    top: 0;
+}
+
+#search_form_date_end {
+    position: absolute;
+    width: 266px;
+    height: 65px;
+    left: 558px;
+    top: 0;
+    overflow: visible;
+    border-radius: 30px;
+}
+
+.trait {
+    width: 100%;
+    margin-top: 210px;
+}
+
+.search_promo_btn {
+    position: absolute;
+    width: 370px;
+    height: 65px;
+    left: 45px;
+    top: 295px;
+    overflow: visible;
+}
+
+.search_promo_btn span {
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding-top: 18px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+
+#search_form_promo {
+    position: absolute;
+    overflow: visible;
+    width: 216px;
+    height: 38px;
+    left: 200px;
+    top: -10px;
+    border-radius: 30px;
+}
+
+.btn_search_send button {
+    left: 650px;
+    top: 260px;
+    position: absolute;
+    overflow: visible;
+    width: 180px;
+    height: 80px;
+    padding: 18px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(247,43,55,1);
+    border-radius: 40px;
+    border: none;
+    background-color: rgba(255,255,255,1);
+}
+
+
+
+/*   Prehome  */
+
+.preHome_img {
+    margin-bottom: 10px;
+}
+
+.prehome_footer {
+    width: 1920px;
+    height: 182px;
+    background-color: rgba(52,95,138,1);
+}
+.key {
+    opacity: 0.646;
+    position: absolute;
+    width: 518px;
+    height: 500px;
+    left: -30px;
+    top: 318px;
+    overflow: visible;
+    background-color: rgba(255,255,255,1);
+    border-radius: 30px;
+}
+.key:hover {
+    opacity: revert;
+}
+.logo {
+    width: 112px;
+    height: 112px;
+    margin-left: 220px;
+    margin-top: 50px;
+}
+.ttcar {
+    opacity: 0.646;
+    background-color: rgba(255,255,255,1);
+    border-radius: 30px;
+    position: absolute;
+    width: 560px;
+    height: 570px;
+    left: 450px;
+    top: 283px;
+    overflow: visible;
+}
+.ttcar:hover {
+    opacity: revert;
+}
+.douane {
+    background-color: rgba(255,255,255,1);
+    border-radius: 30px;
+    opacity: 0.646;
+    position: absolute;
+    width: 518px;
+    height: 500px;
+    left: 965px;
+    top: 318px;
+    overflow: visible;
+}
+.douane:hover {
+    opacity: revert;
+}
+.preHome_info {
+    position: absolute;
+    width: 413px;
+    height: 177px;
+    left: 65px;
+    top: 175px;
+    overflow: visible;
+    border: solid 2px grey;
+    border-radius: 20px;
+    box-shadow: grey;
+}
+.preHome_info_ttcar {
+    position: absolute;
+    width: 415px;
+    height: 295px;
+    left: 70px;
+    top: 175px;
+    overflow: visible;
+    border: solid 2px grey;
+    border-radius: 20px;
+    box-shadow: grey;
+}
+.preHome_btn {
+    position: absolute;
+    text-decoration: none;
+    padding: 18px;
+    border-radius: 30px;
+    width: 160px;
+    height: 55px;
+    left: 190px;
+    top: 411px;
+    overflow: visible;
+    background-color: rgba(52,95,138,1);
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgba(255,255,255,1);
+}
+.preHome_btn_ttcar {
+    text-decoration: none;
+    position: absolute;
+    padding: 18px;
+    border-radius: 30px;
+    width: 160px;
+    height: 55px;
+    left: 200px;
+    top: 490px;
+    overflow: visible;
+    background-color: rgba(52,95,138,1);
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgba(255,255,255,1);
+}
+.preHome_icon {
+    border-radius: 30px;
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(52,95,138,1);
+    margin-left: 30px;
+    margin-top: 25px;
+}
+.preHome_tilte {
+    overflow: visible;
+    width: 148px;
+    white-space: nowrap;
+    line-height: 15px;
+    margin-top: -0.5px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(52,95,138,1);
+}
+.preHome_text {
+    font-family: Montserrat;
+    font-style: italic;
+    font-weight: normal;
+    color: rgba(52,95,138,1);
+    position: absolute;
+    top: 35px;
+    left: 70px;
+}
+.preHome_text2 {
+    font-family: Montserrat;
+    font-style: italic;
+    font-weight: normal;
+    color: rgba(52,95,138,1);
+}
+.preHome_col1 {
+    vertical-align: text-top;
+    position: absolute;
+}
+.preHome_col2 {
+    vertical-align: text-top;
+    position: absolute;
+    top: 80px;
+}
+.preHome_col3 {
+    vertical-align: text-top;
+    position: absolute;
+    left: 200px;
+}
+.preHome_col4 {
+    vertical-align: text-top;
+    position: absolute;
+    left: 200px;
+    top: 80px;
+}
+.preHome_col5 {
+    vertical-align: text-top;
+    position: absolute;
+    left: 200px;
+    top: 160px;
+}
+.preHome_col6 {
+    vertical-align: text-top;
+    position: absolute;
+    top: 150px;
+}
+
+.tilte_foot {
+    overflow: visible;
+    height: 134px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    color: rgba(255,255,255,1);
+}
+
+.text_foot {
+    overflow: visible;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    color: rgba(255,255,255,1);
+}
+
+.col1 {
+    width: 35%;
+    margin-left: 15px;
+}
+
+.col2 {
+    width: 35%;
+    margin-left: 740px;
+    margin-top: -125px;
+}

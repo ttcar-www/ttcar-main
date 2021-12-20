@@ -34,8 +34,21 @@ use Knp\Component\Pager\PaginatorInterface;
 
 class MainController extends AbstractController
 {
+
     /**
-     * @Route("/", name="main")
+     * @Route("/", name="preHome")
+     * @param Request $request
+     * @return Response
+     */
+    public function home(Request $request)
+    {
+
+        return $this->render('main/preHome.html.twig');
+    }
+
+
+    /**
+     * @Route("/home/", name="main")
      * @param TranslatorInterface $translator
      * @param Request $request
      * @return Response
