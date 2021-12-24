@@ -292,7 +292,12 @@
                 let valueMark = null;
 
                 $("#search_form_mark_1").change(function(){
-                    console.log('change renault');
+
+                    $(dateDepart).attr('disabled', false);
+                    $(dateReturn).attr('disabled', false);
+                    $(btnSearch).attr('disabled', false);
+
+                    console.log('change renault1');
                     valueMark = 1;
                     $.ajax({
                         url: {{  path('placeAjax') }},
@@ -309,6 +314,7 @@
 
                             $(placeReturn).attr('disabled', false);
                             $(placeDepart).attr('disabled', false);
+
 
                             for (let i = 0; i < place.length; i++) {
                                 places.append('<option value=' + place[i]['id'] + '>' + place[i]['libelle'] + '</option>');

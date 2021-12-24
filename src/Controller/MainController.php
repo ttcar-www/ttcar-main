@@ -200,7 +200,7 @@ class MainController extends AbstractController
                 'widget' => 'single_text'
             ))
             ->add('promo', NumberType::class, array(
-                'label' => 'promo',
+                'label' => false,
                 'required' => false
             ))
 

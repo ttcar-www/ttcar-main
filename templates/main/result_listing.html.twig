@@ -243,6 +243,140 @@
             font-size: 20px;
             color: rgba(255,255,255,1);
         }
+        .logo_renault {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            left: 35px;
+            top: 30px;
+            overflow: visible;
+            background-color: rgb(106 132 154);
+            border-radius: 30px;
+        }
+        .trait_result {
+            width: 100%;
+        }
+        .search_depart_result {
+            margin-left: 250px;
+            margin-top: 45px;
+        }
+        .search_depart_result span{
+            background-color: rgba(52,95,138,1);
+            border-radius: 30px;
+            padding: 5px;
+            overflow: visible;
+            width: 67px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(255,255,255,1);
+        }
+        .search_return_result {
+            margin-left: 251px;
+            margin-top: 60px;
+            margin-bottom: 45px;
+        }
+        .search_return_result span{
+            background-color: rgba(52,95,138,1);
+            border-radius: 30px;
+            padding: 5px;
+            overflow: visible;
+            width: 67px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            color: rgba(255,255,255,1);
+        }
+        #form_placeDepart {
+            position: absolute;
+            overflow: visible;
+            width: 301px;
+            height: 55px;
+            padding: 15px;
+            left: 380px;
+            border-radius: 30px;
+            top: 35px;
+        }
+        #form_date_start {
+            position: absolute;
+            width: 167px;
+            height: 55px;
+            left: 745px;
+            top: 35px;
+            overflow: visible;
+            border-radius: 30px;
+        }
+        #form_placeReturn {
+            position: absolute;
+            overflow: visible;
+            width: 301px;
+            height: 55px;
+            padding: 15px;
+            left: 380px;
+            border-radius: 30px;
+            top: 110px;
+        }
+        #form_date_end {
+            position: absolute;
+            width: 167px;
+            height: 55px;
+            left: 745px;
+            top: 110px;
+            overflow: visible;
+            border-radius: 30px;
+        }
+        .search_promo_btn_result {
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+        .span_code_result {
+            border-radius: 40px;
+            background-color: rgba(52,95,138,1);
+            height: 60px;
+            width: 170px;
+            padding-top: 18px;
+            padding-left: 40px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 12px;
+            color: rgba(255,255,255,1);
+        }
+        #form_promo {
+            position: absolute;
+            overflow: visible;
+            width: 216px;
+            height: 38px;
+            left: 190px;
+            border-radius: 30px;
+            top: 230px;
+        }
+        .btn_search_send_resul button {
+            left: 635px;
+            top: 225px;
+            position: absolute;
+            overflow: visible;
+            height: 50px;
+            padding: 15px;
+            width: 215px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(247,43,55,1);
+            border-radius: 40px;
+            border: none;
+            background-color: rgba(255,255,255,1);
+        }
     </style>
     <div class="container_result">
 
@@ -254,7 +388,32 @@
         <span class="span_step2">2</span>
         <span class="span_step3">3</span>
     </div>
-    <div class="div_result_search"></div>
+    <div class="div_result_search">
+        <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault">
+        {{ form_start(formSearch) }}
+        <div class="search_depart_result">
+            <span>Livraison</span>
+            {{ form_row(formSearch.placeDepart) }}
+            {{ form_row(formSearch.date_start) }}
+        </div>
+
+        <div class="search_return_result">
+            <span>Retour</span>
+            {{ form_row(formSearch.placeReturn) }}
+            {{ form_row(formSearch.date_end) }}
+        </div>
+
+        <img src="{{ asset('build/search_trait.png') }}" class="trait_result">
+
+        <div class="search_promo_btn_result">
+            <span class="span_code_result">Code spécial</span>
+            {{ form_row(formSearch.promo) }}
+        </div>
+        <div class="btn_search_send_resul">
+            <button id="searchBtn_resul">Modifier ma recherche</button>
+        </div>
+        {{ form_end(formSearch) }}
+    </div>
     <div class="div_info_search">
         <span class="price_info">Ce prix inclut :</span>
         <br>
