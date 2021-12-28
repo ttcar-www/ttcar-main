@@ -84,21 +84,18 @@
         }
         .cars {
             position: absolute;
-            overflow: visible;
             width: 1041px;
-            height: 100%;
             left: 65px;
+            top: 685px;
             border-radius: 20px;
-            top: 675px;
+            border: solid 2px grey;
             background-color: white;
         }
         .car_result {
-            padding: 30px;
-            border: solid 2px grey;
-            border-radius: 20px;
+
         }
         .car_container {
-
+            padding: 45px;
         }
         .car_tilte  {
             width: 323px;
@@ -147,18 +144,19 @@
             height: 274px;
             left: 520px;
             top: 40px;
-            border-radius: 20px;
+            border-radius: 60px;
             padding: 18px;
+        }
+
+        .car_img img{
+       width: 90%;
         }
 
         .car_btn {
             background-color: rgb(240 240 240);
-            margin-top: 44px;
-            height: 120px;
-            padding: 35px;
-            width: 1040px;
-            margin-left: -30px;
+            height: 90px;
             border-radius: 15px;
+            padding-top: 25px;
         }
 
         .btn_car {
@@ -257,7 +255,7 @@
             width: 100%;
         }
         .search_depart_result {
-            margin-left: 250px;
+            margin-left: 275px;
             margin-top: 45px;
         }
         .search_depart_result span{
@@ -275,7 +273,7 @@
             color: rgba(255,255,255,1);
         }
         .search_return_result {
-            margin-left: 251px;
+            margin-left: 275px;
             margin-top: 60px;
             margin-bottom: 45px;
         }
@@ -377,6 +375,26 @@
             border: none;
             background-color: rgba(255,255,255,1);
         }
+
+        #form_mark {
+            position: absolute;
+            width: 75px;
+            left: 180px;
+            top: 50px;
+            overflow: visible;
+        }
+
+        #form_mark  label{
+            overflow: visible;
+            width: 61px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            color: rgba(255,255,255,1);
+        }
     </style>
     <div class="container_result">
 
@@ -391,6 +409,10 @@
     <div class="div_result_search">
         <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault">
         {{ form_start(formSearch) }}
+        <div class="search_mark_result">
+            {{ form_row(formSearch.mark) }}
+        </div>
+
         <div class="search_depart_result">
             <span>Livraison</span>
             {{ form_row(formSearch.placeDepart) }}
@@ -429,9 +451,10 @@
                 et de restitution</li>
         </ul>
     </div>
-        <div class="result_search">
+        <div class="result_search" style="display:none;">
             <span class="filtre">Filtrer par :</span>
         </div>
+        {% if pagination %}
         <div class="cars">
             {% for car in pagination %}
                 <div class="car_result">
@@ -479,7 +502,7 @@
                 </div>
             </div>
             {% endfor %}
-
+        {% endif %}
         </div>
     </div>
 {% endblock %}

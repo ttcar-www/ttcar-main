@@ -168,11 +168,23 @@ class MainController extends AbstractController
     private function getFormSearchListing()
     {
         $repository = $this->getDoctrine()->getRepository(Place::class);
+        $repositoryMark = $this->getDoctrine()->getRepository(Mark::class);
 
         $placeDepart = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']->getLibelle()]);
         $placeReturn = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']->getLibelle()]);
+        $mark = $repositoryMark->findOneBy(['libelle' => $_SESSION['searchResult']['mark']->getLibelle()]);
+        $promo = $_SESSION['searchResult']['promo'] ? $_SESSION['searchResult']['promo'] : null;
+
 
         return $this->createFormBuilder()
+            ->add('mark', EntityType::class, [
+                'class' => Mark::class,
+                'choice_label' => 'getLibelle',
+                'expanded' => true,
+                'multiple' => false,
+                'data' =>  $mark,
+                'label' => false
+            ])
             ->add('placeDepart', EntityType::class, [
                 'class' => Place::class,
                 'choice_label' => 'getLibelle',
@@ -201,7 +213,8 @@ class MainController extends AbstractController
             ))
             ->add('promo', NumberType::class, array(
                 'label' => false,
-                'required' => false
+                'required' => false,
+                'data' => $promo
             ))
 
             ->getForm();

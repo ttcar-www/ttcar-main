@@ -357,6 +357,9 @@
                 });
 
                 $("#search_form_mark_2").change(function(){
+                    $(dateDepart).attr('disabled', false);
+                    $(dateReturn).attr('disabled', false);
+                    $(btnSearch).attr('disabled', false);
                     valueMark = 2;
                     $.ajax({
                         url: {{  path('placeAjax') }},
@@ -413,6 +416,9 @@
                     });
                 });
                 $("#search_form_mark_3").change(function(){
+                    $(dateDepart).attr('disabled', false);
+                    $(dateReturn).attr('disabled', false);
+                    $(btnSearch).attr('disabled', false);
                     valueMark = 3;
                     $.ajax({
                         url: {{  path('placeAjax') }},
@@ -469,6 +475,9 @@
                     });
                 });
                 $("#search_form_mark_4").change(function(){
+                    $(dateDepart).attr('disabled', false);
+                    $(dateReturn).attr('disabled', false);
+                    $(btnSearch).attr('disabled', false);
                     valueMark = 4;
                     $.ajax({
                         url: {{  path('placeAjax') }},
