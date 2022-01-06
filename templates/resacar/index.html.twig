@@ -4,6 +4,7 @@
     {% block stylesheets %}
         {{ parent() }}
         {{ encore_entry_link_tags('index') }}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     {% endblock %}
 
     {# read and display all flash messages #}
@@ -217,6 +218,7 @@
             <span class="span_step2">2</span>
             <span class="span_step3">3</span>
         </div>
+
         <div class="search_mark">
             <div class="tilte_mark">
                 <span>Sélectionnez <br> une marque</span>
@@ -232,6 +234,11 @@
             </div>
         </div>
         <div class="search_data">
+            <div class="ui-widget">
+                <label for="stations">Stations : </label>
+                <input id="stations">
+                <input id="stations_id">
+            </div>
             <div class="search_depart">
                 <span>Livraison</span>
                 <input type="text" id="name" name="name" required
@@ -306,6 +313,39 @@
     </div>
     {% block javascripts %}
         {{ parent() }}
-
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+        <script>
+            $( function() {
+                function split( val ) {
+                    return val.split( /,\s*/ );
+                }
+                function extractLast( term ) {
+                    return split( term ).pop();
+                }
+                $( "#stations" ).autocomplete({
+                    delay: 0,
+                    source: function( request, response ) {
+                        $.getJSON( "{{ path('resacar_find_stations') }}", {
+                            term: extractLast( request.term ),
+                            voiture: 'test'
+                        }, response );
+                    },
+                    minLength: 0,
+                    focus: function( event, ui ) {
+                        $( "#stations" ).val( ui.item.station_name );
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        $( "#stations" ).val( ui.item.station_name );
+                        $( "#stations_id" ).val( ui.item.station_id );
+                        return false;
+                    }
+                }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+                    return $( "<li>" )
+                        .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
+                        .appendTo( ul );
+                };
+            } );
+        </script>
     {% endblock %}
 {% endblock %}
