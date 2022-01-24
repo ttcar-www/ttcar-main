@@ -25,13 +25,7 @@ class SearchFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('mark', EntityType::class, [
-                'class' => Mark::class,
-                'choice_label' => 'getLibelle',
-                'expanded' => true,
-                'multiple' => false,
-                'label' => false
-            ])
+
             ->add('placeDepart', EntityType::class, [
                 'class' => Place::class,
                 'choice_label' => 'getLibelle',

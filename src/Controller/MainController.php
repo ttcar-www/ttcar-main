@@ -19,6 +19,7 @@ use DateTime;
 use Exception;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormInterface;
@@ -78,7 +79,7 @@ class MainController extends AbstractController
             }
         }
 
-        $formSearch = $this->createForm(SearchFormType::class);
+        $formSearch = $this->getFormSearchMark();
 
         $formSearch->handleRequest($request);
 
@@ -221,6 +222,78 @@ class MainController extends AbstractController
     }
 
     /**
+     * @return FormInterface
+     */
+    private function getFormSearchMark()
+    {
+        return $this->createFormBuilder()
+            ->add('mark_1', CheckboxType::class, [
+                'label' => false,
+                'value' => 1,
+                'required' => false
+            ])
+            ->add('mark_2', CheckboxType::class, [
+                'label' => false,
+                'value' => 2,
+                'required' => false
+            ])
+            ->add('mark_3', CheckboxType::class, [
+                'label' => false,
+                'value' => 3,
+                'required' => false
+            ])
+            ->add('mark_4', CheckboxType::class, [
+                'label' => false,
+                'value' => 4,
+                'required' => false
+            ])
+
+
+            ->add('placeDepart', EntityType::class, [
+                'class' => Place::class,
+                'choice_label' => 'getLibelle',
+                'expanded' => false,
+                'multiple' => false,
+                'placeholder' => 'Choisissez une ville',
+                'required' => false,
+                'label' => false,
+                'attr' => ['class' => 'placeDepart']
+            ])
+            ->add('date_start', DateType::class, array(
+                'widget' => 'single_text',
+                'label' => false,
+                'html5' => false,
+                'placeholder' => 'Choisissez une date',
+                'attr' => ['class' => 'datepicker-dateStart'],
+                'format' => 'dd/MM/yyyy'
+            ))
+            ->add('placeReturn', EntityType::class, [
+                'class' => Place::class,
+                'choice_label' => 'getLibelle',
+                'expanded' => false,
+                'multiple' => false,
+                'label' => false,
+                'placeholder' => 'Choisissez une ville',
+                'required' => false,
+                'attr' => ['class' => 'placeDepart']
+            ])
+            ->add('date_end', DateType::class, array(
+                'widget' => 'single_text',
+                'label' => false,
+                'html5' => false,
+                'attr' => ['class' => 'datepicker-dateEnd'],
+                'format' => 'dd/MM/yyyy'
+            ))
+            ->add('promo', NumberType::class, array(
+                'label' => false,
+                'required' => false
+            ))
+
+            ->getForm();
+    }
+
+
+    /**
      * @Route("/listing", name="listing")
      * @param Request $request
      * @param PriceService $PriceService
@@ -271,7 +344,6 @@ class MainController extends AbstractController
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-
             $data = $this->getDataSearch($formSearch->getData());
 
             return $this->redirectToRoute('listing');
@@ -299,6 +371,24 @@ class MainController extends AbstractController
 
 
     public function getDataSearch($data) {
+
+        if ($data['mark_1'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 1]);
+        }elseif ($data['mark_2'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 2]);
+        }elseif ($data['mark_3'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 3]);
+        }elseif ($data['mark_4'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 4]);
+        }
 
         $data = [
             'mark' =>$data['mark'],

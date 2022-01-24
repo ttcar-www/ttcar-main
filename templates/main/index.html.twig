@@ -14,7 +14,107 @@
             </div>
         {% endfor %}
     {% endfor %}
+<style>
+    #form_mark_1 {
+        position: absolute;
+        left: 240px;
+        top: 55px;
+    }
+    .logo_renault{
+        position: absolute;
+        left: 200px;
+        top: -10px;
+    }
+    #form_mark_2 {
+        position: absolute;
+        left: 330px;
+        top: 55px;
+    }
+    .logo_peugeot {
+        position: absolute;
+        left: 300px;
+        top: 2px;
+        width: 40%;
+    }
 
+    #form_mark_3 {
+        position: absolute;
+        left: 430px;
+        top: 55px;
+    }
+
+    .logo_citroen {
+        position: absolute;
+        left: 395px;
+        top: -10px;
+        width: 45%;
+    }
+
+    #form_mark_4 {
+        position: absolute;
+        left: 550px;
+        top: 55px;
+    }
+
+    .logo_ds {
+        position: absolute;
+        left: 510px;
+        top: -5px;
+        width: 50%;
+    }
+
+    #form_placeDepart {
+        position: absolute;
+        overflow: visible;
+        width: 366px;
+        height: 65px;
+        padding: 15px;
+        left: 180px;
+        border-radius: 30px;
+        top: 0;
+    }
+
+    #form_date_start {
+        position: absolute;
+        width: 266px;
+        height: 65px;
+        left: 558px;
+        top: 0;
+        overflow: visible;
+        border-radius: 30px;
+    }
+
+    #form_placeReturn {
+        position: absolute;
+        width: 366px;
+        height: 65px;
+        left: 180px;
+        overflow: visible;
+        border-radius: 30px;
+        top: 0;
+    }
+
+    #form_date_end {
+        position: absolute;
+        width: 266px;
+        height: 65px;
+        left: 558px;
+        top: 0;
+        overflow: visible;
+        border-radius: 30px;
+    }
+
+    #form_promo {
+        position: absolute;
+        overflow: visible;
+        width: 216px;
+        height: 38px;
+        left: 200px;
+        top: -10px;
+        border-radius: 30px;
+    }
+
+</style>
     <div class="img_search">
         <img src="{{ asset('build/search_imgZoom.png') }}" alt="sliderImg" />
     </div>
@@ -28,10 +128,35 @@
         <div class="search_mark">
             <div class="tilte_mark">
                 <span>Sélectionnez <br> une marque</span>
-                {{ form_row(formSearch.mark, { 'attr': {'class': 'mark_search'} }) }}
-               {# {% if formSearch.vars.value.i is not null %}
+{#                <input type="image" id="search_form_mark_1" alt="Renault"
+                       src="{{ asset('build/renault-blanc.png') }}" style="left: 200px; top: -10px;position: absolute;" value="1">
+                <input type="image" id="search_form_mark_2" alt="Peugeot"
+                       src="{{ asset('build/peugeottrans.png') }}" width="70" style="position: absolute;left: 300px;top: 3px;}" value="2">
+                <input type="image" id="search_form_mark_3" alt="citroen"
+                       src="{{ asset('build/citroentrans.png') }}" width="70" style="position: absolute;left: 395px;top: 0;" value="3">
+                <input type="image" id="search_form_mark_4" alt="Renault"
+                       src="{{ asset('build/dstrans.png') }}" width="70" style="    position: absolute;left: 495px;top: 8px;" value="4">#}
+                {#            {{ form_row(formSearch.mark, { 'attr': {'class': 'mark_search'} }) }}
+        {% if formSearch.vars.value.i is not null %}
                     <img src="{{ asset('upload/dir/' ~ formSearch.vars.value.image) }}" />
                 {% endif %}#}
+
+                <label>
+                    {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search'} }) }}
+                    <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
+                </label>
+                <label>
+                    {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search'} }) }}
+                    <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
+                </label>
+                <label>
+                    {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search'} }) }}
+                    <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
+                </label>
+                <label>
+                    {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search'} }) }}
+                    <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
+                </label>
             </div>
         </div>
         <div class="search_data">
@@ -282,20 +407,24 @@
                 $(dateReturn).attr('disabled', 'disabled');
                 $(btnSearch).attr('disabled', 'disabled');
 
-                let renault = document.querySelector("#search_form_mark_1");
-                let peugeot = document.querySelector("#search_form_mark_2");
-                let citroen = document.querySelector("#search_form_mark_3");
-                let psa = document.querySelector("#search_form_mark_4");
+                let renault = document.querySelector("#form_mark_1");
+                let peugeot = document.querySelector("#form_mark_2");
+                let citroen = document.querySelector("#form_mark_3");
+                let psa = document.querySelector("#form_mark_4");
 
                 console.log(renault.value)
 
                 let valueMark = null;
 
-                $("#search_form_mark_1").change(function(){
+                $("#form_mark_1").change(function(){
 
                     $(dateDepart).attr('disabled', false);
                     $(dateReturn).attr('disabled', false);
                     $(btnSearch).attr('disabled', false);
+
+                    $(peugeot).prop('checked',false)
+                    $(citroen).prop('checked',false)
+                    $(psa).prop('checked',false)
 
                     console.log('change renault1');
                     valueMark = 1;
@@ -356,10 +485,15 @@
 
                 });
 
-                $("#search_form_mark_2").change(function(){
+                $("#form_mark_2").change(function(){
                     $(dateDepart).attr('disabled', false);
                     $(dateReturn).attr('disabled', false);
                     $(btnSearch).attr('disabled', false);
+
+                    $(citroen).prop('checked',false)
+                    $(renault).prop('checked',false)
+                    $(psa).prop('checked',false)
+
                     valueMark = 2;
                     $.ajax({
                         url: {{  path('placeAjax') }},
@@ -415,10 +549,15 @@
                         }
                     });
                 });
-                $("#search_form_mark_3").change(function(){
+                $("#form_mark_3").change(function(){
                     $(dateDepart).attr('disabled', false);
                     $(dateReturn).attr('disabled', false);
                     $(btnSearch).attr('disabled', false);
+
+                    $(peugeot).prop('checked',false)
+                    $(renault).prop('checked',false)
+                    $(psa).prop('checked',false)
+
                     valueMark = 3;
                     $.ajax({
                         url: {{  path('placeAjax') }},
@@ -474,10 +613,15 @@
                         }
                     });
                 });
-                $("#search_form_mark_4").change(function(){
+                $("#form_mark_4").change(function(){
                     $(dateDepart).attr('disabled', false);
                     $(dateReturn).attr('disabled', false);
                     $(btnSearch).attr('disabled', false);
+
+                    $(peugeot).prop('checked',false)
+                    $(renault).prop('checked',false)
+                    $(citroen).prop('checked',false)
+
                     valueMark = 4;
                     $.ajax({
                         url: {{  path('placeAjax') }},

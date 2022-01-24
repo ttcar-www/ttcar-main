@@ -1147,7 +1147,7 @@ Base FOOTER
     color: rgba(255,255,255,1);
 }
 
-#search_form_placeDepart {
+#form_placeReturn {
     position: absolute;
     overflow: visible;
     width: 366px;
@@ -1158,7 +1158,7 @@ Base FOOTER
     top: 0;
 }
 
-#search_form_date_start {
+#form_date_start {
     position: absolute;
     width: 266px;
     height: 65px;
