@@ -97,7 +97,7 @@ Base HEADER
     width: 119px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, serif;
     font-style: italic;
     font-weight: normal;
     font-size: 10px;
@@ -108,7 +108,7 @@ Base HEADER
     display:inline-block;
     height: 23px;
     text-align: left;
-    margin-left: 35px;
+    margin-left: 50px;
 }
 
 .sub_nav ul {
@@ -117,7 +117,7 @@ Base HEADER
 }
 
 .sub_nav a {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -198,7 +198,7 @@ Base FOOTER
     width: 128px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -213,7 +213,7 @@ Base FOOTER
     width: 148px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -230,7 +230,7 @@ Base FOOTER
     width: 70px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -248,7 +248,7 @@ Base FOOTER
     overflow: visible;
     width: 110px;
     white-space: nowrap;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -268,7 +268,7 @@ Base FOOTER
     width: 130px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -291,7 +291,7 @@ Base FOOTER
     width: 220px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -324,7 +324,7 @@ Base FOOTER
     width: 40px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     fill: rgba(52,95,138,1);
@@ -344,7 +344,7 @@ Base FOOTER
     white-space: nowrap;
     height: 37px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 22px;
@@ -363,7 +363,7 @@ Base FOOTER
     white-space: nowrap;
     height: 37px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 22px;
@@ -394,7 +394,7 @@ Base FOOTER
     width: 111px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -445,7 +445,7 @@ Base FOOTER
 
 
 .span_btn_promo {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -461,7 +461,7 @@ Base FOOTER
     width: 137px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -476,7 +476,7 @@ Base FOOTER
     width: 141px;
     white-space: nowrap;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-size: 12px;
     color: rgba(52,95,138,1);
@@ -489,7 +489,7 @@ Base FOOTER
     width: 95px;
     white-space: nowrap;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: italic;
     font-weight: normal;
     font-size: 9px;
@@ -507,7 +507,7 @@ Base FOOTER
     width: 80px;
     white-space: nowrap;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 10px;
@@ -559,7 +559,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: -4px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -584,7 +584,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: -4px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -593,7 +593,7 @@ Base FOOTER
 
 .carroussel_subtilte {
     line-height: 22px;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 11px;
@@ -611,7 +611,7 @@ Base FOOTER
     box-shadow: 0 2px 5px rgb(52 95 138);
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -624,7 +624,7 @@ Base FOOTER
 .carroussel_btn span {
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -660,7 +660,7 @@ Base FOOTER
     width: 511px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     margin-left: 30px;
     font-weight: bold;
@@ -674,7 +674,7 @@ Base FOOTER
     left: 1055px;
     line-height: 22px;
     margin-top: 10px;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -705,7 +705,7 @@ Base FOOTER
     color: rgba(255,255,255,1);
     white-space: nowrap;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -723,7 +723,7 @@ Base FOOTER
     width: 155px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -752,7 +752,7 @@ Base FOOTER
     margin-left: 400px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 26px;
@@ -782,7 +782,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: 180px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -823,7 +823,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: 180px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -852,7 +852,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: 180px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -881,7 +881,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: 180px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -910,7 +910,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: 180px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -939,7 +939,7 @@ Base FOOTER
     line-height: 22px;
     margin-top: 180px;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -956,7 +956,7 @@ Base FOOTER
     width: 173px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 26px;
@@ -987,7 +987,7 @@ Base FOOTER
 .item_blog_tilte {
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -997,7 +997,7 @@ Base FOOTER
 .item_text {
     margin-top: 15px;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -1009,7 +1009,7 @@ Base FOOTER
     margin-left: 200px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -1031,7 +1031,7 @@ Base FOOTER
     color: rgba(255,255,255,1);
     white-space: nowrap;
     text-align: center;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1050,7 +1050,7 @@ Base FOOTER
     width: 265px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1068,7 +1068,7 @@ Base FOOTER
     margin-left: 430px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     color: rgba(52,95,138,1);
 }
@@ -1124,7 +1124,7 @@ Base FOOTER
     top: 45px;
     overflow: visible;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1140,7 +1140,7 @@ Base FOOTER
     padding-top: 18px;
     padding-left: 40px;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1176,7 +1176,7 @@ Base FOOTER
     top: 135px;
     overflow: visible;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1193,7 +1193,7 @@ Base FOOTER
     padding-top: 18px;
     padding-left: 40px;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1242,7 +1242,7 @@ Base FOOTER
     padding-top: 18px;
     padding-left: 40px;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1269,7 +1269,7 @@ Base FOOTER
     padding: 18px;
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
@@ -1375,7 +1375,7 @@ Base FOOTER
     background-color: rgba(52,95,138,1);
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -1394,7 +1394,7 @@ Base FOOTER
     background-color: rgba(52,95,138,1);
     white-space: nowrap;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -1423,7 +1423,7 @@ Base FOOTER
     color: rgba(52,95,138,1);
 }
 .preHome_text {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: italic;
     font-weight: normal;
     color: rgba(52,95,138,1);
@@ -1432,7 +1432,7 @@ Base FOOTER
     left: 70px;
 }
 .preHome_text2 {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: italic;
     font-weight: normal;
     color: rgba(52,95,138,1);
@@ -1473,7 +1473,7 @@ Base FOOTER
     overflow: visible;
     height: 134px;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 10px;
@@ -1483,7 +1483,7 @@ Base FOOTER
 .text_foot {
     overflow: visible;
     text-align: left;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 10px;

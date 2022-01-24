@@ -9,22 +9,9 @@ class BookingManager extends AbstractResacarApi
     public function getResult(): array
     {
         $data = $this->callApi();
-        dd($data);
+
         $result = [];
-        foreach ($data->place_list->place as $place) {
-            $result[] = [
-                'place_id' => strval($place->place_id),
-                'name' => strval($place->name),
-                'address_1' => strval($place->address_1),
-                'address_2' => strval($place->address_2),
-                'address_3' => strval($place->address_3),
-                'zip_code' => strval($place->zip_code),
-                'phone' => strval($place->phone),
-                'contact' => strval($place->contact),
-                'instruction' => strval($place->instruction),
-                'station_id' => strval($place->station_id),
-            ];
-        }
+
         return $result;
     }
 

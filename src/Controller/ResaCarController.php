@@ -19,6 +19,13 @@ class ResaCarController extends AbstractController
 {
     /**
      * @Route("/resacar/", name="resacar")
+     * @param StationsManager $stationManager
+     * @param CarsManager $carsManager
+     * @param CarsByDisponibilitiesManager $carsByDisponibilityManager
+     * @param OpeningHoursManager $openingHoursManager
+     * @param AccountsManager $accountsManager
+     * @param DeleveryAddressesManager $deleveryAddressesManager
+     * @param BookingManager $bookingManager
      * @return Response
      */
     public function index(
@@ -64,6 +71,7 @@ class ResaCarController extends AbstractController
         ];
         $bookingManager->setFilter($filter);
         $reservation = $bookingManager->getResult();
+       // var_dump($carsByDisponibilityManager);die();
 
         /**
          * EXEMPLE GET STATIONS LIST
