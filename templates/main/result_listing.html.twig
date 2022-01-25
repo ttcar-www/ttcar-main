@@ -241,12 +241,45 @@
             font-size: 20px;
             color: rgba(255,255,255,1);
         }
-        .logo_renault {
+        .logo_renault_form {
             position: absolute;
             width: 130px;
             height: 130px;
             left: 35px;
             top: 30px;
+            overflow: visible;
+            background-color: rgb(106 132 154);
+            border-radius: 30px;
+        }
+        .logo_peugeot_form {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            left: 35px;
+            top: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            overflow: visible;
+            background-color: rgb(106 132 154);
+            border-radius: 30px;
+        }
+        .logo_citroen_form {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            left: 35px;
+            top: 30px;
+            overflow: visible;
+            background-color: rgb(106 132 154);
+            border-radius: 30px;
+        }
+        .logo_ds_form {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            left: 35px;
+            top: 30px;
+            padding: 10px;
             overflow: visible;
             background-color: rgb(106 132 154);
             border-radius: 30px;
@@ -407,7 +440,11 @@
         <span class="span_step3">3</span>
     </div>
     <div class="div_result_search">
-        <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault">
+        <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault_form">
+        <img src="{{ asset('build/peugeottrans.png') }}" alt="peugeotlogo" class="logo_peugeot_form hidden">
+        <img src="{{ asset('build/citroentrans.png') }}" alt="citroenlogo" class="logo_citroen_form hidden">
+        <img src="{{ asset('build/dstrans.png') }}" alt="dslogo" class="logo_ds_form hidden">
+
         {{ form_start(formSearch) }}
         <div class="search_mark_result">
             {{ form_row(formSearch.mark) }}
@@ -505,4 +542,69 @@
         {% endif %}
         </div>
     </div>
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    $(document).ready(function() {
+        let renaultLogo = document.getElementsByClassName("logo_renault_form");
+        let peugeotLogo = document.getElementsByClassName("logo_peugeot_form");
+        let citroenLogo = document.getElementsByClassName("logo_citroen_form");
+        let dsLogo = document.getElementsByClassName("logo_ds_form");
+
+        let markRenault = document.getElementById("form_mark_1");
+        let markPeugeot = document.getElementById("form_mark_2");
+        let markCitroen = document.getElementById("form_mark_3");
+        let markDs = document.getElementById("form_mark_4");
+
+
+        if (markRenault.checked) {
+            $(renaultLogo).removeClass('hidden');
+            $(peugeotLogo).addClass('hidden');
+            $(citroenLogo).addClass('hidden');
+            $(dsLogo).addClass('hidden');
+        }else if (markPeugeot.checked) {
+            $(peugeotLogo).removeClass('hidden');
+            $(renaultLogo).addClass('hidden');
+            $(citroenLogo).addClass('hidden');
+            $(dsLogo).addClass('hidden');
+        }else if (markCitroen.checked) {
+            $(citroenLogo).removeClass('hidden');
+            $(peugeotLogo).addClass('hidden');
+            $(renaultLogo).addClass('hidden');
+            $(dsLogo).addClass('hidden');
+        }else if (markDs.checked) {
+            $(dsLogo).removeClass('hidden');
+            $(peugeotLogo).addClass('hidden');
+            $(citroenLogo).addClass('hidden');
+            $(renaultLogo).addClass('hidden');
+        }
+
+        $(markRenault).change(function() {
+            $(renaultLogo).removeClass('hidden');
+            $(peugeotLogo).addClass('hidden');
+            $(citroenLogo).addClass('hidden');
+            $(dsLogo).addClass('hidden');
+        });
+        $(markPeugeot).change(function() {
+            $(peugeotLogo).removeClass('hidden');
+            $(renaultLogo).addClass('hidden');
+            $(citroenLogo).addClass('hidden');
+            $(dsLogo).addClass('hidden');
+        });
+        $(markCitroen).change(function() {
+            $(citroenLogo).removeClass('hidden');
+            $(peugeotLogo).addClass('hidden');
+            $(renaultLogo).addClass('hidden');
+            $(dsLogo).addClass('hidden');
+        });
+        $(markDs).change(function() {
+            $(dsLogo).removeClass('hidden');
+            $(peugeotLogo).addClass('hidden');
+            $(citroenLogo).addClass('hidden');
+            $(renaultLogo).addClass('hidden');
+        });
+
+    });
+</script>
+    {% endblock %}
 {% endblock %}
