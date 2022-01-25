@@ -344,7 +344,7 @@ class MainController extends AbstractController
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-            $data = $this->getDataSearch($formSearch->getData());
+            $data = $this->getDataSearchListing($formSearch->getData());
 
             return $this->redirectToRoute('listing');
 
@@ -367,6 +367,28 @@ class MainController extends AbstractController
 
         return $interval->format('%a');
 
+    }
+
+
+    public function getDataSearchListing($data) {
+
+        $data['mark'] = $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(['id' => $data['mark']->getId()
+            ]);
+
+        $data = [
+            'mark' =>$data['mark'],
+            'dateStart' =>$data['date_start'],
+            'dateEnd' =>$data['date_end'],
+            'placeDepart' =>$data['placeDepart'],
+            'placeReturn' =>$data['placeReturn'],
+            'promo' =>$data['promo'],
+        ];
+
+        $_SESSION['searchResult'] = $data;
+
+        return $data;
     }
 
 
