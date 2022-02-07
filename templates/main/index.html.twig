@@ -18,7 +18,7 @@
     #form_mark_1 {
         position: absolute;
         left: 240px;
-        top: 55px;
+        top: 70px;
     }
     .logo_renault{
         position: absolute;
@@ -27,8 +27,8 @@
     }
     #form_mark_2 {
         position: absolute;
-        left: 360px;
-        top: 55px;
+        left: 355px;
+        top: 70px;
     }
     .logo_peugeot {
         position: absolute;
@@ -40,7 +40,7 @@
     #form_mark_3 {
         position: absolute;
         left: 480px;
-        top: 55px;
+        top: 70px;
     }
 
     .logo_citroen {
@@ -52,8 +52,8 @@
 
     #form_mark_4 {
         position: absolute;
-        left: 620px;
-        top: 55px;
+        left: 610px;
+        top: 70px;
     }
 
     .logo_ds {
@@ -114,6 +114,20 @@
         border-radius: 30px;
     }
 
+    .checkbox-round {
+        width: 1.3em;
+        height: 1.3em;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+
 </style>
     <div class="img_search">
         <img src="{{ asset('build/search_imgZoom.png') }}" alt="sliderImg" />
@@ -142,19 +156,19 @@
                 {% endif %}#}
 
                 <label>
-                    {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search'} }) }}
+                    {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'} }) }}
                     <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
                 </label>
                 <label>
-                    {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search'} }) }}
+                    {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                     <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
                 </label>
                 <label>
-                    {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search'} }) }}
+                    {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                     <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
                 </label>
                 <label>
-                    {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search'} }) }}
+                    {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                     <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
                 </label>
             </div>
@@ -162,12 +176,12 @@
         <div class="search_data">
             <div class="search_depart">
                 <span>Livraison</span>
-                {{ form_row(formSearch.placeDepart) }}
+                 {{ form_row(formSearch.placeDepart) }}
                 {{ form_row(formSearch.date_start) }}
             </div>
             <div class="search_return">
                 <span>Retour</span>
-                {{ form_row(formSearch.placeReturn) }}
+                   {{ form_row(formSearch.placeReturn) }}
                 {{ form_row(formSearch.date_end) }}
             </div>
             <img src="{{ asset('build/search_trait.png') }}" class="trait">

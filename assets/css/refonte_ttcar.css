@@ -1147,7 +1147,7 @@ Base FOOTER
     color: rgba(255,255,255,1);
 }
 
-#form_placeReturn {
+#form_placeDepart {
     position: absolute;
     overflow: visible;
     width: 366px;
@@ -1400,6 +1400,12 @@ Base FOOTER
     font-size: 15px;
     color: rgba(255,255,255,1);
 }
+.preHome_btn_ttcar:hover {
+    color: rgba(255,255,255,1);
+}
+.preHome_btn:hover {
+    color: rgba(255,255,255,1);
+}
 .preHome_icon {
     border-radius: 30px;
     padding: 8px;
@@ -1488,6 +1494,9 @@ Base FOOTER
     font-weight: bold;
     font-size: 10px;
     color: rgba(255,255,255,1);
+}
+#searchBtn:hover {
+    text-decoration: underline dotted;
 }
 
 .col1 {
