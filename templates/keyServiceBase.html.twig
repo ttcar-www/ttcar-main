@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}TTcar Transit{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('bootstrap_css') }}
+        {{ encore_entry_link_tags('refonteV1') }}
+        {{ encore_entry_link_tags('animate') }}
+        {{ encore_entry_link_tags('blog') }}
+        {{ encore_entry_link_tags('colors') }}
+        {{ encore_entry_link_tags('demo') }}
+        {{ encore_entry_link_tags('compare') }}
+        {{ encore_entry_link_tags('custom') }}
+        {{ encore_entry_link_tags('detail') }}
+        {{ encore_entry_link_tags('doc') }}
+        {{ encore_entry_link_tags('home') }}
+        {{ encore_entry_link_tags('home-2') }}
+        {{ encore_entry_link_tags('bxslider') }}
+        {{ encore_entry_link_tags('listings') }}
+        {{ encore_entry_link_tags('master') }}
+        {{ encore_entry_link_tags('pages') }}
+        {{ encore_entry_link_tags('site-colors') }}
+        {{ encore_entry_link_tags('start') }}
+        {{ encore_entry_link_tags('submits') }}
+        {{ encore_entry_link_tags('theme') }}
+        {{ encore_entry_link_tags('owl_css') }}
+        {{ encore_entry_link_tags('account') }}
+    {% endblock %}
+    <link rel="icon" type="image" href="{{ asset('build/KEY-LOGO-NEW-02.png') }}" />
+    <style>
+        .active_locale {
+            color: rgba(247,42,54,1); !important;
+        }
+        .span_footer_mail, .span_footer_inline_help{
+            background-color : rgba(32,137,214,1);
+        }
+
+        .span_footer_number, .footer_nav2 a {
+            color: rgba(32,137,214,1);
+        }
+
+        #media_logo, #media_logo2 {
+            background-color : rgba(32,137,214,1);
+        }
+
+        #nav_btn {
+            background-color: rgb(90 163 223);
+        }
+    </style>
+</head>
+<body>
+<header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(32,137,214,1)">
+    <a href="{{ path('preHome') }}">
+        <img src="{{ asset('build/KEY-LOGO-NEW-02.png') }}" id="tt-group" alt="ttcar" width="120" />
+    </a>
+    <nav id="nav_1">
+        <ul>
+            <li><a href="{{ path('main') }}">Transit Temporaire</a></li>
+            <li><a href="{{ path('resacar') }}">Location</a></li>
+            <li><a href="{{ path('douane') }}">Douane Export</a></li>
+        </ul>
+        <svg class="polygon_1" viewBox="0 0 26 11">
+            <path id="polygon_1" d="M 12.99999904632568 0 L 26 11 L 0 11 Z">
+            </path>
+        </svg>
+    </nav>
+    <nav id="nav_2">
+        <ul>
+            {% if app.user %}
+                <li id="nav_btn"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+            {% else %}
+                <li id="nav_btn"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
+            {% endif %}
+            <li id="nav_btn"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+            {% if app.request.locale == 'fr' %}
+                <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
+            {% else %}
+                <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}">FR</a></li>
+                <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header><!--b-topBar-->
+<div class="sub_nav">
+    <span class="span_header">Un véhicule en TT pour <br>votre séjour en Europe</span>
+    <nav id="sub_nav">
+        <ul>
+            <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
+            <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
+            <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
+            <li><a href="{{ path('index_promotion') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
+            <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
+        </ul>
+
+    </nav>
+</div>
+
+
+<!--b-nav-->
+{% block body %}
+
+{% endblock %}
+{% block footer %}
+    <footer class="footer_v1">
+        <div class="container_footer">
+            <div class="rowm">
+                <div class="media_footer">
+                    <a href="#" id="media_logo"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" id="media_logo2"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="footer_nav">
+                    <span class="span_footer_red">Besoin d'aide ?</span>
+                    <span class="span_footer_number">01 40 71 72 40</span>
+                    <a href="#" class="span_footer_mail">Par mail</a>
+                    <a href="#" class="span_footer_inline_help">Aide en ligne</a>
+                </div>
+                <div class="footer_nav2">
+                    <a href="#" class="span_footer_subnav">Qui sommes-nous</a>
+                    <a href="#" class="span_footer_subnav">Mentions légales</a>
+                    <a href="#" class="span_footer_subnav">CGU</a>
+                    <a href="{{ path('dashboard') }}" class="span_footer_subnav">Admin</a>
+                    <a href="#" class="span_footer_subnav">Centres de livraison</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--b-footer-->
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function toogleMenu() {
+            let x = document.getElementById("toogle_menu");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('bxslider_js') }}
+    {{ encore_entry_script_tags('classie') }}
+    {{ encore_entry_script_tags('easypiechart') }}
+    {{ encore_entry_script_tags('placeholder') }}
+    {{ encore_entry_script_tags('smooth') }}
+    {{ encore_entry_script_tags('modernizr') }}
+    {{ encore_entry_script_tags('theme_js') }}
+    {{ encore_entry_script_tags('waypoints') }}
+    {{ encore_entry_script_tags('wow') }}
+    {{ encore_entry_script_tags('carousel') }}
+    {{ encore_entry_script_tags('owl_min') }}
+    {{ encore_entry_script_tags('owl_transitions') }}
+    {{ encore_entry_script_tags('owl_theme') }}
+    {{ encore_entry_script_tags('bootsDate') }}
+    {{ encore_entry_script_tags('datepicker') }}
+
+{% endblock %}
+</body>
+</html>
