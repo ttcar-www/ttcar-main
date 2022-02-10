@@ -69,7 +69,58 @@ class ResaCarController extends AbstractController
             'credit_card_expdate' => '',
             'remarks' => 'De pref une voiture Hybride',
         ];
+        $bookingManager->setFilter($filter);
+     //   $reservation = $bookingManager->getResult();
+       // var_dump($carsByDisponibilityManager);die();
 
+        /**
+         * EXEMPLE GET STATIONS LIST
+         */
+        $filter = [
+            'country_id' => 'FR'
+        ];
+        $stationManager->setFilter($filter);
+     //   $stations = $stationManager->getResult();
+
+
+        /**
+         * EXEMPLE GET VEHICULES LIST
+         */
+        $filter = [
+            'station_id' => 'PUFE01'
+        ];
+        $carsManager->setFilter($filter);
+   //     $cars = $carsManager->getResult();
+
+        /**
+         * EXEMPLE GET VEHICULES LIST BY DISPONIBILITY
+         */
+        $filter = [
+            'station_id' => 'PUFE01',
+            'date_pickup' => '10012022',
+            'heure_pickup' => '0930',
+            'date_return' => '16012022',
+            'heure_return' => '1600',
+            'veh_class' => 'T',
+            'invoice_type' => 'S',
+        ];
+        $carsByDisponibilityManager->setFilter($filter);
+      //  $carsByDisponibility = $carsByDisponibilityManager->getResult();
+
+        /**
+         * EXEMPLE GET OPENING HOURS
+         */
+        $filter = [
+            'station_id' => 'PUFE01'
+        ];
+        $openingHoursManager->setFilter($filter);
+  //      $hours = $openingHoursManager->getResult();
+
+
+        /**
+         * EXEMPLE GET DELEVERY ADDRESSES
+         */
+    //    $addresses = $deleveryAddressesManager->getResult();
 
         return $this->render('resacar/index.html.twig');
     }
@@ -97,6 +148,16 @@ class ResaCarController extends AbstractController
     {
 
         return $this->render('resacar/searchResult.html.twig');
+    }
+
+    /**
+     * @Route("/resacar_order/", name="resacar_order")
+     * @return Response
+     */
+    public function orderResacar(): Response
+    {
+
+        return $this->render('resacar/order.html.twig');
     }
 
 }
