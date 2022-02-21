@@ -9,6 +9,7 @@ class StationsManager extends AbstractResacarApi
     public function getResult(): array
     {
         $data = $this->callApi();
+
         $result = [];
         foreach ($data->station_list->station as $station) {
             $result[] = [

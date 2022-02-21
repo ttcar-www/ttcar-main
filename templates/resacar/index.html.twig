@@ -79,7 +79,7 @@
             width: 824px;
             height: 65px;
             left: 50px;
-            top: 185px;
+            top: 230px;
             overflow: visible;
             text-align: left;
             font-family: Montserrat;
@@ -252,7 +252,7 @@
         }
 
         .search_plane {
-            left: 14px;
+            left: 55px;
             top: 390px;
             position: absolute;
             overflow: visible;
@@ -268,7 +268,7 @@
 
         .search_type {
             top: 470px;
-            left: 14px;
+            left: 55px;
             position: absolute;
             overflow: visible;
             width: 124px;
@@ -551,6 +551,58 @@
             border: 8px dotted white;
             width: 100%;
         }
+
+        .ui-widget input {
+            border-radius: 30px;
+            width: 225px;
+            height: 50px;
+            color: rgba(52,95,138,1);
+            padding: 15px;
+        }
+
+        #stations {
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(52,95,138,1);
+        }
+
+        .plane_number, .type {
+            border-radius: 30px;
+            width: 225px;
+            height: 50px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(52,95,138,1);
+        }
+
+        .newsletter_key {
+            width: 307px;
+            height: 48px;
+            margin-left: 760px;
+            margin-top: -30px;
+            background-color: rgba(242,242,242,1);
+            border: none;
+            border-radius: 40px;
+            padding: 30px;
+            color: rgba(32,137,214,1);
+            font-weight: bold;
+        }
+
+        .newsletter_btn {
+            background-color: rgba(32,137,214,1);
+        }
+
+        .newsletter_tilte, .newsletter_subtilte {
+            color: rgba(32,137,214,1);
+          }
     </style>
     <div class="img_search">
         <img src="{{ asset('build/modern-metropolis-skyline-chon.png') }}" alt="sliderImg" />
@@ -570,34 +622,35 @@
                 <span>Depart</span>
                        <div class="ui-widget">
                 <label for="stations">Stations : </label>
-                <input id="stations">
+                <input id="stations" placeholder="Saisissez votre ville">
                 <input id="stations_id">
+                 <input type="date" id="start" name="trip-start" value="2022-02-18" min="2023-01-01" max="2028-12-31">
             </div>
-                <input type="date" id="start" name="trip-start"
-                       value="2018-07-22"
-                       min="2023-01-01" max="2022-12-31">
             </div>
             <div class="search_return">
                 <span>Retour</span>
                 <div class="ui-widget">
                 <label for="stations">Stations : </label>
-                <input id="stations">
+                <input id="stations" placeholder="Saisissez votre ville">
                 <input id="stations_id">
+                    <input type="date" id="start" name="trip-start" value="2022-02-22" min="2023-01-01" max="2028-12-31">
                 </div>
-                <input type="date" id="start" name="trip-start"
-                       value="2018-07-22"
-                       min="2023-01-01" max="2022-12-31">
+
             </div>
-            <span class="trait_result"></span>
+            <span class="trait_result" style="display: none"></span>
             <div class="search_plane">
                 <span>Numéro de vol</span>
-                <input type="text" id="name" name="name" required
+                <input type="text" class="plane_number" required
                        minlength="4" maxlength="8" size="10">
             </div>
             <div class="search_type">
                 <span>Type de véhicule</span>
-                <input type="text" id="name" name="name" required
-                       minlength="4" maxlength="8" size="10">
+                <select name="type" class="type">
+                    <option value="">--Choisir un type--</option>
+                    <option value="1">Type1</option>
+                    <option value="2">Type2</option>
+                    <option value="3">Type3</option>
+                </select>
             </div>
             <div class="btn_search_send">
                 <a href="{{ path('resacar_search') }}" id="searchBtn">Voir nos tarifs</a>
@@ -642,7 +695,7 @@
         <div class="newsletter_subtilte">Inscrivez-vous à notre newsletter</div>
         <div class="newsletter_form">
            <form>
-               <input type="text">
+               <input type="text" class="newsletter_key" placeholder="Email">
             <div class="newsletter_btn1">
                 <button type="submit" class="newsletter_btn" id="seachButton">OK</button>
             </div>
