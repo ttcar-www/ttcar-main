@@ -167,7 +167,7 @@
 
         .btn_search_send button {
             left: 650px;
-            top: 260px;
+            top: 455px;
             position: absolute;
             overflow: visible;
             width: 180px;
@@ -618,43 +618,50 @@
             <span class="subtilble_key">
                 Ces tarifs sont exclusivement réservés aux non-résidents en France métropolitaine.
             </span>
-            <div class="search_depart">
-                <span>Depart</span>
-                       <div class="ui-widget">
-                <label for="stations">Stations : </label>
-                <input id="stations" placeholder="Saisissez votre ville">
-                <input id="stations_id">
-                 <input type="date" id="start" name="trip-start" value="2022-02-18" min="2023-01-01" max="2028-12-31">
-            </div>
-            </div>
-            <div class="search_return">
-                <span>Retour</span>
-                <div class="ui-widget">
-                <label for="stations">Stations : </label>
-                <input id="stations" placeholder="Saisissez votre ville">
-                <input id="stations_id">
-                    <input type="date" id="start" name="trip-start" value="2022-02-22" min="2023-01-01" max="2028-12-31">
-                </div>
+            <form type="post" id="searchFromResa" action="#">
+                <div class="search_depart">
+                    <span>Depart</span>
+                           <div class="ui-widget">
+                    <label for="stations">Stations : </label>
+                    <input id="stations" placeholder="Saisissez votre ville">
+                    <input id="stations_id">
 
-            </div>
-            <span class="trait_result" style="display: none"></span>
-            <div class="search_plane">
-                <span>Numéro de vol</span>
-                <input type="text" class="plane_number" required
-                       minlength="4" maxlength="8" size="10">
-            </div>
-            <div class="search_type">
-                <span>Type de véhicule</span>
-                <select name="type" class="type">
-                    <option value="">--Choisir un type--</option>
-                    <option value="1">Type1</option>
-                    <option value="2">Type2</option>
-                    <option value="3">Type3</option>
-                </select>
-            </div>
-            <div class="btn_search_send">
-                <a href="{{ path('resacar_search') }}" id="searchBtn">Voir nos tarifs</a>
-            </div>
+                    <input type="datetime-local" id="startDate"
+                           name="meeting-time" value="12-02-2023T19:30">
+
+                </div>
+                </div>
+                <div class="search_return">
+                    <span>Retour</span>
+                    <div class="ui-widget">
+                        <label for="stations-return">Stations : </label>
+                        <input id="stations-return" placeholder="Saisissez votre ville">
+                        <input id="stations_id-return">
+
+                        <input type="datetime-local" id="endDate"
+                               name="meeting-time" value="12-02-2024T19:30">
+                    </div>
+
+                </div>
+                <span class="trait_result" style="display: none"></span>
+                <div class="search_plane">
+                    <span>Numéro de vol</span>
+                    <input type="text" id="numberPlane" class="plane_number" minlength="4" maxlength="8" size="10" required>
+                </div>
+                <div class="search_type">
+                    <span>Type de véhicule</span>
+                    <select name="type" class="type" id="typeSelect">
+                        <option value="">--Choisir un type--</option>
+                        <option value="1">Type1</option>
+                        <option value="2">Type2</option>
+                        <option value="3">Type3</option>
+                    </select>
+                </div>
+                <div class="btn_search_send" id="searchBtn">
+                   <button type="submit">Voir nos tarif</button>
+{#                    <a href="#" id="searchBtn">Voir nos tarifs</a>#}
+                </div>
+            </form>
         </div>
         <div class="key_info">
             <span class="tilte_key">Choisir Key Services :</span>
@@ -737,6 +744,63 @@
                         .appendTo( ul );
                 };
             } );
+
+            $( function() {
+                function split( val ) {
+                    return val.split( /,\s*/ );
+                }
+                function extractLast( term ) {
+                    return split( term ).pop();
+                }
+                $( "#stations-return" ).autocomplete({
+                    delay: 0,
+                    source: function( request, response ) {
+                        $.getJSON( "{{ path('resacar_find_stations') }}", {
+                            term: extractLast( request.term ),
+                            voiture: 'test'
+                        }, response );
+                    },
+                    minLength: 0,
+                    focus: function( event, ui ) {
+                        $( "#stations-return" ).val( ui.item.station_name );
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        $( "#stations-return" ).val( ui.item.station_name );
+                        $( "#stations_id-return" ).val( ui.item.station_id );
+                        return false;
+                    }
+                }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+                    return $( "<li>" )
+                        .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
+                        .appendTo( ul );
+                };
+            } );
+
+            $( "#searchFromResa" ).submit(function( event ) {
+                event.preventDefault();
+
+                let stationStart = $( "#stations_id" ).val();
+                let stationEnd = $( "#stations_id-return" ).val();
+                let dateStart = $( "#startDate" ).val();
+                let dateEnd = $( "#endDate" ).val();
+                let numberPlane = $( "#numberPlane" ).val();
+                let typeSelect = $( "#typeSelect" ).val();
+
+                $.ajax({
+                    url:{{ path('searchResacar') }},
+                    type:"POST",
+                    dataType:"json",
+                    data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
+                    success: function(data){
+                        console.log(data)
+                        if (data === false) {
+                            console.log('station fermé');
+                        }
+                    }
+                });
+
+            });
         </script>
     {% endblock %}
 {% endblock %}
