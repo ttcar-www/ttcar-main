@@ -129,15 +129,33 @@
 
 
 </style>
-    <div class="img_search">
-        <img src="{{ asset('build/search_imgZoom.png') }}" alt="sliderImg" />
-    </div>
-    <div class="search_bar_V1">
-        <div class="step_search">
-            <span class="span_step1">1</span>
-            <span class="span_step2">2</span>
-            <span class="span_step3">3</span>
+<div class="container-fluid">
+
+        <div class="d-flex justify-content-center">
+        
+            <div class="step_search">
+                <div class="row">
+                    <div class="col">
+                        <span class="span_step1">1</span>
+                    </div>
+                    <div class="col">
+                        <span class="span_step2">2</span>
+                    </div>
+                    <div class="col">
+                        <span class="span_step3">3</span>
+                    </div>
+
+                </div>
+            </div>
         </div>
+    
+        
+            <img src="{{ asset('build/search_imgZoom.png') }}" class="img-fluid" alt="sliderImg" />
+        
+        
+
+        
+        
         {{ form_start(formSearch) }}
         <div class="search_mark">
             <div class="tilte_mark">
@@ -173,6 +191,7 @@
                 </label>
             </div>
         </div>
+    
         <div class="search_data">
             <div class="search_depart">
                 <span>Livraison</span>
@@ -193,110 +212,185 @@
                 <button id="searchBtn">Voir nos tarifs   ></button>
             </div>
         </div>
-        {{ form_end(formSearch) }}
-        <div class="search_promo_banner">
-            <img src="{{ asset('build/quick-banner.png') }}" alt="sliderImg" />
-            <div class="search_promo_banner_info">
-                <span class="promo_banner_promo">Offre Promo !</span>
-                <span class="promo_banner_value"><b>20 %</b> lorem ipsum dolor <br> Lorem ipsum dolor</span>
-                <span class="promo_banner_date"> Offre valable du <br><b>20/12/21</b> au <b>20/01/22</b></span>
-                <span class="promo_banner_btn">Je participe</span>
+        
+    <div class="d-flex justify-content-center">
+        <div class="btn_promo_home">
+            <div class="col align-self-center">
+            <span class="span_btn_promo">Découvrez nos promotions</span>
+            <svg class="path_46" viewBox="0 0 19.324 8.338">
+                <path id="trac_46" d="M 0 0 L 10.33853340148926 8.338281631469727 L 19.32394599914551 0">
+                </path>
+            </svg>
             </div>
         </div>
     </div>
-    <div class="btn_promo_home">
-        <span class="span_btn_promo">Découvrez nos promotions</span>
-        <svg class="path_46" viewBox="0 0 19.324 8.338">
-            <path id="trac_46" d="M 0 0 L 10.33853340148926 8.338281631469727 L 19.32394599914551 0">
-            </path>
-        </svg>
-    </div>
-    <div class="carroussel_div">
-        <div class="carroussel_btn_div">
-            <span class="carroussel_btn">Renault</span>
-            <span class="carroussel_btn" style="color: rgba(52,95,138,1)">Peugeot</span>
-            <span class="carroussel_btn" style="color: rgba(52,95,138,1)">Citroën</span>
-            <span class="carroussel_btn" style="color: rgba(52,95,138,1)">DS Auto</span>
+
+    <div class="d-flex justify-content-center">
+
+        {{ form_end(formSearch) }}
+        <div>
+            <img class="img-fluid" src="{{ asset('build/quick-banner.png') }}" alt="sliderImg" />
+            <div class="row">
+                <div class="col">
+                    <span class="promo_banner_promo">Offre Promo !</span>
+                </div>
+                <div class="col">
+                    <span class="promo_banner_value"><b>20 %</b> lorem ipsum dolor <br> Lorem ipsum dolor</span>
+                </div>
+                <div class="col">
+                    <span class="promo_banner_date"> Offre valable du <br><b>20/12/21</b> au <b>20/01/22</b></span>
+                </div>
+                <div class="col">
+                    <span class="promo_banner_btn">Je participe</span>
+                </div>
+            </div>
         </div>
-        <div class="carroussel">
-            <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
-                {% for car in cars_promo %}
-                    <div class="carroussel_cars">
-                        <div class="b-featured__item wow rotateIn">
-                            <a href="{{ path('detail_car', { 'id': car.id }) }}">
-                                <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
-                                {#                            <span class="m-premium">Premium</span>#}
-                            </a>
-                            <div class="carroussel_promo_span"> PROMO !</div>
-                            <div class="carroussel_info">
-                                <div class="carroussel_name">
-                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
-                                </div>
-                                <div class="carroussel_subtilte">
-                                    {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+    </div>
+    
+   
+    
+   
+    <div class="carroussel_div">
+        <div class="d-flex justify-content-center">
+            <div class="carroussel_btn_div">
+                <div class="row justify-content-around">
+                    <div class="col">
+                        <span class="carroussel_btn">Renault</span>
+                    </div>
+                    <div class="col">
+                        <span class="carroussel_btn" style="color: rgba(52,95,138,1)">Peugeot</span>
+                    </div>
+                    <div class="col">
+                        <span class="carroussel_btn" style="color: rgba(52,95,138,1)">Citroën</span>
+                    </div>
+                    <div class="col">
+                        <span class="carroussel_btn" style="color: rgba(52,95,138,1)">DS Auto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="carroussel">
+                <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
+                    {% for car in cars_promo %}
+                        <div class="carroussel_cars">
+                            <div class="b-featured__item wow rotateIn">
+                                <a href="{{ path('detail_car', { 'id': car.id }) }}">
+                                    <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
+                                    {#                            <span class="m-premium">Premium</span>#}
+                                </a>
+                                <div class="carroussel_promo_span"> PROMO !</div>
+                                <div class="carroussel_info">
+                                    <div class="carroussel_name">
+                                        <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
+                                    </div>
+                                    <div class="carroussel_subtilte">
+                                        {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </div>
+        </div>  
+    
+    
     <div class="tt_info">
-        <div class="video_tt">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+        <div class="row justify-content-around">
+            <div class="col align-self-center">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <div class="video_tt">
+                        <iframe src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col align-self-center">
+                <div class="tt_text">
+                    <div class="tilte_tt">Comprendre le Transit Temporaire (TT)</div>
+                    <div class="trait_point">
+                        <img src="{{ asset('build/trait_point.png') }}" alt="ttCar" />
+                    </div>
+                    <div class="text_info">
+                        Le transit temporaire est une disposition douanière et fiscale qui permet à toute personne résidant hors
+                        du territoire communautaire (DOM TOM inclus) de disposer d’un véhicule neuf lors de son séjour en Europe et
+                        de l’acquérir exonéré des droits de douanes et de la TVA.
+                        Vous bénéficiez ainsi d’une immatriculation française spécifique permettant une libre circulation en Europe.
+                        <br>
+                        <br>
+                        Il est aussi possible de bénéficier de ce régime sans avoir a payer l’intégralité du prix du véhicule.
+                        Cette formule, connue sous le terme générique d’achat-rachat, ressemble beaucoup à une location de voiture.
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="tt_text">
-            <div class="tilte_tt">Comprendre le Transit Temporaire (TT)</div>
-            <div class="trait_point">
-                <img src="{{ asset('build/trait_point.png') }}" alt="ttCar" />
-            </div>
-            <div class="text_info">
-                Le transit temporaire est une disposition douanière et fiscale qui permet à toute personne résidant hors
-                du territoire communautaire (DOM TOM inclus) de disposer d’un véhicule neuf lors de son séjour en Europe et
-                de l’acquérir exonéré des droits de douanes et de la TVA.
-                Vous bénéficiez ainsi d’une immatriculation française spécifique permettant une libre circulation en Europe.
-                <br>
-                Il est aussi possible de bénéficier de ce régime sans avoir a payer l’intégralité du prix du véhicule.
-                Cette formule, connue sous le terme générique d’achat-rachat, ressemble beaucoup à une location de voiture.
-            </div>
+        
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="btn_info">
+                <div class="d-flex justify-content-center">
+                    <div class="row justify-content-around">
+                        <div class="col">
+                            <span class="btn_info_booking">Réserver </span>
+                        </div>
+                        <div class="col">
+                            <span class="btn_info_question">Une question ?</span>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
-    <div class="btn_info">
-        <span class="btn_info_booking">Réserver </span>
-        <span class="btn_info_question">Une question ?</span>
-    </div>
+  
     <div class="avantage">
-        <div class="avantage_tilte">AVANTAGES DU TRANSIT TEMPORAIRE</div>
+        <div class="row justify-content-center">
+            <div class="avantage_tilte">AVANTAGES DU TRANSIT TEMPORAIRE</div>
+        </div>
+        
         <div class="avantage_carroussel">
-            <div class="av1">
-                <span class="item_avantage"><img src="{{ asset('build/Group_84.png') }}" alt="item"></span>
-                <span class="avantage_text">Véhicule neufs</span>
-            </div>
-            <div class="av2">
-                <span class="item_avantage2"><img src="{{ asset('build/Group_92.png') }}" alt="item"></span>
-                <span class="avantage_text2">Kilométrage <br> illimité</span>
-            </div>
-            <div class="av3">
-                <span class="item_avantage3"><img src="{{ asset('build/Group_82.png') }}" alt="item"></span>
-                <span class="avantage_text3">Assistance 7j/7 <br> et 24h/24</span>
-            </div>
-            <div class="av4">
-                <span class="item_avantage4"><img src="{{ asset('build/Group_88.png') }}" alt="item"></span>
-                <span class="avantage_text4">Assurance multirisques <br>sans franchise</span>
-            </div>
-            <div class="av5">
-                <span class="item_avantage5"><img src="{{ asset('build/Group_90.png') }}" alt="item"></span>
-                <span class="avantage_text5">GPS <br>gratuit</span>
-            </div>
-            <div class="av6">
-                <span class="item_avantage6"><img src="{{ asset('build/Group_86.png') }}" alt="item"></span>
-                <span class="avantage_text6">24 mois de garantie <br> constructeur</span>
+            <div class="row justify-content-around">
+                <div class="col">
+                    <div class="av1">
+                        <span class="item_avantage"><img src="{{ asset('build/Group_84.png') }}" alt="item"></span>
+                        <span class="avantage_text">Véhicule neufs</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="av2">
+                        <span class="item_avantage2"><img src="{{ asset('build/Group_92.png') }}" alt="item"></span>
+                        <span class="avantage_text2">Kilométrage <br> illimité</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="av3">
+                        <span class="item_avantage3"><img src="{{ asset('build/Group_82.png') }}" alt="item"></span>
+                        <span class="avantage_text3">Assistance 7j/7 <br> et 24h/24</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="av4">
+                        <span class="item_avantage4"><img src="{{ asset('build/Group_88.png') }}" alt="item"></span>
+                        <span class="avantage_text4">Assurance multirisques <br>sans franchise</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="av5">
+                        <span class="item_avantage5"><img src="{{ asset('build/Group_90.png') }}" alt="item"></span>
+                        <span class="avantage_text5">GPS <br>gratuit</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="av6">
+                        <span class="item_avantage6"><img src="{{ asset('build/Group_86.png') }}" alt="item"></span>
+                        <span class="avantage_text6">24 mois de garantie <br> constructeur</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="blog_home">
-        <div class="blog_tilte">Notre blog</div>
+        <div class="row justify-content-center">
+            <div class="blog_tilte">Notre blog</div>
+        </div>
         <div class="row align_blog">
             {% for post in posts %}
                 <div class="blog_article">
@@ -311,7 +405,9 @@
                 </div>
             {% endfor %}
         </div>
-        <span class="btn_blog_articles">Voir tous les articles </span>
+        <div class="row">
+            <span class="btn_blog_articles">Voir tous les articles </span>
+        </div>
     </div>
     <div class="newsletter_banner">
         <img src="{{ asset('build/Groupe_281.png') }}" alt="newsletter" class="newsletter_img"/>
@@ -326,7 +422,7 @@
             {{ form_end(form_newsletter) }}
         </div>
     </div>
-
+</div>
 
    {# <!--Search bar-->
         <div class="container search_bar">

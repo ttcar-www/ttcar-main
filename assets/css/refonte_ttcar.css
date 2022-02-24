@@ -302,24 +302,18 @@ Base FOOTER
 /*  Page 1  - index  */
 
 .img_search {
-    height: 900px;
+    height: auto;
 }
 .img_search img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
 }
 .step_search {
-    position: absolute;
-    width: 708px;
-    height: 106px;
-    left: 390px;
-    top: 156px;
+    width: auto;
+    height: auto;
     overflow: visible;
 }
 .span_step1 {
-    left: 0;
-    top: 13px;
-    position: absolute;
     overflow: visible;
     width: 40px;
     white-space: nowrap;
@@ -337,9 +331,6 @@ Base FOOTER
     height: 40px;
 }
 .span_step2 {
-    left: 290px;
-    top: 14px;
-    position: absolute;
     width: 38px;
     white-space: nowrap;
     height: 37px;
@@ -356,9 +347,6 @@ Base FOOTER
 }
 
 .span_step3 {
-    left: 550px;
-    top: 14px;
-    position: absolute;
     width: 38px;
     white-space: nowrap;
     height: 37px;
@@ -419,26 +407,26 @@ Base FOOTER
     top: 450px;
     opacity: 0.841;
 }
-.search_promo_banner {
+.search_promo_banner_info {
+    left: 250px;
     position: absolute;
-    width: 891px;
-    height: 112px;
-    left: 265px;
-    top: 872px;
+    top: 30px;
+}
+.search_promo_banner {
+    width: 90%;
+    height: auto;
     overflow: visible;
 }
 .btn_promo_home {
-    position: absolute;
+    
     width: 238px;
-    padding: 8px;
     height: 50px;
-    left: 550px;
-    top: 1015px;
     overflow: visible;
     color: black;
     background: white;
     border-radius: 30px;
     box-shadow: 0 2px 5px rgb(52 95 138);
+    margin-top: -3%;
 }
 
 /* Promo */
@@ -450,17 +438,14 @@ Base FOOTER
     font-weight: bold;
     font-size: 16px;
     color: rgba(52,95,138,1);
+    text-align: center;
+   
 }
 
-.search_promo_banner_info {
-    left: 250px;
-    position: absolute;
-    top: 30px;
-}
 .promo_banner_promo {
-    width: 137px;
+    width: 100%;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -469,11 +454,8 @@ Base FOOTER
 }
 
 .promo_banner_value {
-    left: 0;
-    top: 25px;
-    position: absolute;
     overflow: visible;
-    width: 141px;
+    width: 100%;
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -483,10 +465,8 @@ Base FOOTER
 }
 
 .promo_banner_date {
-    left: 215px;
-    position: absolute;
     overflow: visible;
-    width: 95px;
+    width: 100%;
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -498,13 +478,11 @@ Base FOOTER
 
 .promo_banner_btn {
     background-color: rgba(52,95,138,1);
-    left: 225px;
-    top: 35px;
     padding: 5px;
     border-radius: 30px;
     position: absolute;
     overflow: visible;
-    width: 80px;
+    width: 100%;
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -536,12 +514,12 @@ Base FOOTER
  /* carroussel */
 
 .carroussel_div {
-    margin-top: 120px;
+    margin-top: 10em;
 }
 .carroussel {
     width: 100%;
-    height: 307px;
-    margin-bottom: 55px;
+    height: auto;
+    margin-bottom: 5em;
     border: solid 2px #f5f5f5;
     border-radius: 65px;
 }
@@ -601,13 +579,12 @@ Base FOOTER
 }
 
 .carroussel_btn_div {
-    margin-left: 400px;
     margin-bottom: 50px;
 }
 
 .carroussel_btn {
-    width: 186px;
-    height: 73px;
+    width: 100%;
+    height: auto;
     box-shadow: 0 2px 5px rgb(52 95 138);
     white-space: nowrap;
     text-align: left;
@@ -618,7 +595,6 @@ Base FOOTER
     color: rgba(247,43,55,1);
     padding: 15px;
     border-radius: 15px;
-    margin-right: 70px;
 }
 
 .carroussel_btn span {
@@ -635,45 +611,41 @@ Base FOOTER
 .tt_info {
     background-color: rgba(52,95,138,1);
     width: 100%;
-    height: 600px;
+    height: auto;
     overflow: visible;
+    padding: 7% 15%;
 }
 .video_tt {
-    position: absolute;
-    border-radius: 30px;
-    left: 100px;
-    top:1617px;
+    border-radius: 50px;
     overflow: visible;
+    padding: 5%;
 }
 .tt_text {
-    position: absolute;
     overflow: visible;
     border-radius: 30px;
-    width: 613px;
-    height: 323px;
-    left: 780px;
-    top: 1617px;
+    width: 100%;
+    height: auto;
     background-color: rgb(79 116 153);
-    padding: 30px;
+    padding: 5%;
 }
 .tilte_tt {
-    width: 511px;
+    width: 100%;
+    height: auto;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
-    margin-left: 30px;
     font-weight: bold;
-    font-size: 26px;
+    
     color: rgba(255,255,255,1);
 }
 .trait_point img{
-    width: 570px;
+    width: 100%;
 }
 .text_info {
-    left: 1055px;
-    line-height: 22px;
-    margin-top: 10px;
+    text-align: left;
+    line-height: 1.375em;
+    margin-top: 0.625em;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -684,23 +656,18 @@ Base FOOTER
 .btn_info {
     width: 585px;
     height: 109px;
-    margin-left: 450px;
-    margin-top: -50px;
+    /*margin-top: -4.5%;*/
     border-radius: 55px;
     box-shadow: 0 2px 5px rgb(52 95 138);
     background-color: white;
-    padding: 30px;
 }
 
 .btn_info_booking {
-    position: absolute;
     overflow: visible;
     width: 185px;
     height: 58px;
-    left: 440px;
     border-radius: 30px;
-    margin-left: 97px;
-    padding: 17px;
+    padding: 5%;
     background-color: rgba(52,95,138,1);
     color: rgba(255,255,255,1);
     white-space: nowrap;
@@ -716,9 +683,7 @@ Base FOOTER
     border-radius: 30px;
     border: solid 2px rgba(52,95,138,1);
     background-color: rgba(255,255,255,1);
-    left: 760px;
-    padding: 15px;
-    position: absolute;
+    padding: 5%;
     overflow: visible;
     width: 155px;
     white-space: nowrap;
@@ -731,13 +696,15 @@ Base FOOTER
 }
 
 .avantage {
-    margin-top: 80px;
+    margin-top: 5%;
     height: 300px;
-    margin-left: 25px;
+    margin-left: 2%;
+    
 }
 
 .avantage_carroussel {
     margin-top: 60px;
+    padding: 3%;
     position: absolute;
     overflow: visible;
     width: 97%;
@@ -748,14 +715,12 @@ Base FOOTER
 }
 
 .avantage_tilte {
-    width: 518px;
-    margin-left: 400px;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 1.625em;
     color: rgba(52,95,138,1);
     text-transform: uppercase;
 }
@@ -765,7 +730,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 100px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -774,7 +739,7 @@ Base FOOTER
 }
 
 .avantage_text {
-    left: 103px;
+    
     position: absolute;
     overflow: visible;
     width: 77px;
@@ -793,7 +758,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 315px;
+   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -806,7 +771,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 315px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -815,7 +780,7 @@ Base FOOTER
 }
 
 .avantage_text2 {
-    left: 325px;
+    
     position: absolute;
     overflow: visible;
     width: 77px;
@@ -835,7 +800,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 535px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -844,7 +809,7 @@ Base FOOTER
 }
 
 .avantage_text3 {
-    left: 545px;
+    
     position: absolute;
     overflow: visible;
     width: 77px;
@@ -864,7 +829,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 750px;
+   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -873,7 +838,7 @@ Base FOOTER
 }
 
 .avantage_text4 {
-    left: 740px;
+    
     position: absolute;
     overflow: visible;
     width: 77px;
@@ -893,7 +858,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 975px;
+   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -902,7 +867,7 @@ Base FOOTER
 }
 
 .avantage_text5 {
-    left: 995px;
+    
     position: absolute;
     overflow: visible;
     width: 77px;
@@ -922,7 +887,7 @@ Base FOOTER
     color: white;
     position: absolute;
     width: 125px;
-    left: 1200px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -931,7 +896,7 @@ Base FOOTER
 }
 
 .avantage_text6 {
-    left: 1200px;
+    
     position: absolute;
     overflow: visible;
     width: 77px;
@@ -947,28 +912,24 @@ Base FOOTER
 }
 
 .blog_home {
-    margin-top: 130px;
+    margin-top: 10%;
     display: inline-block;
 }
 
 .blog_tilte {
-    margin-left: 630px;
-    width: 173px;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 26px;
     color: rgba(52,95,138,1);
     text-transform: uppercase;
-    margin-bottom: 50px;
 }
 
 .blog_article {
     width: 350px;
     height: 425px;
-    margin-left: 100px;
     overflow: visible;
     border-radius: 40px;
     box-shadow: 0 2px 5px rgb(52 95 138);
@@ -1006,7 +967,6 @@ Base FOOTER
 
 .blog_btn {
     margin-top: 50px;
-    margin-left: 200px;
     white-space: nowrap;
     text-align: left;
     font-family: Montserrat, sans-serif;
@@ -1024,7 +984,6 @@ Base FOOTER
 
 .btn_blog_articles {
     margin-top: 50px;
-    margin-left: 625px;
     border-radius: 30px;
     padding: 17px;
     background-color: rgba(52,95,138,1);
