@@ -862,7 +862,7 @@
                     data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
                     success: function(data){
                         console.log(data)
-                        if (data === false) {
+                        if (data !== false) {
                             console.log('station fermé');
                             $("#myModal").css("display", "block");
 
