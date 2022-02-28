@@ -38,11 +38,12 @@
         }
 
         .search_depart span {
+            position: absolute;
             display: inline-block;
             border-radius: 40px;
-            background-color: rgba(32,137,214,1);
-            height: 60px;
-            width: 170px;
+            background-color: black;
+            height: 55px;
+            width: 125px;
             padding-top: 18px;
             padding-left: 40px;
             text-align: left;
@@ -78,7 +79,7 @@
             position: absolute;
             width: 824px;
             height: 65px;
-            left: 50px;
+            left: 35px;
             top: 230px;
             overflow: visible;
             text-align: left;
@@ -91,11 +92,11 @@
         }
 
         .search_return span {
-            display: inline-block;
+            position: absolute;
             border-radius: 40px;
-            background-color: rgba(32,137,214,1);
+            background-color: black;
             height: 60px;
-            width: 170px;
+            width: 126px;
             padding-top: 18px;
             padding-left: 40px;
             text-align: left;
@@ -257,21 +258,6 @@
             position: absolute;
             overflow: visible;
             width: 109px;
-            white-space: nowrap;
-            text-align: left;
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            color: rgba(255,255,255,1);
-        }
-
-        .search_type {
-            top: 470px;
-            left: 55px;
-            position: absolute;
-            overflow: visible;
-            width: 124px;
             white-space: nowrap;
             text-align: left;
             font-family: Montserrat;
@@ -570,7 +556,8 @@
             color: rgba(52,95,138,1);
         }
 
-        .plane_number, .type {
+        .plane_number {
+            margin-left: 175px;
             border-radius: 30px;
             width: 225px;
             height: 50px;
@@ -581,6 +568,25 @@
             font-weight: bold;
             font-size: 16px;
             color: rgba(52,95,138,1);
+        }
+
+        .search_type {
+            top: 470px;
+            left: 55px;
+            position: absolute;
+            border-radius: 40px;
+            background-color: black;
+            height: 60px;
+            width: 145px;
+            padding-top: 5px;
+            padding-left: 20px;
+            text-align: left;
+            white-space: nowrap;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255,255,255,1);
         }
 
         .newsletter_key {
@@ -603,6 +609,41 @@
         .newsletter_tilte, .newsletter_subtilte {
             color: rgba(32,137,214,1);
           }
+
+        .ui-widget {
+            margin-left: 185px;
+        }
+
+        .search_plane span {
+            position: absolute;
+            border-radius: 40px;
+            background-color: black;
+            height: 60px;
+            width: 145px;
+            padding-top: 18px;
+            padding-left: 20px;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(255,255,255,1);
+        }
+
+        .type_cars {
+            margin-left: 40px;
+            border-radius: 30px;
+            width: 225px;
+            height: 50px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgba(52,95,138,1);
+        }
+
     </style>
     <div class="img_search">
         <img src="{{ asset('build/modern-metropolis-skyline-chon.png') }}" alt="sliderImg" />
@@ -621,10 +662,9 @@
             <form type="post" id="searchFromResa" action="#">
                 <div class="search_depart">
                     <span>Depart</span>
-                           <div class="ui-widget">
-                    <label for="stations">Stations : </label>
+                     <div class="ui-widget">
                     <input id="stations" placeholder="Saisissez votre ville">
-                    <input id="stations_id">
+                    <input id="stations_id"  style="visibility: hidden; width: 2px">
 
                     <input type="datetime-local" id="startDate"
                            name="meeting-time" value="12-02-2023T19:30">
@@ -634,10 +674,8 @@
                 <div class="search_return">
                     <span>Retour</span>
                     <div class="ui-widget">
-                        <label for="stations-return">Stations : </label>
                         <input id="stations-return" placeholder="Saisissez votre ville">
-                        <input id="stations_id-return">
-
+                        <input id="stations_id-return" style="visibility: hidden; width: 2px">
                         <input type="datetime-local" id="endDate"
                                name="meeting-time" value="12-02-2024T19:30">
                     </div>
@@ -650,11 +688,11 @@
                 </div>
                 <div class="search_type">
                     <span>Type de véhicule</span>
-                    <select name="type" class="type" id="typeSelect">
-                        <option value="">--Choisir un type--</option>
-                        <option value="1">Type1</option>
-                        <option value="2">Type2</option>
-                        <option value="3">Type3</option>
+                    <select name="types" class="type_cars" id="typeSelect">
+                        {% for category in categories %}
+                        <option value="{{ category.value }}">{{ category.name }}</option>
+                        {% endfor %}
+
                     </select>
                 </div>
                 <div class="btn_search_send" id="searchBtn">
@@ -709,10 +747,30 @@
            </form>
         </div>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Station fermée</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>La station est fermée aux horaires demandée merci de choisir une nouvelle station</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     {% block javascripts %}
         {{ parent() }}
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script>
+
             $( function() {
                 function split( val ) {
                     return val.split( /,\s*/ );
@@ -724,11 +782,13 @@
                     delay: 0,
                     source: function( request, response ) {
                         $.getJSON( "{{ path('resacar_find_stations') }}", {
-                            term: extractLast( request.term ),
-                            voiture: 'test'
+                            term: extractLast( request.term )
                         }, response );
+
+                        console.log(extractLast( request.term ))
+
                     },
-                    minLength: 0,
+                    minLength: 2,
                     focus: function( event, ui ) {
                         $( "#stations" ).val( ui.item.station_name );
                         return false;
@@ -739,6 +799,10 @@
                         return false;
                     }
                 }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+
+         /*           console.log(item)
+                    console.log($( "#stations" ).val())*/
+
                     return $( "<li>" )
                         .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
                         .appendTo( ul );
@@ -771,6 +835,10 @@
                         return false;
                     }
                 }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+
+                    /*           console.log(item)
+                               console.log($( "#stations" ).val())*/
+
                     return $( "<li>" )
                         .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
                         .appendTo( ul );
@@ -796,6 +864,10 @@
                         console.log(data)
                         if (data === false) {
                             console.log('station fermé');
+                            $("#myModal").css("display", "block");
+
+                        } else {
+                            window.location.href = data;
                         }
                     }
                 });

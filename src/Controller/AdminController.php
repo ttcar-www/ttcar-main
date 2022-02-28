@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Accessory;
 use App\Entity\Cars;
+use App\Entity\CategoryResacar;
 use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\Customer;
@@ -19,6 +20,7 @@ use App\Entity\Reason;
 use App\Entity\Slice;
 use App\Entity\SliceSupplier;
 use App\Entity\User;
+use App\Form\CategoryResacarFormType;
 use App\Form\EditAccessoryFormType;
 use App\Form\UserEditFormType;
 use App\Service\FileUploader;
@@ -350,6 +352,21 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/manage_resacar", name="manage_resacar")
+     */
+    public function manageResacar(): Response
+    {
+
+        $categories = $this->getDoctrine()->getRepository(CategoryResacar::class)->findAll();
+
+
+        return $this->render('admin/manage_resacar.html.twig', [
+            'categories' =>$categories
+        ]);
+    }
+
+
+    /**
      * Manage range with back office
      * @Route("/path_to_range/{path}", name="path_to_range")
      * @param $path
@@ -401,6 +418,99 @@ class AdminController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+    /**
+     * @Route("/admin/create_cat_resa/", name="create_cat_resa")
+     * @param Request $request
+     * @return Response
+     */
+    public function createCatResacar(Request $request): Response
+    {
+        $category = New CategoryResacar();
+
+        $form = $this->createForm(
+            CategoryResacarFormType::class,
+            $category);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Catégorie créé'
+            );
+
+            return $this->redirectToRoute('manage_resacar');
+        }
+        return $this->render('form/create_category_resacar.html.twig', [
+            'category' =>$category,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/delete_cat_resacar/{id}", name="delete_cat_resacar")
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function deleteCatResa($id): RedirectResponse
+    {
+        $category = $this->getDoctrine()
+            ->getRepository(CategoryResacar::class)
+            ->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
+        $em->flush();
+
+        $this->addFlash(
+            'success',
+            'Catégorie supprimé'
+        );
+
+        return $this->redirectToRoute('manage_user');
+    }
+
+    /**
+     * @Route("/admin/edit_cat_resa/{id}", name="edit_cat_resa")
+     * @param Request $request
+     * @return Response
+     */
+    public function editCatResacar(Request $request, $id): Response
+    {
+        $category = $this->getDoctrine()
+            ->getRepository(CategoryResacar::class)
+            ->find($id);
+
+        $form = $this->createForm(
+            CategoryResacarFormType::class,
+            $category);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Catégorie modifié'
+            );
+
+            return $this->redirectToRoute('manage_resacar');
+        }
+        return $this->render('form/create_category_resacar.html.twig', [
+            'category' =>$category,
+            'form' => $form->createView()
+        ]);
+    }
+
 
     /**
      * @Route("/admin/delete_user/{id}", name="delete_user")

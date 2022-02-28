@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CategoryResacar;
 use App\Entity\StationsResacar;
 use App\ResacarApi\Booking\BookingManager;
 use App\ResacarApi\Booking\DeleveryAddressesManager;
@@ -12,6 +13,7 @@ use App\ResacarApi\Data\OpeningHoursManager;
 use App\ResacarApi\Data\StationsManager;
 use DateTime;
 use Exception;
+use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\True_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -73,9 +75,9 @@ class ResaCarController extends AbstractController
          */
         $filter = [
             'station_id' => 'PUFE01',
-            'date_pickup' => '10012022',
+            'date_pickup' => '10032022',
             'heure_pickup' => '0930',
-            'date_return' => '16012022',
+            'date_return' => '16032022',
             'heure_return' => '1600',
             'veh_class' => 'T',
             'invoice_type' => 'S',
@@ -103,8 +105,14 @@ class ResaCarController extends AbstractController
          */
         $accounts = $accountsManager->getResult();
 
+        $categories = $this->getDoctrine()
+            ->getRepository(CategoryResacar::class)
+            ->findAll();
+
+
         return $this->render('resacar/index.html.twig', [
-            'stations' => $stations
+            'stations' => $stations,
+            'categories' => $categories
         ]);
     }
 
@@ -160,7 +168,8 @@ class ResaCarController extends AbstractController
 
         if ($response == false ) {
             return new JsonResponse(false);
-
+        }else{
+            $data = $this->generateUrl('resacar_search');
         }
 
         return new JsonResponse($data);
@@ -168,139 +177,46 @@ class ResaCarController extends AbstractController
 
     /**
      * @Route("/resacar_search/", name="resacar_search")
-     * @param OpeningHoursManager $openingHoursManager
+     * @param CarsManager $carsManager
      * @return Response
-     * @throws Exception
      */
-    public function searchResult(OpeningHoursManager $openingHoursManager): Response
+    public function searchResult(CarsByDisponibilitiesManager $carsByDisponibilityManager, PaginatorInterface $paginator, Request $request): Response
     {
+
+        /**
+         * EXEMPLE GET VEHICULES LIST BY DISPONIBILITY
+         */
         $filter = [
-            'station_id' => $_SESSION['resaCarStationDepart']
+            'station_id' => 'PUFE01',
+            'date_pickup' => '10032022',
+            'heure_pickup' => '0930',
+            'date_return' => '21032022',
+            'heure_return' => '1600',
+            'veh_class' => 'T',
+            'invoice_type' => 'S',
         ];
-        $openingHoursManager->setFilter($filter);
-        $openTo = $openingHoursManager->getResult();
+        $carsByDisponibilityManager->setFilter($filter);
+        $cars = $carsByDisponibilityManager->getResult();
 
-        $dateHours = explode("T", $_SESSION['resaCarDateStart']);
-        $dateStart = $dateHours[0];
-        $hoursStart = $dateHours[1];
+        $pagination = $paginator->paginate(
+            $cars,
+            $request->query->getInt('page', 1),
+            5
+        );
 
-        foreach ($openTo as  $hour) {
-
-          $depart =  new \DateTime($dateStart);
-
-            var_dump($hour['date_min']); die();
-
-          $resacar = new \DateTime($hour['date_max']);
-
-          var_dump($depart->format('Y-m-d'), $resacar->format('Y-m-d'));
-          die();
-          if ($depart->format('Y-m-d') < $resacar->format('Y-m-d')) {
-              var_dump('ok slothie');
-          }
-
-
-        }die();
-
-        return $this->render('resacar/searchResult.html.twig');
+        return $this->render('resacar/searchResult.html.twig',[
+            'cars' => $cars,
+            'pagination' => $pagination,
+        ]);
     }
 
     /**
      * @Route("/resacar_order/", name="resacar_order")
      * @return Response
      */
-    public function orderResacar(StationsManager $stationManager, OpeningHoursManager $openingHoursManager): Response
+    public function orderResacar(): Response
     {
-        $today = new \DateTime();
 
-        $filter = [
-            'country_id' => 'FR'
-        ];
-        $stationManager->setFilter($filter);
-        $stations = $stationManager->getResult();
-
-        $result = [];
-
-
-        foreach ($stations as $station) {
-            $filter = ['station_id' => $station['station_id']];
-            $openingHoursManager->setFilter($filter);
-
-            $openTo = $openingHoursManager->getResult();
-            $self = false;
-
-            foreach ($openTo as  $open) {
-
-                $yearsOpen = substr($open['date_min'], 4);
-                $monthOpen = substr($open['date_min'], 2, 2);
-                $dayOpen = substr($open['date_min'], 0, 2);
-
-                $yearsEnd = substr($open['date_max'], 4);
-                $monthEnd = substr($open['date_max'], 2, 2);
-                $dayEnd = substr($open['date_max'], 0, 2);
-
-                $dateMin = \DateTime::createFromFormat("d/m/Y", $dayOpen."/".$monthOpen."/".$yearsOpen);
-                $dateMax = \DateTime::createFromFormat("d/m/Y", $dayEnd."/".$monthEnd."/".$yearsEnd);
-
-                if ($dateMin->format('d-m-Y') > $today->format('d-m-Y')) {
-                    if ($open['self_service'] !== 'N') {
-                        $self = true;
-                    }
-
-                    $stationsOPEN= [
-                        'station_id' => $station['station_id'],
-                        'self_service' => $self,
-                        'date_min' => $dateMin->format('d-m-Y'),
-                        'date_max' => $dateMax->format('d-m-Y'),
-                        'hour_min' => $open['hour_min'],
-                        'hour_max' => $open['hour_max'],
-                    ];
-                }
-            }
-
-            if(in_array($station['station_id'], $stationsOPEN)) {
-
-
-                $result[] = [
-                    'station_id' => $stationsOPEN['station_id'],
-                    'station_name' => $station['station_name'],
-                    'station_city' => $station['station_city'],
-                    'country_name' => $station['country_name'],
-                    'country_id' => $station['country_id'],
-                    'address_1' => $station['address_1'],
-                    'phone' => $station['phone'],
-                    'fax' => $station['fax'],
-                    'email' => $station['email'],
-                    'self_service' => $self,
-                    'date_min' => $stationsOPEN['date_min'],
-                    'date_max' => $stationsOPEN['date_max'],
-                    'hour_min' => $stationsOPEN['hour_min'],
-                    'hour_max' => $stationsOPEN['hour_max'],
-                ];
-
-                $stationResacar = New StationsResacar();
-                $stationResacar->setStationsId(intval($station['station_id']));
-                $stationResacar->setStationName($station['station_name']);
-                $stationResacar->setStationCity($station['station_city']);
-                $stationResacar->setCountryName($station['country_name']);
-                $stationResacar->setCountryId(intval($station['country_id']));
-                $stationResacar->setAddress1($station['address_1']);
-                $stationResacar->setPhone(intval($station['phone']));
-                $stationResacar->setFax($station['fax']);
-                $stationResacar->setEmail($station['email']);
-                $stationResacar->setSelfService($self);
-                $stationResacar->setDateMin($dateMin->format('d-m-Y'));
-                $stationResacar->setDateMax($dateMax->format('d-m-Y'));
-                $stationResacar->setHourMin($stationsOPEN['hour_min']);
-                $stationResacar->setHourMax($stationsOPEN['hour_max']);
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($stationResacar);
-                $em->flush();
-
-
-            }
-
-        }
 
         return $this->render('resacar/order.html.twig');
     }

@@ -1,0 +1,53 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="group_text">
+        {# read and display all flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-warning flash-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <!-- Striped table start -->
+        <div class="col-lg-12 mt-5" style="padding-bottom: 5%">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Toutes les catégories resacar</h4>
+                    <a href="{{ path('create_cat_resa') }}" style="color: darkslategrey; margin-left: 5%" class="btn btn-light"><i class="fas fa-map-marked-alt"></i> Ajouté une catégorie</a>
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <thead class="text-uppercase">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Valeur</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for category in categories %}
+                                    <tr>
+                                        <th scope="row">{{ category.id }}</th>
+                                        <td>{{ category.name }}</td>
+                                        <td>{{ category.value }}</td>
+                                        <td>
+                                            <a href="{{ path('delete_cat_resacar', { 'id': category.id }) }}"
+                                               onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>
+                                            <br>
+                                            <a href="{{ path('edit_cat_resa', { 'id': category.id }) }}"> <i class="far fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Striped table end -->
+    </div>
+{% endblock %}

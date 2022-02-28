@@ -89,12 +89,11 @@
             width: 1041px;
             left: 65px;
             top: 685px;
-            border-radius: 20px;
-            border: solid 2px grey;
             background-color: white;
         }
         .car_result {
-
+            border-radius: 20px;
+            border: solid 2px grey;
         }
         .car_container {
             padding: 45px;
@@ -555,34 +554,35 @@
            <span class="resarcar_cat">Choisissez une catégorie</span>
         </div>
         <div class="cars">
-                <div class="car_result">
-                    <div class="car_container">
-                        <span class="dispo">Economique</span>
-                        <div class="car_tilte">B/ECMR</div>
+            <div class="car_result">
+                {% for key, car in pagination %}
+                <div class="car_container">
+                        <span class="dispo">{{ car.veh_type }}</span>
+                        <div class="car_tilte">{{ car.veh_text }}</div>
                         <div class="car_desc">
                             Le design intérieur gagne en attractivité. Dacia Sandero inaugure une nouvelle planche de bord carbone
                             foncé ou bi-ton (selon versions) à l’instrumentation complète et au traité moderne avec des contours
                             de cadrans chromés (selon versions) et des commandes dont l’ergonomie a été complètement repensée.
                         </div>
                         <div class="car_icon">
-                    <span>
-                        <img src="{{ asset('build/Groupe_259_resa.png') }}" alt="car" class="car_icon">
-                        x 4
-                    </span>
                             <span>
-                        <img src="{{ asset('build/Groupe_261_resacar.png') }}" alt="car" class="car_icon">
-                        x 5
-                    </span>
+                                <img src="{{ asset('build/Groupe_259_resa.png') }}" alt="car" class="car_icon">
+                                x 4
+                            </span>
                             <span>
-                        <img src="{{ asset('build/Groupe_263_resacar.png') }}" alt="car" class="car_icon">
-                        x 4
-                    </span>
+                                <img src="{{ asset('build/Groupe_261_resacar.png') }}" alt="car" class="car_icon">
+                                x 5
+                            </span>
                             <span>
-                        <img src="{{ asset('build/Groupe_265_resacar.png') }}" alt="car" class="car_icon">
-                    </span>
+                                <img src="{{ asset('build/Groupe_263_resacar.png') }}" alt="car" class="car_icon">
+                                x 4
+                            </span>
                             <span>
-                        <img src="{{  asset('build/Groupe_267_resacar.png') }}" alt="car" class="car_icon">
-                    </span>
+                                <img src="{{ asset('build/Groupe_265_resacar.png') }}" alt="car" class="car_icon">
+                            </span>
+                            <span>
+                                <img src="{{  asset('build/Groupe_267_resacar.png') }}" alt="car" class="car_icon">
+                            </span>
                         </div>
                     </div>
                     <img src="{{ asset('build/uploads/peugeot-308-berline-big-616ec3dc82b4c.jpg') }}" alt="car" class="car_img">
@@ -592,12 +592,15 @@
                             <img src="{{ asset('build/europcar-logo-vector-download-_cs@2x.png') }}" alt="europcar" class="europcar">
                         </span>
                     </div>
-                    <div class="car_btn_agence">
+                    <div class="car_btn_agence" style="border-bottom: solid 2px grey; border-radius: 20px;">
                         <span class="btn_price_agence">210€
                             <a href="{{ path('resacar_order') }}" class="reservez">Payer maintenant</a>
                         </span>
                     </div>
-                </div>
+                {% endfor %}
+            </div>
+            {{ knp_pagination_render(pagination) }}
+
         </div>
     </div>
 {% endblock %}
