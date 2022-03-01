@@ -22,26 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PromotionController extends AbstractController
 {
-    /**
-     * @Route("/index_promotion", name="index_promotion")
-     * @param PaginatorInterface $paginator
-     * @param Request $request
-     * @return Response
-     */
-    public function index(PaginatorInterface $paginator, Request $request): Response
-    {
-        $repository = $this->getDoctrine()->getRepository(Promotions::class);
 
-        $pagination = $paginator->paginate(
-            $repository->findAll(),
-            $request->query->getInt('page', 1),
-            5
-        );
-
-        return $this->render('main/promotions.html.twig', [
-            'pagination' => $pagination
-        ]);
-    }
 
     /**
      * @Route("/manage_promotion", name="manage_promotion")
