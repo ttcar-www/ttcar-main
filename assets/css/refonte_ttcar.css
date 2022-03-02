@@ -306,7 +306,7 @@ Base FOOTER
 }
 .img_backgroud {
     /* max-width: 100%; */
-    height: 1100px;
+    height: 880px;
     object-fit: cover;
     width: 100%;
     text-align: center; /* ensures the image is always in the h-middle */
@@ -474,7 +474,9 @@ Base FOOTER
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
+    display: block;
+    /* margin-top: -1px; */
+    font-size: 13px;
     color: rgba(52,95,138,1);
     text-align: center;
    
@@ -553,7 +555,7 @@ Base FOOTER
  /* carroussel */
 
 .carroussel_div {
-    margin-top: 10em;
+    margin-top: -5em;
 }
 .carroussel {
     width: 100%;
@@ -765,7 +767,10 @@ Base FOOTER
     border-radius: 55px;
     box-shadow: 0 2px 5px rgb(52 95 138);
 }
-
+.av{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .avantage_tilte {
     white-space: nowrap;
     text-align: center;
@@ -973,7 +978,7 @@ Base FOOTER
 }
 
 .blog_home {
-    margin: 25em auto;
+    margin: 140px auto;;
     width: 100%;
     height: auto;
 }
@@ -994,7 +999,7 @@ Base FOOTER
     width: 350px;
     height: 425px;
     overflow: visible;
-    margin: 0 60px;
+    margin: 0 27px;
     border-radius: 40px;
     margin-bottom: 2em;
     box-shadow: 0 2px 5px rgb(52 95 138);
@@ -1285,7 +1290,7 @@ Base FOOTER
     /* height: 60px; */
     /* width: 100%; */
     /* padding-top: 18px; */
-    margin-left: 12px;
+    margin-left: 9px;
     /* padding-left: 26px; */
     padding: 15px;
     text-align: left;
