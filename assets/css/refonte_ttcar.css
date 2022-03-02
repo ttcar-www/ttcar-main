@@ -302,23 +302,30 @@ Base FOOTER
 /*  Page 1  - index  */
 
 .img_search {
-    height: 900px;
+    height: auto;
 }
-.img_search img {
+.img_backgroud {
+    /* max-width: 100%; */
+    height: 1100px;
+    object-fit: cover;
     width: 100%;
-    height: 100%;
+    text-align: center; /* ensures the image is always in the h-middle */
+    overflow: hidden; /* hide the cropped portion */
+    /* position:relative;*/
+} 
+.img_search img {
+    width: auto;
+    height: auto;
 }
 .step_search {
-    position: absolute;
-    width: 708px;
-    height: 106px;
-    left: 390px;
-    top: 156px;
+    width: 100%;
+    top: 45px;
+    height: auto;
     overflow: visible;
+    z-index: 2;
+    position: relative;
 }
 .span_step1 {
-    left: 0;
-    top: 13px;
     position: absolute;
     overflow: visible;
     width: 40px;
@@ -337,8 +344,6 @@ Base FOOTER
     height: 40px;
 }
 .span_step2 {
-    left: 290px;
-    top: 14px;
     position: absolute;
     width: 38px;
     white-space: nowrap;
@@ -356,8 +361,6 @@ Base FOOTER
 }
 
 .span_step3 {
-    left: 550px;
-    top: 14px;
     position: absolute;
     width: 38px;
     white-space: nowrap;
@@ -375,74 +378,97 @@ Base FOOTER
 }
 .search_mark {
     position: absolute;
-    width: 891px;
-    height: 158px;
-    left: 265px;
     top: 260px;
+    width: 60%;
+    height: 158px;
+    margin-left: 16px;
     opacity: 0.841;
+    min-width: 440px;
     overflow: visible;
     border-radius: 40px;
     background-color: #436d8f;
-    display: inline-block;
+    display: block;
+    
 }
 .tilte_mark {
-    left: 36px;
+    /*left: 36px;
     top: 12px;
     margin-top: 3%;
-    position: absolute;
+    position: absolute;*/
     overflow: visible;
-    width: 111px;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     color: rgba(255,255,255,1);
+    
 }
 .tilte_mark {
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    height: 60px;
-    width: 170px;
-    padding-top: 8px;
-    padding-left: 30px;
+    /* width: 100%; */
+    /* margin-left: 12px;
+    margin-top: 45px; */
+    height: auto;
+    margin-left: 25px;
+    display: inline-block;
+    padding: 10px;
+}
+.icones {
+    width: 100%;
+    height: auto;
+    display: inline-block;
 }
 .search_data {
     border-radius: 40px;
-    background-color: rgba(52,95,138,1);
+    background-color: rgba(52,95,138,0.841);
     position: absolute;
     overflow: visible;
-    width: 891px;
-    height: 386px;
-    left: 265px;
+    width: 60%;
+    height: auto;
     top: 450px;
-    opacity: 0.841;
+    margin-left: 16px;
+    min-width: 440px;
+    /*left: 265px;
+    
+    opacity: 0.841;*/
+}
+.search_promo_banner_info {
+    left: 250px;
+    position: absolute;
+    top: 30px;
 }
 .search_promo_banner {
-    position: absolute;
-    width: 891px;
-    height: 112px;
-    left: 265px;
-    top: 872px;
+    width: 90%;
+    height: auto;
     overflow: visible;
 }
 .btn_promo_home {
-    position: absolute;
+    
     width: 238px;
-    padding: 8px;
     height: 50px;
-    left: 550px;
-    top: 1015px;
     overflow: visible;
     color: black;
     background: white;
     border-radius: 30px;
     box-shadow: 0 2px 5px rgb(52 95 138);
+    margin-top: -3%;
 }
 
 /* Promo */
 
+.promo_banner {
+    position: relative;
+    top: -180px;
+    min-height: 100px;
+}
+
+.info_promo_banner {
+    position: relative;
+    top: -270px;
+}
 
 .span_btn_promo {
     font-family: Montserrat, sans-serif;
@@ -450,17 +476,14 @@ Base FOOTER
     font-weight: bold;
     font-size: 16px;
     color: rgba(52,95,138,1);
+    text-align: center;
+   
 }
 
-.search_promo_banner_info {
-    left: 250px;
-    position: absolute;
-    top: 30px;
-}
 .promo_banner_promo {
-    width: 137px;
+    width: 100%;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -469,11 +492,8 @@ Base FOOTER
 }
 
 .promo_banner_value {
-    left: 0;
-    top: 25px;
-    position: absolute;
     overflow: visible;
-    width: 141px;
+    width: 100%;
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -483,10 +503,8 @@ Base FOOTER
 }
 
 .promo_banner_date {
-    left: 215px;
-    position: absolute;
     overflow: visible;
-    width: 95px;
+    width: 100%;
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -498,18 +516,17 @@ Base FOOTER
 
 .promo_banner_btn {
     background-color: rgba(52,95,138,1);
-    left: 225px;
-    top: 35px;
     padding: 5px;
     border-radius: 30px;
     position: absolute;
     overflow: visible;
-    width: 80px;
+    width: 50%;
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
+    display: block;
     font-size: 10px;
     color: rgba(255,255,255,1);
 }
@@ -536,12 +553,12 @@ Base FOOTER
  /* carroussel */
 
 .carroussel_div {
-    margin-top: 120px;
+    margin-top: 10em;
 }
 .carroussel {
     width: 100%;
-    height: 307px;
-    margin-bottom: 55px;
+    height: auto;
+    margin-bottom: 5em;
     border: solid 2px #f5f5f5;
     border-radius: 65px;
 }
@@ -601,13 +618,12 @@ Base FOOTER
 }
 
 .carroussel_btn_div {
-    margin-left: 400px;
     margin-bottom: 50px;
 }
 
 .carroussel_btn {
-    width: 186px;
-    height: 73px;
+    width: 100%;
+    height: auto;
     box-shadow: 0 2px 5px rgb(52 95 138);
     white-space: nowrap;
     text-align: left;
@@ -616,9 +632,8 @@ Base FOOTER
     font-weight: bold;
     font-size: 16px;
     color: rgba(247,43,55,1);
-    padding: 15px;
-    border-radius: 15px;
-    margin-right: 70px;
+    padding: 4% 20%;
+    border-radius: 12px;
 }
 
 .carroussel_btn span {
@@ -635,90 +650,92 @@ Base FOOTER
 .tt_info {
     background-color: rgba(52,95,138,1);
     width: 100%;
-    height: 600px;
+    height: auto;
     overflow: visible;
+    padding: 7% 15%;
 }
 .video_tt {
-    position: absolute;
     border-radius: 30px;
-    left: 100px;
-    top:1617px;
-    overflow: visible;
+    overflow: hidden;
+    min-width: 300px;
+    
+}
+.video_tt iframe{
+    width: 500px;
+    height: 100%;
+    
 }
 .tt_text {
-    position: absolute;
     overflow: visible;
     border-radius: 30px;
-    width: 613px;
-    height: 323px;
-    left: 780px;
-    top: 1617px;
+    width: 100%;
+    height: auto;
+    margin: 50px 0px;
+    min-width: 250px;
     background-color: rgb(79 116 153);
-    padding: 30px;
+    padding: 5%;
 }
 .tilte_tt {
-    width: 511px;
+    /* width: 90%; */
+    height: auto;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
-    margin-left: 30px;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 90%;
+    
     color: rgba(255,255,255,1);
 }
 .trait_point img{
-    width: 570px;
+    width: 100%;
 }
 .text_info {
-    left: 1055px;
-    line-height: 22px;
-    margin-top: 10px;
+    text-align: left;
+    line-height: 1.375em;
+    margin-top: 0.625em;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    width: 100%;
     color: rgba(255,255,255,1);
 }
 
 .btn_info {
     width: 585px;
     height: 109px;
-    margin-left: 450px;
     margin-top: -50px;
     border-radius: 55px;
     box-shadow: 0 2px 5px rgb(52 95 138);
     background-color: white;
-    padding: 30px;
 }
 
 .btn_info_booking {
-    position: absolute;
     overflow: visible;
     width: 185px;
     height: 58px;
-    left: 440px;
     border-radius: 30px;
-    margin-left: 97px;
-    padding: 17px;
+    padding: 5%;
     background-color: rgba(52,95,138,1);
     color: rgba(255,255,255,1);
     white-space: nowrap;
     text-align: center;
+    margin-top: 25px;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
+    display: inline-block;
     font-size: 16px;
 }
 
 .btn_info_question {
     height: 58px;
     border-radius: 30px;
+    display: inline-block;
+    margin-top: 25px;
     border: solid 2px rgba(52,95,138,1);
     background-color: rgba(255,255,255,1);
-    left: 760px;
-    padding: 15px;
-    position: absolute;
+    padding: 5%;
     overflow: visible;
     width: 155px;
     white-space: nowrap;
@@ -731,31 +748,31 @@ Base FOOTER
 }
 
 .avantage {
-    margin-top: 80px;
+    margin-top: 5%;
     height: 300px;
-    margin-left: 25px;
+    /* margin-left: 2%; */
+    
 }
 
 .avantage_carroussel {
     margin-top: 60px;
-    position: absolute;
+    padding: 3%;
+    position: relative;
     overflow: visible;
     width: 97%;
-    height: 280px;
+    height: auto;
     border: solid 2px #f5f5f5;
     border-radius: 55px;
     box-shadow: 0 2px 5px rgb(52 95 138);
 }
 
 .avantage_tilte {
-    width: 518px;
-    margin-left: 400px;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 1.625em;
     color: rgba(52,95,138,1);
     text-transform: uppercase;
 }
@@ -763,37 +780,46 @@ Base FOOTER
 .item_avantage {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 100px;
-    margin-top: 40px;
-    height: 116px;
+    /* margin-top: 40px; */
+    height: 125px;
+    text-align: center;
     border-radius: 63px;
-    padding-top: 35px;
-    padding-left: 35px;
+    padding-top: 40px;
+    /* padding: 35px; */
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
 }
 
 .avantage_text {
-    left: 103px;
-    position: absolute;
+    
+    position: relative;
     overflow: visible;
     width: 77px;
     white-space: nowrap;
     line-height: 22px;
-    margin-top: 180px;
+    /* margin-top: 180px; */
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
+    /* display: flex; */
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
     color: rgba(247,43,55,1);
 }
 .item_avantage2 {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 315px;
+   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -804,9 +830,9 @@ Base FOOTER
 .item_avantage2 {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 315px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -815,8 +841,8 @@ Base FOOTER
 }
 
 .avantage_text2 {
-    left: 325px;
-    position: absolute;
+    
+    position: relative;
     overflow: visible;
     width: 77px;
     white-space: nowrap;
@@ -833,9 +859,9 @@ Base FOOTER
 .item_avantage3 {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 535px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -844,8 +870,8 @@ Base FOOTER
 }
 
 .avantage_text3 {
-    left: 545px;
-    position: absolute;
+    
+    position: relative;
     overflow: visible;
     width: 77px;
     white-space: nowrap;
@@ -862,9 +888,9 @@ Base FOOTER
 .item_avantage4 {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 750px;
+   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -873,8 +899,8 @@ Base FOOTER
 }
 
 .avantage_text4 {
-    left: 740px;
-    position: absolute;
+    
+    position: relative;
     overflow: visible;
     width: 77px;
     white-space: nowrap;
@@ -891,9 +917,9 @@ Base FOOTER
 .item_avantage5 {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 975px;
+   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -902,8 +928,8 @@ Base FOOTER
 }
 
 .avantage_text5 {
-    left: 995px;
-    position: absolute;
+    
+    position: relative;
     overflow: visible;
     width: 77px;
     white-space: nowrap;
@@ -920,9 +946,9 @@ Base FOOTER
 .item_avantage6 {
     background-color: rgba(52,95,138,1);
     color: white;
-    position: absolute;
+    position: relative;
     width: 125px;
-    left: 1200px;
+    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -931,8 +957,8 @@ Base FOOTER
 }
 
 .avantage_text6 {
-    left: 1200px;
-    position: absolute;
+    
+    position: relative;
     overflow: visible;
     width: 77px;
     white-space: nowrap;
@@ -947,30 +973,30 @@ Base FOOTER
 }
 
 .blog_home {
-    margin-top: 130px;
-    display: inline-block;
+    margin: 25em auto;
+    width: 100%;
+    height: auto;
 }
 
 .blog_tilte {
-    margin-left: 630px;
-    width: 173px;
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 26px;
+    margin-bottom: 2em;
     color: rgba(52,95,138,1);
     text-transform: uppercase;
-    margin-bottom: 50px;
 }
 
 .blog_article {
     width: 350px;
     height: 425px;
-    margin-left: 100px;
     overflow: visible;
+    margin: 0 60px;
     border-radius: 40px;
+    margin-bottom: 2em;
     box-shadow: 0 2px 5px rgb(52 95 138);
     display: inline-block;
 }
@@ -1006,7 +1032,6 @@ Base FOOTER
 
 .blog_btn {
     margin-top: 50px;
-    margin-left: 200px;
     white-space: nowrap;
     text-align: left;
     font-family: Montserrat, sans-serif;
@@ -1024,7 +1049,6 @@ Base FOOTER
 
 .btn_blog_articles {
     margin-top: 50px;
-    margin-left: 625px;
     border-radius: 30px;
     padding: 17px;
     background-color: rgba(52,95,138,1);
@@ -1039,14 +1063,17 @@ Base FOOTER
 
 .newsletter_banner {
     width: 100%;
-    margin-top: 70px;
-    height: 143px;
+    /* margin-top: 70px; */
+    position: relative;
+    top: 20px;
+    height: 100%;
     background-color: rgba(250,250,250,1);
 }
 
 .newsletter_tilte {
-    margin-left: 430px;
-    margin-top: -70px;
+    /* margin-left: 430px;
+    margin-top: -70px; */
+    margin-top: 40px;
     width: 265px;
     white-space: nowrap;
     text-align: left;
@@ -1054,38 +1081,44 @@ Base FOOTER
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
+    display: flex;
     color: rgba(52,95,138,1);
 }
 
 .newsletter_img {
     opacity: 0.154;
-    height: 68px;
-    margin-left: 205px;
-    margin-top: 35px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 120px;
+    display: inline-block;
 }
 
 .newsletter_subtilte {
-    margin-left: 430px;
+    /* margin-left: 430px; */
     white-space: nowrap;
     text-align: left;
     font-family: Montserrat, sans-serif;
     font-size: 16px;
+    display: flex;
     color: rgba(52,95,138,1);
 }
 
 .newsletter_form {
-    margin-top: -20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 20px;
 }
 
 .newsletter_form button{
     margin-top: -120px;
+    margin-right: 20px;
 }
 
 .form_news {
-    width: 307px;
+    width: 100%;
+    min-width: 150px;
     height: 48px;
-    margin-left: 760px;
-    margin-top: -30px;
+    display: inline-block;
     background-color: rgba(242,242,242,1);
     border: none;
     border-radius: 40px;
@@ -1095,13 +1128,13 @@ Base FOOTER
 }
 
 .newsletter_btn1 {
-    margin-top: -35px;
+    margin-top: 12px;
 }
 
 .newsletter_btn {
     width: 78px;
     height: 48px;
-    margin-left: 1115px;
+    /* margin-left: 1115px; */
     border-radius: 30px;
     background-color: rgb(52 95 138);
     color: rgba(255,255,255,1);
@@ -1117,63 +1150,64 @@ Base FOOTER
     margin-top: -35px;
 }
 .search_depart {
-    position: absolute;
-    width: 824px;
-    height: 65px;
+    /*position: absolute;
     left: 50px;
-    top: 45px;
+    top: 45px;*/
+    width: 100%;;
+    height: auto;
     overflow: visible;
     text-align: left;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
+    margin-top: 3%;
     color: rgba(52,95,138,1);
 }
 
 .search_depart span {
     display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    height: 60px;
-    width: 170px;
-    padding-top: 18px;
-    padding-left: 40px;
-    text-align: left;
+    padding: 18px;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     color: rgba(255,255,255,1);
+    margin-left: 3%;
 }
 
 #form_placeDepart {
-    position: absolute;
+    /*position: absolute;
+    left: 180px;
+    top: 0;*/
     overflow: visible;
-    width: 366px;
+    width: 100%;
     height: 65px;
     padding: 15px;
-    left: 180px;
     border-radius: 30px;
-    top: 0;
 }
 
 #form_date_start {
-    position: absolute;
-    width: 266px;
-    height: 65px;
+    /*position: absolute;
     left: 558px;
-    top: 0;
+    top: 0;*/
+    width: 100%;
+    height: 65px;
     overflow: visible;
     border-radius: 30px;
 }
 
 .search_return {
-    position: absolute;
-    width: 824px;
-    height: 65px;
+    /*position: absolute;
     left: 50px;
-    top: 135px;
+    top: 135px;*/
+    width: 100%;
+    height: auto;
     overflow: visible;
     text-align: left;
     font-family: Montserrat, sans-serif;
@@ -1181,18 +1215,20 @@ Base FOOTER
     font-weight: bold;
     font-size: 16px;
     color: rgba(52,95,138,1);
-    padding: 15px;
+    margin-top: 3%;
 }
 
 .search_return span {
     display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    height: 60px;
-    width: 170px;
-    padding-top: 18px;
-    padding-left: 40px;
-    text-align: left;
+    /* height: 60px; */
+    /* width: 170px; */
+    /* padding-top: 18px; */
+    padding: 18px 28px;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1201,50 +1237,62 @@ Base FOOTER
 }
 
 #search_form_placeReturn {
-    position: absolute;
+    /*position: absolute;
+    left: 180px;
+    top: 0;*/
     width: 366px;
     height: 65px;
-    left: 180px;
     overflow: visible;
     border-radius: 30px;
-    top: 0;
 }
 
 #search_form_date_end {
-    position: absolute;
+    /*position: absolute;
+    left: 558px;
+    top: 0;*/
     width: 266px;
     height: 65px;
-    left: 558px;
-    top: 0;
     overflow: visible;
     border-radius: 30px;
 }
 
 .trait {
     width: 100%;
-    margin-top: 210px;
+}
+
+.trait img {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.enter_see_promo{
+    width: 100%;
+    height: 100px;
 }
 
 .search_promo_btn {
-    position: absolute;
-    width: 370px;
-    height: 65px;
+    /*position: absolute;
     left: 45px;
-    top: 295px;
+    top: 295px;*/
+    width: 100%;
+    height: auto;
     overflow: visible;
 }
 
 .search_promo_btn span {
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    height: 60px;
-    width: 170px;
-    padding-top: 18px;
-    padding-left: 40px;
+    /* height: 60px; */
+    /* width: 100%; */
+    /* padding-top: 18px; */
+    margin-left: 12px;
+    /* padding-left: 26px; */
+    padding: 15px;
     text-align: left;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
+    display: inline-block;
     font-size: 16px;
     color: rgba(255,255,255,1);
 }
@@ -1260,18 +1308,21 @@ Base FOOTER
 }
 
 .btn_search_send button {
-    left: 650px;
-    top: 260px;
-    position: absolute;
+/*     left: 650px;
+    top: 260px; */
+
+    /* position: relative; */
     overflow: visible;
-    width: 180px;
+    width: 90%;
+    display: block;
     height: 80px;
-    padding: 18px;
+    /* padding: 18px; */
     white-space: nowrap;
-    text-align: left;
+    text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
+    /* margin-right: 5%; */
     font-size: 20px;
     color: rgba(247,43,55,1);
     border-radius: 40px;
