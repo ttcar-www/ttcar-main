@@ -166,10 +166,10 @@ class ResaCarController extends AbstractController
 
         $response = $this->checkSation($openingHoursManager, $request->get('stationStart'), $request->get('stationEnd'), $request->get('dateStart'), $request->get('dateEnd'));
 
-        if ($response == false ) {
-            return new JsonResponse(false);
-        }else{
+        if ($response == true ) {
             $data = $this->generateUrl('resacar_search');
+        }else{
+            $data = $response;
         }
 
         return new JsonResponse($data);
@@ -177,7 +177,9 @@ class ResaCarController extends AbstractController
 
     /**
      * @Route("/resacar_search/", name="resacar_search")
-     * @param CarsManager $carsManager
+     * @param CarsByDisponibilitiesManager $carsByDisponibilityManager
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
     public function searchResult(CarsByDisponibilitiesManager $carsByDisponibilityManager, PaginatorInterface $paginator, Request $request): Response
@@ -199,7 +201,6 @@ class ResaCarController extends AbstractController
         $cars = $carsByDisponibilityManager->getResult();
 
 
-
         $pagination = $paginator->paginate(
             $cars,
             $request->query->getInt('page', 1),
@@ -216,8 +217,51 @@ class ResaCarController extends AbstractController
      * @Route("/resacar_order/", name="resacar_order")
      * @return Response
      */
-    public function orderResacar(): Response
+    public function orderResacar(OpeningHoursManager $openingHoursManager): Response
     {
+        $stationStart=  $_SESSION['resaCarStationDepart'];
+        $stationEnd = $_SESSION['resaCarStationEnd'];
+
+        $dateStart=$_SESSION['resaCarDateStart'];
+        $dateEnd=  $_SESSION['resaCarDateEnd'];
+
+        $filter = ['station_id' => $stationStart];
+
+        $openingHoursManager->setFilter($filter);
+        $openTo = $openingHoursManager->getResult();
+
+        $dateHours = explode("T", $dateStart);
+        $dateStart = $dateHours[0];
+        $hoursStart = $dateHours[1];
+
+
+        foreach ($openTo as  $openHours) {
+
+            $depart = new \DateTime($dateStart);
+
+
+            $years = substr($openHours['date_min'], 4);
+            $month = substr($openHours['date_min'], 2, 2);
+            $day = substr($openHours['date_min'], 0, 2);
+
+            $yearsMax = substr($openHours['date_max'], 4);
+            $monthMax = substr($openHours['date_max'], 2, 2);
+            $dayMax = substr($openHours['date_max'], 0, 2);
+
+            $hoursMini = $openHours['hour_min'];
+            $hoursMax = $openHours['hour_max'];
+
+            $dateToOpen = \DateTime::createFromFormat("d/m/Y", $day . "/" . $month . "/" . $years);
+            $dateToClose = \DateTime::createFromFormat("d/m/Y", $dayMax . "/" . $monthMax . "/" . $yearsMax);
+
+            if (empty($hoursMini)) {
+                $dateToOpen->setTime(00, 00, 00);
+            } else {
+                $dateToOpen->setTime(14, 55, 24);
+            }
+
+        }die();
+
 
 
         return $this->render('resacar/order.html.twig');
@@ -225,10 +269,10 @@ class ResaCarController extends AbstractController
 
     /**
      * @Route("/check_station/{stationStart}/{stationEnd}/{dateStart}/{dateEnd}", name="check_station")
-     * @return false
+     * @return array|bool
      * @throws Exception
      */
-    public function checkSation($openingHoursManager, $stationStart, $stationEnd, $dateStart, $dateEnd): bool
+    public function checkSation($openingHoursManager, $stationStart, $stationEnd, $dateStart, $dateEnd)
     {
         $filter = ['station_id' => $stationStart];
 
@@ -239,28 +283,41 @@ class ResaCarController extends AbstractController
         $dateStart = $dateHours[0];
         $hoursStart = $dateHours[1];
 
-        foreach ($openTo as  $hour) {
+        foreach ($openTo as  $openHours) {
 
 
           $depart =  new \DateTime($dateStart);
 
-            $years = substr($hour['date_min'], 4);
-            $month = substr($hour['date_min'], 2, 2);
-            $day = substr($hour['date_min'], 0, 2);
+            $years = substr($openHours['date_min'], 4);
+            $month = substr($openHours['date_min'], 2, 2);
+            $day = substr($openHours['date_min'], 0, 2);
+
+            $yearsMax = substr($openHours['date_max'], 4);
+            $monthMax = substr($openHours['date_max'], 2, 2);
+            $dayMax = substr($openHours['date_max'], 0, 2);
+
+            $hoursMini = $openHours['hour_min'];
+            $hoursMax = $openHours['hour_max'];
 
             $dateToOpen = \DateTime::createFromFormat("d/m/Y", $day."/".$month."/".$years);
+            $dateToClose = \DateTime::createFromFormat("d/m/Y", $dayMax . "/" . $monthMax . "/" . $yearsMax);
 
+            if (empty($hoursMini) or empty($hoursMax)) {
+                $dateToOpen->setTime(00, 00, 00);
+            } else {
 
-            if (isset($hour['hour_min'])) {
-              if ($depart->format('Y-m-d') < $dateToOpen->format('Y-m-d') && $hour['hour_min'] < $hoursStart) {
-                  return $response = true;
-              }
-          } else {
+                $hoursExploseMin = explode(":", $hoursMini);
+                $hoursExploseMax = explode(":", $hoursMini);
 
-              if ($depart->format('Y-m-d') < $dateToOpen->format('Y-m-d')) {
-                  return $response = true;
-              }
-          }
+                $dateToOpen->setTime($hoursExploseMin[0], $hoursExploseMin[1],00);
+                $dateToClose->setTime($hoursExploseMax[0], $hoursExploseMax[1],00);
+            }
+
+            if ($depart->format('Y-m-d') < $dateToOpen->format('Y-m-d') ) {
+                return $response = true;
+            } else {
+                return $data = ['dateToOpen' => $dateToOpen, 'dateToClose' => $dateToClose ];
+            }
 
         }
 

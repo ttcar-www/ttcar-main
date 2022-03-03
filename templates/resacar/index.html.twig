@@ -759,9 +759,11 @@
                 </div>
                 <div class="modal-body">
                     <p>La station est fermée aux horaires demandée merci de choisir une nouvelle station</p>
+                    <p id="hoursOpen"></p>
+                    <p id="hoursClose"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="CloseModal()">Fermer</button>
                 </div>
             </div>
         </div>
@@ -861,11 +863,15 @@
                     dataType:"json",
                     data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
                     success: function(data){
-                        console.log(data)
-                        if (data === false) {
-                            console.log('station fermé');
-                            $("#myModal").css("display", "block");
+                        if (data['dateToOpen'])
+                        {
+                            let d = new Date(data['dateToOpen']['date']);
+                            let c = new Date(data['dateToClose']['date']);
 
+                            $('#hoursOpen').html('Ouverture : le ' + d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' A ' + d.getHours() + ':' + d.getMinutes());
+                            $('#hoursClose').html('Fermeture : le ' + c.getDate() + '/' + c.getMonth() + '/' + c.getFullYear() + ' A ' + c.getHours() + ':' + c.getMinutes());
+
+                            $("#myModal").css("display", "block");
                         } else {
                             window.location.href = data;
                         }
@@ -873,6 +879,12 @@
                 });
 
             });
+
+
+            function CloseModal() {
+                let x = document.getElementById("sliceSupplierModal");
+                x.style.display = "none";
+            }
         </script>
     {% endblock %}
 {% endblock %}
