@@ -195,9 +195,10 @@ class ResaCarController extends AbstractController
             'veh_class' => 'T',
             'invoice_type' => 'S',
         ];
-
         $carsByDisponibilityManager->setFilter($filter);
         $cars = $carsByDisponibilityManager->getResult();
+
+
 
         $pagination = $paginator->paginate(
             $cars,
