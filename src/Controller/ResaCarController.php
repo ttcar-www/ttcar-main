@@ -184,12 +184,39 @@ class ResaCarController extends AbstractController
      */
     public function searchResult(CarsByDisponibilitiesManager $carsByDisponibilityManager, PaginatorInterface $paginator, Request $request): Response
     {
+       // $_SESSION['resaCarStationDepart']
+       // $_SESSION['resaCarStationEnd']
+      //  $_SESSION['resaCarDateStart']
+      //  $_SESSION['resaCarDateEnd']
+      //  $_SESSION['resaCarPlane']
+      //  $_SESSION['tresaCarTpe']
+
+        $dateHours = explode("T", $_SESSION['resaCarDateStart']);
+        $dateExp = explode("-", $dateHours[0]);
+        $y = $dateExp[0];
+        $d = $dateExp[2];
+        $m = $dateExp[1];
+
+        $dateHoursExp = explode(":", $dateHours[1]);
+        $h = $dateHoursExp[0];
+        $min = $dateHoursExp[1];
+
+        $returnHours = explode("T", $_SESSION['resaCarDateEnd']);
+        $returnExp = explode("-", $returnHours[0]);
+
+        $yReturn = $returnExp[0];
+        $dReturn = $returnExp[2];
+        $mReturn = $returnExp[1];
+
+        $reutrnHoursExp = explode(":", $returnHours[1]);
+        $hReturn = $reutrnHoursExp[0];
+        $minReturn = $reutrnHoursExp[1];
 
         /**
          * EXEMPLE GET VEHICULES LIST BY DISPONIBILITY
          */
         $filter = [
-            'station_id' => 'PUFE01',
+            'station_id' => $_SESSION['resaCarStationDepart'],
             'date_pickup' => '10032022',
             'heure_pickup' => '0930',
             'date_return' => '21032022',
@@ -197,6 +224,8 @@ class ResaCarController extends AbstractController
             'veh_class' => 'T',
             'invoice_type' => 'S',
         ];
+
+
         $carsByDisponibilityManager->setFilter($filter);
         $cars = $carsByDisponibilityManager->getResult();
 
