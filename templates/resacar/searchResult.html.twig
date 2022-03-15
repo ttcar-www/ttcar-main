@@ -502,16 +502,12 @@
         <div class="div_result_search">
             <div class="search_depart_result">
                 <span>Livraison</span>
-                <input type="date" id="start" name="trip-start"
-                       value="2018-07-22"
-                       min="2023-01-01" max="2022-12-31">
+                <input type="date" id="start" name="trip-start">
             </div>
 
             <div class="search_return_result">
                 <span>Retour</span>
-                <input type="date" id="start" name="trip-start"
-                       value="2018-07-22"
-                       min="2023-01-01" max="2022-12-31">
+                <input type="date" id="start" name="trip-start">
             </div>
 
             <span class="trait_result"></span>
@@ -558,7 +554,7 @@
                 {% for key, car in pagination %}
                 <div class="car_container">
                         <span class="dispo">{{ car.veh_type }}</span>
-                        <div class="car_tilte">{{ car.veh_text }}</div>
+                       {# <div class="car_tilte"> {{ car.veh_text }} </div>#}
                         <div class="car_desc">
                             Le design intérieur gagne en attractivité. Dacia Sandero inaugure une nouvelle planche de bord carbone
                             foncé ou bi-ton (selon versions) à l’instrumentation complète et au traité moderne avec des contours
@@ -585,15 +581,15 @@
                             </span>
                         </div>
                     </div>
-                    <img src="{{ asset('build/uploads/peugeot-308-berline-big-616ec3dc82b4c.jpg') }}" alt="car" class="car_img">
+                    <img src="{{ car.veh_img }}" alt="car" class="car_img">
                     <div class="car_btn">
-                        <span class="btn_price">210€
+                        <span class="btn_price">{{ car.agence_price }}€
                             <a href="#" class="reservez" style="background-color: rgba(178,178,178,1)">Payer en agence</a>
                             <img src="{{ asset('build/europcar-logo-vector-download-_cs@2x.png') }}" alt="europcar" class="europcar">
                         </span>
                     </div>
                     <div class="car_btn_agence" style="border-bottom: solid 2px grey; border-radius: 20px;">
-                        <span class="btn_price_agence">210€
+                        <span class="btn_price_agence">{{ car.fare_price }}€
                             <a href="{{ path('resacar_order') }}" class="reservez">Payer maintenant</a>
                         </span>
                     </div>

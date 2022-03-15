@@ -754,7 +754,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Station fermée</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" onclick="CloseModal()">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -773,85 +773,54 @@
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script>
 
-            $( function() {
-                function split( val ) {
-                    return val.split( /,\s*/ );
-                }
-                function extractLast( term ) {
-                    return split( term ).pop();
-                }
+            $( "#stations" ).click(function() {
+                let stationArray = [];
+                $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
+                    $.each(json, function( index, station ) {
+                        stationArray.push(station['station_name'])
+                    });
+                })
+
                 $( "#stations" ).autocomplete({
-                    delay: 0,
-                    source: function( request, response ) {
-                        $.getJSON( "{{ path('resacar_find_stations') }}", {
-                            term: extractLast( request.term )
-                        }, response );
+                    source: stationArray
+                });
+            });
 
-                        console.log(extractLast( request.term ))
+            $( "#stations-return" ).click(function() {
+                let stationArray = [];
+                $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
+                    $.each(json, function( index, station ) {
+                        stationArray.push(station['station_name'])
+                    });
+                })
 
-                    },
-                    minLength: 2,
-                    focus: function( event, ui ) {
-                        $( "#stations" ).val( ui.item.station_name );
-                        return false;
-                    },
-                    select: function (event, ui) {
-                        $( "#stations" ).val( ui.item.station_name );
-                        $( "#stations_id" ).val( ui.item.station_id );
-                        return false;
-                    }
-                }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-
-         /*           console.log(item)
-                    console.log($( "#stations" ).val())*/
-
-                    return $( "<li>" )
-                        .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
-                        .appendTo( ul );
-                };
-            } );
-
-            $( function() {
-                function split( val ) {
-                    return val.split( /,\s*/ );
-                }
-                function extractLast( term ) {
-                    return split( term ).pop();
-                }
                 $( "#stations-return" ).autocomplete({
-                    delay: 0,
-                    source: function( request, response ) {
-                        $.getJSON( "{{ path('resacar_find_stations') }}", {
-                            term: extractLast( request.term ),
-                            voiture: 'test'
-                        }, response );
-                    },
-                    minLength: 0,
-                    focus: function( event, ui ) {
-                        $( "#stations-return" ).val( ui.item.station_name );
-                        return false;
-                    },
-                    select: function (event, ui) {
-                        $( "#stations-return" ).val( ui.item.station_name );
-                        $( "#stations_id-return" ).val( ui.item.station_id );
-                        return false;
-                    }
-                }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-
-                    /*           console.log(item)
-                               console.log($( "#stations" ).val())*/
-
-                    return $( "<li>" )
-                        .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
-                        .appendTo( ul );
-                };
-            } );
+                    source: stationArray
+                });
+            });
 
             $( "#searchFromResa" ).submit(function( event ) {
                 event.preventDefault();
 
-                let stationStart = $( "#stations_id" ).val();
-                let stationEnd = $( "#stations_id-return" ).val();
+                let stationStart = [];
+                let stationEnd = [];
+
+                let stationDepartName = $( "#stations" ).val();
+                let stationReturnName = $( "#stations-return" ).val();
+
+                $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
+                    $.each(json, function( index, station ) {
+                        if (station['station_name'] === stationDepartName)
+                        {
+                            stationStart.push(station)
+                        }
+                        if (station['station_name'] === stationReturnName)
+                        {
+                            stationEnd.push(station)
+                        }
+                    });
+                    });
+
                 let dateStart = $( "#startDate" ).val();
                 let dateEnd = $( "#endDate" ).val();
                 let numberPlane = $( "#numberPlane" ).val();
@@ -873,7 +842,8 @@
 
                             $("#myModal").css("display", "block");
                         } else {
-                            window.location.href = data;
+                            $('#hoursOpen').html('Ouvert');
+                            $("#myModal").css("display", "block");
                         }
                     }
                 });
@@ -882,8 +852,8 @@
 
 
             function CloseModal() {
-                let x = document.getElementById("sliceSupplierModal");
-                x.style.display = "none";
+                console.log('close me')
+                $("#myModal").css("display", "none");
             }
         </script>
     {% endblock %}
