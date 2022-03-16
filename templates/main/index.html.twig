@@ -87,7 +87,21 @@
         /* min-width: 60px; */
         height: auto;
     }
-
+    .search_data_index {
+        /*position: absolute;
+        left: 50px;
+        top: 45px;*/
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        text-align: left;
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 3%;
+        color: rgba(52,95,138,1);
+    }
     #form_placeDepart {
         /*position: absolute;
         left: 180px;
@@ -160,6 +174,15 @@
         outline: none;
         cursor: pointer;
     }
+
+    .newsletter_banner_index {
+        width: 100%;
+        /* margin-top: 70px; */
+        position: relative;
+        top: 20px;
+        height: 100%;
+        background-color: rgba(250,250,250,1);
+    }
     .owl-carousel .owl-items {
         min-width: 300px;
     }
@@ -167,6 +190,7 @@
     hr.dashed {
         border-top: 3px dashed #fff;
     }
+    
 
     /* Media Queries */
     /* Desktop */
@@ -414,7 +438,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <div class="search_data">
+            <div class="search_data_index">
                 <div class="search_depart">
                     <div class="row align-items-center d-flex justify-content-center text-center">
                         <div class="col-md-3 col-lg-2 search_col-12">
@@ -678,7 +702,7 @@
         </div>
     </div>
     
-    <div class="newsletter_banner">
+    <div class="newsletter_banner_index">
         <div class="row text-center">
             <div class="col-4 col-md-1 col-sm-2">
                 <img src="{{ asset('build/Groupe_281.png') }}" alt="newsletter" class="newsletter_img"/>
