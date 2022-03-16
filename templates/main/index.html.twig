@@ -19,7 +19,6 @@
         /*position: absolute;
         left: 240px;
         top: 70px;*/
-        
     }
     .box_form_mark {
         display: flex;
@@ -37,7 +36,7 @@
         width: 115px;
         height: auto;
     /* max-width: 111px; */
-    /* min-width: 60px;
+    /* min-width: 60px;*/
     }
     #form_mark_2 {
         /*position: absolute;
@@ -68,9 +67,7 @@
         left: 450px;
         top: -10px;*/
         width: 115px;
-        
         height: auto;
-        
     }
 
     #form_mark_4 {
@@ -102,7 +99,6 @@
         border-radius: 30px;
         margin-top: 5px;
         margin-bottom: 5px;
-        
     }
 
     #form_date_start {
@@ -173,7 +169,7 @@
     }
 
     /* Media Queries */
-
+    /* Desktop */
     @media (max-width : 1230.98px) {
         .tilte_mark {
             font-size: 11px;
@@ -211,14 +207,13 @@
 
 
     @media screen and (max-width : 992.98px) {
-
         .blog_home {
             margin: 980px auto 100px;
-
         }
         
     }
 
+    /* Tablette */
     @media screen and (max-width : 767.98px) {
         .logo_peugeot {
             width: 73px;
@@ -289,6 +284,7 @@
 
     }
 
+    /* Smartphone */
     @media screen and (max-width : 576.98px) {
 
         .search_col-12 {
@@ -331,7 +327,7 @@
         .footer_v1 {
         width: 100vh;
         }
-        html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
+        html,body{ /* Removes the white spaces on the sides in smartphone format */
             width:100vh;
             overflow-x:hidden;
         }
@@ -342,13 +338,10 @@
 
 </style>
 <div>
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <div class="search_bar_V1">
         <div class="d-flex justify-content-center">
-            
-
             <div class="step_search">
                 <div class="row align-items-center d-flex justify-content-around text-center">
                     <div class="col-4">
@@ -365,14 +358,10 @@
             </div>
         </div>
     
-        <img src="{{ asset('build/search_imgZoom.png') }}" class="img_backgroud" alt="sliderImg" />
-        
-        
-        
+        <img src="{{ asset('build/search_imgZoom.png') }}" class="img_backgroud" alt="sliderImg" />      
 
         {{ form_start(formSearch) }}
         <div class="row d-flex justify-content-center">
-            
             <div class="search_mark">
                 <div class="row align-items-center d-flex justify-content-center text-center">
                     <div class="col-md-2 col-sm-2 col-2">
@@ -395,40 +384,31 @@
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                
-                                    <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
-                                    {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'}  })  }}
-                                
+                                        <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
+                                        {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'}  })  }}
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                
-                                    <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
-                                    {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
-                                
+                                        <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
+                                        {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                
-                                    <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
-                                    {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
-                                
+                                        <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
+                                        {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                
-                                    <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
-                                    {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
-                                
+                                        <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
+                                        {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>  
             </div>    
         </div>
@@ -467,69 +447,65 @@
                 </div>
                 <div class="enter_see_promo">
                     <div class="row align-items-center">
-                        
-                            <div class="col-8">
-                                <div class="search_promo_btn">
-                                    <div class="row align-items-center justify-content-start">
-                                        <div class="col-5">
-                                            <span>Code spécial</span>
-                                        </div>
-                                        <div class="col">
-                                            {{ form_row(formSearch.promo) }}
-                                        </div>
+                        <div class="col-8">
+                            <div class="search_promo_btn">
+                                <div class="row align-items-center justify-content-start">
+                                    <div class="col-5">
+                                        <span>Code spécial</span>
+                                    </div>
+                                    <div class="col">
+                                        {{ form_row(formSearch.promo) }}
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         
-                            <div class="col-4">
-                                <div class="btn_search_send">
-                                    <button id="searchBtn">Voir nos tarifs   ></button>
-                                </div>
+                        <div class="col-4">
+                            <div class="btn_search_send">
+                                <button id="searchBtn">Voir nos tarifs   ></button>
                             </div>
+                        </div>
                     </div>
-            
                 </div>
             </div>
         </div>
         
-    <div class="d-flex justify-content-center">
-        <div class="btn_promo_home">
-            <div class="col align-self-center">
-            <span class="span_btn_promo">Découvrez nos promotions</span>
-            <svg class="path_46" viewBox="0 0 19.324 8.338">
-                <path id="trac_46" d="M 0 0 L 10.33853340148926 8.338281631469727 L 19.32394599914551 0">
-                </path>
-            </svg>
+        <div class="d-flex justify-content-center">
+            <div class="btn_promo_home">
+                <div class="col align-self-center">
+                <span class="span_btn_promo">Découvrez nos promotions</span>
+                <svg class="path_46" viewBox="0 0 19.324 8.338">
+                    <path id="trac_46" d="M 0 0 L 10.33853340148926 8.338281631469727 L 19.32394599914551 0">
+                    </path>
+                </svg>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="d-flex justify-content-center">
-            
+        <div class="d-flex justify-content-center">
             {{ form_end(formSearch) }}
             <img class="img-fluid promo_banner" src="{{ asset('build/quick-banner.png') }}" alt="sliderImg" />
-    </div>
+        </div>
 
-    <div class="d-flex justify-content-center">
-            
+        <div class="d-flex justify-content-center">
             <div class="info_promo_banner">
-                    <div class="row">
-                        <div class="col">
-                            <span class="promo_banner_promo">Offre Promo !</span>
-                            <span class="promo_banner_value"><b>20 %</b> lorem ipsum dolor <br> Lorem ipsum dolor</span>
-                        </div>
-                        <div class="col">
-                            <span class="promo_banner_date"> Offre valable du <br><b>20/12/21</b> au <b>20/01/22</b></span>
-                            <span class="promo_banner_btn">Je participe</span>
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        <span class="promo_banner_promo">Offre Promo !</span>
+                        <span class="promo_banner_value"><b>20 %</b> lorem ipsum dolor <br> Lorem ipsum dolor</span>
                     </div>
+                    <div class="col">
+                        <span class="promo_banner_date"> Offre valable du <br><b>20/12/21</b> au <b>20/01/22</b></span>
+                        <span class="promo_banner_btn">Je participe</span>
+                    </div>
+                </div>
             </div>
-    </div>
+        </div>
     
    
     
    
-    <div class="carroussel_div">
+        <div class="carroussel_div">
         
             <div class="carroussel_btn_div">
                 <div class="row justify-content-evenly">
@@ -552,33 +528,33 @@
                 <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
                     {% for car in cars_promo %}
                         <div class="carroussel_cars">
-                        <div class="row">
-                            <div class="b-featured__item wow rotateIn">
-                                <div class="col-12">
-                                <a href="{{ path('detail_car', { 'id': car.id }) }}">
-                                    <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
-                                    {#                            <span class="m-premium">Premium</span>#}
-                                </a>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row align-items-center d-flex justify-content-center">
-                                        <div class="col-6">
-                                            <div class="carroussel_promo_span"> PROMO !</div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="carroussel_info">
-                                                <div class="carroussel_name">
-                                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
-                                                </div>
-                                                <div class="carroussel_subtilte">
-                                                    {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                            <div class="row">
+                                <div class="b-featured__item wow rotateIn">
+                                    <div class="col-12">
+                                        <a href="{{ path('detail_car', { 'id': car.id }) }}">
+                                            <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
+                                            {#                            <span class="m-premium">Premium</span>#}
+                                        </a>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row align-items-center d-flex justify-content-center">
+                                            <div class="col-6">
+                                                <div class="carroussel_promo_span"> PROMO !</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="carroussel_info">
+                                                    <div class="carroussel_name">
+                                                        <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
+                                                    </div>
+                                                    <div class="carroussel_subtilte">
+                                                        {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -590,13 +566,11 @@
     
         <div class="row align-items-center d-flex justify-content-center text-center">
             <div class="col">
-                
-                    <div class="video_tt">
-                        <div class="embed-responsive embed-responsive-16by9" >
-                            <iframe src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
+                <div class="video_tt">
+                    <div class="embed-responsive embed-responsive-16by9" >
+                        <iframe src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                
+                </div>
             </div>
             <div class="col">
                 <div class="tt_text">

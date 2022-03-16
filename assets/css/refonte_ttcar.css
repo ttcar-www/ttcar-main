@@ -11,7 +11,6 @@ Base HEADER
     position: relative;
     width: 106px;
     height: 67px;
-    
     top: 0px;
     overflow: visible;
 }
@@ -134,22 +133,18 @@ Base HEADER
 Base FOOTER
 */
 .footer_v1 {
-    
     background-color: rgb(230 230 230);
     position: absolute;
     overflow: visible;
     width: 100%;
-    
     left: 0;
 }
 
 .media_footer {
     padding: 35px;
     border: solid 3px white;
-    
     border-radius: 20%;
     fill: transparent;
-    
     stroke: rgba(255,255,255,1);
     width: 198px;
     height: 136px;
@@ -190,7 +185,6 @@ Base FOOTER
 
 .footer_nav {
     /* position: absolute;
-    
     width: 631px;
     height: 28px;
     left: 480px;
@@ -201,7 +195,6 @@ Base FOOTER
 }
 
 .span_footer_red {
-    
     overflow: visible;
     width: 128px;
     white-space: nowrap;
@@ -215,7 +208,6 @@ Base FOOTER
 .span_footer_number {
     left: 177px;
     top: 4px;
-    
     overflow: visible;
     width: 148px;
     white-space: nowrap;
@@ -229,10 +221,9 @@ Base FOOTER
 
 .span_footer_mail {
     border-radius: 30px;
-    background-color: rgb(52 95 138);;
+    background-color: rgb(52 95 138);
     left: 330px;
     top: 0;
-    
     overflow: visible;
     width: 70px;
     white-space: nowrap;
@@ -286,7 +277,6 @@ Base FOOTER
 }
 
 .footer_newsletter {
-    
     overflow: visible;
     width: 280px;
     height: 136px;
@@ -307,7 +297,6 @@ Base FOOTER
     font-size: 16px;
     color: rgba(52,95,138,1);
 }
-
 
 /*  Page 1  - index  */
 .search_bar_V1 {
@@ -333,7 +322,6 @@ Base FOOTER
 }
 .step_search {
     width: 100%;
-    
     top: 80px;
     height: auto;
     overflow: visible;
@@ -395,14 +383,12 @@ Base FOOTER
     top: -720px;
     width: 60%;
     height: 158px;
-    
     opacity: 0.841;
     min-width: 650px;
     overflow: visible;
     border-radius: 40px;
     background-color: #436d8f;
     display: block;
-    
 }
 .tilte_mark {
     /*left: 36px;
@@ -443,10 +429,8 @@ Base FOOTER
     width: 60%;
     height: auto;
     top: -700px;
-    
     min-width: 650px;
     /*left: 265px;
-    
     opacity: 0.841;*/
 }
 .search_promo_banner_info {
@@ -494,7 +478,6 @@ Base FOOTER
     font-size: 13px;
     color: rgba(52,95,138,1);
     text-align: center;
-   
 }
 
 .promo_banner_promo {
@@ -570,7 +553,7 @@ Base FOOTER
  /* carroussel */
 
 .carroussel_div {
-    margin-top: -42em;;
+    margin-top: -42em;
 }
 .carroussel {
     width: 100%;
@@ -586,7 +569,6 @@ Base FOOTER
     border-radius: 30px;
     left: 80px;
     top: 200px;
-    
     overflow: visible;
     width: 101px;
     white-space: nowrap;
@@ -602,7 +584,6 @@ Base FOOTER
 }
 
 .carroussel_info {
-    
     margin-top: 20px;
     width: 100%;
     margin-left: 40px;
@@ -702,7 +683,6 @@ Base FOOTER
     font-style: normal;
     font-weight: bold;
     font-size: 90%;
-    
     color: rgba(255,255,255,1);
 }
 .trait_point img{
@@ -769,7 +749,6 @@ Base FOOTER
     margin-top: 5%;
     height: 300px;
     /* margin-left: 2%; */
-    
 }
 
 .avantage_carroussel {
@@ -817,7 +796,6 @@ Base FOOTER
 }
 
 .avantage_text {
-    
     position: relative;
     overflow: visible;
     width: 77px;
@@ -840,7 +818,6 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -853,7 +830,6 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -862,7 +838,6 @@ Base FOOTER
 }
 
 .avantage_text2 {
-    
     position: relative;
     overflow: visible;
     width: 77px;
@@ -882,7 +857,6 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -891,7 +865,6 @@ Base FOOTER
 }
 
 .avantage_text3 {
-    
     position: relative;
     overflow: visible;
     width: 77px;
@@ -911,7 +884,6 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -920,7 +892,6 @@ Base FOOTER
 }
 
 .avantage_text4 {
-    
     position: relative;
     overflow: visible;
     width: 77px;
@@ -940,7 +911,6 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-   
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -949,7 +919,6 @@ Base FOOTER
 }
 
 .avantage_text5 {
-    
     position: relative;
     overflow: visible;
     width: 77px;
@@ -969,7 +938,6 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-    
     margin-top: 40px;
     height: 116px;
     border-radius: 63px;
@@ -978,7 +946,6 @@ Base FOOTER
 }
 
 .avantage_text6 {
-    
     position: relative;
     overflow: visible;
     width: 77px;
@@ -994,7 +961,7 @@ Base FOOTER
 }
 
 .blog_home {
-    margin: 140px auto;;
+    margin: 140px auto;
     width: 100%;
     height: auto;
 }
@@ -1174,7 +1141,7 @@ Base FOOTER
     /*position: absolute;
     left: 50px;
     top: 45px;*/
-    width: 100%;;
+    width: 100%;
     height: auto;
     overflow: visible;
     text-align: left;
@@ -1329,9 +1296,8 @@ Base FOOTER
 }
 
 .btn_search_send button {
-/*     left: 650px;
+    /*left: 650px;
     top: 260px; */
-
     /* position: relative; */
     overflow: visible;
     width: 90%;
@@ -1588,7 +1554,8 @@ Base FOOTER
 
 
 /* Media Queries */
-@media screen and (max-width : 1230.98px) {
+/* Desktop */
+@media screen and (max-width : 1230.98px) { 
     .sub_nav li {
         margin-left: 20px;
     }
@@ -1598,7 +1565,6 @@ Base FOOTER
     #nav_1 a {
         margin-right: 6px;
     }
-
 }
 @media screen and (max-width : 890.98px) {
     #nav_1 {
@@ -1624,6 +1590,7 @@ Base FOOTER
 
 }
 
+/*Tablette*/
 @media screen and (max-width : 767.98px) {
     .show_nav {
         display: flex;
@@ -1658,6 +1625,8 @@ Base FOOTER
         padding-bottom: 30px;
     }
 }
+
+/*Smartphone*/
 @media screen and (max-width : 576.98px) {
     .footer_v1 {
         width: 100vh;
