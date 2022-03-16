@@ -8,23 +8,23 @@ Base HEADER
     top: 0;
 }
 #tt-group {
-    position: absolute;
+    position: relative;
     width: 106px;
     height: 67px;
-    left: 70px;
-    top: 5px;
+    
+    top: 0px;
     overflow: visible;
 }
 #nav_1 {
-    margin-left: 370px;;
-    top: 28px;
-    position: absolute;
+    top: -38px;
+    position: relative;
     overflow: visible;
     text-align: left;
     font-family: Montserrat,sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
+    margin-left: -111px;
 }
 #nav_1 a{
     color: rgba(255,255,255,1);
@@ -39,10 +39,10 @@ Base HEADER
 }
 
 #nav_2 {
-    left: 995px;
-    top: 28px;
-    position: absolute;
+    top: -93px;
+    position: relative;
     overflow: visible;
+    margin-right: 25px;
     text-align: left;
     font-family: Montserrat,sans-serif;
     font-style: normal;
@@ -112,7 +112,7 @@ Base HEADER
 }
 
 .sub_nav ul {
-    margin-left: 285px;
+    margin-left: 160px;
     top: 5px;
 }
 
@@ -123,27 +123,33 @@ Base HEADER
     font-size: 16px;
     color: rgba(52,95,138,1);
 }
+.show_nav {
+    display: none;
+}
+.navbar {
+    margin: 0 !important;
+}
 
 /*
 Base FOOTER
 */
 .footer_v1 {
-    margin-top: 20px ;
+    
     background-color: rgb(230 230 230);
     position: absolute;
     overflow: visible;
     width: 100%;
-    height: 232px;
+    
     left: 0;
 }
 
 .media_footer {
     padding: 35px;
     border: solid 3px white;
-    margin-top: 50px;
+    
     border-radius: 20%;
     fill: transparent;
-    margin-left: 105px;
+    
     stroke: rgba(255,255,255,1);
     width: 198px;
     height: 136px;
@@ -178,26 +184,27 @@ Base FOOTER
 }
 
 .container_footer {
-    margin-left: 100px;
+    margin-left: 0px;
+    margin-top: 50px;
 }
 
 .footer_nav {
-    position: absolute;
-    display:inline-block;
+    /* position: absolute;
+    
     width: 631px;
     height: 28px;
     left: 480px;
-    top: 70px;
+    top: 70px; */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display:block;
 }
 
 .span_footer_red {
-    left: 0;
-    top: 4px;
-    position: absolute;
+    
     overflow: visible;
     width: 128px;
     white-space: nowrap;
-    text-align: left;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -208,7 +215,7 @@ Base FOOTER
 .span_footer_number {
     left: 177px;
     top: 4px;
-    position: absolute;
+    
     overflow: visible;
     width: 148px;
     white-space: nowrap;
@@ -225,7 +232,7 @@ Base FOOTER
     background-color: rgb(52 95 138);;
     left: 330px;
     top: 0;
-    position: absolute;
+    
     overflow: visible;
     width: 70px;
     white-space: nowrap;
@@ -243,7 +250,7 @@ Base FOOTER
     background-color: rgb(52 95 138);
     left: 460px;
     padding: 5px;
-    position: absolute;
+    
     text-align: center;
     overflow: visible;
     width: 110px;
@@ -256,11 +263,14 @@ Base FOOTER
 }
 
 .footer_nav2 {
-    position: absolute;
+/*     position: absolute;
     width: 679px;
     height: 17px;
     left: 440px;
-    top: 130px;
+    top: 130px; */
+    display: block;
+    margin-bottom: 50px;
+    margin-top: 25px;
 }
 
 .span_footer_subnav {
@@ -276,7 +286,7 @@ Base FOOTER
 }
 
 .footer_newsletter {
-    position: absolute;
+    
     overflow: visible;
     width: 280px;
     height: 136px;
@@ -300,7 +310,11 @@ Base FOOTER
 
 
 /*  Page 1  - index  */
-
+.search_bar_V1 {
+    width: 100%;
+    height: 100%;
+    margin-top: -31px;
+}
 .img_search {
     height: auto;
 }
@@ -319,14 +333,15 @@ Base FOOTER
 }
 .step_search {
     width: 100%;
-    top: 45px;
+    
+    top: 80px;
     height: auto;
     overflow: visible;
     z-index: 2;
     position: relative;
 }
 .span_step1 {
-    position: absolute;
+    position: relative;
     overflow: visible;
     width: 40px;
     white-space: nowrap;
@@ -339,12 +354,11 @@ Base FOOTER
     color: rgba(255,255,255,1);
     border-radius: 30px;
     background-color: rgb(97 130 164);
-    padding-left: 15px;
-    padding-top: 5px;
     height: 40px;
+    padding: 7px 14px;
 }
 .span_step2 {
-    position: absolute;
+    position: relative;
     width: 38px;
     white-space: nowrap;
     height: 37px;
@@ -357,11 +371,11 @@ Base FOOTER
     border: solid 2px rgba(52,95,138,1);
     border-radius: 30px;
     background-color: rgba(255,255,255,1);
-    padding-left: 2px;
+    padding: 7px 14px;
 }
 
 .span_step3 {
-    position: absolute;
+    position: relative;
     width: 38px;
     white-space: nowrap;
     height: 37px;
@@ -374,16 +388,16 @@ Base FOOTER
     border: solid 2px rgba(52,95,138,1);
     border-radius: 30px;
     background-color: rgba(255,255,255,1);
-    padding-left: 2px;
+    padding: 7px 14px;
 }
 .search_mark {
-    position: absolute;
-    top: 260px;
+    position: relative;
+    top: -720px;
     width: 60%;
     height: 158px;
-    margin-left: 16px;
+    
     opacity: 0.841;
-    min-width: 440px;
+    min-width: 650px;
     overflow: visible;
     border-radius: 40px;
     background-color: #436d8f;
@@ -424,13 +438,13 @@ Base FOOTER
 .search_data {
     border-radius: 40px;
     background-color: rgba(52,95,138,0.841);
-    position: absolute;
+    position: relative;
     overflow: visible;
     width: 60%;
     height: auto;
-    top: 450px;
-    margin-left: 16px;
-    min-width: 440px;
+    top: -700px;
+    
+    min-width: 650px;
     /*left: 265px;
     
     opacity: 0.841;*/
@@ -446,7 +460,8 @@ Base FOOTER
     overflow: visible;
 }
 .btn_promo_home {
-    
+    position: relative;
+    top: -500px;
     width: 238px;
     height: 50px;
     overflow: visible;
@@ -461,13 +476,13 @@ Base FOOTER
 
 .promo_banner {
     position: relative;
-    top: -180px;
+    top: -690px;
     min-height: 100px;
 }
 
 .info_promo_banner {
     position: relative;
-    top: -270px;
+    top: -780px;
 }
 
 .span_btn_promo {
@@ -555,7 +570,7 @@ Base FOOTER
  /* carroussel */
 
 .carroussel_div {
-    margin-top: -5em;
+    margin-top: -42em;;
 }
 .carroussel {
     width: 100%;
@@ -571,12 +586,12 @@ Base FOOTER
     border-radius: 30px;
     left: 80px;
     top: 200px;
-    position: absolute;
+    
     overflow: visible;
     width: 101px;
     white-space: nowrap;
-    line-height: 22px;
-    margin-top: -4px;
+    line-height: 35px;
+    margin-left: 20px;
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
@@ -587,9 +602,10 @@ Base FOOTER
 }
 
 .carroussel_info {
-    margin-left: 114px;
+    
     margin-top: 20px;
     width: 100%;
+    margin-left: 40px;
 }
 
 .owl-wrapper-outer {
@@ -1176,7 +1192,7 @@ Base FOOTER
     margin-bottom: 5px;
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    padding: 18px;
+    padding: 18px 12px;
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
@@ -1232,7 +1248,7 @@ Base FOOTER
     /* height: 60px; */
     /* width: 170px; */
     /* padding-top: 18px; */
-    padding: 18px 28px;
+    padding: 18px 23px;
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
@@ -1565,3 +1581,90 @@ Base FOOTER
     margin-left: 740px;
     margin-top: -125px;
 }
+.row {
+    margin: 0 !important;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width : 1230.98px) {
+    .sub_nav li {
+        margin-left: 20px;
+    }
+    .sub_nav ul {
+        margin-left: 0px;
+    }
+    #nav_1 a {
+        margin-right: 6px;
+    }
+
+}
+@media screen and (max-width : 890.98px) {
+    #nav_1 {
+        font-size: 13px;
+        margin-left: -175px;
+    }
+    #nav_2 { 
+        font-size: 13px;
+    }
+    #nav_2 li {
+        padding: 9px;
+    }
+    
+    #nav_1 a {
+        margin-right: 6px;
+    }
+    .polygon_1 {
+        margin-top: 18px;
+    }
+    .sub_nav ul {
+        margin-left: 74px;
+    }
+
+}
+
+@media screen and (max-width : 767.98px) {
+    .show_nav {
+        display: flex;
+    }
+    .Rectangle_1 {
+        display: none;
+    }
+    .sub_nav {
+        display: none;
+    }
+    #tt-group {
+        position: relative;
+        width: 106px;
+        height: 67px;
+        
+        top: -23px;
+        overflow: visible;
+    }
+    #nav_btn{
+        border-radius: 30px;
+        background-color: rgb(97 130 164);
+        text-align: center;
+        margin-top: 5px;
+        color: rgba(255,255,255,1);
+        margin-bottom: 5px;
+        margin-left: 13px;
+    }
+
+}
+@media screen and (max-width : 768.98px) {
+    .span_footer_red {
+        padding-bottom: 30px;
+    }
+}
+@media screen and (max-width : 576.98px) {
+    .footer_v1 {
+        width: 100vh;
+        }
+        html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
+            width:100vh;
+            overflow-x:hidden;
+        }
+}
+

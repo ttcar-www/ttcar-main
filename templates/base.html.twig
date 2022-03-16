@@ -36,21 +36,26 @@
         </style>
     </head>
     <body>
-    <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">
+
+
+     <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">  
         <a href="{{ path('preHome') }}">
             <img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" />
         </a>
-        <nav id="nav_1">
-            <ul>
-                <li><a href="{{ path('main') }}">Transit Temporaire</a></li>
-                <li><a href="{{ path('resacar') }}">Location</a></li>
-                <li><a href="{{ path('douane') }}">Douane Export</a></li>
-            </ul>
-            <svg class="polygon_1" viewBox="0 0 26 11">
-                <path id="polygon_1" d="M 12.99999904632568 0 L 26 11 L 0 11 Z">
-                </path>
-            </svg>
-        </nav>
+        <div class="row d-flex justify-content-center">
+            <nav id="nav_1">
+                <ul>
+                    <li><a href="{{ path('main') }}">Transit Temporaire</a></li>
+                    <li><a href="{{ path('resacar') }}">Location</a></li>
+                    <li><a href="{{ path('douane') }}">Douane Export</a></li>
+                </ul>
+                <svg class="polygon_1" viewBox="0 0 26 11">
+                    <path id="polygon_1" d="M 12.99999904632568 0 L 26 11 L 0 11 Z">
+                    </path>
+                </svg>
+            </nav>
+        </div>
+        <div class="row d-flex justify-content-end">
         <nav id="nav_2">
             <ul>
                 {% if app.user %}
@@ -60,54 +65,118 @@
                 {% endif %}
                 <li id="nav_btn"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
                 {% if app.request.locale == 'fr' %}
-                    <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                    {# <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li> #}
                     <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
                     {% else %}
-                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}">FR</a></li>
-                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
+                        <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                        {# <li id="nav_btn"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li> #}
                 {% endif %}
             </ul>
         </nav>
-    </header><!--b-topBar-->
-    <div class="sub_nav">
-        <span class="span_header">Un véhicule en TT pour <br>votre séjour en Europe</span>
-        <nav id="sub_nav">
-            <ul>
-                <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
-                <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
-                <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
-                <li><a href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
-                <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
-            </ul>
+        </div>
 
-        </nav>
+
+
+    </header><!--b-topBar-->
+    
+    <div class="sub_nav">
+        <div class="row d-flex justify-content-center">
+            <span class="span_header">Un véhicule en TT pour <br>votre séjour en Europe</span>
+            <nav id="sub_nav">
+                <ul>
+                    <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
+                    <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
+                    <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
+                    <li><a href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
+                    <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
+                </ul>
+
+            </nav>
+        </div>
     </div>
 
+<nav class="show_nav container-fluid navbar navbar-light navbar-expand-md" style="background-color: rgba(52,95,138,1);">
+  <a class="navbar-brand" href="{{ path('preHome') }}"><img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" /></a>
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a id="nav_btn" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Transit Temporaire
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:13px;">
+          <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a>
+          <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a>
+          <a class="dropdown-item d-flex justify-content-center" href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a>
+          <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a>
+          <a class="dropdown-item d-flex justify-content-center" href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a>
+        </div>
+      </li>
+      <li id="nav_btn" class="nav-item">
+        <a  class="nav-link" href="{{ path('resacar') }}">Location</a>
+      </li>
+	  <li id="nav_btn" class="nav-item">
+        <a class="nav-link" href="{{ path('douane') }}">Douane Export</a>
+      </li>
+        <li id="nav_btn" class="nav-item"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+        {% if app.user %}
+            <li id="nav_btn" class="nav-item"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+        {% else %}
+            <li id="nav_btn" class="nav-item"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
+        {% endif %}
+        {% if app.request.locale == 'fr' %}
+            {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li> #}
+            <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
+            {% else %}
+                <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li> #}
+        {% endif %}
+    </ul>
+  </div>
+</nav>
 <!--b-nav-->
   {% block body %}
 
     {% endblock %}
 {% block footer %}
-<footer class="footer_v1">
+<footer class="footer_v1 container-fluid">
     <div class="container_footer">
-        <div class="rowm">
-           <div class="media_footer">
-               <a href="#" id="media_logo"><i class="fab fa-facebook-f"></i></a>
-               <a href="#" id="media_logo2"><i class="fab fa-instagram"></i></a>
-           </div>
-            <div class="footer_nav">
-                <span class="span_footer_red">Besoin d'aide ?</span>
-                <span class="span_footer_number">01 40 71 72 40</span>
-                <a href="#" class="span_footer_mail">Par mail</a>
-                <a href="#" class="span_footer_inline_help">Aide en ligne</a>
+        <div class="row align-items-center d-flex justify-content-center">
+            <div class="col-md-3 col-sm-4 col-12 align-items-center d-flex justify-content-center">
+                <div class="media_footer">
+                    <a href="#" id="media_logo"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" id="media_logo2"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="footer_nav2">
-                <a href="#" class="span_footer_subnav">Qui sommes-nous</a>
-                <a href="#" class="span_footer_subnav">Mentions légales</a>
-                <a href="#" class="span_footer_subnav">CGU</a>
-                <a href="{{ path('dashboard') }}" class="span_footer_subnav">Admin</a>
-                <a href="#" class="span_footer_subnav">Centres de livraison</a>
+            <div class="col-lg-7 col-md-9 col-sm-6 col-12 text-center">
+                <div class="footer_nav">
+                <div class="row">
+                    <div class="col-md-3 col-6 span_footer_red">
+                        <span>Besoin d'aide ?</span>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <span class="span_footer_number">01 40 71 72 40</span>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="#" class="span_footer_mail">Par mail</a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="#" class="span_footer_inline_help">Aide en ligne</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-12 align-items-center d-flex justify-content-center text-center">
+                <div class="footer_nav2">
+                    <a href="#" class="span_footer_subnav">Qui sommes-nous</a>
+                    <a href="#" class="span_footer_subnav">Mentions légales</a>
+                    <a href="#" class="span_footer_subnav">CGU</a>
+                    <a href="{{ path('dashboard') }}" class="span_footer_subnav">Admin</a>
+                    <a href="#" class="span_footer_subnav">Centres de livraison</a>
+                </div>
             </div>
         </div>
     </div>
@@ -147,3 +216,4 @@
         {% endblock %}
     </body>
 </html>
+
