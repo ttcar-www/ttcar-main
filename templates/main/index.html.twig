@@ -158,15 +158,23 @@
         border-radius: 50%;
         vertical-align: middle;
         border: 1px solid #ddd;
-        appearance: none;
-        -webkit-appearance: none;
+        /*appearance: none;
+        -webkit-appearance: none;*/
+        clip-path: circle(40% at 50% 50%);
         outline: none;
         cursor: pointer;
+    }
+    .owl-carousel .owl-items {
+        min-width: 300px;
+    }
+    /* Dashed border */
+    hr.dashed {
+        border-top: 3px dashed #fff;
     }
 
     /* Media Queries */
 
-    @media (max-width : 1230px) {
+    @media (max-width : 1230.98px) {
         .tilte_mark {
             font-size: 11px;
             margin-left: 7px;
@@ -202,15 +210,16 @@
     }
 
 
-    @media (max-width : 992px) {
+    @media screen and (max-width : 992.98px) {
 
         .blog_home {
             margin: 980px auto 100px;
 
         }
+        
     }
 
-    @media (max-width : 768px) {
+    @media screen and (max-width : 767.98px) {
         .logo_peugeot {
             width: 73px;
             margin-top: 9px;
@@ -232,7 +241,7 @@
         }
         .promo_banner {
             position: relative;
-            top: -180px;
+            top: -1000px;
         }
         .promo_banner_promo {
             position: relative;
@@ -248,44 +257,107 @@
         .btn_search_send button {
             font-size: 13px;
         }
+        .search_mark {
+            width: 80%;
+            top: -1025px;
+            min-width: 0px;
+        }
+        .search_data {
+            width: 80%;
+            top: -1005px;
+            min-width: 0px;
+        }
+        .tilte_mark {
+            margin-top: 30px;
+        }
+        .icones {
+            margin-top: 30px;
+        }
         .img_backgroud {
-            height: 1100px;
-            
-        } 
-        .blog_home {
-            margin: 960px auto;;
-
+            height: 1180px;
+        }
+        .info_promo_banner {
+            top: -1080px;
+        }
+        .btn_promo_home {
+            top: -785px;
+        }
+        .carroussel_div {
+            margin-top: -63em;
         }
         
 
     }
 
-    @media (max-width : 576px) {
+    @media screen and (max-width : 576.98px) {
 
-    }
-} 
+        .search_col-12 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+            width: 100%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        .img_backgroud {
+            height: 1180px;
+        }
+        .search_mark {
+            width: 90%;
+            
+            padding-bottom: 15px;
+            height: auto;
+        }
+        .search_data {
+            width: 90%;
+            top: -1000px;
+        }
+        .icones {
+            width: 70%;
+        }
+        .btn_promo_home {
+            top: -847px;
+        }
+        .promo_banner {
+            top: -1018px;
+        }
+        .info_promo_banner {
+            top: -1100px;
+        }
+        .footer_v1 {
+        width: 100vh;
+        }
+        html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
+            width:100vh;
+            overflow-x:hidden;
+        }
+
+    } 
     
-
 
 
 </style>
-<div class="container-fluid">
+<div>
 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <div class="search_bar_V1">
         <div class="d-flex justify-content-center">
             
 
             <div class="step_search">
-                <div class="row align-items-center d-flex justify-content-center text-center">
-                    <div class="col-2">
+                <div class="row align-items-center d-flex justify-content-around text-center">
+                    <div class="col-4">
                         <span class="span_step1">1</span>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4">
                         <span class="span_step2">2</span>
                     </div>
-                    <div class="col-2">
+                    <div class="col-4">
                         <span class="span_step3">3</span>
                     </div>
 
@@ -303,7 +375,7 @@
             
             <div class="search_mark">
                 <div class="row align-items-center d-flex justify-content-center text-center">
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-2 col-2">
                         <span class="tilte_mark">Sélectionnez <br> une marque</span>
         {#                <input type="image" id="search_form_mark_1" alt="Renault"
                             src="{{ asset('build/renault-blanc.png') }}" style="left: 200px; top: -10px;position: absolute;" value="1">
@@ -321,15 +393,15 @@
                     <div class="col">
                         <div class="icones">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-3 col-sm-3 col-6">
                                     <label>
                                 
                                     <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
-                                    {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'} }) }}
+                                    {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'}  })  }}
                                 
                                     </label>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-3 col-sm-3 col-6">
                                     <label>
                                 
                                     <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
@@ -337,7 +409,7 @@
                                 
                                     </label>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-3 col-sm-3 col-6">
                                     <label>
                                 
                                     <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
@@ -345,7 +417,7 @@
                                 
                                     </label>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-3 col-sm-3 col-6">
                                     <label>
                                 
                                     <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
@@ -365,32 +437,33 @@
             <div class="search_data">
                 <div class="search_depart">
                     <div class="row align-items-center d-flex justify-content-center text-center">
-                        <div class="col col-lg-2">
+                        <div class="col-md-3 col-lg-2 search_col-12">
                             <span>Livraison</span>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5 col-lg-5 search_col-12">
                             {{ form_row(formSearch.placeDepart) }}
                         </div>
-                        <div class="col">
+                        <div class="col-md-4 col-lg-4 search_col-12">
                             {{ form_row(formSearch.date_start) }}
                         </div>
                     </div>
                 </div>
                 <div class="search_return">
                     <div class="row align-items-center d-flex justify-content-center text-center">
-                        <div class="col col-lg-2">
+                        <div class="col-md-3 col-lg-2 search_col-12">
                             <span>Retour</span>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5 col-lg-5 search_col-12">
                             {{ form_row(formSearch.placeReturn) }}
                         </div>
-                        <div class="col">
+                        <div class="col-md-4 col-lg-4 search_col-12">
                             {{ form_row(formSearch.date_end) }}
                         </div>
                     </div>
                 </div>
                 <div class="trait">
-                    <img src="{{ asset('build/search_trait.png') }}">
+                    <hr class="dashed">
+                    {# <img src="{{ asset('build/search_trait.png') }}"> #}
                 </div>
                 <div class="enter_see_promo">
                     <div class="row align-items-center">
@@ -479,21 +552,33 @@
                 <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
                     {% for car in cars_promo %}
                         <div class="carroussel_cars">
+                        <div class="row">
                             <div class="b-featured__item wow rotateIn">
+                                <div class="col-12">
                                 <a href="{{ path('detail_car', { 'id': car.id }) }}">
                                     <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
                                     {#                            <span class="m-premium">Premium</span>#}
                                 </a>
-                                <div class="carroussel_promo_span"> PROMO !</div>
-                                <div class="carroussel_info">
-                                    <div class="carroussel_name">
-                                        <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
-                                    </div>
-                                    <div class="carroussel_subtilte">
-                                        {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                                </div>
+                                <div class="col-12">
+                                    <div class="row align-items-center d-flex justify-content-center">
+                                        <div class="col-6">
+                                            <div class="carroussel_promo_span"> PROMO !</div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="carroussel_info">
+                                                <div class="carroussel_name">
+                                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
+                                                </div>
+                                                <div class="carroussel_subtilte">
+                                                    {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -621,14 +706,14 @@
     
     <div class="newsletter_banner">
         <div class="row text-center">
-            <div class="col-2">
+            <div class="col-4 col-md-1 col-sm-2">
                 <img src="{{ asset('build/Groupe_281.png') }}" alt="newsletter" class="newsletter_img"/>
             </div>
-            <div class="col-4 offset-lg-2">
+            <div class="col-6 col-md-4 col-sm-6 offset-lg-1">
                 <div class="newsletter_tilte">Recevez les bons plans TT</div>
                 <div class="newsletter_subtilte">Inscrivez-vous à notre newsletter</div>
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6 col-sm-12">
                 <div class="newsletter_form">
                     <div class="row align-items-center d-flex justify-content-around text-center">
                         <div class="col">
