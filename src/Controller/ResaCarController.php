@@ -126,25 +126,12 @@ class ResaCarController extends AbstractController
     /**
      * @Route("/searchResacar/", name="searchResacar")
      * @param Request $request
+     * @param OpeningHoursManager $openingHoursManager
      * @return JsonResponse
+     * @throws Exception
      */
     public function orderAction(Request $request, OpeningHoursManager $openingHoursManager): JsonResponse
     {
-        $startStation = $this->json( $request->get('stationStart'));
-        $returnStation = $this->json( $request->get('stationEnd'));
-        $departDate = $this->json( $request->get('dateStart'));
-        $returnDate = $this->json( $request->get('dateEnd'));
-        $plane = $this->json( $request->get('numberPlane'));
-        $type = $this->json( $request->get('typeSelect'));
-
-        $data = [
-            'startStation' => $startStation,
-            'returnStation' => $returnStation,
-            'departDate' => $departDate,
-            'returnDate' => $returnDate,
-            'plane' => $plane,
-            'type' => $type,
-        ];
 
         $_SESSION['resaCarStationDepart'] = $request->get('stationStart');
         $_SESSION['resaCarStationEnd'] = $request->get('stationEnd');
@@ -224,7 +211,6 @@ class ResaCarController extends AbstractController
         $cars = $data['price'];
         $equipments = $data['price'];
 
-        var_dump($cars);die();
         $pagination = $paginator->paginate(
             $cars,
             $request->query->getInt('page', 1),
@@ -243,6 +229,8 @@ class ResaCarController extends AbstractController
      */
     public function orderResacar(OpeningHoursManager $openingHoursManager): Response
     {
+
+        var_dump($_SESSION['resaCarStationDepart']);die();
         $stationStart=  $_SESSION['resaCarStationDepart'];
         $stationEnd = $_SESSION['resaCarStationEnd'];
 
