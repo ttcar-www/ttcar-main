@@ -754,7 +754,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Station fermée</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" onclick="CloseModal()">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -773,117 +773,98 @@
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script>
 
-            $( function() {
-                function split( val ) {
-                    return val.split( /,\s*/ );
-                }
-                function extractLast( term ) {
-                    return split( term ).pop();
-                }
+            $( "#stations" ).click(function() {
+                let stationArray = [];
+                let stationIdArray = [];
+
+                $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
+                    $.each(json, function( index, station ) {
+                        stationArray.push(station['station_name'])
+                        stationIdArray.push({
+                            station_name : station['station_name'],
+                            station_id : station['station_id']
+                        });
+                    });
+                })
+
                 $( "#stations" ).autocomplete({
-                    delay: 0,
-                    source: function( request, response ) {
-                        $.getJSON( "{{ path('resacar_find_stations') }}", {
-                            term: extractLast( request.term )
-                        }, response );
+                    delay: 3,
+                    source: stationArray,
+                })
+            });
 
-                        console.log(extractLast( request.term ))
+            $( "#stations-return" ).click(function() {
+                let stationArray = [];
+                $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
+                    $.each(json, function( index, station ) {
+                        stationArray.push(station['station_name'])
+                    });
+                })
 
-                    },
-                    minLength: 2,
-                    focus: function( event, ui ) {
-                        $( "#stations" ).val( ui.item.station_name );
-                        return false;
-                    },
-                    select: function (event, ui) {
-                        $( "#stations" ).val( ui.item.station_name );
-                        $( "#stations_id" ).val( ui.item.station_id );
-                        return false;
-                    }
-                }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-
-         /*           console.log(item)
-                    console.log($( "#stations" ).val())*/
-
-                    return $( "<li>" )
-                        .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
-                        .appendTo( ul );
-                };
-            } );
-
-            $( function() {
-                function split( val ) {
-                    return val.split( /,\s*/ );
-                }
-                function extractLast( term ) {
-                    return split( term ).pop();
-                }
                 $( "#stations-return" ).autocomplete({
-                    delay: 0,
-                    source: function( request, response ) {
-                        $.getJSON( "{{ path('resacar_find_stations') }}", {
-                            term: extractLast( request.term ),
-                            voiture: 'test'
-                        }, response );
-                    },
-                    minLength: 0,
-                    focus: function( event, ui ) {
-                        $( "#stations-return" ).val( ui.item.station_name );
-                        return false;
-                    },
-                    select: function (event, ui) {
-                        $( "#stations-return" ).val( ui.item.station_name );
-                        $( "#stations_id-return" ).val( ui.item.station_id );
-                        return false;
-                    }
-                }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+                    source: stationArray
+                });
+            });
 
-                    /*           console.log(item)
-                               console.log($( "#stations" ).val())*/
-
-                    return $( "<li>" )
-                        .append( "<div>" + item.station_name + "<br>" + item.station_id + "</div>" )
-                        .appendTo( ul );
-                };
-            } );
-
-            $( "#searchFromResa" ).submit(function( event ) {
+            $( "#searchFromResa" ).submit(function( event, stationIdArray ) {
                 event.preventDefault();
 
-                let stationStart = $( "#stations_id" ).val();
-                let stationEnd = $( "#stations_id-return" ).val();
+                let stationDepartName = $( "#stations" ).val();
+                let stationReturnName = $( "#stations-return" ).val();
+                let stationStart = [];
+                let stationEnd = [];
+
+                    $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
+                        $.each(json, function( index, station ) {
+                            if (station['station_name'] === stationDepartName) and  (station['station_name'] === stationReturnName)
+                            {
+                                $( "#stations_id" ).val( station['station_id']);
+                            }
+                            if (station['station_name'] === stationReturnName)
+                            {
+                                $( "#stations_id-return" ).val( station['station_id']);
+                            }
+
+                        });
+                    });
+
+                    console.log($( "#stations_id-return" ).val( ))
+
                 let dateStart = $( "#startDate" ).val();
                 let dateEnd = $( "#endDate" ).val();
                 let numberPlane = $( "#numberPlane" ).val();
                 let typeSelect = $( "#typeSelect" ).val();
 
-                $.ajax({
-                    url:{{ path('searchResacar') }},
-                    type:"POST",
-                    dataType:"json",
-                    data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
-                    success: function(data){
-                        if (data['dateToOpen'])
-                        {
-                            let d = new Date(data['dateToOpen']['date']);
-                            let c = new Date(data['dateToClose']['date']);
+                if (stationStart !== undefined) {
+                    console.log('ok slothie')
+                    $.ajax({
+                        url:{{ path('searchResacar') }},
+                        type:"POST",
+                        dataType:"json",
+                        data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
+                        success: function(data){
+                            if (data['dateToOpen'])
+                            {
+                                let d = new Date(data['dateToOpen']['date']);
+                                let c = new Date(data['dateToClose']['date']);
 
-                            $('#hoursOpen').html('Ouverture : le ' + d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' A ' + d.getHours() + ':' + d.getMinutes());
-                            $('#hoursClose').html('Fermeture : le ' + c.getDate() + '/' + c.getMonth() + '/' + c.getFullYear() + ' A ' + c.getHours() + ':' + c.getMinutes());
+                                $('#hoursOpen').html('Ouverture : le ' + d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear() + ' A ' + d.getHours() + ':' + d.getMinutes());
+                                $('#hoursClose').html('Fermeture : le ' + c.getDate() + '/' + c.getMonth() + '/' + c.getFullYear() + ' A ' + c.getHours() + ':' + c.getMinutes());
 
-                            $("#myModal").css("display", "block");
-                        } else {
-                            window.location.href = data;
+                                $("#myModal").css("display", "block");
+                            } else {
+                                $('#hoursOpen').html('Ouvert');
+                                $("#myModal").css("display", "block");
+                            }
                         }
-                    }
-                });
-
+                    });
+                }
             });
 
 
             function CloseModal() {
-                let x = document.getElementById("sliceSupplierModal");
-                x.style.display = "none";
+                console.log('close me')
+                $("#myModal").css("display", "none");
             }
         </script>
     {% endblock %}

@@ -19,7 +19,6 @@
         /*position: absolute;
         left: 240px;
         top: 70px;*/
-        
     }
     .box_form_mark {
         display: flex;
@@ -100,7 +99,6 @@
         border-radius: 30px;
         margin-top: 5px;
         margin-bottom: 5px;
-        
     }
 
     #form_date_start {
@@ -182,7 +180,6 @@
     }
 
     /* Media Queries */
-    
     /* Desktop */
     @media (max-width : 1230.98px) {
         .tilte_mark {
@@ -219,7 +216,6 @@
         }
     }
     @media screen and (max-width : 992.98px) {
-
         .blog_home {
             margin: 980px auto 100px;
         }
@@ -338,7 +334,7 @@
         .footer_v1 {
         width: 100vh;
         }
-        html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
+        html,body{ /* Removes the white spaces on the sides in smartphone format */
             width:100vh;
             overflow-x:hidden;
         }
@@ -347,7 +343,6 @@
 
 </style>
 <div>
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <div class="search_bar_V1">
@@ -469,7 +464,6 @@
                                 </div>
                             </div>
                         </div>
-                    
                         <div class="col-4">
                             <div class="btn_search_send">
                                 <button id="searchBtn">Voir nos tarifs   ></button>
@@ -537,33 +531,33 @@
                 <div id="carousel-small" class="owl-carousel enable-owl-carousel" data-items="4" data-navigation="true" data-auto-play="true" data-stop-on-hover="true" data-items-desktop="4" data-items-desktop-small="4" data-items-tablet="3" data-items-tablet-small="2">
                     {% for car in cars_promo %}
                         <div class="carroussel_cars">
-                        <div class="row">
-                            <div class="b-featured__item wow rotateIn">
-                                <div class="col-12">
-                                <a href="{{ path('detail_car', { 'id': car.id }) }}">
-                                    <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
-                                    {#                            <span class="m-premium">Premium</span>#}
-                                </a>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row align-items-center d-flex justify-content-center">
-                                        <div class="col-6">
-                                            <div class="carroussel_promo_span"> PROMO !</div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="carroussel_info">
-                                                <div class="carroussel_name">
-                                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
-                                                </div>
-                                                <div class="carroussel_subtilte">
-                                                    {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                            <div class="row">
+                                <div class="b-featured__item wow rotateIn">
+                                    <div class="col-12">
+                                        <a href="{{ path('detail_car', { 'id': car.id }) }}">
+                                            <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="mers" style="width: 285px; height: 160px;" />
+                                            {#                            <span class="m-premium">Premium</span>#}
+                                        </a>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row align-items-center d-flex justify-content-center">
+                                            <div class="col-6">
+                                                <div class="carroussel_promo_span"> PROMO !</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="carroussel_info">
+                                                    <div class="carroussel_name">
+                                                        <a href="{{ path('detail_car', { 'id': car.id }) }}">{{ car.name|u.truncate(20, '...') }}</a>
+                                                    </div>
+                                                    <div class="carroussel_subtilte">
+                                                        {{ car.years }} - {{ car.transmission }} - {{ car.fuel }}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -572,7 +566,6 @@
     
     
         <div class="tt_info">
-    
             <div class="row align-items-center d-flex justify-content-center text-center">
                 <div class="col">                  
                     <div class="video_tt">

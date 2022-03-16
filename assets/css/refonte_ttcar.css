@@ -297,7 +297,6 @@ Base FOOTER
     color: rgba(52,95,138,1);
 }
 
-
 /*  Page 1  - index  */
 .search_bar_V1 {
     width: 100%;
@@ -389,7 +388,6 @@ Base FOOTER
     border-radius: 40px;
     background-color: #436d8f;
     display: block;
-    
 }
 .tilte_mark {
     /*left: 36px;
@@ -432,6 +430,7 @@ Base FOOTER
     left: 265px;
     top: 450px;
     opacity: 0.841;
+
 }
 .search_promo_banner_info {
     left: 250px;
@@ -478,7 +477,6 @@ Base FOOTER
     font-size: 13px;
     color: rgba(52,95,138,1);
     text-align: center;
-   
 }
 
 .promo_banner_promo {
@@ -751,7 +749,6 @@ Base FOOTER
     margin-top: 5%;
     height: 300px;
     /* margin-left: 2%; */
-    
 }
 
 .avantage_carroussel {
@@ -1299,9 +1296,8 @@ Base FOOTER
 }
 
 .btn_search_send button {
-/*     left: 650px;
+    /*left: 650px;
     top: 260px; */
-
     /* position: relative; */
     overflow: visible;
     width: 90%;
@@ -1558,7 +1554,6 @@ Base FOOTER
 
 
 /* Media Queries */
-
 /* Desktop */
 @media screen and (max-width : 1230.98px) {
     .sub_nav li {
@@ -1570,7 +1565,6 @@ Base FOOTER
     #nav_1 a {
         margin-right: 6px;
     }
-
 }
 @media screen and (max-width : 890.98px) {
     #nav_1 {
@@ -1595,6 +1589,7 @@ Base FOOTER
     }
 
 }
+
 
 /* Tablette */
 @media screen and (max-width : 767.98px) {
@@ -1630,6 +1625,7 @@ Base FOOTER
         padding-bottom: 30px;
     }
 }
+
 
 /* Smartphone */
 @media screen and (max-width : 576.98px) {

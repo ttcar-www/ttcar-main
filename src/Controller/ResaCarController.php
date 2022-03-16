@@ -10,6 +10,7 @@ use App\ResacarApi\Data\AccountsManager;
 use App\ResacarApi\Data\CarsByDisponibilitiesManager;
 use App\ResacarApi\Data\CarsManager;
 use App\ResacarApi\Data\OpeningHoursManager;
+use App\ResacarApi\Data\PriceManager;
 use App\ResacarApi\Data\StationsManager;
 use DateTime;
 use Exception;
@@ -34,6 +35,7 @@ class ResaCarController extends AbstractController
      * @param AccountsManager $accountsManager
      * @param DeleveryAddressesManager $deleveryAddressesManager
      * @param BookingManager $bookingManager
+     * @param PriceManager $priceManager
      * @return Response
      */
     public function index(
@@ -43,7 +45,8 @@ class ResaCarController extends AbstractController
         OpeningHoursManager $openingHoursManager,
         AccountsManager $accountsManager,
         DeleveryAddressesManager $deleveryAddressesManager,
-        BookingManager $bookingManager
+        BookingManager $bookingManager,
+        PriceManager $priceManager
     ): Response
     {
 
@@ -70,20 +73,6 @@ class ResaCarController extends AbstractController
         $carsManager->setFilter($filter);
    //     $cars = $carsManager->getResult();
 
-        /**
-         * EXEMPLE GET VEHICULES LIST BY DISPONIBILITY
-         */
-        $filter = [
-            'station_id' => 'PUFE01',
-            'date_pickup' => '10032022',
-            'heure_pickup' => '0930',
-            'date_return' => '16032022',
-            'heure_return' => '1600',
-            'veh_class' => 'T',
-            'invoice_type' => 'S',
-        ];
-        $carsByDisponibilityManager->setFilter($filter);
-      //  $carsByDisponibility = $carsByDisponibilityManager->getResult();
 
         /**
          * EXEMPLE GET OPENING HOURS
@@ -137,25 +126,12 @@ class ResaCarController extends AbstractController
     /**
      * @Route("/searchResacar/", name="searchResacar")
      * @param Request $request
+     * @param OpeningHoursManager $openingHoursManager
      * @return JsonResponse
+     * @throws Exception
      */
     public function orderAction(Request $request, OpeningHoursManager $openingHoursManager): JsonResponse
     {
-        $startStation = $this->json( $request->get('stationStart'));
-        $returnStation = $this->json( $request->get('stationEnd'));
-        $departDate = $this->json( $request->get('dateStart'));
-        $returnDate = $this->json( $request->get('dateEnd'));
-        $plane = $this->json( $request->get('numberPlane'));
-        $type = $this->json( $request->get('typeSelect'));
-
-        $data = [
-            'startStation' => $startStation,
-            'returnStation' => $returnStation,
-            'departDate' => $departDate,
-            'returnDate' => $returnDate,
-            'plane' => $plane,
-            'type' => $type,
-        ];
 
         $_SESSION['resaCarStationDepart'] = $request->get('stationStart');
         $_SESSION['resaCarStationEnd'] = $request->get('stationEnd');
@@ -177,58 +153,63 @@ class ResaCarController extends AbstractController
 
     /**
      * @Route("/resacar_search/", name="resacar_search")
-     * @param CarsByDisponibilitiesManager $carsByDisponibilityManager
+     * @param PriceManager $priceManager
      * @param PaginatorInterface $paginator
      * @param Request $request
      * @return Response
      */
-    public function searchResult(CarsByDisponibilitiesManager $carsByDisponibilityManager, PaginatorInterface $paginator, Request $request): Response
+    public function searchResult(PriceManager $priceManager, PaginatorInterface $paginator, Request $request): Response
     {
-       // $_SESSION['resaCarStationDepart']
-       // $_SESSION['resaCarStationEnd']
-      //  $_SESSION['resaCarDateStart']
-      //  $_SESSION['resaCarDateEnd']
-      //  $_SESSION['resaCarPlane']
-      //  $_SESSION['tresaCarTpe']
+
+      //  $_SESSION['resaCarStationDepart'] ;
+      //  $_SESSION['resaCarStationEnd'] ;
+      //  $_SESSION['resaCarDateStart'] ;
+      //  $_SESSION['resaCarDateEnd'] ;
+      //  $_SESSION['resaCarPlane'];
+       // $_SESSION['tresaCarTpe'] ;
+
 
         $dateHours = explode("T", $_SESSION['resaCarDateStart']);
-        $dateExp = explode("-", $dateHours[0]);
-        $y = $dateExp[0];
-        $d = $dateExp[2];
-        $m = $dateExp[1];
+        $dateStart = $dateHours[0];
+        $hoursStart = $dateHours[1];
 
-        $dateHoursExp = explode(":", $dateHours[1]);
-        $h = $dateHoursExp[0];
-        $min = $dateHoursExp[1];
+        $dateFormat = explode("-", $dateStart);
+        $hoursFormat = explode(":", $hoursStart);
 
-        $returnHours = explode("T", $_SESSION['resaCarDateEnd']);
-        $returnExp = explode("-", $returnHours[0]);
+        $dateHoursReturn = explode("T", $_SESSION['resaCarDateEnd']);
+        $dateEnd = $dateHoursReturn[0];
+        $hoursEnd = $dateHoursReturn[1];
 
-        $yReturn = $returnExp[0];
-        $dReturn = $returnExp[2];
-        $mReturn = $returnExp[1];
+        $dateFormatEnd = explode("-", $dateEnd);
+        $hoursFormatEnd = explode(":", $hoursEnd);
 
-        $reutrnHoursExp = explode(":", $returnHours[1]);
-        $hReturn = $reutrnHoursExp[0];
-        $minReturn = $reutrnHoursExp[1];
 
         /**
          * EXEMPLE GET VEHICULES LIST BY DISPONIBILITY
          */
-        $filter = [
+ /*       $filter = [
             'station_id' => $_SESSION['resaCarStationDepart'],
-            'date_pickup' => '10032022',
+            'date_pickup' => $dateFormat[0].$dateFormat[1].$dateFormat[2],
+            'heure_pickup' => $hoursFormat[0].$hoursFormat[1],
+            'date_return' => $dateFormatEnd[0].$dateFormatEnd[1].$dateFormatEnd[2],
+            'heure_return' => $hoursFormatEnd[0].$hoursFormatEnd[1],
+            'veh_class' => 'T'
+        ];*/
+
+        $filter = [
+            'station_id' => 'PARL06',
+            'date_pickup' => '12042022',
             'heure_pickup' => '0930',
-            'date_return' => '21032022',
+            'date_return' => '22052022',
             'heure_return' => '1600',
-            'veh_class' => 'T',
-            'invoice_type' => 'S',
+            'veh_class' => 'T'
         ];
 
+        $priceManager->setFilter($filter);
+        $data = $priceManager->getResult();
 
-        $carsByDisponibilityManager->setFilter($filter);
-        $cars = $carsByDisponibilityManager->getResult();
-
+        $cars = $data['price'];
+        $equipments = $data['price'];
 
         $pagination = $paginator->paginate(
             $cars,
@@ -237,7 +218,7 @@ class ResaCarController extends AbstractController
         );
 
         return $this->render('resacar/searchResult.html.twig',[
-            'cars' => $cars,
+            'cars' => $data['price'],
             'pagination' => $pagination,
         ]);
     }
@@ -248,6 +229,8 @@ class ResaCarController extends AbstractController
      */
     public function orderResacar(OpeningHoursManager $openingHoursManager): Response
     {
+
+        var_dump($_SESSION['resaCarStationDepart']);die();
         $stationStart=  $_SESSION['resaCarStationDepart'];
         $stationEnd = $_SESSION['resaCarStationEnd'];
 
@@ -288,10 +271,7 @@ class ResaCarController extends AbstractController
             } else {
                 $dateToOpen->setTime(14, 55, 24);
             }
-
-        }die();
-
-
+        }
 
         return $this->render('resacar/order.html.twig');
     }
@@ -313,7 +293,6 @@ class ResaCarController extends AbstractController
         $hoursStart = $dateHours[1];
 
         foreach ($openTo as  $openHours) {
-
 
           $depart =  new \DateTime($dateStart);
 
@@ -347,7 +326,6 @@ class ResaCarController extends AbstractController
             } else {
                 return $data = ['dateToOpen' => $dateToOpen, 'dateToClose' => $dateToClose ];
             }
-
         }
 
         return $response = false;
