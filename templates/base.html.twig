@@ -37,8 +37,8 @@
     </head>
     <body>
 
-
-     <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">  
         <a href="{{ path('preHome') }}">
             <img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" />
         </a>
@@ -95,48 +95,48 @@
         </div>
     </div>
 
-<nav class="show_nav container-fluid navbar navbar-light navbar-expand-md" style="background-color: rgba(52,95,138,1);">
-  <a class="navbar-brand" href="{{ path('preHome') }}"><img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" /></a>
-  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="show_nav container-fluid navbar navbar-light navbar-expand-md" style="background-color: rgba(52,95,138,1);">
+        <a class="navbar-brand" href="{{ path('preHome') }}"><img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" /></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a id="nav_btn" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Transit Temporaire
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:13px;">
-          <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a>
-          <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a>
-          <a class="dropdown-item d-flex justify-content-center" href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a>
-          <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a>
-          <a class="dropdown-item d-flex justify-content-center" href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a id="nav_btn" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Transit Temporaire
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:13px;">
+                        <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a>
+                        <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a>
+                        <a class="dropdown-item d-flex justify-content-center" href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a>
+                        <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a>
+                        <a class="dropdown-item d-flex justify-content-center" href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a>
+                    </div>
+                </li>
+                <li id="nav_btn" class="nav-item">
+                    <a  class="nav-link" href="{{ path('resacar') }}">Location</a>
+                </li>
+                <li id="nav_btn" class="nav-item">
+                    <a class="nav-link" href="{{ path('douane') }}">Douane Export</a>
+                </li>
+                <li id="nav_btn" class="nav-item"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                {% if app.user %}
+                    <li id="nav_btn" class="nav-item"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+                {% else %}
+                    <li id="nav_btn" class="nav-item"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
+                {% endif %}
+                {% if app.request.locale == 'fr' %}
+                    {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li> #}
+                    <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
+                {% else %}
+                    <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                    {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li> #}
+                {% endif %}
+            </ul>
         </div>
-      </li>
-      <li id="nav_btn" class="nav-item">
-        <a  class="nav-link" href="{{ path('resacar') }}">Location</a>
-      </li>
-	  <li id="nav_btn" class="nav-item">
-        <a class="nav-link" href="{{ path('douane') }}">Douane Export</a>
-      </li>
-        <li id="nav_btn" class="nav-item"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
-        {% if app.user %}
-            <li id="nav_btn" class="nav-item"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
-        {% else %}
-            <li id="nav_btn" class="nav-item"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
-        {% endif %}
-        {% if app.request.locale == 'fr' %}
-            {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li> #}
-            <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}">EN</a></li>
-            {% else %}
-                <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
-                {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li> #}
-        {% endif %}
-    </ul>
-  </div>
-</nav>
+    </nav>
 <!--b-nav-->
   {% block body %}
 

@@ -76,7 +76,7 @@
             top: -650px;
         }
         .filtre {
-            background-color: rgba(52,95,138,1);;
+            background-color: rgba(52,95,138,1);
             position: absolute;
             overflow: visible;
             width: 186px;
@@ -93,7 +93,6 @@
         }
         .cars {
             position: relative;
-            
             /* left: 65px; */
             top: -625px;
             max-width: 1041px;
@@ -228,7 +227,6 @@
             color: rgba(52,95,138,1);
         }
         .btn_price {
-            
             overflow: visible;
             white-space: nowrap;
             text-align: left;
@@ -241,7 +239,7 @@
         .reservez {
             width: 291px;
             height: 42px;
-            background-color: rgb(52 95 138);;
+            background-color: rgb(52 95 138);
             border-radius: 20px;
             margin-left: 65px;
             padding: 15px;
@@ -573,61 +571,61 @@
             </div>
         </div>
 
-    <div class="img_new">
-        <img src="{{ asset('build/img04.png') }}" alt="ttcar_search">
-    </div>
-    <div class="d-flex justify-content-center">
-        <div class="row">
-            <div class="col-12 col-lg-12 col-xl-10 d-flex justify-content-center">
-                <div class="div_result_search">
-                    <div class="row">   
-                        <div class="col-sm-12 col-md-4 col-lg-4">
-                            <div class="row">
-                                <div class="col-6">
-                                    <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault_form">
-                                    <img src="{{ asset('build/peugeottrans.png') }}" alt="peugeotlogo" class="logo_peugeot_form hidden">
-                                    <img src="{{ asset('build/citroentrans.png') }}" alt="citroenlogo" class="logo_citroen_form hidden">
-                                    <img src="{{ asset('build/dstrans.png') }}" alt="dslogo" class="logo_ds_form hidden">
-                                </div>
-                                
-                                <div class="col-6">
-                                    {{ form_start(formSearch) }}
-                                    <div class="search_mark_result">
-                                        {{ form_row(formSearch.mark) }}
+        <div class="img_new">
+            <img src="{{ asset('build/img04.png') }}" alt="ttcar_search">
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-12 col-lg-12 col-xl-10 d-flex justify-content-center">
+                    <div class="div_result_search">
+                        <div class="row">   
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault_form">
+                                        <img src="{{ asset('build/peugeottrans.png') }}" alt="peugeotlogo" class="logo_peugeot_form hidden">
+                                        <img src="{{ asset('build/citroentrans.png') }}" alt="citroenlogo" class="logo_citroen_form hidden">
+                                        <img src="{{ asset('build/dstrans.png') }}" alt="dslogo" class="logo_ds_form hidden">
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                        {{ form_start(formSearch) }}
+                                        <div class="search_mark_result">
+                                            {{ form_row(formSearch.mark) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="search_depart_result">
-                                <div class="row align-items-center d-flex justify-content-center text-center">
-                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2">
-                                        <span>Livraison</span>
+                            <div class="col">
+                                <div class="search_depart_result">
+                                    <div class="row align-items-center d-flex justify-content-center text-center">
+                                        <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                                            <span>Livraison</span>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-6">
+                                            {{ form_row(formSearch.placeDepart) }}
+                                        </div>
+                                        <div class="col-12 col-sm-3 col-md-3">
+                                            {{ form_row(formSearch.date_start) }}
+                                        </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-6">
-                                        {{ form_row(formSearch.placeDepart) }}
-                                    </div>
-                                    <div class="col-12 col-sm-3 col-md-3">
-                                        {{ form_row(formSearch.date_start) }}
-                                    </div>
-                                 </div>
-                            </div>
+                                </div>
 
-                            <div class="search_return_result">
-                                <div class="row align-items-center d-flex justify-content-center text-center">
-                                    <div class="col-12 col-sm-2 col-md-2 col-lg-2">
-                                        <span>Retour</span>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-md-6">
-                                        {{ form_row(formSearch.placeReturn) }}
-                                    </div>
-                                    <div class="col-12 col-sm-3 col-md-3">
-                                        {{ form_row(formSearch.date_end) }}
+                                <div class="search_return_result">
+                                    <div class="row align-items-center d-flex justify-content-center text-center">
+                                        <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                                            <span>Retour</span>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-6">
+                                            {{ form_row(formSearch.placeReturn) }}
+                                        </div>
+                                        <div class="col-12 col-sm-3 col-md-3">
+                                            {{ form_row(formSearch.date_end) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         <div class="d-flex justify-content-center">
                             <div class="col">
@@ -653,46 +651,44 @@
                             </div>
                         </div>
                         {{ form_end(formSearch) }}
-                    
+                    </div>
                 </div>
-            </div>
-    
-            <div class="col-12 col-lg-12 col-xl-2 d-flex justify-content-center">
-                <div class="div_info_search">
-                    <div class="row">
-                        <span class="price_info">Ce prix inclut :</span>
-                        <br>
-                        <div class="col-4 col-md-4 col-lg-4 col-xl-12">
-                            <ul class="ul_info">
-                                <li> <img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un forfait 6 jours</li>
-                                <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un véhicule neuf</li>
-                            </ul>
-                        </div>
-                        <div class="col-4 col-md-4 col-lg-4 col-xl-12">
-                            <ul class="ul_info">
-                                <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assurance multirisques
-                                    sans franchise</li>
-                                <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Le kilométrage illimité</li>
-                            </ul>
-                        </div>
-                        <div class="col-4 col-md-4 col-lg-4 col-xl-12">
-                            <ul class="ul_info">
-                                <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assistance 7j / 7
-                                    et 24h / 24</li>
-                                <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Les frais de livraison
-                                    et de restitution</li>
-                            </ul>
+        
+                <div class="col-12 col-lg-12 col-xl-2 d-flex justify-content-center">
+                    <div class="div_info_search">
+                        <div class="row">
+                            <span class="price_info">Ce prix inclut :</span>
+                            <br>
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-12">
+                                <ul class="ul_info">
+                                    <li> <img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un forfait 6 jours</li>
+                                    <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un véhicule neuf</li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-12">
+                                <ul class="ul_info">
+                                    <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assurance multirisques
+                                        sans franchise</li>
+                                    <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Le kilométrage illimité</li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-12">
+                                <ul class="ul_info">
+                                    <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assistance 7j / 7
+                                        et 24h / 24</li>
+                                    <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Les frais de livraison
+                                        et de restitution</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
    
                     
         <div class="d-flex justify-content-center">    
             <div class="result_search">
-                    
                 <span class="filtre">Filtrer par :</span>
             </div>
         </div>
@@ -765,7 +761,6 @@
                 </div>
             </div>
         </div>
-
     </div>        
 </div>
 {% block javascripts %}
