@@ -87,7 +87,21 @@
         /* min-width: 60px; */
         height: auto;
     }
-
+    .search_data_index {
+        /*position: absolute;
+        left: 50px;
+        top: 45px;*/
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        text-align: left;
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 3%;
+        color: rgba(52,95,138,1);
+    }
     #form_placeDepart {
         /*position: absolute;
         left: 180px;
@@ -159,6 +173,15 @@
         outline: none;
         cursor: pointer;
     }
+
+    .newsletter_banner_index {
+        width: 100%;
+        /* margin-top: 70px; */
+        position: relative;
+        top: 20px;
+        height: 100%;
+        background-color: rgba(250,250,250,1);
+    }
     .owl-carousel .owl-items {
         min-width: 300px;
     }
@@ -166,6 +189,7 @@
     hr.dashed {
         border-top: 3px dashed #fff;
     }
+    
     .search_data_index {
         border-radius: 40px;
         background-color: rgba(52,95,138,0.841);
@@ -679,7 +703,7 @@
                 <span class="btn_blog_articles">Voir tous les articles </span>
             </div>
         </div>
-    
+   
         <div class="newsletter_banner">
             <div class="row text-center">
                 <div class="col-4 col-md-1 col-sm-2">
@@ -702,7 +726,6 @@
                                 </div>
                                 {{ form_end(form_newsletter) }}
                             </div>
-
                         </div>
                     </div>
                 </div>
