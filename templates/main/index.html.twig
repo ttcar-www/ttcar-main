@@ -135,7 +135,6 @@
         border-radius: 30px;
         margin-top: 5px;
         margin-bottom: 5px;
-        
     }
 
     #form_date_end {
@@ -191,6 +190,18 @@
         border-top: 3px dashed #fff;
     }
     
+    .search_data_index {
+        border-radius: 40px;
+        background-color: rgba(52,95,138,0.841);
+        position: relative;
+        overflow: visible;
+        width: 60%;
+        height: auto;
+        top: -700px;
+        min-width: 650px;
+        /*left: 265px;
+        opacity: 0.841;*/
+    }
 
     /* Media Queries */
     /* Desktop */
@@ -228,8 +239,6 @@
             margin: 15px 132px;
         }
     }
-
-
     @media screen and (max-width : 992.98px) {
         .blog_home {
             margin: 980px auto 100px;
@@ -281,7 +290,7 @@
             top: -1025px;
             min-width: 0px;
         }
-        .search_data {
+        .search_data_index {
             width: 80%;
             top: -1005px;
             min-width: 0px;
@@ -304,8 +313,6 @@
         .carroussel_div {
             margin-top: -63em;
         }
-        
-
     }
 
     /* Smartphone */
@@ -332,7 +339,7 @@
             padding-bottom: 15px;
             height: auto;
         }
-        .search_data {
+        .search_data_index {
             width: 90%;
             top: -1000px;
         }
@@ -357,8 +364,6 @@
         }
 
     } 
-    
-
 
 </style>
 <div>
@@ -382,7 +387,7 @@
             </div>
         </div>
     
-        <img src="{{ asset('build/search_imgZoom.png') }}" class="img_backgroud" alt="sliderImg" />      
+        <img src="{{ asset('build/search_imgZoom.png') }}" class="img_backgroud" alt="sliderImg" />    
 
         {{ form_start(formSearch) }}
         <div class="row d-flex justify-content-center">
@@ -483,7 +488,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-4">
                             <div class="btn_search_send">
                                 <button id="searchBtn">Voir nos tarifs   ></button>
@@ -530,7 +534,6 @@
     
    
         <div class="carroussel_div">
-        
             <div class="carroussel_btn_div">
                 <div class="row justify-content-evenly">
                     <div class="col offset-md-1">
@@ -586,150 +589,148 @@
         </div>  
     
     
-    <div class="tt_info">
-    
-        <div class="row align-items-center d-flex justify-content-center text-center">
-            <div class="col">
-                <div class="video_tt">
-                    <div class="embed-responsive embed-responsive-16by9" >
-                        <iframe src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="tt_text">
-                    <div class="tilte_tt">Comprendre le Transit Temporaire (TT)</div>
-                    <div class="trait_point">
-                        <img src="{{ asset('build/trait_point.png') }}" alt="ttCar" />
-                    </div>
-                    <div class="text_info">
-                        Le transit temporaire est une disposition douanière et fiscale qui permet à toute personne résidant hors
-                        du territoire communautaire (DOM TOM inclus) de disposer d’un véhicule neuf lors de son séjour en Europe et
-                        de l’acquérir exonéré des droits de douanes et de la TVA.
-                        Vous bénéficiez ainsi d’une immatriculation française spécifique permettant une libre circulation en Europe.
-                        <br>
-                        <br>
-                        Il est aussi possible de bénéficier de ce régime sans avoir a payer l’intégralité du prix du véhicule.
-                        Cette formule, connue sous le terme générique d’achat-rachat, ressemble beaucoup à une location de voiture.
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    <div class="d-flex justify-content-center">
-        <div class="btn_info">
+        <div class="tt_info">
             <div class="row align-items-center d-flex justify-content-center text-center">
-                <div class="col">
-                    <span class="btn_info_booking">Réserver</span>
+                <div class="col">                  
+                    <div class="video_tt">
+                        <div class="embed-responsive embed-responsive-16by9" >
+                            <iframe src="https://www.youtube.com/embed/5DpCdHOG92s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
-                    <span class="btn_info_question">Une question ?</span>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-    <div class="avantage">
-        <div class="row justify-content-center">
-            <div class="avantage_tilte">AVANTAGES DU TRANSIT TEMPORAIRE</div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <div class="avantage_carroussel">
-                <div class="row align-items-center d-flex justify-content-center text-center">
-                    <div class="col-md-12 col-lg-2">
-                        <div class="av">
-                            <span class="item_avantage"><img src="{{ asset('build/Group_84.png') }}" alt="item"></span>
-                            <span class="avantage_text"><br>Véhicule neufs</span>
+                    <div class="tt_text">
+                        <div class="tilte_tt">Comprendre le Transit Temporaire (TT)</div>
+                        <div class="trait_point">
+                            <img src="{{ asset('build/trait_point.png') }}" alt="ttCar" />
                         </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2">
-                        <div class="av">
-                            <span class="item_avantage"><img src="{{ asset('build/Group_92.png') }}" alt="item"></span>
-                            <span class="avantage_text"><br>Kilométrage <br> illimité</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2">
-                        <div class="av">
-                            <span class="item_avantage"><img src="{{ asset('build/Group_82.png') }}" alt="item"></span>
-                            <span class="avantage_text"><br>Assistance 7j/7 <br> et 24h/24</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2">
-                        <div class="av">
-                            <span class="item_avantage"><img src="{{ asset('build/Group_88.png') }}" alt="item"></span>
-                            <span class="avantage_text"><br>Assurance multirisques <br>sans franchise</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2">
-                        <div class="av">
-                            <span class="item_avantage"><img src="{{ asset('build/Group_90.png') }}" alt="item"></span>
-                            <span class="avantage_text"><br>GPS <br>gratuit</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-2">
-                        <div class="av">
-                            <span class="item_avantage"><img src="{{ asset('build/Group_86.png') }}" alt="item"></span>
-                            <span class="avantage_text"><br>24 mois de garantie <br> constructeur</span>
+                        <div class="text_info">
+                            Le transit temporaire est une disposition douanière et fiscale qui permet à toute personne résidant hors
+                            du territoire communautaire (DOM TOM inclus) de disposer d’un véhicule neuf lors de son séjour en Europe et
+                            de l’acquérir exonéré des droits de douanes et de la TVA.
+                            Vous bénéficiez ainsi d’une immatriculation française spécifique permettant une libre circulation en Europe.
+                            <br>
+                            <br>
+                            Il est aussi possible de bénéficier de ce régime sans avoir a payer l’intégralité du prix du véhicule.
+                            Cette formule, connue sous le terme générique d’achat-rachat, ressemble beaucoup à une location de voiture.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="blog_home">
-        <div class="row justify-content-center">
-            <div class="blog_tilte">Notre blog</div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <div class="row align-items-center d-flex justify-content-center text-center">
-                {% for post in posts %}
-                    <div class="blog_article">
-                        <div class="img_blog">
-                            <img class="img-responsive" src="{{ asset('build/uploads/'~ post.getPostImg) }}" alt="wolks" style="width: 45%" />
-                        </div>
-                        <div class="blog_text">
-                            <span class="item_blog_tilte">{{ post.title }}</span>
-                            <div class="item_text">{{ post.content |u.truncate(200, '...')|raw }}</div>
-                            <a href="{{ path('see_post', { 'id': post.id }) }}" class="blog_btn">Lire la suite <span class="fa fa-angle-right"></span></a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="row align-items-center d-flex justify-content-around text-center">
-            <span class="btn_blog_articles">Voir tous les articles </span>
-        </div>
-    </div>
-    
-    <div class="newsletter_banner_index">
-        <div class="row text-center">
-            <div class="col-4 col-md-1 col-sm-2">
-                <img src="{{ asset('build/Groupe_281.png') }}" alt="newsletter" class="newsletter_img"/>
-            </div>
-            <div class="col-6 col-md-4 col-sm-6 offset-lg-1">
-                <div class="newsletter_tilte">Recevez les bons plans TT</div>
-                <div class="newsletter_subtilte">Inscrivez-vous à notre newsletter</div>
-            </div>
-            <div class="col-12 col-md-6 col-sm-12">
-                <div class="newsletter_form">
-                    <div class="row align-items-center d-flex justify-content-around text-center">
-                        <div class="col">
-                            {{ form_start(form_newsletter) }}
-                            {{ form_row(form_newsletter.email, { 'attr': {'class': 'form_news'} }) }}
-                        </div>
-                        <div class="col-auto">
-                            <div class="newsletter_btn1">
-                                <button type="submit" class="newsletter_btn" id="seachButton">OK</button>
-                            </div>
-                            {{ form_end(form_newsletter) }}
-                        </div>
 
+        <div class="d-flex justify-content-center">
+            <div class="btn_info">
+                <div class="row align-items-center d-flex justify-content-center text-center">
+                    <div class="col">
+                        <span class="btn_info_booking">Réserver</span>
+                    </div>
+                    <div class="col">
+                        <span class="btn_info_question">Une question ?</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+  
+        <div class="avantage">
+            <div class="row justify-content-center">
+                <div class="avantage_tilte">AVANTAGES DU TRANSIT TEMPORAIRE</div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="avantage_carroussel">
+                    <div class="row align-items-center d-flex justify-content-center text-center">
+                        <div class="col-md-12 col-lg-2">
+                            <div class="av">
+                                <span class="item_avantage"><img src="{{ asset('build/Group_84.png') }}" alt="item"></span>
+                                <span class="avantage_text"><br>Véhicule neufs</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-2">
+                            <div class="av">
+                                <span class="item_avantage"><img src="{{ asset('build/Group_92.png') }}" alt="item"></span>
+                                <span class="avantage_text"><br>Kilométrage <br> illimité</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-2">
+                            <div class="av">
+                                <span class="item_avantage"><img src="{{ asset('build/Group_82.png') }}" alt="item"></span>
+                                <span class="avantage_text"><br>Assistance 7j/7 <br> et 24h/24</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-2">
+                            <div class="av">
+                                <span class="item_avantage"><img src="{{ asset('build/Group_88.png') }}" alt="item"></span>
+                                <span class="avantage_text"><br>Assurance multirisques <br>sans franchise</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-2">
+                            <div class="av">
+                                <span class="item_avantage"><img src="{{ asset('build/Group_90.png') }}" alt="item"></span>
+                                <span class="avantage_text"><br>GPS <br>gratuit</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-2">
+                            <div class="av">
+                                <span class="item_avantage"><img src="{{ asset('build/Group_86.png') }}" alt="item"></span>
+                                <span class="avantage_text"><br>24 mois de garantie <br> constructeur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blog_home">
+            <div class="row justify-content-center">
+                <div class="blog_tilte">Notre blog</div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="row align-items-center d-flex justify-content-center text-center">
+                    {% for post in posts %}
+                        <div class="blog_article">
+                            <div class="img_blog">
+                                <img class="img-responsive" src="{{ asset('build/uploads/'~ post.getPostImg) }}" alt="wolks" style="width: 45%" />
+                            </div>
+                            <div class="blog_text">
+                                <span class="item_blog_tilte">{{ post.title }}</span>
+                                <div class="item_text">{{ post.content |u.truncate(200, '...')|raw }}</div>
+                                <a href="{{ path('see_post', { 'id': post.id }) }}" class="blog_btn">Lire la suite <span class="fa fa-angle-right"></span></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row align-items-center d-flex justify-content-around text-center">
+                <span class="btn_blog_articles">Voir tous les articles </span>
+            </div>
+        </div>
+   
+        <div class="newsletter_banner">
+            <div class="row text-center">
+                <div class="col-4 col-md-1 col-sm-2">
+                    <img src="{{ asset('build/Groupe_281.png') }}" alt="newsletter" class="newsletter_img"/>
+                </div>
+                <div class="col-6 col-md-4 col-sm-6 offset-lg-1">
+                    <div class="newsletter_tilte">Recevez les bons plans TT</div>
+                    <div class="newsletter_subtilte">Inscrivez-vous à notre newsletter</div>
+                </div>
+                <div class="col-12 col-md-6 col-sm-12">
+                    <div class="newsletter_form">
+                        <div class="row align-items-center d-flex justify-content-around text-center">
+                            <div class="col">
+                                {{ form_start(form_newsletter) }}
+                                {{ form_row(form_newsletter.email, { 'attr': {'class': 'form_news'} }) }}
+                            </div>
+                            <div class="col-auto">
+                                <div class="newsletter_btn1">
+                                    <button type="submit" class="newsletter_btn" id="seachButton">OK</button>
+                                </div>
+                                {{ form_end(form_newsletter) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 
    {# <!--Search bar-->
