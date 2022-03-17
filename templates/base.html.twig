@@ -37,7 +37,7 @@
     </head>
     <body>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width" />
     <header class="Rectangle_1" data-wow-delay="0.7s" style="background: rgba(52,95,138,1)">  
         <a href="{{ path('preHome') }}">
             <img src="{{ asset('build/tt-groupimg.png') }}" id="tt-group" alt="ttcar" width="120" />
@@ -85,7 +85,7 @@
                         <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
                         <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
                         <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
-                        <li><a href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
+                        <li><a href="{{ path('promotion') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
                         <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
                     </ul>
                 </nav>
@@ -107,7 +107,7 @@
                     Transit Temporaire
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:13px;">
-                        <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a>
+                        <a class="dropdown-item d-flex justify-content-center" href="{{ path('main') }}">{{ 'menu.booking'|trans({}, 'messages') }}</a>
                         <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a>
                         <a class="dropdown-item d-flex justify-content-center" href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a>
                         <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.promo'|trans({}, 'messages') }}</a>

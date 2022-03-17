@@ -10,7 +10,7 @@ import '../css/app.css';
 import '../css/admin.css';
 import '../css/bootstrap-datepicker.css';
 import '../css/bootstrap-datepicker.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle'; //bundle pour faire fonctionner la navbar
+import 'bootstrap/dist/js/bootstrap.bundle'; //bundle for Navbar
 // start the Stimulus application
 import '../js/bootstrap';
 
