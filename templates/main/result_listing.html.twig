@@ -696,9 +696,10 @@
         </div>
 
         <div class="d-flex justify-content-center">
+            {% if pagination %}
             <div class="cars">
                 <div class="row">
-                    {% for car in cars %}
+                    {% for car in pagination %}
                     <div class="car_result">
                         <div class="car_container">
                         <div class="row">
@@ -744,14 +745,21 @@
                                     <span class="btn_car">{{ car.name|u.truncate(25, '...') }}</span>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
-                                    <span class="btn_price">
+                                    {% if car.getDateStart > today %}
+                                    <a href="#" class="soon">Disponible à partir du : 01 Apr 2022</a>
+                                {% elseif car.isContactActived == true %}
+                                    <a href="#" class="contact">Contact</a>
+                                {% else %}
+                                    <span class="btn_price">{{ carsResult[loop.index-1]}}€
                                     <a href="{{ path('order', { 'id': car.id }) }}" class="reservez">Reservez</a>
                                     </span>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
+                {% endif %}
                 </div>
             </div>
         </div>
