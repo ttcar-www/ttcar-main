@@ -171,19 +171,12 @@ class MainController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Place::class);
         $repositoryMark = $this->getDoctrine()->getRepository(Mark::class);
 
-        $placeDepart = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeDepart']->getLibelle()]);
-        $placeReturn = $repository->findOneBy(['libelle' => $_SESSION['searchResult']['placeReturn']->getLibelle()]);
-        $mark = $repositoryMark->findOneBy(['libelle' => $_SESSION['searchResult']['mark']->getLibelle()]);
-        $promo = $_SESSION['searchResult']['promo'] ? $_SESSION['searchResult']['promo'] : null;
-
-
         return $this->createFormBuilder()
             ->add('mark', EntityType::class, [
                 'class' => Mark::class,
                 'choice_label' => 'getLibelle',
                 'expanded' => true,
                 'multiple' => false,
-                'data' =>  $mark,
                 'label' => false
             ])
             ->add('placeDepart', EntityType::class, [
@@ -191,12 +184,10 @@ class MainController extends AbstractController
                 'choice_label' => 'getLibelle',
                 'expanded' => false,
                 'multiple' => false,
-                'data' => $placeDepart,
                 'label' => false
             ])
             ->add('date_start', DateType::class, array(
                 'label' => false,
-                'data' => $_SESSION['searchResult']['dateStart'],
                 'widget' => 'single_text'
             ))
             ->add('placeReturn', EntityType::class, [
@@ -204,18 +195,15 @@ class MainController extends AbstractController
                 'choice_label' => 'getLibelle',
                 'expanded' => false,
                 'multiple' => false,
-                'data' => $placeReturn,
                 'label' => false
             ])
             ->add('date_end', DateType::class, array(
                 'label' => false,
-                'data' => $_SESSION['searchResult']['dateEnd'],
                 'widget' => 'single_text'
             ))
             ->add('promo', NumberType::class, array(
                 'label' => false,
-                'required' => false,
-                'data' => $promo
+                'required' => false
             ))
 
             ->getForm();
@@ -303,7 +291,7 @@ class MainController extends AbstractController
      */
     public function listingResult(Request $request, PriceService $PriceService, PaginatorInterface $paginator): Response
     {
-        $today = new DateTime('@'.strtotime('now'));
+/*        $today = new DateTime('@'.strtotime('now'));
         $nb_days = $this->betdweenDate($_SESSION['searchResult']['dateStart'], $_SESSION['searchResult']['dateEnd']);
 
         $mark_labelle = $this->getMarkSession();
@@ -338,7 +326,11 @@ class MainController extends AbstractController
         foreach ($cars as $car) {
             $price_car = $PriceService->getPriceOrder($car, $nb_days);
             array_push($carsResult, $price_car);
-        }
+        }*/
+
+        $cars = $this->getDoctrine()
+            ->getRepository(Cars::class)
+            ->findAll();
 
         $formSearch= $this->getFormSearchListing();
         $formSearch->handleRequest($request);
@@ -353,10 +345,6 @@ class MainController extends AbstractController
 
         return $this->render('main/result_listing.html.twig', [
             'cars' => $cars,
-            'today' =>$today,
-            'pagination' => $pagination,
-            'nb_days' => $nb_days,
-            'carsResult' => $carsResult,
             'formSearch' => $formSearch->createView()
         ]);
     }
