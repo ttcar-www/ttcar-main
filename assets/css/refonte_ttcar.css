@@ -1135,17 +1135,18 @@ Base FOOTER
     margin-top: -35px;
 }
 .search_depart {
-    position: absolute;
-    width: 824px;
-    height: 65px;
+    /*position: absolute;
     left: 50px;
-    top: 45px;
+    top: 45px;*/
+    width: 100%;;
+    height: auto;
     overflow: visible;
     text-align: left;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
+    margin-top: 3%;
     color: rgba(52,95,138,1);
 }
 
