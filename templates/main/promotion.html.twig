@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<style>
-.img_promo{
-    object-fit: cover;
-    width: 100%;
-    text-align: center; /* ensures the image is always in the h-middle */
-    overflow: hidden; /* hide the cropped portion */
-}
-</style>
-<div>
-    <meta name="viewport" content="width=device-width"/>
-    <div class="img_promo">
-        <img src="{{ asset('build/pexels-luke-webb-2738173.png') }}" alt="background_promo">
-    </div>
+    <style>
+    .img_promo{
+        object-fit: cover;
+        width: 100%;
+        text-align: center; /* ensures the image is always in the h-middle */
+        overflow: hidden; /* hide the cropped portion */
+    }
+    </style>
+    <div>
+        <meta name="viewport" content="width=device-width"/>
+        <div class="img_promo">
+            <img src="{{ asset('build/pexels-luke-webb-2738173.png') }}" alt="background_promo">
+        </div>
+        {% for promotions in pagination %}
+            <p>{{  promotions.value }}</p>
+        {% endfor %}
 
+        
+    </div>
+    {% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            
+        });
     
-</div>
+    </script>
+    {% endblock %}
 {% endblock %}
