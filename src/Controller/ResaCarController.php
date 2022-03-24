@@ -142,11 +142,13 @@ class ResaCarController extends AbstractController
 
         $response = $this->checkSation($openingHoursManager, $request->get('stationStart'), $request->get('stationEnd'), $request->get('dateStart'), $request->get('dateEnd'));
 
-        if ($response == true ) {
-            $data = $this->generateUrl('resacar_search');
+        $data = $response;
+
+ /*       if ($response == true ) {
+            $data = $response;
         }else{
             $data = $response;
-        }
+        }*/
 
         return new JsonResponse($data);
     }
@@ -196,8 +198,10 @@ class ResaCarController extends AbstractController
             'veh_class' => 'T'
         ];*/
 
+        var_dump($_SESSION['resaCarStationDepart']);
+
         $filter = [
-            'station_id' => 'PARL06',
+            'station_id' => 'PUFE01',
             'date_pickup' => '12042022',
             'heure_pickup' => '0930',
             'date_return' => '22052022',
@@ -210,6 +214,8 @@ class ResaCarController extends AbstractController
 
         $cars = $data['price'];
         $equipments = $data['price'];
+
+        var_dump($cars);
 
         $pagination = $paginator->paginate(
             $cars,
@@ -230,7 +236,7 @@ class ResaCarController extends AbstractController
     public function orderResacar(OpeningHoursManager $openingHoursManager): Response
     {
 
-        var_dump($_SESSION['resaCarStationDepart']);die();
+
         $stationStart=  $_SESSION['resaCarStationDepart'];
         $stationEnd = $_SESSION['resaCarStationEnd'];
 
@@ -251,7 +257,6 @@ class ResaCarController extends AbstractController
 
             $depart = new \DateTime($dateStart);
 
-
             $years = substr($openHours['date_min'], 4);
             $month = substr($openHours['date_min'], 2, 2);
             $day = substr($openHours['date_min'], 0, 2);
@@ -264,6 +269,7 @@ class ResaCarController extends AbstractController
             $hoursMax = $openHours['hour_max'];
 
             $dateToOpen = \DateTime::createFromFormat("d/m/Y", $day . "/" . $month . "/" . $years);
+
             $dateToClose = \DateTime::createFromFormat("d/m/Y", $dayMax . "/" . $monthMax . "/" . $yearsMax);
 
             if (empty($hoursMini)) {
@@ -317,11 +323,15 @@ class ResaCarController extends AbstractController
                 $hoursExploseMin = explode(":", $hoursMini);
                 $hoursExploseMax = explode(":", $hoursMini);
 
-                $dateToOpen->setTime($hoursExploseMin[0], $hoursExploseMin[1],00);
-                $dateToClose->setTime($hoursExploseMax[0], $hoursExploseMax[1],00);
+                $min = $hoursExploseMin[1] ? $hoursExploseMin[1] : 00;
+                $minMax = $hoursExploseMax[1] ? $hoursExploseMax[1] : 00;
+
+
+                $dateToOpen->setTime($hoursExploseMin[0], $min,00);
+                $dateToClose->setTime($hoursExploseMax[0], $minMax,00);
             }
 
-            if ($depart->format('Y-m-d') < $dateToOpen->format('Y-m-d') ) {
+            if ($depart->format('Y-m-d') < $dateToOpen->format('Y-m-d') && $depart->format('Y-m-d') < $dateToClose->format('Y-m-d')) {
                 return $response = true;
             } else {
                 return $data = ['dateToOpen' => $dateToOpen, 'dateToClose' => $dateToClose ];
