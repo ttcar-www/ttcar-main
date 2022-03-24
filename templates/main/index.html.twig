@@ -205,6 +205,11 @@
         opacity: 0.841;*/
     }
 
+
+    .ui-datepicker {
+        background-color: white;
+    }
+
     /* Media Queries */
     /* Desktop */
     @media (max-width : 1230.98px) {
@@ -805,7 +810,8 @@
 #}
     {% block javascripts %}
         {{ parent() }}
-
+        {{ parent() }}
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script>
             //DatePicker Search
             $(document).ready(function() {

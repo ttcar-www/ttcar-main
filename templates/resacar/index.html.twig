@@ -675,7 +675,7 @@
                     <span>Retour</span>
                     <div class="ui-widget">
                         <input id="stations-return" placeholder="Saisissez votre ville">
-                        <input id="stations_id-return" style="visibility: hidden; width: 2px">
+                        <input id="stations_id_return" style="visibility: hidden; width: 2px">
                         <input type="datetime-local" id="endDate"
                                name="meeting-time" value="12-02-2024T19:30">
                     </div>
@@ -696,7 +696,9 @@
                     </select>
                 </div>
                 <div class="btn_search_send" id="searchBtn">
-                   <button type="submit">Voir nos tarif</button>
+                   <button type="submit">
+                       Voir nos tarif
+                   </button>
 {#                    <a href="#" id="searchBtn">Voir nos tarifs</a>#}
                 </div>
             </form>
@@ -772,7 +774,6 @@
         {{ parent() }}
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
         <script>
-
             $( "#stations" ).click(function() {
                 let stationArray = [];
                 let stationIdArray = [];
@@ -806,43 +807,43 @@
                 });
             });
 
-            $( "#searchFromResa" ).submit(function( event, stationIdArray ) {
+            $( "#searchFromResa" ).submit(function( event ) {
                 event.preventDefault();
 
                 let stationDepartName = $( "#stations" ).val();
                 let stationReturnName = $( "#stations-return" ).val();
-                let stationStart = [];
-                let stationEnd = [];
+
 
                     $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
                         $.each(json, function( index, station ) {
-                            if (station['station_name'] === stationDepartName) and  (station['station_name'] === stationReturnName)
+                            if (station['station_name'] === stationDepartName)
                             {
-                                $( "#stations_id" ).val( station['station_id']);
+                                $( "#stations_id" ).val( station['station_id'])
+                                // $( "#stations_id" ).val( )
                             }
                             if (station['station_name'] === stationReturnName)
                             {
-                                $( "#stations_id-return" ).val( station['station_id']);
+                               $( "#stations_id_return" ).val( station['station_id'])
                             }
 
                         });
                     });
 
-                    console.log($( "#stations_id-return" ).val( ))
-
                 let dateStart = $( "#startDate" ).val();
                 let dateEnd = $( "#endDate" ).val();
                 let numberPlane = $( "#numberPlane" ).val();
                 let typeSelect = $( "#typeSelect" ).val();
+                let stationStart = $( "#stations_id" ).val();
+                let stationEnd = $( "#stations_id_return" ).val( );
 
-                if (stationStart !== undefined) {
-                    console.log('ok slothie')
+                if (stationStart !== '') {
                     $.ajax({
                         url:{{ path('searchResacar') }},
                         type:"POST",
                         dataType:"json",
                         data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
                         success: function(data){
+                            console.log(data)
                             if (data['dateToOpen'])
                             {
                                 let d = new Date(data['dateToOpen']['date']);
