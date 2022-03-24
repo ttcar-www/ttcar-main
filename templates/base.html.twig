@@ -4,8 +4,27 @@
         <meta charset="UTF-8">
         <title>{% block title %}TTcar Transit{% endblock %}</title>
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
             {{ encore_entry_link_tags('bootstrap_css') }}
             {{ encore_entry_link_tags('refonteV1') }}
+            {{ encore_entry_link_tags('animate') }}
+            {{ encore_entry_link_tags('blog') }}
+            {{ encore_entry_link_tags('colors') }}
+            {{ encore_entry_link_tags('demo') }}
+            {{ encore_entry_link_tags('compare') }}
+            {{ encore_entry_link_tags('custom') }}
+            {{ encore_entry_link_tags('detail') }}
+            {{ encore_entry_link_tags('doc') }}
+            {{ encore_entry_link_tags('home') }}
+            {{ encore_entry_link_tags('home-2') }}
+            {{ encore_entry_link_tags('bxslider') }}
+            {{ encore_entry_link_tags('listings') }}
+            {{ encore_entry_link_tags('master') }}
+            {{ encore_entry_link_tags('pages') }}
+            {{ encore_entry_link_tags('site-colors') }}
+            {{ encore_entry_link_tags('start') }}
+            {{ encore_entry_link_tags('submits') }}
+            {{ encore_entry_link_tags('theme') }}
             {{ encore_entry_link_tags('owl_css') }}
             {{ encore_entry_link_tags('start') }}
             {{ encore_entry_link_tags('account') }}
@@ -183,6 +202,20 @@
             </script>
 
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('bxslider_js') }}
+            {{ encore_entry_script_tags('classie') }}
+            {{ encore_entry_script_tags('easypiechart') }}
+            {{ encore_entry_script_tags('placeholder') }}
+            {{ encore_entry_script_tags('smooth') }}
+            {{ encore_entry_script_tags('modernizr') }}
+            {{ encore_entry_script_tags('theme_js') }}
+            {{ encore_entry_script_tags('waypoints') }}
+            {{ encore_entry_script_tags('wow') }}
+            {{ encore_entry_script_tags('carousel') }}
+            {{ encore_entry_script_tags('owl_min') }}
+            {{ encore_entry_script_tags('owl_transitions') }}
+            {{ encore_entry_script_tags('owl_theme') }}
+            {{ encore_entry_script_tags('bootsDate') }}
             {{ encore_entry_script_tags('datepicker') }}
 
         {% endblock %}
