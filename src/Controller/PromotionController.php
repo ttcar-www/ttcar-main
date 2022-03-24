@@ -22,7 +22,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PromotionController extends AbstractController
 {
+    /**
+     * @Route("/promotions", name="promotions")
+     * @param Request $request
+     * @return Response
+     */
+    public function Promotion(Request $request)
+    {
 
+        return $this->render('main/promotion.html.twig');
+    }
 
     /**
      * @Route("/manage_promotion", name="manage_promotion")

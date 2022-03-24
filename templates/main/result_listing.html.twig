@@ -95,13 +95,18 @@
             /* left: 65px; */
             top: -625px;
             max-width: 1041px;
+            margin-bottom: -500px;
             width: 65%;
             border-radius: 20px;
-            border: solid 2px grey;
             background-color: white;
+        }
+        .car_card {
+            margin-bottom: 50px;
         }
         .car_result {
             width: 100%;
+            border: solid 2px grey;
+            border-radius: 20px;
         }
         .car_container {
             padding: 45px;
@@ -292,6 +297,9 @@
             background-color: rgb(106 132 154);
             border-radius: 30px;
         }
+        .select_mark_listing {
+            margin-bottom: 15px;
+        }
         .trait_result {
             width: 100%;
             margin-top: 15px;
@@ -389,9 +397,7 @@
             color: rgba(255,255,255,1);
         }
         .special_code {
-            margin-top: 10px;
-            margin-bottom: 10px;
-
+            margin-bottom: 20px;
         }
         #form_promo {
             /*position: absolute;*/
@@ -405,11 +411,11 @@
         .btn_search_send_resul button {
             overflow: visible;
             height: 50px;
-            padding: 15px;
+            /*padding: 15px;*/
             width: 100%;
             max-width: 184px;
             white-space: nowrap;
-            text-align: left;
+            text-align: center;
             font-family: Montserrat;
             font-style: normal;
             font-weight: bold;
@@ -504,12 +510,17 @@
         @media screen and (max-width:576.98px){
             #form_mark {
                 left: 70px;
-                top: 45px;
+                top: 70px;
                 overflow: visible;
-                display: block;
+                display: inline-block;
+                height: 100%;
+                width: 83px;
+                
             }
             #form_mark label {
                 margin-right: 0px;
+                margin-top: 15px;
+                margin-left: 5px;
             }
             #form_placeDepart {
                 margin-top: 15px;
@@ -519,20 +530,28 @@
                 margin-top: 15px;
                 margin-bottom: 15px;
             }
-            .btn_search_send_resul button {
+            /*.btn_search_send_resul button {
                 margin-top: 15px;
-            }
+            }*/
             .logo_renault_form {
                 left: 30px;
+                width: 260px;
+                height: 260px;
             }
             .logo_peugeot_form {
                 left: 30px;
+                height: 260px;
+                width: 260px;
             }
             .logo_citroen_form {
                 left: 30px;
+                height: 260px;
+                width: 260px;
             }
             .logo_ds_form {
                 left: 30px;
+                height: 260px;
+                width: 260px;
             }
             .img_new img {
                 height: 1274px;
@@ -550,6 +569,10 @@
             }
             .cars {
                 top: -1041px;
+                margin-bottom: -1000px;
+            }
+            .li_info1 li {
+                margin-bottom: 28px;
             }
         }
     </style>
@@ -583,18 +606,20 @@
                     <div class="div_result_search">
                         <div class="row">   
                             <div class="col-sm-12 col-md-4 col-lg-4">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault_form">
-                                        <img src="{{ asset('build/peugeottrans.png') }}" alt="peugeotlogo" class="logo_peugeot_form hidden">
-                                        <img src="{{ asset('build/citroentrans.png') }}" alt="citroenlogo" class="logo_citroen_form hidden">
-                                        <img src="{{ asset('build/dstrans.png') }}" alt="dslogo" class="logo_ds_form hidden">
-                                    </div>
-                                    
-                                    <div class="col-6">
-                                        {{ form_start(formSearch) }}
-                                        <div class="search_mark_result">
-                                            {{ form_row(formSearch.mark) }}
+                                <div class="select_mark_listing">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <img src="{{ asset('build/renault-blanc.png') }}" alt="renaultlogo" class="logo_renault_form">
+                                            <img src="{{ asset('build/peugeottrans.png') }}" alt="peugeotlogo" class="logo_peugeot_form hidden">
+                                            <img src="{{ asset('build/citroentrans.png') }}" alt="citroenlogo" class="logo_citroen_form hidden">
+                                            <img src="{{ asset('build/dstrans.png') }}" alt="dslogo" class="logo_ds_form hidden">
+                                        </div>
+                                        
+                                        <div class="col-3 col-sm-6 col-md-6 col-lg-6">
+                                            {{ form_start(formSearch) }}
+                                            <div class="search_mark_result">
+                                                {{ form_row(formSearch.mark) }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -640,14 +665,14 @@
                         <div class="special_code">
                             <div class="row align-items-center d-flex justify-content-center text-center">
                                 {# <div class="search_promo_btn_result"> #}
-                                    <div class="col-6 col-sm-3 col-md-3">
+                                    <div class="col-3 col-sm-3 col-md-3">
                                         <span class="span_code_result">Code spécial</span>
                                     </div>
-                                    <div class="col-6 col-sm-4 col-md-4">
+                                    <div class="col-4 col-sm-4 col-md-4">
                                         {{ form_row(formSearch.promo) }}
                                     </div>
                                 {# </div> #}
-                                <div class="col-12 col-sm-5 col-md-5">
+                                <div class="col-5 col-sm-5 col-md-5">
                                     <div class="btn_search_send_resul">
                                         <button id="searchBtn_resul">Modifier ma recherche</button>
                                     </div>
@@ -663,13 +688,13 @@
                         <div class="row">
                             <span class="price_info">Ce prix inclut :</span>
                             <br>
-                            <div class="col-4 col-md-4 col-lg-4 col-xl-12">
-                                <ul class="ul_info">
+                            <div class="col-3 col-md-3 col-lg-4 col-xl-12">
+                                <ul class="ul_info li_info1">
                                     <li> <img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un forfait 6 jours</li>
                                     <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> Un véhicule neuf</li>
                                 </ul>
                             </div>
-                            <div class="col-4 col-md-4 col-lg-4 col-xl-12">
+                            <div class="col-5 col-md-5 col-lg-4 col-xl-12">
                                 <ul class="ul_info">
                                     <li><img src="{{ asset('build/Groupe_216.png') }}" class="info_img"> L’assurance multirisques
                                         sans franchise</li>
@@ -696,64 +721,66 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            {% if pagination %}
             <div class="cars">
                 <div class="row">
+                {% if pagination %}
                     {% for car in pagination %}
-                    <div class="car_result">
-                        <div class="car_container">
-                        <div class="row">
-                            <div class="col-12 col-sm-12 col-md-6">
-                                <span class="dispo">Disponible !</span>
-                                <div class="car_tilte">{{ car.mark.getlibelle }}</div>
-                                <div class="car_desc">
-                                    Le design intérieur gagne en attractivité. Dacia Sandero inaugure une nouvelle planche de bord carbone
-                                    foncé ou bi-ton (selon versions) à l’instrumentation complète et au traité moderne avec des contours
-                                    de cadrans chromés (selon versions) et des commandes dont l’ergonomie a été complètement repensée.
-                                </div>
-                                <div class="car_icon">
-                                    <span>
-                                        <img src="{{ asset('build/Groupe_259.png') }}" alt="car" class="car_icon">
-                                        x {{ car.door }}
-                                    </span>
-                                    <span>
-                                        <img src="{{ asset('build/Groupe_261.png') }}" alt="car" class="car_icon">
-                                        x {{ car.door }}
-                                    </span>
-                                    <span>
-                                        <img src="{{ asset('build/Groupe_263.png') }}" alt="car" class="car_icon">
-                                        x {{ car.door }}
-                                    </span>
-                                    <span>
-                                        <img src="{{ asset('build/Groupe_265.png') }}" alt="car" class="car_icon">
-                                    </span>
-                                    <span>
-                                        <img src="{{  asset('build/Groupe_267.png') }}" alt="car" class="car_icon">
-                                    </span>
-                                </div>
-                            </div>
-                        
-                            <div class="col-12 col-sm-12 col-md-6 align-self-center d-flex justify-content-center">
-                                <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="car" class="car_img">
-                            </div>
-                        </div>
-                        </div>
-                            
-                        <div class="car_btn">
+                    <div class="car_card">
+                        <div class="car_result">
+                            <div class="car_container">
                             <div class="row">
-                                <div class="col-6">
-                                    <span class="btn_car">{{ car.name|u.truncate(25, '...') }}</span>
+                                <div class="col-12 col-sm-12 col-md-6">
+                                    <span class="dispo">Disponible !</span>
+                                    <div class="car_tilte">{{ car.mark.getlibelle }}</div>
+                                    <div class="car_desc">
+                                        Le design intérieur gagne en attractivité. Dacia Sandero inaugure une nouvelle planche de bord carbone
+                                        foncé ou bi-ton (selon versions) à l’instrumentation complète et au traité moderne avec des contours
+                                        de cadrans chromés (selon versions) et des commandes dont l’ergonomie a été complètement repensée.
+                                    </div>
+                                    <div class="car_icon">
+                                        <span>
+                                            <img src="{{ asset('build/Groupe_259.png') }}" alt="car" class="car_icon">
+                                            x {{ car.door }}
+                                        </span>
+                                        <span>
+                                            <img src="{{ asset('build/Groupe_261.png') }}" alt="car" class="car_icon">
+                                            x {{ car.door }}
+                                        </span>
+                                        <span>
+                                            <img src="{{ asset('build/Groupe_263.png') }}" alt="car" class="car_icon">
+                                            x {{ car.door }}
+                                        </span>
+                                        <span>
+                                            <img src="{{ asset('build/Groupe_265.png') }}" alt="car" class="car_icon">
+                                        </span>
+                                        <span>
+                                            <img src="{{  asset('build/Groupe_267.png') }}" alt="car" class="car_icon">
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="col-6 d-flex justify-content-end">
-                                    {% if car.getDateStart > today %}
-                                    <a href="#" class="soon">Disponible à partir du : 01 Apr 2022</a>
-                                {% elseif car.isContactActived == true %}
-                                    <a href="#" class="contact">Contact</a>
-                                {% else %}
-                                    <span class="btn_price">{{ carsResult[loop.index-1]}}€
-                                    <a href="{{ path('order', { 'id': car.id }) }}" class="reservez">Reservez</a>
-                                    </span>
-                                    {% endif %}
+                            
+                                <div class="col-12 col-sm-12 col-md-6 align-self-center d-flex justify-content-center">
+                                    <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="car" class="car_img">
+                                </div>
+                            </div>
+                            </div>
+                                
+                            <div class="car_btn">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="btn_car">{{ car.name|u.truncate(25, '...') }}</span>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        {% if car.getDateStart > today %}
+                                        <a href="#" class="soon">Disponible à partir du : 01 Apr 2022</a>
+                                    {% elseif car.isContactActived == true %}
+                                        <a href="#" class="contact">Contact</a>
+                                    {% else %}
+                                        <span class="btn_price">{{ carsResult[loop.index-1]}}€
+                                        <a href="{{ path('order', { 'id': car.id }) }}" class="reservez">Reservez</a>
+                                        </span>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
