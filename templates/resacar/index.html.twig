@@ -644,6 +644,30 @@
             color: rgba(52,95,138,1);
         }
 
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        .loader_div {
+            background-color: grey;
+            position: relative;
+            z-index: 10;
+            height: 575px;
+            width: 895px;
+            padding-top: 175px;
+            padding-left: 375px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
     </style>
     <div class="img_search">
         <img src="{{ asset('build/modern-metropolis-skyline-chon.png') }}" alt="sliderImg" />
@@ -695,8 +719,11 @@
 
                     </select>
                 </div>
-                <div class="btn_search_send" id="searchBtn">
-                   <button type="submit">
+                <div class="loader_div" id="loader_form" style="display: none">
+                    <div class="loader"></div>
+                </div>
+                <div class="btn_search_send">
+                   <button type="submit" id="searchBtn">
                        Voir nos tarif
                    </button>
 {#                    <a href="#" id="searchBtn">Voir nos tarifs</a>#}
@@ -807,9 +834,10 @@
                 });
             });
 
-            $( "#searchFromResa" ).submit(function( event ) {
+            $( "#numberPlane" ).click(function( event ) {
                 event.preventDefault();
 
+                let loader = document.getElementById("loader_form");
                 let stationDepartName = $( "#stations" ).val();
                 let stationReturnName = $( "#stations-return" ).val();
 
@@ -828,7 +856,9 @@
 
                         });
                     });
+            });
 
+            $( "#searchFromResa" ).submit(function( event ) {
                 let dateStart = $( "#startDate" ).val();
                 let dateEnd = $( "#endDate" ).val();
                 let numberPlane = $( "#numberPlane" ).val();
@@ -836,8 +866,7 @@
                 let stationStart = $( "#stations_id" ).val();
                 let stationEnd = $( "#stations_id_return" ).val( );
 
-                if (stationStart !== '') {
-                    $.ajax({
+                $.ajax({
                         url:{{ path('searchResacar') }},
                         type:"POST",
                         dataType:"json",
@@ -859,7 +888,8 @@
                             }
                         }
                     });
-                }
+
+                return false;
             });
 
 
