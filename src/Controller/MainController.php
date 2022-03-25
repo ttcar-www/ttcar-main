@@ -260,11 +260,9 @@ class MainController extends AbstractController
                 'attr' => ['class' => 'placeDepart']
             ])
             ->add('date_start', DateType::class, array(
-                'widget' => 'single_text',
+                'widget' => 'choice',
                 'label' => false,
                 'html5' => false,
-                'placeholder' => 'Choisissez une date',
-                'attr' => ['class' => 'datepicker-dateStart'],
                 'format' => 'dd/MM/yyyy'
             ))
             ->add('placeReturn', EntityType::class, [
@@ -278,10 +276,8 @@ class MainController extends AbstractController
                 'attr' => ['class' => 'placeDepart']
             ])
             ->add('date_end', DateType::class, array(
-                'widget' => 'single_text',
                 'label' => false,
                 'html5' => false,
-                'attr' => ['class' => 'datepicker-dateEnd'],
                 'format' => 'dd/MM/yyyy'
             ))
             ->add('promo', NumberType::class, array(
