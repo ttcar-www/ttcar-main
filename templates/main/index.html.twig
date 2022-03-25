@@ -454,7 +454,7 @@
                             {{ form_row(formSearch.placeDepart) }}
                         </div>
                         <div class="col-md-4 col-lg-4 search_col-12">
-                            {{ form_row(formSearch.date_start) }}
+                            {{ form_row(formSearch.date_start, { 'attr': {'class': 'datePickerStart'} }) }}
                         </div>
                     </div>
                 </div>
@@ -467,7 +467,7 @@
                             {{ form_row(formSearch.placeReturn) }}
                         </div>
                         <div class="col-md-4 col-lg-4 search_col-12">
-                            {{ form_row(formSearch.date_end) }}
+                            {{ form_row(formSearch.date_end, { 'attr': {'class': 'datePickerEnd'} }) }}
                         </div>
                     </div>
                 </div>
@@ -818,8 +818,8 @@
                 // Place Ajax
                 let placeReturn = document.getElementsByClassName("placeReturn");
                 let placeDepart = document.getElementsByClassName("placeDepart");
-                let dateDepart = document.getElementById("search_form_date_start");
-                let dateReturn = document.getElementById("search_form_date_end");
+                let dateDepart = document.getElementById("form_date_start");
+                let dateReturn = document.getElementById("form_date_end");
                 let btnSearch = document.getElementById("searchBtn");
 
 
@@ -827,6 +827,10 @@
                 $(placeReturn).attr('disabled', 'disabled');
                 $(placeDepart).attr('disabled', 'disabled');
                 $(dateDepart).attr('disabled', 'disabled');
+
+                $(dateDepart).attr('placeholder', 'Date de départ');
+                $(dateReturn).attr('placeholder', 'Date de retour');
+
                 $(dateReturn).attr('disabled', 'disabled');
                 $(btnSearch).attr('disabled', 'disabled');
 
@@ -843,6 +847,8 @@
 
                     $(btnSearch).attr('disabled', false);
 
+                    $(dateDepart).attr('disabled', false);
+                    $(dateReturn).attr('disabled', false);
                     $(peugeot).prop('checked',false)
                     $(citroen).prop('checked',false)
                     $(psa).prop('checked',false)
@@ -878,24 +884,24 @@
                         dataType:"json",
                         data: {mark: valueMark},
                         success: function(data){
+                            console.log(dateDepart)
 
                             let minDate = data[0]['minDate']
                             let maxDate = data[0]['maxDate']
 
                             let maxDatePicker = '+'+maxDate+'D'
 
-                            $('.datepicker-dateStart').datepicker({
-                                format: 'dd/mm/yyyy',
-                                startDate: '+21d',
-                                endDate: '+6M'
+                            $(".datePickerStart").datepicker({
+                                minDate: '+21d',
+                                maxDate: '+6M',
+                                dateFormat: 'dd/mm/yy'
                             });
 
-                            $('.datepicker-dateEnd').datepicker({
-                                format: 'dd/mm/yyyy',
-                                startDate: '+1M',
-                                endDate: maxDatePicker
+                            $('.datePickerEnd').datepicker({
+                                minDate: '+1M',
+                                maxDate: maxDatePicker,
+                                dateFormat: 'dd/mm/yy'
                             });
-
 
                             $("#seachButton").prop("disabled",false);
                             $(".m-firstSelects").show('slow');
@@ -909,6 +915,8 @@
                 $("#form_mark_2").change(function(){
                     $(btnSearch).attr('disabled', false);
 
+                    $(dateDepart).attr('disabled', false);
+                    $(dateReturn).attr('disabled', false);
                     $(citroen).prop('checked',false)
                     $(renault).prop('checked',false)
                     $(psa).prop('checked',false)
@@ -948,13 +956,13 @@
 
                             let maxDatePicker = '+'+maxDate+'D'
 
-                            $('.datepicker-dateStart').datepicker({
+                            $('.datePickerStart').datepicker({
                                 format: 'dd/mm/yyyy',
                                 startDate: '+21d',
                                 endDate: '+6M'
                             });
 
-                            $('.datepicker-dateEnd').datepicker({
+                            $('.datePickerEnd').datepicker({
                                 format: 'dd/mm/yyyy',
                                 startDate: '+1M',
                                 endDate: maxDatePicker
@@ -1012,13 +1020,13 @@
 
                             let maxDatePicker = '+'+maxDate+'D'
 
-                            $('.datepicker-dateStart').datepicker({
+                            $('.datePickerStart').datepicker({
                                 format: 'dd/mm/yyyy',
                                 startDate: '+21d',
                                 endDate: '+6M'
                             });
 
-                            $('.datepicker-dateEnd').datepicker({
+                            $('.datePickerEnd').datepicker({
                                 format: 'dd/mm/yyyy',
                                 startDate: '+1M',
                                 endDate: maxDatePicker
@@ -1076,13 +1084,13 @@
 
                             let maxDatePicker = '+'+maxDate+'D'
 
-                            $('.datepicker-dateStart').datepicker({
+                            $('.datePickerStart').datepicker({
                                 format: 'dd/mm/yyyy',
                                 startDate: '+21d',
                                 endDate: '+6M'
                             });
 
-                            $('.datepicker-dateEnd').datepicker({
+                            $('.datePickerEnd').datepicker({
                                 format: 'dd/mm/yyyy',
                                 startDate: '+1M',
                                 endDate: maxDatePicker
