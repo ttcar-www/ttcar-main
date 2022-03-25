@@ -262,23 +262,24 @@ class MainController extends AbstractController
             ->add('date_start', DateType::class, array(
                 'widget' => 'single_text',
                 'label' => false,
-                'html5' => true,
-                'placeholder' => 'Choisissez une date'
+                'html5' => false,
+                'format' => 'dd/MM/yyyy'
             ))
             ->add('placeReturn', EntityType::class, [
                 'class' => Place::class,
                 'choice_label' => 'getLibelle',
                 'expanded' => false,
                 'multiple' => false,
-                'placeholder' => 'Choisissez une ville retour',
+                'label' => false,
+                'placeholder' => 'Choisissez une ville',
                 'required' => false,
                 'attr' => ['class' => 'placeDepart']
             ])
             ->add('date_end', DateType::class, array(
                 'widget' => 'single_text',
                 'label' => false,
-                'html5' => true,
-                'placeholder' => 'Choisissez une date'
+                'html5' => false,
+                'format' => 'dd/MM/yyyy'
             ))
             ->add('promo', NumberType::class, array(
                 'label' => false,
@@ -341,9 +342,11 @@ class MainController extends AbstractController
 
         if ($formSearch->isSubmitted() && $formSearch->isValid()) {
             $data = $this->getDataSearchListing($formSearch->getData());
+
             return $this->redirectToRoute('listing');
 
         }
+
 
         return $this->render('main/result_listing.html.twig', [
             'cars' => $cars,
