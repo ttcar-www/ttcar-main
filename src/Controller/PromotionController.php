@@ -7,15 +7,21 @@ use App\Entity\Place;
 use App\Entity\PromoCode;
 use App\Entity\Promotions;
 use App\Entity\Range;
+use App\Entity\Newsletter;
+use DateTime;
 use App\Form\EditPromoCodeFormType;
 use App\Form\EditPromoFormType;
 use App\Form\PromoCodeFormType;
 use App\Form\PromotionFormType;
+use App\Form\NewsletterFormType;
 use App\Form\PromotionPlaceFormType;
 use App\Form\SimplePromoFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,14 +30,62 @@ class PromotionController extends AbstractController
 {
     /**
      * @Route("/promotions", name="promotions")
+     * @param PaginatorInterface $paginator
      * @param Request $request
      * @return Response
      */
-    public function Promotion(Request $request)
+    public function Promotion(PaginatorInterface $paginator, Request $request): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Promotions::class);
+        $today = new DateTime('@'.strtotime('now'));
+        
 
-        return $this->render('main/promotion.html.twig');
+        $pagination = $paginator->paginate(
+            $repository->findBy(['end_date' => min($today)]),
+            $request->query->getInt('page', 1),
+            5
+        );
+
+        $formSearch = $this->getFormSearchMark();
+
+        $formSearch->handleRequest($request);
+
+        if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+            $data = $this->getDataSearch($formSearch->getData());
+            return $this->redirectToRoute('promotion');
+        }
+
+        $newsletter = new Newsletter();
+
+        $form_newsletter = $this->createForm(
+            NewsletterFormType::class,
+            $newsletter);
+
+        $form_newsletter->handleRequest($request);
+        if ($form_newsletter->isSubmitted() && $form_newsletter->isValid()) {
+
+            $newsletter->setFollowDate($today);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newsletter);
+            $em->flush();
+
+
+            $this->addFlash(
+                'success',
+                'Newsletter suivie'
+            );
+
+            return $this->redirectToRoute('promotion');
+        }
+
+        return $this->render('main/promotion.html.twig', [
+            'pagination' => $pagination,
+            'form_newsletter' => $form_newsletter->createView(),
+            'formSearch' => $formSearch->createView()
+        ]);
     }
+    
 
     /**
      * @Route("/manage_promotion", name="manage_promotion")
@@ -411,6 +465,7 @@ class PromotionController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(PromoCode::class);
         $promo = $repository->find($id);
+        
 
         $entityManager->remove($promo);
         $entityManager->flush();
@@ -422,4 +477,73 @@ class PromotionController extends AbstractController
 
         return $this->redirectToRoute('manage_promotion');
     }
+
+    public function betdweenDate ($date_1, $date_2)
+    {
+        $interval = $date_1->diff($date_2);
+
+        return $interval->format('%a');
+
+    }
+
+    public function getDataSearch($data) {
+
+        if ($data['mark_1'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 1]);
+        }elseif ($data['mark_2'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 2]);
+        }elseif ($data['mark_3'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 3]);
+        }elseif ($data['mark_4'] == true) {
+            $data['mark'] = $this->getDoctrine()
+                ->getRepository(Mark::class)
+                ->findOneBy(['id' => 4]);
+        }
+
+        $data = [
+            'mark' =>$data['mark'],
+            'dateStart' =>$data['date_start'],
+            'dateEnd' =>$data['date_end'],
+            'promo' =>$data['promo']
+        ];
+
+        $_SESSION['searchResult'] = $data;
+
+        return $data;
+    }
+
+    /**
+     * @return FormInterface
+     */
+    private function getFormSearchMark()
+    {
+        return $this->createFormBuilder()
+            ->add('mark_1', CheckboxType::class, [
+                'label' => false,
+                'value' => 1,
+                'required' => false
+            ])
+            ->add('mark_2', CheckboxType::class, [
+                'label' => false,
+                'value' => 2,
+                'required' => false
+            ])
+            ->add('mark_3', CheckboxType::class, [
+                'label' => false,
+                'value' => 3,
+                'required' => false
+            ])
+            ->add('mark_4', CheckboxType::class, [
+                'label' => false,
+                'value' => 4,
+                'required' => false
+            ])
+            ->getForm();
+        }
 }
