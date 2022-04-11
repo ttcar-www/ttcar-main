@@ -25,6 +25,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime as ConstraintsDateTime;
+use Symfony\Component\Validator\Constraints\Date;
 
 class PromotionController extends AbstractController
 {
@@ -38,12 +40,12 @@ class PromotionController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Promotions::class);
         $today = new DateTime('@'.strtotime('now'));
-        
+        $today_format = $today->format('Y-m-d');
 
         $pagination = $paginator->paginate(
-            $repository->findBy(['end_date' => min($today)]),
+            $repository->findByDate($today_format),
             $request->query->getInt('page', 1),
-            5
+            12
         );
 
         $formSearch = $this->getFormSearchMark();
@@ -85,6 +87,7 @@ class PromotionController extends AbstractController
             'formSearch' => $formSearch->createView()
         ]);
     }
+
     
 
     /**

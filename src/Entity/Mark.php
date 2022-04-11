@@ -361,4 +361,9 @@ class Mark
         $this->minDays = $minDays;
     }
 
+    public function __toString()
+    {
+        return  $this->getLibelle();
+    }
+
 }

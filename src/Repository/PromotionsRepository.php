@@ -3,14 +3,19 @@
 namespace App\Repository;
 
 use App\Entity\Promotions;
+use DateTime as GlobalDateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints\DateTime as ConstraintsDateTime;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @method Promotions|null find($id, $lockMode = null, $lockVersion = null)
  * @method Promotions|null findOneBy(array $criteria, array $orderBy = null)
  * @method Promotions[]    findAll()
  * @method Promotions[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Promotions[]    findAllByDate(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class PromotionsRepository extends ServiceEntityRepository
 {
@@ -47,4 +52,20 @@ class PromotionsRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Promotions[]
+     */
+    public function findByDate(string $datej): array
+    {
+
+        $qb = $this->createQueryBuilder('p')
+        ->where('p.end_date > :datej')
+        ->setParameter('datej', $datej);
+
+        $query = $qb->getQuery();
+        /*SELECT * FROM App\Entity\Promotions p WHERE p.end_date > NOW*/
+        return $query->execute();
+
+    }
 }

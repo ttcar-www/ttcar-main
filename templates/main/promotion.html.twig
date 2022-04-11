@@ -9,11 +9,6 @@
         overflow: hidden; /* hide the cropped portion */
         height: 1195px;
     }
-    #form_mark_1 {
-        /*position: absolute;
-        left: 240px;
-        top: 70px;*/
-    }
     .box_form_mark {
         display: flex;
         flex-direction: column;
@@ -32,12 +27,6 @@
     /* max-width: 111px; */
     /* min-width: 60px;*/
     }
-    #form_mark_2 {
-        /*position: absolute;
-        left: 355px;
-        top: 70px;*/
-        
-    }
     .logo_peugeot {
         /*position: absolute;
         left: 310px;
@@ -50,24 +39,12 @@
         height: auto;
     }
 
-    #form_mark_3 {
-        /*position: absolute;
-        left: 480px;
-        top: 70px;*/
-    }
-
     .logo_citroen {
         /*position: absolute;
         left: 450px;
         top: -10px;*/
         width: 115px;
         height: auto;
-    }
-
-    #form_mark_4 {
-        /*position: absolute;
-        left: 610px;
-        top: 70px;*/
     }
 
     .logo_ds {
@@ -176,9 +153,15 @@
         outline: none;
         cursor: pointer;
     }
+    .mark_search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .promos_container {
         width: 80%;
         min-height: 100px;
+        min-width: 650px;
         position: relative;
         top: -170px;
         background-color: rgba(250,250,250,0.906);
@@ -188,7 +171,7 @@
         padding-bottom: 20px;
     }
     .promo_card {
-        width: 345px;
+        /*width: 345px;*/
         height: 222px;
         background-color: white;
         border: 2px solid #ddd;
@@ -228,7 +211,22 @@
         position: relative;
         height: 100%;
         background-color: rgba(250,250,250,1);
+        margin-top: 72px;
     }
+
+     /* Smartphone */
+    @media screen and (max-width : 576.98px) { 
+        .info_banner_promotion {
+            min-width: 90%;
+        }
+        .search_mark_promotion {
+            min-width: 90%;
+        }
+        .promos_container {
+            min-width: 90%;
+        }
+    }
+
     </style>
     <div>
         <meta name="viewport" content="width=device-width"/>
@@ -255,7 +253,6 @@
         
         <div class="pos_search_mark_promo row d-flex justify-content-center">
             <div class="search_mark_promotion">
-            {{ form_start(formSearch) }}
                 <div class="row align-items-center d-flex justify-content-center text-center">
                     <div class="col-md-2 col-sm-2 col-2">
                         <span class="tilte_mark">Sélectionnez <br> une marque</span>
@@ -276,27 +273,27 @@
                         <div class="icones">
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-6">
-                                    <label>
+                                    <label class="mark_search">
                                         <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
-                                        {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'}  })  }}
+                                        <input type="checkbox" name="cb1" id="renault_check" class="checkbox-round" checked="true">
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
-                                    <label>
+                                    <label class="mark_search" for="peugeot_check">
                                         <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
-                                        {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
+                                        <input type="checkbox" name="cb1" id="peugeot_check" class="checkbox-round" checked="true">
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
-                                    <label>
+                                    <label class="mark_search" for="citroen_check">
                                         <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
-                                        {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
+                                        <input type="checkbox" name="cb1" id="citroen_check" class="checkbox-round" checked="true">
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
-                                    <label>
+                                    <label class="mark_search" for="ds_check">
                                         <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
-                                        {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
+                                        <input type="checkbox" name="cb1" id="ds_check" class="checkbox-round" checked="true">
                                     </label>
                                 </div>
                             </div>
@@ -305,28 +302,32 @@
                 </div>  
             </div>    
         </div>
-        {{ form_end(formSearch) }}
 
         <div class="pos_promo d-flex justify-content-center">
             <div class="promos_container">
                 <div class="row align-items-center d-flex justify-content-center">
                     {% if pagination %}
+                        <p id="no_promo_checked" style="display:none"> Veuillez choisir une marque </p>
                         {% for promos in pagination %}
-                        {% if date(promos.getEndDate|date('Y-m-d')) > date("now"|date('Y-m-d')) %}
-                            <div class="col-md-4 d-flex justify-content-center">
+                        {# {% if date(promos.getEndDate|date('Y-m-d')) > date("now"|date('Y-m-d')) %} #}
+                            <div {% if promos.mark == 'Renault' %} class="show_renault col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" } 
+                                {% elseif promos.mark == 'Peugeot' %} class="show_peugeot col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" }
+                                {% elseif promos.mark == 'Citroën' %} class="show_citroen col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" }
+                                {% elseif promos.mark == 'DS' %} class="show_ds col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" 
+                                {% endif %} >
                                 <div class="promo_card">
                                     <div class="promo_card_contenu row align-items-center d-flex justify-content-center">
                                         <div class="col-6 d-flex justify-content-center">
-                                            {% if promos.getId == 1 %}
+                                            {% if promos.mark == 'Renault' %}
                                                 <img src="{{ asset('build/Renault-LogoPNG1.png') }}" class="logo_renault">
                                             {% endif %}
-                                            {% if promos.getId == 2 %}
+                                            {% if promos.mark == 'Peugeot' %}
                                                 <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
                                             {% endif %}
-                                            {% if promos.getId == 3 %}
+                                            {% if promos.mark == 'Citroën' %}
                                                 <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
                                             {% endif %}
-                                            {% if promos.getId == 4 %}
+                                            {% if promos.mark == 'DS' %}
                                                 <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
                                             {% endif %}
                                         </div>
@@ -344,8 +345,10 @@
                                     </div>
                                 </div>
                             </div>
-                        {% endif %}
+                        {# {% endif %} #}
                         {% endfor %}
+                    {% else %}
+                    <p id="no_promo_checked" style="display:none"> Aucune promotion disponible </p>
                     {% endif %}
                 </div>
             </div>
@@ -381,55 +384,74 @@
     </div>
     {% block javascripts %}
     {{ parent() }}
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script>
-        $(document).ready(function() {
-            let renault = document.querySelector("#form_mark_1");
-            let peugeot = document.querySelector("#form_mark_2");
-            let citroen = document.querySelector("#form_mark_3");
-            let psa = document.querySelector("#form_mark_4");
+        $(function () {
 
-            let valueMark = null;
+            let show_renault = document.getElementsByClassName("show_renault");
+            let show_peugeot = document.getElementsByClassName("show_peugeot");
+            let show_citroen = document.getElementsByClassName("show_citroen");
+            let show_ds = document.getElementsByClassName("show_ds");
 
-            $("#form_mark_1").change(function(){
+            var no_promo_checked = document.getElementById("no_promo_checked");
 
-                    $(peugeot).prop('checked',false)
-                    $(citroen).prop('checked',false)
-                    $(psa).prop('checked',false)
-
-                    console.log('change renault1');
-                    valueMark = 1;
-
+            $("#renault_check").click(function () {
+                if ($(this).is(":checked")) {
+                    $(show_renault).show();
+                    no_promo_checked.style.display = "none";
+                } else {
+                    $(show_renault).hide();
+                }
+                if ($("input:checkbox[name=cb1]").is(":checked")){
+                    no_promo_checked.style.display = "none";
+                } else {
+                    no_promo_checked.style.display = "block";
+                }
             });
 
-            $("#form_mark_2").change(function(){
-                
-                $(citroen).prop('checked',false)
-                $(renault).prop('checked',false)
-                $(psa).prop('checked',false)
-
-                valueMark = 2;
-
-            });
-            $("#form_mark_3").change(function(){
-                
-                $(peugeot).prop('checked',false)
-                $(renault).prop('checked',false)
-                $(psa).prop('checked',false)
-
-                valueMark = 3;
-
-            });
-            $("#form_mark_4").change(function(){
-                
-                $(peugeot).prop('checked',false)
-                $(renault).prop('checked',false)
-                $(citroen).prop('checked',false)
-
-                valueMark = 4;
-
+            $("#peugeot_check").click(function () {
+                if ($(this).is(":checked")) {
+                    $(show_peugeot).show();
+                    no_promo_checked.style.display = "none";
+                } else {
+                    $(show_peugeot).hide();
+                }
+                if ($("input:checkbox[name=cb1]").is(":checked")){
+                    no_promo_checked.style.display = "none";
+                } else {
+                    no_promo_checked.style.display = "block";
+                }
             });
 
-            console.log(valueMark);
+            $("#citroen_check").click(function () {
+                if ($(this).is(":checked")) {
+                    $(show_citroen).show();
+                    no_promo_checked.style.display = "none";
+                } else {
+                    $(show_citroen).hide();
+                }
+                if ($("input:checkbox[name=cb1]").is(":checked")){
+                    no_promo_checked.style.display = "none";
+                } else {
+                    no_promo_checked.style.display = "block";
+                }
+            });
+
+            $("#ds_check").click(function () {
+                if ($(this).is(":checked")) {
+                    $(show_ds).show();
+                    no_promo_checked.style.display = "none";
+                } else {
+                    $(show_ds).hide();
+                }
+                if ($("input:checkbox[name=cb1]").is(":checked")){
+                    no_promo_checked.style.display = "none";
+                } else {
+                    no_promo_checked.style.display = "block";
+                }
+            });
+
+
 
         });
     
