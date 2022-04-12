@@ -19,14 +19,9 @@ use App\Form\SimplePromoFormType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\DateTime as ConstraintsDateTime;
-use Symfony\Component\Validator\Constraints\Date;
 
 class PromotionController extends AbstractController
 {
@@ -48,15 +43,6 @@ class PromotionController extends AbstractController
             12
         );
 
-        $formSearch = $this->getFormSearchMark();
-
-        $formSearch->handleRequest($request);
-
-        if ($formSearch->isSubmitted() && $formSearch->isValid()) {
-            $data = $this->getDataSearch($formSearch->getData());
-            return $this->redirectToRoute('promotion');
-        }
-
         $newsletter = new Newsletter();
 
         $form_newsletter = $this->createForm(
@@ -72,7 +58,6 @@ class PromotionController extends AbstractController
             $em->persist($newsletter);
             $em->flush();
 
-
             $this->addFlash(
                 'success',
                 'Newsletter suivie'
@@ -83,8 +68,7 @@ class PromotionController extends AbstractController
 
         return $this->render('main/promotion.html.twig', [
             'pagination' => $pagination,
-            'form_newsletter' => $form_newsletter->createView(),
-            'formSearch' => $formSearch->createView()
+            'form_newsletter' => $form_newsletter->createView()
         ]);
     }
 
@@ -480,73 +464,4 @@ class PromotionController extends AbstractController
 
         return $this->redirectToRoute('manage_promotion');
     }
-
-    public function betdweenDate ($date_1, $date_2)
-    {
-        $interval = $date_1->diff($date_2);
-
-        return $interval->format('%a');
-
-    }
-
-    public function getDataSearch($data) {
-
-        if ($data['mark_1'] == true) {
-            $data['mark'] = $this->getDoctrine()
-                ->getRepository(Mark::class)
-                ->findOneBy(['id' => 1]);
-        }elseif ($data['mark_2'] == true) {
-            $data['mark'] = $this->getDoctrine()
-                ->getRepository(Mark::class)
-                ->findOneBy(['id' => 2]);
-        }elseif ($data['mark_3'] == true) {
-            $data['mark'] = $this->getDoctrine()
-                ->getRepository(Mark::class)
-                ->findOneBy(['id' => 3]);
-        }elseif ($data['mark_4'] == true) {
-            $data['mark'] = $this->getDoctrine()
-                ->getRepository(Mark::class)
-                ->findOneBy(['id' => 4]);
-        }
-
-        $data = [
-            'mark' =>$data['mark'],
-            'dateStart' =>$data['date_start'],
-            'dateEnd' =>$data['date_end'],
-            'promo' =>$data['promo']
-        ];
-
-        $_SESSION['searchResult'] = $data;
-
-        return $data;
-    }
-
-    /**
-     * @return FormInterface
-     */
-    private function getFormSearchMark()
-    {
-        return $this->createFormBuilder()
-            ->add('mark_1', CheckboxType::class, [
-                'label' => false,
-                'value' => 1,
-                'required' => false
-            ])
-            ->add('mark_2', CheckboxType::class, [
-                'label' => false,
-                'value' => 2,
-                'required' => false
-            ])
-            ->add('mark_3', CheckboxType::class, [
-                'label' => false,
-                'value' => 3,
-                'required' => false
-            ])
-            ->add('mark_4', CheckboxType::class, [
-                'label' => false,
-                'value' => 4,
-                'required' => false
-            ])
-            ->getForm();
-        }
 }

@@ -3,12 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Promotions;
-use DateTime as GlobalDateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Validator\Constraints\DateTime;
-use Symfony\Component\Validator\Constraints\DateTime as ConstraintsDateTime;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @method Promotions|null find($id, $lockMode = null, $lockVersion = null)
