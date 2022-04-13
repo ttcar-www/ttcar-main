@@ -7,10 +7,13 @@ use App\Entity\Place;
 use App\Entity\PromoCode;
 use App\Entity\Promotions;
 use App\Entity\Range;
+use App\Entity\Newsletter;
+use DateTime;
 use App\Form\EditPromoCodeFormType;
 use App\Form\EditPromoFormType;
 use App\Form\PromoCodeFormType;
 use App\Form\PromotionFormType;
+use App\Form\NewsletterFormType;
 use App\Form\PromotionPlaceFormType;
 use App\Form\SimplePromoFormType;
 use Knp\Component\Pager\PaginatorInterface;
@@ -24,14 +27,52 @@ class PromotionController extends AbstractController
 {
     /**
      * @Route("/promotions", name="promotions")
+     * @param PaginatorInterface $paginator
      * @param Request $request
      * @return Response
      */
-    public function Promotion(Request $request)
+    public function Promotion(PaginatorInterface $paginator, Request $request): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Promotions::class);
+        $today = new DateTime('@'.strtotime('now'));
+        $today_format = $today->format('Y-m-d');
 
-        return $this->render('main/promotion.html.twig');
+        $pagination = $paginator->paginate(
+            $repository->findByDate($today_format),
+            $request->query->getInt('page', 1),
+            12
+        );
+
+        $newsletter = new Newsletter();
+
+        $form_newsletter = $this->createForm(
+            NewsletterFormType::class,
+            $newsletter);
+
+        $form_newsletter->handleRequest($request);
+        if ($form_newsletter->isSubmitted() && $form_newsletter->isValid()) {
+
+            $newsletter->setFollowDate($today);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newsletter);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Newsletter suivie'
+            );
+
+            return $this->redirectToRoute('promotion');
+        }
+
+        return $this->render('main/promotion.html.twig', [
+            'pagination' => $pagination,
+            'form_newsletter' => $form_newsletter->createView()
+        ]);
     }
+
+    
 
     /**
      * @Route("/manage_promotion", name="manage_promotion")
@@ -411,6 +452,7 @@ class PromotionController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(PromoCode::class);
         $promo = $repository->find($id);
+        
 
         $entityManager->remove($promo);
         $entityManager->flush();

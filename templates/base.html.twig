@@ -74,9 +74,9 @@
                     <ul>
                         <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
                         <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
-                        <li><a href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
-                        <li><a href="{{ path('promotions') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
-                        <li><a href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
+                        <li><a {% if app.request.pathinfo == '/mark_listing' %} style="text-decoration: underline;"{% endif %} href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
+                        <li><a {% if app.request.pathinfo == '/promotions' %} style="text-decoration: underline;"{% endif %} href="{{ path('promotions') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
+                        <li><a {% if app.request.pathinfo == '/groupe' %} style="text-decoration: underline;"{% endif %} href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -111,17 +111,17 @@
                     <a class="nav-link" href="{{ path('douane') }}">Douane Export</a>
                 </li>
 
-                <li id="nav_btn" class="nav-item"><a href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
+                <li id="nav_btn" class="nav-item"><a class="nav-link" href="{{ path('contact') }}"> <i class="fas fa-envelope"></i> {{ 'menu.contact'|trans({}, 'messages') }}</a></li>
                 {% if app.user %}
-                    <li id="nav_btn" class="nav-item"><a href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
+                    <li id="nav_btn" class="nav-item"><a class="nav-link" href="{{ path('account') }}"><i class="fas fa-user"></i> {{ 'menu.compte'|trans({}, 'messages') }}</a></li>
                 {% else %}
-                    <li id="nav_btn" class="nav-item"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
+                    <li id="nav_btn" class="nav-item"><a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-user"></i> {{ 'login.login'|trans({}, 'messages') }}</a></li>
                 {% endif %}
                 {% if app.request.locale == 'fr' %}
                     {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li> #}
-                    <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
+                    <li id="nav_btn" class="nav-item"><a class="nav-link" href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li>
                 {% else %}
-                    <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
+                    <li id="nav_btn" class="nav-item"><a class="nav-link" href="{{ path('change_locale',{ 'locale': 'fr' }) }}" style="color: rgba(247,42,54,1)">FR</a></li>
                     {# <li id="nav_btn" class="nav-item"><a href="{{ path('change_locale',{ 'locale': 'en' }) }}" style="color: rgba(247,42,54,1)">EN</a></li> #}
                 {% endif %}
             </ul>
