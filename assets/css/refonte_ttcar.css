@@ -466,7 +466,179 @@ Base FOOTER
     position: relative;
     top: -780px;
 }
-
+.img_promo img{
+    object-fit: cover;
+    width: 100%;
+    text-align: center; /* ensures the image is always in the h-middle */
+    overflow: hidden; /* hide the cropped portion */
+    height: 1195px;
+}
+.logo_renault_promo{
+    width: 115px;
+    height: auto;
+}
+.logo_peugeot_promo {
+    width: 153px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    height: auto;
+}
+.logo_citroen_promo {
+    width: 115px;
+    height: auto;
+}
+.logo_ds_promo {
+    width: 125px;
+    margin-top: 19px;
+    margin-bottom: 10px;
+    height: auto;
+}
+.search_mark_promotion {
+    width: 60%;
+    min-height: 158px;
+    opacity: 0.841;
+    min-width: 650px;
+    overflow: visible;
+    border-radius: 40px;
+    background-color: #436d8f;
+    display: block;
+}
+.pos_search_mark_promo {
+    position: relative;
+    top: -1120px;
+}
+.info_banner_promotion {
+    width: 60%;
+    min-height: 158px;
+    opacity: 0.841;
+    min-width: 650px;
+    overflow: visible;
+    border-radius: 40px;
+    background-color: #436d8f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pos_info_banner_promo {
+    position: relative;
+    top: -1140px;
+}
+.txt_special_offer {
+    white-space: nowrap;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 15px;
+    color: rgba(255,255,255,1);
+    display: flex;
+}
+.txt_special_offer_info {
+    white-space: nowrap;
+    line-height: 20px;
+    margin-top: -3.5px;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    color: rgba(255,255,255,1);
+    margin-top: 15px;
+}
+.tilte_mark_promo {
+    overflow: visible;
+    white-space: nowrap;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255,255,255,1);
+}
+.tilte_mark_promo {
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: auto;
+    margin-left: 25px;
+    display: inline-block;
+    padding: 10px;
+}
+.icones_promo {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+.checkbox-round_promo {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    clip-path: circle(40% at 50% 50%);
+    outline: none;
+    cursor: pointer;
+}
+.mark_search_promo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.promos_container {
+    width: 80%;
+    min-height: 100px;
+    min-width: 650px;
+    position: relative;
+    top: -170px;
+    background-color: rgba(250,250,250,0.906);
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    border-radius: 40px;
+    padding: 35px;
+    padding-bottom: 20px;
+}
+.promo_card {
+    height: 222px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.txt_promo_card {
+    margin-bottom: 0;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    color: rgba(52,95,138,1);
+    font-size: 14px;
+}
+.pos_promo {
+    margin-top: -917px;
+}
+.profite_button {
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    color: rgba(255,255,255,1);
+    background: rgba(52,95,138,1);
+    border-radius: 30px;
+    padding: 15px;
+}
+.promo_card_contenu {
+    height: 100%;
+}
+.newsletter_banner_promo {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    background-color: rgba(250,250,250,1);
+    margin-top: 72px;
+}
 .span_btn_promo {
     font-family: Montserrat, sans-serif;
     font-style: normal;
@@ -1318,10 +1490,28 @@ Base FOOTER
 
 /*   Prehome  */
 
-.preHome_img {
-    margin-bottom: 10px;
+.img_prehome img {
+    object-fit: cover;
+    width: 100%;
+    text-align: center; /* ensures the image is always in the h-middle */
+    overflow: hidden; /* hide the cropped portion */
+    height: 800px;
+    margin-bottom: -20px;
 }
-
+.pos_cardPreHome {
+    position: relative;
+    top: -666px;
+}
+.logo_key {
+    margin-top: 70px;
+    width: 200px;
+}
+.preHome_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+}
 .prehome_footer {
     width: 100%;
     height: 225px;
@@ -1509,37 +1699,6 @@ Base FOOTER
     font-weight: normal;
     color: rgba(52,95,138,1);
 }
-.preHome_col1 {
-    vertical-align: text-top;
-    position: absolute;
-}
-.preHome_col2 {
-    vertical-align: text-top;
-    position: absolute;
-    top: 80px;
-}
-.preHome_col3 {
-    vertical-align: text-top;
-    position: absolute;
-    left: 200px;
-}
-.preHome_col4 {
-    vertical-align: text-top;
-    position: absolute;
-    left: 200px;
-    top: 80px;
-}
-.preHome_col5 {
-    vertical-align: text-top;
-    position: absolute;
-    left: 200px;
-    top: 160px;
-}
-.preHome_col6 {
-    vertical-align: text-top;
-    position: absolute;
-    top: 150px;
-}
 
 .tilte_foot {
     overflow: visible;
@@ -1594,6 +1753,67 @@ Base FOOTER
         margin-right: 6px;
     }
 }
+
+/* Small Desktop */
+@media screen and (max-width : 1030.98px) { 
+    .preHome_text {
+        font-size: 10px;
+    }
+    .preHome_tilte {
+        white-space: normal;
+        font-size: 12px;
+    }
+    .preHome_btn { 
+        margin-top: 67px;
+    }
+    .prehome_footer {
+        height: 250px;
+    }
+}
+@media screen and (max-width : 991.98px) { 
+    .prehome_footer {
+        height: 300px;
+    }
+    .key {
+        width: 80%;
+        margin-bottom: 15px;
+    }
+    .ttcar {
+        width: 80%;
+        margin-bottom: 15px;
+    }
+    .douane {
+        width: 80%;
+        margin-bottom: 15px;
+    }
+    .pos_cardPreHome {
+        top: -572px;
+    }
+    .img_prehome img {
+        height: 1775px;
+        margin-bottom: -1149px;
+    }
+    .tilte_foot {
+        margin-top: 30px;
+    }
+    .prehome_footer {
+        height: 100%;
+    }
+    .text_foot {
+        margin-bottom: 40px;
+    }
+    .logo_promo {
+        margin-top: 55px;
+    }
+    .profite_button {
+        margin-top: -50px;
+    }
+    .txt_promo_card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Big tablette */
 @media screen and (max-width : 890.98px) {
     #nav_1 {
         font-size: 13px;
@@ -1659,10 +1879,19 @@ Base FOOTER
 @media screen and (max-width : 576.98px) {
     .footer_v1 {
         width: 100vh;
-        }
-        html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
-            width:100vh;
-            overflow-x:hidden;
-        }
+    }
+    html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
+        width:100vh;
+        overflow-x:hidden;
+    }
+    .info_banner_promotion {
+        min-width: 90%;
+    }
+    .search_mark_promotion {
+        min-width: 90%;
+    }
+    .promos_container {
+        min-width: 90%;
+    }
 }
 
