@@ -1,3 +1,8 @@
+/*  BOOTSTRAP   */
+.row {
+    margin: 0 !important; /*More easier to center elements in a div when there is no margin in a row*/
+}
+
 /*
 Base HEADER
 */
@@ -184,11 +189,6 @@ Base FOOTER
 }
 
 .footer_nav {
-    /* position: absolute;
-    width: 631px;
-    height: 28px;
-    left: 480px;
-    top: 70px; */
     margin-top: 15px;
     margin-bottom: 15px;
     display:block;
@@ -253,11 +253,6 @@ Base FOOTER
 }
 
 .footer_nav2 {
-/*     position: absolute;
-    width: 679px;
-    height: 17px;
-    left: 440px;
-    top: 130px; */
     display: block;
     margin-bottom: 50px;
     margin-top: 25px;
@@ -307,16 +302,43 @@ Base FOOTER
     height: auto;
 }
 .img_backgroud {
-    /* max-width: 100%; */
     height: 880px;
     object-fit: cover;
     width: 100%;
     text-align: center; /* ensures the image is always in the h-middle */
     overflow: hidden; /* hide the cropped portion */
-    /* position:relative;*/
 } 
 .img_search img {
     width: auto;
+    height: auto;
+}
+.box_form_mark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.box_form_mark .selected {
+    align-self: center;
+}
+.logo_renault_index{
+    width: 115px;
+    height: auto;
+}
+.logo_peugeot_index {
+    width: 153px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    height: auto;
+}
+.logo_citroen_index {
+    width: 115px;
+    height: auto;
+}
+.logo_ds_index {
+    width: 125px;
+    margin-top: 19px;
+    margin-bottom: 10px;
     height: auto;
 }
 .step_search {
@@ -389,11 +411,18 @@ Base FOOTER
     background-color: #436d8f;
     display: block;
 }
+.search_data_index {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    text-align: left;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(52,95,138,1);
+}
 .tilte_mark {
-    /*left: 36px;
-    top: 12px;
-    margin-top: 3%;
-    position: absolute;*/
     overflow: visible;
     white-space: nowrap;
     text-align: center;
@@ -407,9 +436,6 @@ Base FOOTER
 .tilte_mark {
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    /* width: 100%; */
-    /* margin-left: 12px;
-    margin-top: 45px; */
     height: auto;
     margin-left: 25px;
     display: inline-block;
@@ -430,6 +456,26 @@ Base FOOTER
     left: 265px;
     top: 450px;
     opacity: 0.841;
+}
+hr.dashed_index {
+    border-top: 3px dashed #fff; /* Dashed border */
+    opacity: 60%;
+}
+.trait_index {
+    width: 90%;
+}
+.search_data_index {
+    border-radius: 40px;
+    background-color: rgba(52,95,138,0.841);
+    position: relative;
+    overflow: visible;
+    width: 60%;
+    height: auto;
+    top: -700px;
+    min-width: 650px;
+}
+.ui-datepicker {
+    background-color: white;
 }
 .search_promo_banner_info {
     left: 250px;
@@ -644,7 +690,6 @@ Base FOOTER
     font-style: normal;
     font-weight: bold;
     display: block;
-    /* margin-top: -1px; */
     font-size: 13px;
     color: rgba(52,95,138,1);
     text-align: center;
@@ -846,7 +891,6 @@ Base FOOTER
     padding: 5%;
 }
 .tilte_tt {
-    /* width: 90%; */
     height: auto;
     white-space: nowrap;
     text-align: center;
@@ -919,7 +963,6 @@ Base FOOTER
 .avantage {
     margin-top: 5%;
     height: 300px;
-    /* margin-left: 2%; */
 }
 
 .avantage_carroussel {
@@ -953,12 +996,10 @@ Base FOOTER
     color: white;
     position: relative;
     width: 125px;
-    /* margin-top: 40px; */
     height: 125px;
     text-align: center;
     border-radius: 63px;
     padding-top: 40px;
-    /* padding: 35px; */
     display: block;
     flex-direction: column;
     align-items: center;
@@ -972,15 +1013,12 @@ Base FOOTER
     width: 77px;
     white-space: nowrap;
     line-height: 22px;
-    /* margin-top: 180px; */
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
-    /* display: flex; */
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     color: rgba(247,43,55,1);
 }
@@ -1228,8 +1266,6 @@ Base FOOTER
 }
 
 .newsletter_tilte {
-    /* margin-left: 430px;
-    margin-top: -70px; */
     margin-top: 40px;
     width: 265px;
     white-space: nowrap;
@@ -1251,7 +1287,6 @@ Base FOOTER
 }
 
 .newsletter_subtilte {
-    /* margin-left: 430px; */
     white-space: nowrap;
     text-align: left;
     font-family: Montserrat, sans-serif;
@@ -1284,6 +1319,26 @@ Base FOOTER
     font-weight: bold;
 }
 
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    clip-path: circle(40% at 50% 50%);
+    outline: none;
+    cursor: pointer;
+}
+
+.newsletter_banner_index {
+    width: 100%;
+    position: relative;
+    top: 20px;
+    height: 100%;
+    background-color: rgba(250,250,250,1);
+}
+
 .newsletter_btn1 {
     margin-top: 12px;
 }
@@ -1291,7 +1346,6 @@ Base FOOTER
 .newsletter_btn {
     width: 78px;
     height: 48px;
-    /* margin-left: 1115px; */
     border-radius: 30px;
     background-color: rgb(52 95 138);
     color: rgba(255,255,255,1);
@@ -1300,17 +1354,8 @@ Base FOOTER
 
 /*    ttcar_home   */
 
-
-#search_form_mark {
-    margin-left: 190px;
-    width: 100%;
-    margin-top: -35px;
-}
 .search_depart {
-    /*position: absolute;
-    left: 50px;
-    top: 45px;*/
-    width: 100%;;
+    width: 100%;
     height: auto;
     overflow: visible;
     text-align: left;
@@ -1339,9 +1384,6 @@ Base FOOTER
 }
 
 #form_placeDepart {
-    /*position: absolute;
-    left: 180px;
-    top: 0;*/
     overflow: visible;
     width: 100%;
     height: 65px;
@@ -1350,9 +1392,6 @@ Base FOOTER
 }
 
 #form_date_start {
-    /*position: absolute;
-    left: 558px;
-    top: 0;*/
     width: 100%;
     height: 65px;
     overflow: visible;
@@ -1360,9 +1399,6 @@ Base FOOTER
 }
 
 .search_return {
-    /*position: absolute;
-    left: 50px;
-    top: 135px;*/
     width: 100%;
     height: auto;
     overflow: visible;
@@ -1381,9 +1417,6 @@ Base FOOTER
     margin-bottom: 5px;
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    /* height: 60px; */
-    /* width: 170px; */
-    /* padding-top: 18px; */
     padding: 18px 23px;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -1391,26 +1424,6 @@ Base FOOTER
     font-weight: bold;
     font-size: 16px;
     color: rgba(255,255,255,1);
-}
-
-#search_form_placeReturn {
-    /*position: absolute;
-    left: 180px;
-    top: 0;*/
-    width: 366px;
-    height: 65px;
-    overflow: visible;
-    border-radius: 30px;
-}
-
-#search_form_date_end {
-    /*position: absolute;
-    left: 558px;
-    top: 0;*/
-    width: 266px;
-    height: 65px;
-    overflow: visible;
-    border-radius: 30px;
 }
 
 .trait {
@@ -1428,9 +1441,6 @@ Base FOOTER
 }
 
 .search_promo_btn {
-    /*position: absolute;
-    left: 45px;
-    top: 295px;*/
     width: 100%;
     height: auto;
     overflow: visible;
@@ -1439,11 +1449,7 @@ Base FOOTER
 .search_promo_btn span {
     border-radius: 40px;
     background-color: rgba(52,95,138,1);
-    /* height: 60px; */
-    /* width: 100%; */
-    /* padding-top: 18px; */
     margin-left: 9px;
-    /* padding-left: 26px; */
     padding: 15px;
     text-align: left;
     font-family: Montserrat, sans-serif;
@@ -1454,39 +1460,22 @@ Base FOOTER
     color: rgba(255,255,255,1);
 }
 
-#search_form_promo {
-    position: absolute;
-    overflow: visible;
-    width: 216px;
-    height: 38px;
-    left: 200px;
-    top: -10px;
-    border-radius: 30px;
-}
-
 .btn_search_send button {
-    /*left: 650px;
-    top: 260px; */
-    /* position: relative; */
     overflow: visible;
     width: 90%;
     display: block;
     height: 80px;
-    /* padding: 18px; */
     white-space: nowrap;
     text-align: center;
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
-    /* margin-right: 5%; */
     font-size: 20px;
     color: rgba(247,43,55,1);
     border-radius: 40px;
     border: none;
     background-color: rgba(255,255,255,1);
 }
-
-
 
 /*   Prehome  */
 
@@ -1538,9 +1527,6 @@ Base FOOTER
     opacity: revert;
 }
 .logo {
-    /*width: 112px;
-    height: 112px;
-    margin-left: 170px;*/
     margin-top: 30px;
 }
 .ttcar {
@@ -1592,20 +1578,15 @@ Base FOOTER
     margin-top: 36px;
 }
 .preHome_btn {
-    /* position: absolute; */
     text-decoration: none;
     padding: 18px;
     border-radius: 30px;
     width: 160px;
     margin-top: 86px;
     margin-bottom: 10px;
-    /* height: 55px; */
-    /* left: 140px; */
-    /* top: 445px; */
     overflow: visible;
     background-color: rgba(52,95,138,1);
     white-space: nowrap;
-    /* text-align: left; */
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1613,20 +1594,15 @@ Base FOOTER
     color: rgba(255,255,255,1);
 }
 .preHome_btn_douane {
-    /* position: absolute; */
     text-decoration: none;
     padding: 18px;
     border-radius: 30px;
     width: 160px;
     margin-top: 106px;
     margin-bottom: 10px;
-    /* height: 55px; */
-    /* left: 140px; */
-    /* top: 445px; */
     overflow: visible;
     background-color: rgba(52,95,138,1);
     white-space: nowrap;
-    /* text-align: left; */
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1635,17 +1611,14 @@ Base FOOTER
 }
 .preHome_btn_ttcar {
     text-decoration: none;
-    /* position: absolute; */
     padding: 18px;
     border-radius: 30px;
     width: 160px;
-    /* height: 55px; */
     left: 145px;
     top: 445px;
     overflow: visible;
     background-color: rgba(52,95,138,1);
     white-space: nowrap;
-    /* text-align: left; */
     font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1724,20 +1697,372 @@ Base FOOTER
     text-decoration: underline dotted;
 }
 
-.col1 {
-    width: 35%;
+/*  LISTING  */
+.container_result {
+    width: 100%;
+    height: 100%;
+}
+.img_listing {
+    object-fit: cover;
+    width: 100%;
+    text-align: center; /* ensures the image is always in the h-middle */
+    overflow: hidden; /* hide the cropped portion */
+}
+.img_listing img {
+    height: 833px;
+}
+.logo_renault_form_listing {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    left: 20px;
+    top: 30px;
+    overflow: visible;
+    background-color: rgb(106 132 154);
+    border-radius: 30px;
+}
+.logo_peugeot_form_listing {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    left: 20px;
+    top: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: visible;
+    background-color: rgb(106 132 154);
+    border-radius: 30px;
+}
+.logo_citroen_form_listing {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    left: 20px;
+    top: 30px;
+    overflow: visible;
+    background-color: rgb(106 132 154);
+    border-radius: 30px;
+}
+.logo_ds_form_listing {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    left: 20px;
+    top: 30px;
+    padding: 10px;
+    overflow: visible;
+    background-color: rgb(106 132 154);
+    border-radius: 30px;
+}
+.div_result_search_listing {
+    position: relative;
+    width: 100%;
+    max-width: 1034px;
+    margin-left: 20%;
+    max-height: 305px;
+    height:100%;
+    top: -673px;
+    background: rgba(52,95,138,0.841);
+    border-radius: 30px;
+}
+.div_info_search_listing {
+    position: relative;
+    padding: 25px;
+    width: 100%;
+    height: 100%;
+    min-height: 294px;
+    top: -673px;
+    background: rgba(52,95,138,0.841);
+    border-radius: 30px;
+}
+.price_info_listing {
+    width: 100%;
+    white-space: nowrap;
+    line-height: 20px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(255,255,255,1);
+}
+.ul_info_listing li {
+    line-height: 22px;
+    margin-top: 5px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: rgba(255,255,255,1);
+}
+.result_search_listing {
+    background-color: rgba(255,255,255,1);
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    position: relative;
+    overflow: visible;
+    width: 65%;
+    height: 60px;
+    max-width: 1041px;
+    border-radius: 20px;
+    top: -650px;
+}
+.filtre_listing {
+    background-color: rgba(52,95,138,1);
+    position: absolute;
+    overflow: visible;
+    width: 186px;
+    height: 60px;
+    border-radius: 20px;
+    white-space: nowrap;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(255,255,255,1);
+    padding: 20px;
+}
+.cars_listing {
+    position: relative;
+    top: -625px;
+    max-width: 1041px;
+    margin-bottom: -500px;
+    width: 65%;
+    border-radius: 20px;
+    background-color: white;
+}
+.car_card_listing {
+    margin-bottom: 50px;
+}
+.car_result_listing {
+    width: 100%;
+    border: solid 2px grey;
+    border-radius: 20px;
+}
+.car_container_listing {
+    padding: 45px;
+}
+.car_tilte_listing  {
+    width: 323px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    color: rgba(52,95,138,1);
+    margin-top: 15px;
+}
+.car_desc_listing {
+    line-height: 20px;
+    margin-top: 15px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(52,95,138,1);
+    max-width: 417px;
+    height: 120px;
+}
+.car_icon_listing {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.car_icon_listing span {
     margin-left: 15px;
+    width: 11px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    color: rgba(52,95,138,1);
+}
+.car_img_listing {
+    filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+    overflow: visible;
+    max-width: 435px;
+    max-height: 274px;
+    width: 100%;
+    height: auto;
+    left: 520px;
+    top: 40px;
+    border-radius: 60px;
+    padding: 18px;
 }
 
-.col2 {
-    width: 35%;
-    margin-left: 740px;
-    margin-top: -125px;
-}
-.row {
-    margin: 0 !important;
+.car_img_listing img{
+    width: 90%;
 }
 
+.car_btn_listing {
+    background-color: rgb(240 240 240);
+    height: 90px;
+    border-radius: 15px;
+    padding-top: 25px;
+}
+
+.btn_car_listing {
+    left: 64px;
+    top: 380px;
+    overflow: visible;
+    width: 237px;
+    font-family: Montserrat;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 15px;
+    color: rgba(52,95,138,1);
+}
+.dispo_listing {
+    white-space: nowrap;
+    line-height: 22px;
+    margin-top: -5px;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgba(255,255,255,1);
+    background-color: red;
+    padding: 10px;
+    border-radius: 30px;
+}
+.soon_listing {
+    width: 291px;
+    height: 42px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 550px;
+    padding: 15px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(52,95,138,1);
+}
+.contact_listing {
+    width: 291px;
+    height: 42px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 550px;
+    padding: 15px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(52,95,138,1);
+}
+.btn_price_listing {
+    overflow: visible;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: rgba(247,43,55,1);
+}
+.reservez_listing {
+    width: 291px;
+    height: 42px;
+    background-color: rgb(52 95 138);
+    border-radius: 20px;
+    margin-left: 65px;
+    padding: 15px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255,255,255,1);
+}
+.select_mark_listing {
+    margin-bottom: 15px;
+}
+.search_depart_result_listing {
+    margin-top: 45px;
+}
+.search_depart_result_listing span{
+    background-color: rgba(52,95,138,1);
+    border-radius: 30px;
+    padding: 8px;
+    overflow: visible;
+    width: 67px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(255,255,255,1);
+}
+.search_return_result_listing {
+    margin-top: 25px;
+}
+.search_return_result_listing span{
+    background-color: rgba(52,95,138,1);
+    border-radius: 30px;
+    padding: 8px 16px;
+    overflow: visible;
+    width: 67px;
+    white-space: nowrap;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(255,255,255,1);
+}
+.span_code_result_listing {
+    border-radius: 40px;
+    background-color: rgba(52,95,138,1);
+    height: 60px;
+    width: 170px;
+    padding: 10px;
+    text-align: left;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color: rgba(255,255,255,1);
+}
+.special_code_listing {
+    margin-bottom: 20px;
+}
+.btn_search_send_resul_listing button {
+    overflow: visible;
+    height: 50px;
+    width: 100%;
+    max-width: 184px;
+    white-space: nowrap;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(247,43,55,1);
+    border-radius: 40px;
+    border: none;
+    background-color: rgba(255,255,255,1);
+}
+.listing_V1 {
+    width: 100%;
+    height: 100%;
+    margin-top: -31px;
+}
+hr.dashed_listing {
+    border-top: 3px dashed #fff; /* Dashed border */
+    opacity: 60%;
+}
 
 
 /* Media Queries */
@@ -1751,6 +2076,59 @@ Base FOOTER
     }
     #nav_1 a {
         margin-right: 6px;
+    }
+    .tilte_mark {
+        font-size: 11px;
+        margin-left: 7px;
+        margin-top: 17px;
+    }  
+    .logo_peugeot_index {
+        width: 73px;
+        margin-top: 52px;
+        margin-bottom: 10px;
+    }
+    .logo_renault_index {
+        width: 65px;
+        margin-top: 39px;
+    }
+    .logo_citroen_index {
+        width: 67px;
+        margin-top: 37px;
+    }
+    .logo_ds_index {
+        width: 61px;
+        margin-top: 49px;
+        margin-bottom: 10px;
+    }
+    .search_promo_btn span {
+        font-size: 13px;
+    }
+    .btn_search_send button {
+        font-size: 15px;
+    }
+    .blog_article {
+        margin: 15px 132px;
+    }
+}
+@media screen and (max-width:1199.98px){
+    .div_info_search_listing {
+        min-height: 0px;
+        width: 90%;
+        margin-top: 20px;
+    }
+    .div_result_search_listing {
+        margin-left: 0px;
+        width: 90%;
+    }
+    .result_search_listing {
+        margin-top: 20px;
+        width: 87%;
+    }
+    .cars_listing {
+        width: 87%;
+    }
+    .ul_info_listing li {
+        height:50px;
     }
 }
 
@@ -1770,7 +2148,7 @@ Base FOOTER
         height: 250px;
     }
 }
-@media screen and (max-width : 991.98px) { 
+@media screen and (max-width : 992.98px) { 
     .prehome_footer {
         height: 300px;
     }
@@ -1811,6 +2189,9 @@ Base FOOTER
     .txt_promo_card {
         margin-bottom: 1rem;
     }
+    .blog_home {
+        margin: 980px auto 100px;
+    }
 }
 
 /* Big tablette */
@@ -1840,6 +2221,11 @@ Base FOOTER
 
 
 /* Tablette */
+@media screen and (max-width : 768.98px) {
+    .span_footer_red {
+        padding-bottom: 30px;
+    }
+}
 @media screen and (max-width : 767.98px) {
     .show_nav {
         display: flex;
@@ -1866,13 +2252,76 @@ Base FOOTER
         margin-bottom: 5px;
         margin-left: 13px;
     }
+    .logo_peugeot_index {
+        width: 73px;
+        margin-top: 9px;
+    }
+    .logo_renault_index {
+        margin-top: -5px;
+    }
+    .logo_citroen_index {
+        margin-top: -7px;
+    }
+    .logo_ds_index {
+        margin-top: 6px;
+    }
+    .promo_banner {
+        position: relative;
+        top: -1000px;
+    }
+    .promo_banner_promo {
+        position: relative;
+        left: 50px;
+    }
+    .promo_banner_value {
+        position: relative;
+        left: 50px;    
+    }
+    .search_promo_btn span {
+        font-size: 9px;
+    }
+    .btn_search_send button {
+        font-size: 13px;
+    }
+    .search_mark {
+        width: 80%;
+        top: -1025px;
+        min-width: 0px;
+    }
+    .search_data_index {
+        width: 80%;
+        top: -1005px;
+        min-width: 0px;
+    }
+    .tilte_mark {
+        margin-top: 30px;
+    }
+    .icones {
+        margin-top: 30px;
+    }
+    .img_backgroud {
+        height: 1180px;
+    }
+    .info_promo_banner {
+        top: -1080px;
+    }
+    .btn_promo_home {
+        top: -785px;
+    }
+    .carroussel_div {
+        margin-top: -63em;
+    }
+    .div_result_search_listing {
+        max-height: 100%
+    }
+    .car_img_listing {
+        margin-top: 25px;
+        max-width: 100%;
+        max-height: 100%;
+    }
 
 }
-@media screen and (max-width : 768.98px) {
-    .span_footer_red {
-        padding-bottom: 30px;
-    }
-}
+
 
 
 /* Smartphone */
@@ -1880,7 +2329,7 @@ Base FOOTER
     .footer_v1 {
         width: 100vh;
     }
-    html,body{ /* Retire les espaces blancs sur les cotés en format smartphone*/
+    html,body{ /* Removes the white spaces on the sides in smartphone format */
         width:100vh;
         overflow-x:hidden;
     }
@@ -1892,6 +2341,81 @@ Base FOOTER
     }
     .promos_container {
         min-width: 90%;
+    }
+    .search_col-12 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .img_backgroud {
+        height: 1180px;
+    }
+    .search_mark {
+        width: 90%;
+        
+        padding-bottom: 15px;
+        height: auto;
+    }
+    .search_data_index {
+        width: 90%;
+        top: -1000px;
+    }
+    .icones {
+        width: 70%;
+    }
+    .btn_promo_home {
+        top: -847px;
+    }
+    .promo_banner {
+        top: -1018px;
+    }
+    .info_promo_banner {
+        top: -1100px;
+    }
+    .img_listing img {
+        height: 1274px;
+    }
+    .div_result_search_listing {
+        top: -1110px;
+    }
+    .div_info_search_listing {
+        top: -1100px;
+    }
+    .result_search_listing {
+        top: -1070px;
+        display: flex;
+        justify-content: center;
+    }
+    .cars_listing {
+        top: -1041px;
+        margin-bottom: -1000px;
+    }
+    .logo_renault_form_listing {
+        left: 30px;
+        width: 260px;
+        height: 260px;
+    }
+    .logo_peugeot_form_listing {
+        left: 30px;
+        height: 260px;
+        width: 260px;
+    }
+    .logo_citroen_form_listing {
+        left: 30px;
+        height: 260px;
+        width: 260px;
+    }
+    .logo_ds_form_listing {
+        left: 30px;
+        height: 260px;
+        width: 260px;
     }
 }
 
