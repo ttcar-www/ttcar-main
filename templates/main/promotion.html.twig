@@ -84,7 +84,8 @@
                             <div {% if promos.mark == 'Renault' %} class="show_renault col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" } 
                                 {% elseif promos.mark == 'Peugeot' %} class="show_peugeot col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" }
                                 {% elseif promos.mark == 'Citroën' %} class="show_citroen col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" }
-                                {% elseif promos.mark == 'DS' %} class="show_ds col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" 
+                                {% elseif promos.mark == 'DS' %} class="show_ds col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center" }
+                                {% elseif promos.mark == null %} class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-3 justify-content-center"
                                 {% endif %} >
                                 <div class="promo_card">
                                     <div class="promo_card_contenu row align-items-center d-flex justify-content-center">
@@ -101,6 +102,10 @@
                                             {% if promos.mark == 'DS' %}
                                                 <img src="{{ asset('build/dstrans.png') }}" class="logo_ds_promo logo_promo">
                                             {% endif %}
+                                            {% if promos.mark == null %}
+                                                <img src="{{ asset('build/tt-groupimg.png') }}" class="logo_promo">
+                                            {% endif %}
+                                            
                                         </div>
                                         <div class="col-6">
                                             <p class="txt_promo_card">
