@@ -341,4 +341,63 @@ class ResaCarController extends AbstractController
         return $response = false;
     }
 
+    /**
+     * @Route("/check_station_return/{stationEnd}/{dateStart}/{dateEnd}", name="check_station")
+     * @return array|bool
+     * @throws Exception
+     */
+    public function checkSationReturn($openingHoursManager, $stationStart, $stationEnd, $dateStart, $dateEnd)
+    {
+        $filter = ['station_id' => $stationStart];
+
+        $openingHoursManager->setFilter($filter);
+        $openTo = $openingHoursManager->getResult();
+
+        $dateHours = explode("T", $dateStart);
+        $dateStart = $dateHours[0];
+        $hoursStart = $dateHours[1];
+
+        foreach ($openTo as  $openHours) {
+
+            $depart =  new \DateTime($dateStart);
+
+            $years = substr($openHours['date_min'], 4);
+            $month = substr($openHours['date_min'], 2, 2);
+            $day = substr($openHours['date_min'], 0, 2);
+
+            $yearsMax = substr($openHours['date_max'], 4);
+            $monthMax = substr($openHours['date_max'], 2, 2);
+            $dayMax = substr($openHours['date_max'], 0, 2);
+
+            $hoursMini = $openHours['hour_min'];
+            $hoursMax = $openHours['hour_max'];
+
+            $dateToOpen = \DateTime::createFromFormat("d/m/Y", $day."/".$month."/".$years);
+            $dateToClose = \DateTime::createFromFormat("d/m/Y", $dayMax . "/" . $monthMax . "/" . $yearsMax);
+
+            if (empty($hoursMini) or empty($hoursMax)) {
+                $dateToOpen->setTime(00, 00, 00);
+            } else {
+
+                $hoursExploseMin = explode(":", $hoursMini);
+                $hoursExploseMax = explode(":", $hoursMini);
+
+                $min = $hoursExploseMin[1] ? $hoursExploseMin[1] : 00;
+                $minMax = $hoursExploseMax[1] ? $hoursExploseMax[1] : 00;
+
+
+                $dateToOpen->setTime($hoursExploseMin[0], $min,00);
+                $dateToClose->setTime($hoursExploseMax[0], $minMax,00);
+            }
+
+            if ($depart->format('Y-m-d') < $dateToOpen->format('Y-m-d') && $depart->format('Y-m-d') < $dateToClose->format('Y-m-d')) {
+                return $response = true;
+            } else {
+                return $data = ['dateToOpen' => $dateToOpen, 'dateToClose' => $dateToClose ];
+            }
+        }
+
+        return $response = false;
+    }
+
 }

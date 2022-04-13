@@ -819,6 +819,7 @@
                     delay: 3,
                     source: stationArray,
                 })
+                return false;
             });
 
             $( "#stations-return" ).click(function() {
@@ -832,49 +833,36 @@
                 $( "#stations-return" ).autocomplete({
                     source: stationArray
                 });
+                return false;
             });
 
             $( "#numberPlane" ).click(function( event ) {
                 event.preventDefault();
-
-                let loader = document.getElementById("loader_form");
-                let stationDepartName = $( "#stations" ).val();
-                let stationReturnName = $( "#stations-return" ).val();
-
-
                     $.getJSON( "{{ path('resacar_find_stations') }}").done(function( json ) {
                         $.each(json, function( index, station ) {
-                            if (station['station_name'] === stationDepartName)
+                            if (station['station_name'] === $( "#stations" ).val())
                             {
                                 $( "#stations_id" ).val( station['station_id'])
                                 // $( "#stations_id" ).val( )
                             }
-                            if (station['station_name'] === stationReturnName)
+                            if (station['station_name'] === $( "#stations-return" ).val())
                             {
                                $( "#stations_id_return" ).val( station['station_id'])
                             }
 
                         });
                     });
+                return false;
             });
 
             $( "#searchFromResa" ).submit(function( event ) {
-                let dateStart = $( "#startDate" ).val();
-                let dateEnd = $( "#endDate" ).val();
-                let numberPlane = $( "#numberPlane" ).val();
-                let typeSelect = $( "#typeSelect" ).val();
-                let stationStart = $( "#stations_id" ).val();
-                let stationEnd = $( "#stations_id_return" ).val( );
-
                 $.ajax({
                         url:{{ path('searchResacar') }},
                         type:"POST",
                         dataType:"json",
-                        data: {stationStart: stationStart,stationEnd:  stationEnd,dateStart: dateStart ,dateEnd: dateEnd ,numberPlane: numberPlane ,typeSelect: typeSelect},
+                        data: {stationStart: $( "#stations_id" ).val(),stationEnd:  $( "#stations_id_return" ).val( ),dateStart: $( "#startDate" ).val() ,dateEnd: $( "#endDate" ).val() ,numberPlane: $( "#numberPlane" ).val() ,typeSelect: $( "#typeSelect" ).val()},
                         success: function(data){
-                            console.log(data)
-                            if (data['dateToOpen'])
-                            {
+                            if (data['dateToOpen']) {
                                 let d = new Date(data['dateToOpen']['date']);
                                 let c = new Date(data['dateToClose']['date']);
 
@@ -888,13 +876,10 @@
                             }
                         }
                     });
-
                 return false;
             });
 
-
             function CloseModal() {
-                console.log('close me')
                 $("#myModal").css("display", "none");
             }
         </script>
