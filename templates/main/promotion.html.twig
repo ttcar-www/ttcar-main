@@ -46,25 +46,25 @@
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label class="mark_search_promo">
                                         <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault_promo">
-                                        <input type="checkbox" id="renault_check" class="checkbox-round_promo" checked="true">
+                                        <input type="checkbox" name="checkbox" id="renault_check" class="checkbox-round_promo" checked="true">
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label class="mark_search_promo" for="peugeot_check">
                                         <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot_promo">
-                                        <input type="checkbox" id="peugeot_check" class="checkbox-round_promo" checked="true">
+                                        <input type="checkbox" name="checkbox" id="peugeot_check" class="checkbox-round_promo" checked="true">
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label class="mark_search_promo" for="citroen_check">
                                         <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen_promo">
-                                        <input type="checkbox" id="citroen_check" class="checkbox-round_promo" checked="true">
+                                        <input type="checkbox" name="checkbox" id="citroen_check" class="checkbox-round_promo" checked="true">
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label class="mark_search_promo" for="ds_check">
                                         <img src="{{ asset('build/dstrans.png') }}" class="logo_ds_promo">
-                                        <input type="checkbox" id="ds_check" class="checkbox-round_promo" checked="true">
+                                        <input type="checkbox" name="checkbox" id="ds_check" class="checkbox-round_promo" checked="true">
                                     </label>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
                 } else {
                     $(show_renault).hide();
                 }
-                if ($("input:checkbox[name=cb1]").is(":checked")){
+                if ($("input:checkbox[name=checkbox]").is(":checked")){
                     no_promo_checked.style.display = "none";
                 } else {
                     no_promo_checked.style.display = "block";
@@ -193,7 +193,7 @@
                 } else {
                     $(show_peugeot).hide();
                 }
-                if ($("input:checkbox[name=cb1]").is(":checked")){
+                if ($("input:checkbox[name=checkbox]").is(":checked")){
                     no_promo_checked.style.display = "none";
                 } else {
                     no_promo_checked.style.display = "block";
@@ -207,7 +207,7 @@
                 } else {
                     $(show_citroen).hide();
                 }
-                if ($("input:checkbox[name=cb1]").is(":checked")){
+                if ($("input:checkbox[name=checkbox]").is(":checked")){
                     no_promo_checked.style.display = "none";
                 } else {
                     no_promo_checked.style.display = "block";
@@ -221,7 +221,7 @@
                 } else {
                     $(show_ds).hide();
                 }
-                if ($("input:checkbox[name=cb1]").is(":checked")){
+                if ($("input:checkbox[name=checkbox]").is(":checked")){
                     no_promo_checked.style.display = "none";
                 } else {
                     no_promo_checked.style.display = "block";
