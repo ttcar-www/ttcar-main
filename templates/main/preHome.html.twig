@@ -1,81 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<style>
-.img_prehome img {
-    object-fit: cover;
-    width: 100%;
-    text-align: center; /* ensures the image is always in the h-middle */
-    overflow: hidden; /* hide the cropped portion */
-    height: 800px;
-    margin-bottom: -20px;
-}
-.pos_cardPreHome {
-    position: relative;
-    top: -666px;
-}
-.logo_key {
-    margin-top: 70px;
-    width: 200px;
-}
-.preHome_item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 15px;
-}
 
- /* Small Desktop */
-    @media screen and (max-width : 1030.98px) { 
-        .preHome_text {
-            font-size: 10px;
-        }
-        .preHome_tilte {
-            white-space: normal;
-            font-size: 12px;
-        }
-        .preHome_btn { 
-            margin-top: 67px;
-        }
-        .prehome_footer {
-            height: 250px;
-        }
-    }
-    /* Tablette */
-    @media screen and (max-width : 850.98px) { 
-        .prehome_footer {
-            height: 300px;
-        }
-        .key {
-            width: 80%;
-            margin-bottom: 15px;
-        }
-        .ttcar {
-            width: 80%;
-            margin-bottom: 15px;
-        }
-        .douane {
-            width: 80%;
-            margin-bottom: 15px;
-        }
-        .pos_cardPreHome {
-            top: -572px;
-        }
-        .img_prehome img {
-            height: 1775px;
-            margin-bottom: -1149px;
-        }
-        .tilte_foot {
-            margin-top: 30px;
-        }
-        .prehome_footer {
-            height: 100%;
-        }
-        .text_foot {
-            margin-bottom: 40px;
-        }
-    }
-</style>
     <div>
         <div class="img_prehome">
             <img src="{{ asset('build/shutterstock_1298528866.png') }}" alt="sliderImg"/>
@@ -236,4 +162,5 @@
             </div>
         </div>
     </div>
+    
 {% endblock %}
