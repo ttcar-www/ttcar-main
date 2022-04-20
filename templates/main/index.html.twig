@@ -15,46 +15,7 @@
         {% endfor %}
     {% endfor %}
 <style>
-    .box_form_mark {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    }
-    .box_form_mark .selected {
-        align-self: center;
-    }
-    .logo_renault{
-        width: 115px;
-        height: auto;
-    }
-    .logo_peugeot {
-        width: 153px;
-        margin-top: 18px;
-        margin-bottom: 10px;
-        height: auto;
-    }
-    .logo_citroen {
-        width: 115px;
-        height: auto;
-    }
-    .logo_ds {
-        width: 125px;
-        margin-top: 19px;
-        margin-bottom: 10px;
-        height: auto;
-    }
-    .search_data_index {
-        width: 100%;
-        height: auto;
-        overflow: visible;
-        text-align: left;
-        font-family: Montserrat, sans-serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        color: rgba(52,95,138,1);
-    }
+
     #form_placeDepart {
         overflow: visible;
         width: 85%;
@@ -72,6 +33,7 @@
         border-radius: 30px;
         margin-top: 5px;
         margin-bottom: 5px;
+        padding: 15px;
     }
 
     #form_placeReturn {
@@ -91,6 +53,7 @@
         border-radius: 30px;
         margin-top: 5px;
         margin-bottom: 5px;
+        padding: 15px;
     }
 
     #form_promo {
@@ -99,206 +62,38 @@
         min-width: 100px;
         height: 38px;
         border-radius: 30px;
+        padding: 10px;
     }
 
-    .checkbox-round {
-        width: 1.3em;
-        height: 1.3em;
-        background-color: white;
-        border-radius: 50%;
-        vertical-align: middle;
-        border: 1px solid #ddd;
-        clip-path: circle(40% at 50% 50%);
-        outline: none;
-        cursor: pointer;
-    }
-
-    .newsletter_banner_index {
-        width: 100%;
-        position: relative;
-        top: 20px;
-        height: 100%;
-        background-color: rgba(250,250,250,1);
-    }
-    .owl-carousel .owl-items {
-        min-width: 300px;
-    }
-    /* Dashed border */
-    hr.dashed {
-        border-top: 3px dashed #fff;
-    }
-    .trait_index {
-        width: 90%;
-    }
-    .search_data_index {
-        border-radius: 40px;
-        background-color: rgba(52,95,138,0.841);
-        position: relative;
+    #search_form_promo {
+        position: absolute;
         overflow: visible;
-        width: 60%;
-        height: auto;
-        top: -700px;
-        min-width: 650px;
-    }
-    .ui-datepicker {
-        background-color: white;
+        width: 216px;
+        height: 38px;
+        left: 200px;
+        top: -10px;
+        border-radius: 30px;
     }
 
-    /* Media Queries */
-    /* Desktop */
-    @media (max-width : 1230.98px) {
-        .tilte_mark {
-            font-size: 11px;
-            margin-left: 7px;
-            margin-top: 17px;
-        }  
-        .logo_peugeot {
-            width: 73px;
-            margin-top: 52px;
-            margin-bottom: 10px;
-        }
-        .logo_renault {
-            width: 65px;
-            margin-top: 39px;
-        }
-        .logo_citroen {
-            width: 67px;
-            margin-top: 37px;
-        }
-        .logo_ds {
-            width: 61px;
-            margin-top: 49px;
-            margin-bottom: 10px;
-        }
-        .search_promo_btn span {
-            font-size: 13px;
-        }
-        .btn_search_send button {
-            font-size: 15px;
-        }
-        .blog_article {
-            margin: 15px 132px;
-        }
-    }
-    @media screen and (max-width : 992.98px) {
-        .blog_home {
-            margin: 980px auto 100px;
-        }
-        
+    #search_form_placeReturn {
+        width: 366px;
+        height: 65px;
+        overflow: visible;
+        border-radius: 30px;
     }
 
-    /* Tablette */
-    @media screen and (max-width : 767.98px) {
-        .logo_peugeot {
-            width: 73px;
-            margin-top: 9px;
-        }
-        .logo_renault {
-            margin-top: -5px;
-        }
-        .logo_citroen {
-            margin-top: -7px;
-        }
-        .logo_ds {
-            margin-top: 6px;
-        }
-        .promo_banner {
-            position: relative;
-            top: -1000px;
-        }
-        .promo_banner_promo {
-            position: relative;
-            left: 50px;
-        }
-        .promo_banner_value {
-            position: relative;
-            left: 50px;    
-        }
-        .search_promo_btn span {
-            font-size: 9px;
-        }
-        .btn_search_send button {
-            font-size: 13px;
-        }
-        .search_mark {
-            width: 80%;
-            top: -1025px;
-            min-width: 0px;
-        }
-        .search_data_index {
-            width: 80%;
-            top: -1005px;
-            min-width: 0px;
-        }
-        .tilte_mark {
-            margin-top: 30px;
-        }
-        .icones {
-            margin-top: 30px;
-        }
-        .img_backgroud {
-            height: 1180px;
-        }
-        .info_promo_banner {
-            top: -1080px;
-        }
-        .btn_promo_home {
-            top: -785px;
-        }
-        .carroussel_div {
-            margin-top: -63em;
-        }
+    #search_form_date_end {
+        width: 266px;
+        height: 65px;
+        overflow: visible;
+        border-radius: 30px;
     }
 
-    /* Smartphone */
-    @media screen and (max-width : 576.98px) {
-
-        .search_col-12 {
-            -webkit-box-flex: 0;
-            -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
-            max-width: 100%;
-            width: 100%;
-            float: left;
-            position: relative;
-            min-height: 1px;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-        .img_backgroud {
-            height: 1180px;
-        }
-        .search_mark {
-            width: 90%;
-            
-            padding-bottom: 15px;
-            height: auto;
-        }
-        .search_data_index {
-            width: 90%;
-            top: -1000px;
-        }
-        .icones {
-            width: 70%;
-        }
-        .btn_promo_home {
-            top: -847px;
-        }
-        .promo_banner {
-            top: -1018px;
-        }
-        .info_promo_banner {
-            top: -1100px;
-        }
-        .footer_v1 {
-        width: 100vh;
-        }
-        html,body{ /* Removes the white spaces on the sides in smartphone format */
-            width:100vh;
-            overflow-x:hidden;
-        }
-
-    } 
+    #search_form_mark {
+        margin-left: 190px;
+        width: 100%;
+        margin-top: -35px;
+    }
 
 </style>
 <div>
@@ -348,25 +143,25 @@
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                        <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault">
+                                        <img src="{{ asset('build/renault-blanc.png') }}" class="logo_renault_index">
                                         {{ form_row(formSearch.mark_1, { 'attr': {'class': 'mark_search, checkbox-round'}  })  }}
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                        <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot">
+                                        <img src="{{ asset('build/peugeottrans.png') }}" class="logo_peugeot_index">
                                         {{ form_row(formSearch.mark_2, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                        <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen">
+                                        <img src="{{ asset('build/citroentrans.png') }}" class="logo_citroen_index">
                                         {{ form_row(formSearch.mark_3, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                                     </label>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-6">
                                     <label>
-                                        <img src="{{ asset('build/dstrans.png') }}" class="logo_ds">
+                                        <img src="{{ asset('build/dstrans.png') }}" class="logo_ds_index">
                                         {{ form_row(formSearch.mark_4, { 'attr': {'class': 'mark_search,  checkbox-round'} }) }}
                                     </label>
                                 </div>
@@ -407,7 +202,7 @@
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div class="trait_index">
-                        <hr class="dashed">
+                        <hr class="dashed_index">
                         {# <img src="{{ asset('build/search_trait.png') }}"> #}
                     </div>
                 </div>
