@@ -35,7 +35,8 @@ class AccessoryFormType extends AbstractType
             ->add('mark', EntityType::class, [
                 'class' => Mark::class,
                 'choice_label' => 'getLibelle',
-                'multiple' => false
+                'multiple' => false,
+                'label' => false
             ])
             ->add('itemImg', FileType::class, [
                 'label' => false,

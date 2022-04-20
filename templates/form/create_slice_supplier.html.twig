@@ -1,62 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
 {% block body %}
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Ajouter des tranches de prix FOURNISSEUR</h1>
-            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Add Your Vehicle In Our Listings</h3>
-            </div>
-        </div>
-    </section><!--b-pageHeader-->
-
-    <div class="b-breadCumbs s-shadow">
-        <div class="container wow zoomInUp" data-wow-delay="0.5s">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Accueil</a><span class="fa fa-angle-right"></span>
-            <a href="#" class="b-breadCumbs__page m-active">Ajouter une tranche</a>
-        </div>
-    </div><!--b-breadCumbs-->
-
-    <div class="b-submit">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
-                    <aside class="b-submit__aside">
-                        <div class="b-submit__aside-step m-active wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 1</h3>
-                            <div class="b-submit__aside-step m-active wow zoomInUp" data-wow-delay="0.5s">
-                                <div class="b-submit__aside-step-inner m-active clearfix">
-                                    <div class="b-submit__aside-step-inner-info">
-                                        <h4>Détails de la voiture</h4>
-                                        <p>Informations sur la voiture</p>
-                                        <div class="b-submit__aside-step-inner-info-triangle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="b-submit__aside-step m-active wow zoomInUp" data-wow-delay="0.3s">
-                            <h3>Step 2</h3>
-                            <div class="b-submit__aside-step-inner m-active clearfix">
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>Ajout du prix</h4>
-                                    <p>Ajouter un prix à la voiture enregistrée</p>
-                                    <div class="b-submit__aside-step-inner-info-triangle"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="b-submit__aside-step wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 3</h3>
-                            <div class="b-submit__aside-step-inner clearfix">
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>Ajouter une tranche</h4>
-                                    <p>Ajouter une tranche au prix enregistré</p>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
-                    <div class="b-submit__main">
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <!-- page title area end -->
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-lg-6 col-ml-12">
+                <div class="row">
+                    <!-- Textual inputs start -->
+                    <div class="col-12 mt-5">
 
                         <div class="single-table">
                             <div class="table-responsive">
@@ -133,6 +87,7 @@
             </div>
         </div>
     </div>
+
     <!--b-submit-->
     {{ include('modal/sliceSupplierModal.html.twig') }}
 
@@ -149,5 +104,4 @@
             x.style.display = "none";
         }
     </script>
-
 {% endblock %}

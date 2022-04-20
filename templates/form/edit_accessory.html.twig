@@ -1,118 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin.html.twig' %}
 
 {% block body %}
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Submit Your Vehicle</h1>
-            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Add Your Vehicle In Our Listings</h3>
-            </div>
-        </div>
-    </section><!--b-pageHeader-->
-
-    <div class="b-breadCumbs s-shadow">
-        <div class="container wow zoomInUp" data-wow-delay="0.5s">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
-            <a href="#" class="b-breadCumbs__page m-active">Submit a Mark</a>
-        </div>
-    </div><!--b-breadCumbs-->
-
-
-    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-infoBar__progress-line clearfix">
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <!-- page title area end -->
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-lg-6 col-ml-12">
+                <div class="row">
+                    <!-- Textual inputs start -->
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Editer un accèssoire</h4>
+                                {{ form_start(form) }}
+                                <div class="form-group">
+                                    <label>Nom de l'accessoire<span>*</span></label>
+                                    {{ form_row(form.libelle) }}
                                 </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                <div class="form-group">
+                                    <label>Année <span>*</span></label>
+                                    {{ form_row(form.year) }}
                                 </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                <div class="form-group">
+                                    <label>Prix à l'unité <span>*</span></label>
+                                    {{ form_row(form.price) }}
                                 </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                <div class="form-group">
+                                    <label>Marque <span>*</span></label>
+                                    {{ form_row(form.mark) }}
                                 </div>
-                                <div class="b-infoBar__progress-line-step-circle m-last">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
+                                <div class="form-group">
+                                    <label>Image <span>*</span></label>
+                                    {{ form_row(form.itemImg) }}
                                 </div>
+                                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Enregistrer</button>
+                                {{ form_end(form) }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!--b-infoBar-->
-
-    <div class="b-submit">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
-                    <aside class="b-submit__aside">
-                        <div class="b-submit__aside-step m-active wow zoomInUp" data-wow-delay="0.5s">
-                            <h3>Step 1</h3>
-                            <div class="b-submit__aside-step-inner m-active clearfix">
-                                <div class="b-submit__aside-step-inner-icon">
-                                    <span class="fa fa-car"></span>
-                                </div>
-                                <div class="b-submit__aside-step-inner-info">
-                                    <h4>Add YOUR Mark</h4>
-                                    <p>Select your vehicle &amp; add info</p>
-                                    <div class="b-submit__aside-step-inner-info-triangle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
-                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6">
-                    <div class="b-submit__main">
-                        <header class="s-headerSubmit s-lineDownLeft wow zoomInUp" data-wow-delay="0.5s">
-                            <h2 class="">Add Your Vehicle Details</h2>
-                        </header>
-                        {{ form_start(form) }}
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter libelle <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.libelle) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter year <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.year) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter price <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.price) }}
-                                    </div>
-                                </div>
-                                <div class="b-submit__main-element wow zoomInUp" data-wow-delay="0.5s">
-                                    <label>Enter mark <span>*</span></label>
-                                    <div class='s-relative'>
-                                        {{ form_row(form.mark) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.5s">Save &amp; PROCEED to next step<span class="fa fa-angle-right"></span></button>
-                        {{ form_end(form) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-submit-->
+    </div>
 {% endblock %}
