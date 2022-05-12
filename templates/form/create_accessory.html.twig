@@ -15,23 +15,28 @@
                             <div class="card-body">
                                 <h4 class="header-title">Ajouter un accèssoire</h4>
                                 {{ form_start(form) }}
-                                <div class="form-group">
-                                    <label>Nom de l'accessoire<span>*</span></label>
-                                    {{ form_row(form.libelle) }}
+                                <div class="row">
+                                    <div class="col">
+                                        <label>Nom de l'accessoire<span>*</span></label>
+                                        {{ form_row(form.libelle) }}
+                                    </div>
+                                    <div class="col">
+                                        <label>Année <span>*</span></label>
+                                        {{ form_row(form.year) }}
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Année <span>*</span></label>
-                                    {{ form_row(form.year) }}
+                                <div class="row">
+                                    <div class="col">
+                                        <label>Prix à l'unité <span>*</span></label>
+                                        {{ form_row(form.price) }}
+                                    </div>
+                                    <div class="col">
+                                        <label>Marque <span>*</span></label>
+                                        {{ form_row(form.mark) }}
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Prix à l'unité <span>*</span></label>
-                                    {{ form_row(form.price) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Marque <span>*</span></label>
-                                    {{ form_row(form.mark) }}
-                                </div>
-                                <div class="form-group">
+
+                                <div class="mb-3">
                                     <label>Image <span>*</span></label>
                                     {{ form_row(form.itemImg) }}
                                 </div>

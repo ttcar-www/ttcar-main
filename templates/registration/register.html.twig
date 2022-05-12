@@ -15,23 +15,34 @@
                 <div class="col-12 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Register</h4>
+                            <h4 class="header-title">Nouvel utilisateur</h4>
                             {{ form_start(form) }}
-                            <div class="form-group">
-                                {{ form_row(form.username) }}
+                            <div class="row">
+                                <div class="col">
+                                    <label>Nom<span>*</span></label>
+                                    {{ form_row(form.username) }}
+                                </div>
+                                <div class="col">
+                                    <label>Email<span>*</span></label>
+                                    {{ form_row(form.email) }}
+                                </div>
                             </div>
-                            <div class="form-group">
-                                {{ form_row(form.email) }}
+                            <div class="row">
+                                <div class="col">
+                                    <label>Mot de passe<span>*</span></label>
+                                    {{ form_row(form.password.first) }}
+                                </div>
+                                <div class="col">
+                                    <label>Répéter le mot de passe<span>*</span></label>
+                                    {{ form_row(form.password.second) }}
+                                </div>
                             </div>
-                            <div class="form-group">
-                                {{ form_row(form.password.first) }}
-                            </div>
-                            <div class="form-group">
-                                {{ form_row(form.password.second) }}
-                            </div>
+                            <div class="row">
                             <div class="custom-control custom-radio">
+                                <label>Rôles<span>*</span></label>
                                 {{ form_row(form.roles) }}
 
+                            </div>
                             </div>
                             {#
                             <p class="checkbox remember">

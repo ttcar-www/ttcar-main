@@ -17,10 +17,14 @@ use App\Entity\User;
 use App\Form\OrderFormType;
 use App\Form\OrderSimpleFormType;
 use DateTime;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -346,7 +350,7 @@ class OrdersController extends AbstractController
      * Retourne le nombres de jours en cas de promotions
      */
     public function getCounDays($nb_day, $promo) {
-        $countDays = $countDays - $promo->getValue();
+        $countDays = $nb_day - $promo->getValue();
         if ($countDays > 21 ) {
             return 21;
         }
@@ -505,7 +509,7 @@ class OrdersController extends AbstractController
      * @return Customer|null
      * @throws Exception
      */
-    public function newUser($order): ?Customer
+    public function newUser($order, $mailer): ?Customer
     {
         $today = new DateTime('@'.strtotime('now'));
 
@@ -532,7 +536,7 @@ class OrdersController extends AbstractController
         }
 
 
-        //envoi email creation compte
+        $this->sendMailCustomer($user, $mailer, $order);
         return $newCustomer;
 
     }
@@ -597,13 +601,62 @@ class OrdersController extends AbstractController
         return $newCustomer;
     }
 
+    public function sendMailCustomer($user, $mailer, $order) {
+        // do anything else you need here, like send an email
+        $email = (new TemplatedEmail())
+            ->from('info@ttcar.com')
+            ->to('queille.johanna@gmail.com')
+            ->subject('Commande confirmée chez TTCAR !')
+
+            // path of the Twig template to render
+            ->htmlTemplate('emails/confirmation.html.twig')
+
+            // pass variables (name => value) to the template
+            ->context([
+                'expiration_date' => new \DateTime('+7 days'),
+                'username' => $order->getCustomerName()
+            ]);
+
+        try {
+            $mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            // some error prevented the email sending; display an
+            // error message or try to resend the message
+        }
+
+    }
+
+    public function sendMailAdmin($user, $mailer, $order) {
+        // do anything else you need here, like send an email
+        $email = (new TemplatedEmail())
+            ->from('info@ttcar.com')
+            ->to(new Address($user))
+            ->subject('Nouvelle commande confirmée chez TTCAR !')
+
+            // path of the Twig template to render
+            ->htmlTemplate('emails/order_confirm.html.twig')
+
+            // pass variables (name => value) to the template
+            ->context([
+                'expiration_date' => new \DateTime('+7 days'),
+                'username' => $order->getCustomerName()
+            ]);
+
+        try {
+            $mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            // some error prevented the email sending; display an
+            // error message or try to resend the message
+        }
+    }
+
     /**
      * @Route("/createOrder/{id}", name="createOrder")
      * @param $id
      * @return Response
      * @throws Exception
      */
-    public function createOrder($id): Response
+    public function createOrder($id, MailerInterface $mailer): Response
     {
         $order = $this->getDoctrine()
             ->getRepository(Order::class)
@@ -619,7 +672,7 @@ class OrdersController extends AbstractController
             $em->flush();
         }
 
-        $user = $this->newUser($order);
+        $user = $this->newUser($order, $mailer);
 
         if ($user) {
             $em = $this->getDoctrine()->getManager();

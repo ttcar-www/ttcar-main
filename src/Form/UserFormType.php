@@ -22,12 +22,17 @@ class UserFormType extends AbstractType
             ->add('id', HiddenType::class, array(
                 'required' => true,
             ))
-            ->add('email', EmailType::class)
-            ->add('username', TextType::class)
+            ->add('email', EmailType::class, array(
+                'label' => false
+                ))
+            ->add('username', TextType::class, array(
+                'label' => false
+            ))
             ->add('password', RepeatedType::class, array(
+                'label' => false,
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
+                'first_options'  => array('label' => false),
+                'second_options' => array('label' => false),
             ))
             ->add('roles', ChoiceType::class, [
                 'choices' => [

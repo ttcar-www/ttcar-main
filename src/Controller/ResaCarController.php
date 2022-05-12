@@ -16,10 +16,13 @@ use DateTime;
 use Exception;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\True_;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
@@ -229,6 +232,57 @@ class ResaCarController extends AbstractController
         ]);
     }
 
+
+    public function sendMailCustomerResa($user, $mailer, $order) {
+        // do anything else you need here, like send an email
+        $email = (new TemplatedEmail())
+            ->from('info@ttcar.com')
+            ->to(new Address($user))
+            ->subject('Commande confirmée chez TTCAR !')
+
+            // path of the Twig template to render
+            ->htmlTemplate('emails/order_confirm.html.twig')
+
+            // pass variables (name => value) to the template
+            ->context([
+                'expiration_date' => new \DateTime('+7 days'),
+                'username' => $order->getCustomerName()
+            ]);
+
+        try {
+            $mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            // some error prevented the email sending; display an
+            // error message or try to resend the message
+        }
+
+    }
+
+    public function sendMailAdminResa($user, $mailer, $order) {
+        // do anything else you need here, like send an email
+        $email = (new TemplatedEmail())
+            ->from('info@ttcar.com')
+            ->to(new Address($user))
+            ->subject('Nouvelle commande confirmée chez TTCAR !')
+
+            // path of the Twig template to render
+            ->htmlTemplate('emails/order_confirm.html.twig')
+
+            // pass variables (name => value) to the template
+            ->context([
+                'expiration_date' => new \DateTime('+7 days'),
+                'username' => $order->getCustomerName()
+            ]);
+
+        try {
+            $mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            // some error prevented the email sending; display an
+            // error message or try to resend the message
+        }
+    }
+
+
     /**
      * @Route("/resacar_order/", name="resacar_order")
      * @return Response
@@ -399,5 +453,7 @@ class ResaCarController extends AbstractController
 
         return $response = false;
     }
+
+
 
 }
