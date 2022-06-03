@@ -2,265 +2,222 @@
 
 {% block body %}
     <style>
-        .btn_contact:hover {
-            background-color: yellow; !important;
+        :root {
+            --first-color: #345f8a;
+            --first-color-alt: rgba(52,95,138,.8);
+            --body-font: "Montserrat", sans-serif;
+            --white: hsl(0, 0%, 100%);
+            --white-opacity: rgba(255,255,255,.8);
+            --white-opacity-light: rgba(255,255,255,.1);
+            --grey-opacity: rgba(250, 250, 250, .9);
+            --grey-light: #ACACAC;
+            --grey: #E6E6E6;
         }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: #345f8a;
+        }
+
+        .row {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(-1 * var(--bs-gutter-y));
+            margin-right: calc(-.5 * var(--bs-gutter-x));
+            margin-left: calc(-.5 * var(--bs-gutter-x));
+        }
+        .row > * {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: calc(var(--bs-gutter-x) * .5);
+            padding-left: calc(var(--bs-gutter-x) * .5);
+            margin-top: var(--bs-gutter-y);
+        }
+
+        .col {
+            flex: 1 0 0%;
+        }
+
+        #connexion .bg-img {
+            background-image: url({{ asset('build/images/bg-connexion.png') }});
+            height: 100%;
+        }
+        #connexion .wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        #connexion .title.has-decoration::before {
+            background-image: url({{ asset('build/images/icone-compte.png') }});
+        }
+        #connexion p {
+            font-size: 13px;
+        }
+
+        .bg-img {
+            background-position: center;
+            background-size: cover;
+            padding-top: 10vh;
+        }
+
+        .bg-white-transparent {
+            background-color: var(--white-opacity);
+            border-radius: 1em;
+            padding: 1.5rem 2rem;
+        }
+        .bg-white-transparent input, .bg-white-transparent textarea {
+            border: 2px solid var(--grey);
+        }
+
+        .title {
+            text-transform: none;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+            font-size: 24px;
+        }
+        .title.has-decoration {
+            padding-left: 2rem;
+            position: relative;
+        }
+        .bg-blue-transparent {
+            background-color: var(--first-color-alt);
+            border-radius: 1em;
+            color: #FFFFFF;
+            padding: 2rem 3rem;
+        }
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #345f8a;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 0px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 2rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .col-form-label {
+            background-color: var(--first-color);
+            border-radius: 1.5em;
+            font-weight: 700;
+            -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+            filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+            text-align: center;
+            color: #FFFFFF;
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #345f8a;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            border-radius: 1.5rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .btn.btn-alt {
+            background: #FFFFFF;
+            color: #F72b37;
+        }
+        .btn.btn-alt.alt {
+            position: relative;
+            font-weight: normal;
+            font-style: italic;
+            font-size: 14px;
+            padding-right: 1rem;
+        }
+        .btn.btn-alt.alt::after {
+            position: absolute;
+            right: 0;
+            font: var(--fa-font-solid);
+            font-weight: 400;
+            content: "";
+        }
+
+        section {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+
+        .justify-content-between {
+            justify-content: space-between !important;
+        }
+
     </style>
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Auto Listings</h1>
-            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>{{ 'form_order.tilte'|trans({}, 'messages') }} {{  cars|length }} {{ 'form_order.tilteResult'|trans({}, 'messages') }}</h3>
-            </div>
-        </div>
-    </section><!--b-pageHeader-->
+    <main id="connexion">
 
-    <div class="b-breadCumbs s-shadow">
-        <div class="container wow zoomInUp" data-wow-delay="0.5s">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
-        </div>
-    </div><!--b-breadCumbs-->
-
-    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-infoBar__progress-line clearfix">
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <a href="#" onclick="history.back(-1)">
-                                    <div class="b-infoBar__progress-line-step-circle">
-                                        <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                                <div class="b-infoBar__progress-line-step-circle m-last">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
+        <section class="bg-img">
+            <div class="container">
+                <div class="col-lg-10 mx-auto bg-white-transparent">
+                    <div class="wrapper">
+                        <div class="text-center">
+                            <h1 class="title has-decoration">Mon compte personnel</h1>
+                            <p><strong>Vous avez déjà commandé sur un de nos sites ?</strong></p>
+                            <p>Connectez-vous à l’aide de votre <strong>courriel</strong> et du <strong>mot de passe</strong> que vous avez reçu par e-mail, pour modifier vos coordonnées, gérer vos documents et suivre vos commandes.</p>
                         </div>
+                        <div class="bg-blue-transparent">
+                            <form action="" method="get" class="px-sm-3 px-3">
+
+                                <div class="row mb-3">
+                                    <label for="connexion-email" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="connexion-email" placeholder="Votre email">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="connexion-password" class="col-sm-3 col-form-label">Mot de passe</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="connexion-password" placeholder="Votre mot de passe">
+                                    </div>
+                                </div>
+
+                                <a class="btn btn-alt alt mb-4" href="">Mot de passe oublié ou inconnu</a>
+
+                                <div class="row">
+                                    <div class="btn-wrapper d-flex justify-content-between flex-wrap">
+                                        <button class="btn btn-alt" type="submit" name="submit">Se connecter</button>
+                                        <button class="btn btn-alt ms-sm-3" type="reset" name="reset">Fermer</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!--b-infoBar-->
 
-    {#    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-xs-12">
-                    <div class="b-infoBar__select wow zoomInUp" data-wow-delay="0.5s">
-                        <form method="post" action="/">
-                            <div class="b-infoBar__select-one">
-                                <span class="b-infoBar__select-one-title">SHOW ON PAGE</span>
-                                <select name="select1" class="m-select">
-                                    <option value="" selected="">10 items</option>
-                                </select>
-                                <span class="fa fa-caret-down"></span>
-                            </div>
-                            <div class="b-infoBar__select-one">
-                                <span class="b-infoBar__select-one-title">SORT BY</span>
-                                <select name="select2" class="m-select">
-                                    <option value="" selected="">Old Added</option>
-                                    <option value="" selected="">Last Added</option>
-                                </select>
-                                <span class="fa fa-caret-down"></span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-infoBar-->#}
+        </section>
 
-    <div class="b-items">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-sm-8 col-xs-12">
-                    <div class="row">
-                        {% for car in pagination %}
-                            <div class="col-lg-4 col-md-6 col-xs-12">
-                                <div class="b-items__cell wow zoomInUp">
-                                    <div class="b-items__cars-one-img">
-                                        <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" style="width: 110%;">
-                                        <a class="b-items__cars-one-img-video">{{ car.mark.getlibelle }}</a>
-                                        <span class="b-items__cars-one-img-type m-premium">PREMIUM</span>
-                                    </div>
-                                    <div class="b-items__cell-info">
-                                        <div class="s-lineDownLeft b-items__cell-info-title">
-                                            <h2 class="">{{ car.name|u.truncate(25, '...') }}</h2>
-                                        </div>
-                                        {#
-                                        <p>{{ car.desc }}</p>
-                                        #}
-                                        <div class="row m-smallPadding">
-                                            <div class="col-xs-6">
-                                                <ul>
-                                                    <li>{{ car.years }}</li>
-                                                    <li>{{ car.door }} Doors</li>
-                                                    <li>{{ car.transmission }} </li>
-                                                    <li>{{ car.fuel }}</li>
-                                                </ul>
-                                                <h5 class="b-items__cell-info-price">{{ carsResult[loop.index-1]}}€</h5>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <div class="b-items__cell-info-km">
-                                                    <i class="fas fa-search-plus"></i>
-                                                    <a href="{{ path('detail_car', { 'id': car.id }) }}">View details</a>
-                                                </div>
-                                            </div>
-                                            <div class="b-items__cell-info-km" style="margin-left: 0;margin-top: 60%;">
-                                                {% if car.getDateStart > today %}
-                                                    <p class="btn btn-secondary btn-lg btn-block btn_contact">Dispo le {{ car.getDateStart|date("m/d/Y") }}<span class="fa fa-angle-right"></span></p>
-                                                {% elseif car.isContactActived == true %}
-                                                    <a href="{{ path('contactByCar', { 'id': car.id }) }}" class="btn btn-secondary btn-lg btn-block">Contact<span class="fa fa-angle-right"></span></a>
-                                                {% else %}
-                                                    <a href="{{ path('order', { 'id': car.id }) }}" class="btn btn-secondary btn-lg btn-block">Choisir<span class="fa fa-angle-right"></span></a>
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="b-items__pagination">
-                        <div class="b-items__pagination-main wow zoomInUp" data-wow-delay="0.5s">
-                            {{ knp_pagination_render(pagination) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-4 col-xs-12">
-                    <aside class="b-items__aside">
-                        <h2 class="s-title wow zoomInUp">REFINE YOUR SEARCH</h2>
-                        <div class="b-items__aside-main wow zoomInUp">
-                            {{ form_start(formSearch) }}
-                            <div class="b-items__aside-main-body">
-                                <div class="b-items__aside-main-body-item">
-                                    <label>SELECT A MAKE</label>
-                                    <div>
-                                        <select name="item" id="mark"  onclick="ButtonVoid()">
-                                            <option value="1">Renault</option>
-                                            <option value="2">Peugeot</option>
-                                            <option value="3">Citroën</option>
-                                            <option value="4">DS Auto</option>
-                                        </select>
-                                        <a href="javascript:void(0)" onclick="ChangeMark()" id="markLoader" style="display: none; align-content: center"><i class="fas fa-sync-alt"></i></a>
-                                    </div>
-                                </div>
-                                <div class="b-items__aside-main-body-item">
-                                    <label>SELECT A Depart info</label>
-                                    <div style="color: black">
-                                        {{ form_row(formSearch.date_start) }}
-                                    </div>
-                                    <br>
-                                    {{ form_row(formSearch.placeDepart) }}
-                                </div>
-                                <div class="b-items__aside-main-body-item">
-                                    <label>Date de Retour</label>
-                                    <div style="color: black">
-                                        {{ form_row(formSearch.date_end) }}
-                                    </div>
-                                    <br>
-                                    {{ form_row(formSearch.placeReturn) }}
-                                </div>
-                                <div class="b-items__aside-main-body-item">
-                                    <label>Have Promo ?</label>
-                                    <div>
-                                        {{ form_row(formSearch.promo) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <footer class="b-items__aside-main-footer">
-                                <button type="submit" class="btn m-btn">FILTER VEHICLES<span class="fa fa-angle-right"></span></button><br />
-                                {#  <a href="">RESET ALL FILTERS</a>#}
-                            </footer>
-                            {{ form_end(formSearch) }}
-                        </div>
-                        <div class="b-items__aside-sell wow zoomInUp">
-                            <div class="b-items__aside-sell-info">
-                                <h3>Ce prix inclut :</h3>
-                                <p>
-                                    <span><i class="fas fa-check" style="color: green"></i>Un forfait {{ nb_days }} jours</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>Un véhicule neuf</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>Le kilométrage illimité</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>L'assurance multirisques sans franchise</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>L'assistance 7j / 7 et 24h / 24</span>
-                                    <br>
-                                    <span><i class="fas fa-check" style="color: green"></i>Les frais de livraison et de restitution</span>
-                                </p>
-                            </div>
-                        </div>
-                        {# <div class="b-items__aside-sell wow zoomInUp" data-wow-delay="0.5s">
-                            <div class="b-items__aside-sell-info">
-                                <h3>SELL YOUR CAR</h3>
-                                <p>
-                                    Nam tellus enimds eleifend dignis lsim
-                                    biben edum tristique sed metus fusce
-                                    Maecenas lobortis.
-                                </p>
-                                <a href="submit1.html" class="btn m-btn">REGISTER NOW<span class="fa fa-angle-right"></span></a>
-                            </div>
-                        </div>#}
-                    </aside>
-                </div>
-            </div>
-        </div>
-    </div><!--b-items-->
-
-    <script>
-        function ButtonVoid() {
-            let loader = document.getElementById('markLoader');
-            loader.style.display = "block";
-        }
-
-        function ChangeMark() {
-            let mark = document.getElementById('mark').value;
-            let mark_libelle = null;
-
-            if (mark === '1') {
-                mark_libelle = 'Renault'
-            }
-            if (mark === '2') {
-                mark_libelle = 'Peugeot'
-            }
-            if (mark === '3') {
-                mark_libelle = 'Citroën'
-            }
-            if (mark === '4') {
-                mark_libelle = 'DS Auto'
-            }
-
-            $.ajax({
-                url:{{ path('change_mark') }},
-                type:"POST",
-                dataType:"json",
-                data: {mark: mark_libelle},
-                success: function(mark_libelle){
-                    document.location.reload();
-                }
-            });
-
-        }
-
-    </script>
-
+    </main>
 {% endblock %}

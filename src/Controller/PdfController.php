@@ -40,7 +40,8 @@ class PdfController extends AbstractController
         }else {
             $original = $projectDir.$path.'Ds.pdf';
         }
-        
+
+
         exec("pdftk " . $original . " fill_form " . $projectDir ."/public/build/filesPdf/xfdf_20939.xfdf output " . $projectDir . '/assets/images/filesPdf/' .$id. ".pdf");
 
         $pdf = file_get_contents($projectDir . '/assets/images/filesPdf/' .$id. ".pdf");
@@ -322,11 +323,14 @@ class PdfController extends AbstractController
                    $xml[] = '</field>';*/
                    $prices_acc = 0;
                    $accessories = $items;
-                    foreach ($items as $item) {
-                        foreach ($order->getCountItems() as $countItem) {
-                            $prices_acc += $item->getPrice() * $countItem;
-                        }
-                    }
+                   if ($items) {
+                       foreach ($items as $item) {
+                           foreach ($order->getCountItems() as $countItem) {
+                               $prices_acc += $item->getPrice() * $countItem;
+                           }
+                       }
+                   }
+
                    $xml[] = '<field name="PrixAccess">';
                    $xml[] = '<value>' . number_format($prices_acc,2,","," ") . '</value>';
                    $xml[] = '</field>';
@@ -340,33 +344,34 @@ class PdfController extends AbstractController
                    $xml[] = '<value>' . ' ' . '</value>';
                    $xml[] = '</field>';
 
-                 reset($accessories);
-                   if (count($accessories)) {
-                       $accessory = current($accessories);
-                       foreach ($items as $item) {
-                           foreach ($order->getCountItems() as $countItem) {
-                               $xml[] = '<field name="Access1">';
-                               $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
-                               $xml[] = '</field>';
+                   if($accessories) {
+                       reset($accessories);
+                       if (count($accessories)) {
+                           $accessory = current($accessories);
+                           foreach ($items as $item) {
+                               foreach ($order->getCountItems() as $countItem) {
+                                   $xml[] = '<field name="Access1">';
+                                   $xml[] = '<value>' . mb_strtoupper($countItem . 'x ' . $item->getLibelle()) . '</value>';
+                                   $xml[] = '</field>';
 
-                               $xml[] = '<field name="accessR1">';
-                               $xml[] = '<value>' . $item->getLibelle() . '</value>';
-                               $xml[] = '</field>';
+                                   $xml[] = '<field name="accessR1">';
+                                   $xml[] = '<value>' . $item->getLibelle() . '</value>';
+                                   $xml[] = '</field>';
 
-                               $xml[] = '<field name="accessQT1">';
-                               $xml[] = '<value>' . $countItem . '</value>';
-                               $xml[] = '</field>';
+                                   $xml[] = '<field name="accessQT1">';
+                                   $xml[] = '<value>' . $countItem . '</value>';
+                                   $xml[] = '</field>';
 
-                               $xml[] = '<field name="accessPU1">';
-                               $xml[] = '<value>' . $item->getPrice() . '</value>';
-                               $xml[] = '</field>';
+                                   $xml[] = '<field name="accessPU1">';
+                                   $xml[] = '<value>' . $item->getPrice() . '</value>';
+                                   $xml[] = '</field>';
 
-                               $xml[] = '<field name="PrixAccess1">';
-                               $xml[] = '<value>' . ($accessory->getPrice() * $countItem) . '</value>';
-                               $xml[] = '</field>';
+                                   $xml[] = '<field name="PrixAccess1">';
+                                   $xml[] = '<value>' . ($accessory->getPrice() * $countItem) . '</value>';
+                                   $xml[] = '</field>';
+                               }
                            }
-                       }
-
+                   }
 
                          if (count($accessories) > 1) {
                              next($accessories);

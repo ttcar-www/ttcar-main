@@ -82,6 +82,7 @@ Encore
     .addEntry('start', './assets/css/start-page.css')
     .addEntry('theme', './assets/css/theme.css')
     .addEntry('owl_css', './assets/owl-carousel/owl.carousel.css')
+    .addEntry('refonteV2', './assets/css/refonteV2.css')
 
     .addEntry('refonteV1', './assets/css/refonte_ttcar.css')
 
