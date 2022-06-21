@@ -1,113 +1,170 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <main id="groupe">
 
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">About Us</h1>
-            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
-                <h3>The Largest Auto Dealer Online</h3>
-            </div>
-        </div>
-    </section><!--b-pageHeader-->
+        <section class="section bg-img">
 
-    <div class="b-breadCumbs s-shadow">
-        <div class="container">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('groupe') }}" class="b-breadCumbs__page m-active">About Us</a>
-        </div>
-    </div><!--b-breadCumbs-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
 
-    <section class="b-best">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <div class="b-best__info">
-                        <header class="s-lineDownLeft b-best__info-head">
-                            <h2 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_tilte'|trans({}, 'messages') }}</h2>
-                        </header>
-                        <h6 class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_1'|trans({}, 'messages') }} </h6>
-                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_2'|trans({}, 'messages') }}</p>
-                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_3'|trans({}, 'messages') }}</p>
-                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_4'|trans({}, 'messages') }}</p>
-                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_5'|trans({}, 'messages') }}</p>
-                        <p class="wow zoomInUp" data-wow-delay="0.5s">{{ 'text_group_6'|trans({}, 'messages') }}</p>
-                        {#                        <a href="article.html" class="btn m-btn m-readMore wow zoomInUp" data-wow-delay="0.5s">view listings<span class="fa fa-angle-right"></span></a>#}
+                        <div class="bg-blue-transparent card mb-5">
+                            <div class="p-md-5 p-3 col-lg-10 mx-auto">
+                                <div class="text-center">
+                                    <h1 class="title has-decoration">Le groupe</h1>
+                                    <p><strong>Depuis 1972</strong>, TT CAR TRANSIT, société de services est spécialisée dans la <strong>vente hors taxes de véhicules et la location de voitures pour les expatriés français et les touristes</strong> séjournant en France.</p>
+                                    <p><strong>Partenaire historique des marques automobiles françaises</strong>, TT CAR TRANSIT a toujours fait preuve de <strong>professionnalisme</strong> en gérant les plus grands centres de livraison et retour des aéroports pour les véhicules en TT. Grâce à leur expérience et leurs compétences, <strong>nos équipes sont à votre disposition</strong> pour vous conseiller et vous offrir les meilleures conditions de séjour au volant de votre prochaine voiture.</p>
+                                    <p>Les loueurs Internationaux partenaires de Key Services garantissent en location de voitures les meilleurs produits à des <strong>prix et conditions exceptionnels</strong>.</p>
+                                    <p>Notre savoir faire et notre rigueur sont les bases de notre métier de déclarant en douanes <strong>gérant toutes formalités d’immatriculation en TT et en W export</strong></p>
+                                    <p>Nous proposons également les <strong>meilleurs tarifs</strong> pour le transport maritime de votre véhicule toutes destinations.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                            <div class="col">
+                                <div class="card p-3">
+                                    <img src="{{ asset('build/logo-key.png') }}" class="card-img-top mx-auto" alt="...">
+                                    <div class="card-body p-3">
+
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-jauge.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Kilométrage</strong><br>illimité
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-conducteur.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>2ème conducteur</strong><br>gratuit
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-franchise.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Sans franchise</strong><br>en cas d’accident et de vol
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-point-livraison.png') }}">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Plus de 500 points</strong><br>de livraison et retourn en France
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="#" class="btn btn-primary mx-auto">Accéder au site</a>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card p-3">
+                                    <img src="{{ asset('build/logo-tt.png') }}" class="card-img-top mx-auto" alt="...">
+                                    <div class="card-body p-3">
+
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-jauge.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Kilométrage</strong><br>illimité
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-conducteur.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>2ème conducteur</strong><br>gratuit
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-franchise.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Sans franchise</strong><br>en cas d’accident et de vol
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-point-livraison.png') }}">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Plus de 500 points</strong><br>de livraison et retourn en France
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="btn-wrapper">
+                                        <a href="#" class="btn btn-primary">Accéder au site</a>
+                                        <a href="#" class="btn btn-alt">Offres spéciales<i class="fa-solid fa-angle-right"></i></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card p-3">
+                                    <img src="{{ asset('build/logo-douane-export.png') }}" class="card-img-top mx-auto" alt="...">
+                                    <div class="card-body p-3">
+
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-jauge.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Kilométrage</strong><br>illimité
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-conducteur.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>2ème conducteur</strong><br>gratuit
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-franchise.png') }}" alt="">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Sans franchise</strong><br>en cas d’accident et de vol
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="item-icon">
+                                                <img src="{{ asset('build/icone-point-livraison.png') }}">
+                                            </div>
+                                            <div class="item-content">
+                                                <strong>Plus de 500 points</strong><br>de livraison et retourn en France
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="#" class="btn btn-primary mx-auto">Accéder au site</a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xs-12" style="margin-top: 15%">
-{#                    <img class="img-responsive center-block wow zoomInUp" data-wow-delay="0.5s" alt="best" src="{{ asset('img/logo-tt-pict.png') }}" />#}
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5DpCdHOG92s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                </div>
             </div>
-        </div>
-    </section><!--b-best-->
 
-    <section class="b-more">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <div class="b-more__why wow zoomInLeft" data-wow-delay="0.5s">
-                        <h2 class="s-title">{{ 'text_group_why_tilte'|trans({}, 'messages') }}</h2>
-                        <p>{{ 'text_group_why_1'|trans({}, 'messages') }}</p>
-                        <p>{{ 'text_group_why_2'|trans({}, 'messages') }}</p>
-             {#           <ul class="s-list">
-                            <li><span class="fa fa-check"></span>Donec facilisis velit eu est phasellus consequat quis nostrud</li>
-                            <li><span class="fa fa-check"></span>Aenean vitae quam. Vivamus et nunc nunc conseq</li>
-                            <li><span class="fa fa-check"></span>Sem vel metus imperdiet lacinia enean </li>
-                            <li><span class="fa fa-check"></span>Dapibus aliquam augue fusce eleifend quisque tels</li>
-                            <li><span class="fa fa-check"></span>Lorem ipsum dolor sit amet, consectetur </li>
-                            <li><span class="fa fa-check"></span>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore Magna </li>
-                        </ul>#}
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                    <div class="b-more__info wow zoomInRight" data-wow-delay="0.5s">
-                        <h2 class="s-title">{{ 'text_group_why_tilte_2'|trans({}, 'messages') }}</h2>
-                        <div class="b-more__info-block">
-                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_3'|trans({}, 'messages') }}<a class="j-more" href="#"><span class="fa fa-angle-left"></span></a></div>
-                            <div class="b-more__info-block-inside j-inside">
-                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
-                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                        <div class="b-more__info-block">
-                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_4'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
-                            <div class="b-more__info-block-inside j-inside">
-                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
-                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                        <div class="b-more__info-block">
-                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_5'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
-                            <div class="b-more__info-block-inside j-inside">
-                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
-                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                        <div class="b-more__info-block">
-                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_6'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
-                            <div class="b-more__info-block-inside j-inside">
-                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
-                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                        <div class="b-more__info-block">
-                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_7'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
-                            <div class="b-more__info-block-inside j-inside">
-                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
-                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                        <div class="b-more__info-block">
-                            <div class="b-more__info-block-title">{{ 'text_group_why_tilte_8'|trans({}, 'messages') }}<a href="#" class="j-more"><span class="fa fa-angle-left"></span></a></div>
-                            <div class="b-more__info-block-inside j-inside">
-                                <p>Curabitur libero. Donec facilisis velit est. Phasellus consquat. Aenean vitae quam. Vivam
-                                    etl nunc. Nunc con sequsem velde metus imperdiet lacinia. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!--b-more-->
+        </section>
 
+    </main>
 {% endblock %}

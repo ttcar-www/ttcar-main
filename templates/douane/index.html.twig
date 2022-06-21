@@ -2,180 +2,148 @@
 
 {% block body %}
 
-<body class="m-home" data-scrolling-animations="true" data-equal-height=".b-auto__main-item">
+    <main id="douane-export">
+        <section class="bg-img">
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="bg-white-transparent card mb-5">
+                            <div class="p-md-5 p-3 mx-lg-auto text-center col-lg-10">
+                                <h1>Choisir TT Douane Export :</h1>
+                                <div class="douane-icons-wrapper p-3 my-4">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-world.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>World export</strong><br><em>et transit temporaire</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-transport.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Transport</strong><br><em>maritime</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-immatriculation.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Immatriculation</strong><br><em>France</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-assurance.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Assurance</strong><br><em>courte durée</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-alt fw-bold has-shadow">Contactez-nous</a>
+                                <div class="w-100 overflow-hidden">
+                                    <svg height="50" width="1000">
+                                        <g fill="none" stroke="#345f8a" stroke-width="1">
+                                            <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a class="btn btn-primary">Déclaration Douane</a>
+                                <p class="mt-4"><strong>La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés
+                                        destinés à être exportés hors Union Européenne.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- Loader -->
-<div id="page-preloader"><span class="spinner"></span></div>
-<!-- Loader end -->
-{# read and display all flash messages #}
-{% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div class="alert alert-warning flash-{{ label }}" role="alert">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endfor %}
-<section class="b-slider">
-    <div id="carousel" class="slide carousel carousel-fade">
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="{{ asset('build/nightCars.jpg') }}" alt="sliderImg"  style="height: 800px"/>
-                <div class="container">
-                    <div class="carousel-caption b-slider__info">
-                        <h3>{{ 'douane.tiltle2'|trans({}, 'messages') }}</h3>
-                        <h2>{{ 'douane.rent'|trans({}, 'messages') }} <br/>{{ 'douane.cars'|trans({}, 'messages') }}</h2>
-                        <p>A definir</p>
-                        <a class="btn m-btn" href="#">{{ 'douane.details'|trans({}, 'messages') }}<span class="fa fa-angle-right"></span></a>
-                    </div>
-                </div>
+        <div class="separator">
+            <div>Obtenez les informations
+                <i class="fa-solid fa-chevron-down"></i>
             </div>
         </div>
-    </div>
-</section><!--b-slider-->
 
-<section class="b-world" style="padding-top: 0">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4 col-xs-12">
-                <div class="b-world__item wow zoomInLeft" data-wow-delay="0.3s">
-{#
-                    <img class="img-responsive" src="{{ asset('build/location-de-voiture.png') }}" alt="wolks" />
-#}
-                    <div class="b-world__item-val">
-                        <span class="b-world__item-val-title">A DEFINIR</span>
-                    </div>
-                        <h2>{{ 'douane.w'|trans({}, 'messages') }}</h2>
-                        <p>{{ 'douane.wSubtilte'|trans({}, 'messages') }}</p>
-                </div>
-            </div>
-            <div class="col-sm-4 col-xs-12">
-                <div class="b-world__item wow zoomInUp" data-wow-delay="0.3s">
-{#
-                    <img class="img-responsive"  src="media/370x200/mazda.jpg" alt="mazda" />
-#}
-                    <div class="b-world__item-val">
-                        <span class="b-world__item-val-title">A DEFINIR</span>
-                    </div>
-                    <h2>{{ 'douane.declaration'|trans({}, 'messages') }}</h2>
-                    <p>{{ 'douane.declaSubtilte'|trans({}, 'messages') }}</p>
-                </div>
-            </div>
-            <div class="col-sm-4 col-xs-12">
-                <div class="b-world__item wow zoomInRight" data-wow-delay="0.3s">
-{#
-                    <img class="img-responsive"  src="media/370x200/chevrolet.jpg" alt="chevrolet" />
-#}
-                    <div class="b-world__item-val">
-                        <span class="b-world__item-val-title">A DEFINIR</span>
-                    </div>
-                    <h2>{{ 'douane.transport'|trans({}, 'messages') }}</h2>
-                    <p>{{ 'douane.transportSubtiltle'|trans({}, 'messages') }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--b-world-->
+        <section>
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card bg-grey mb-5 p-5">
+                            <h2>Sélectionnez votre immatriculation</h2>
 
-<section class="b-welcome">
-    <div class="container">
-        <div class="row">
-            <div class="b-welcome__services">
-                <div class="col-md-3 col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-12 m-padding">
-                            <div class="b-welcome__services-auto wow zoomInLeft" data-wow-delay="0.3s">
-                                <div class="b-welcome__services-img m-auto">
-                                    <a href="{{ path('transit') }}">
-                                        <img src="{{ asset('build/transit-temporaire.png') }}" style="width: 80%">
-                                    </a>
+                            <form action="" class="mb-4">
+                                <div class="row row-cols-1 row-cols-md-3 g-3 mb-3">
+                                    <div class="col">
+                                        <div class="col-form-label">Type d’immatriculation</div>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big">
+                                            <div class="douane-form-label">Véhicule immatriculé en WW</div>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big">
+                                            <div class="douane-form-label">Autres types</div>
+                                        </label>
+                                    </div>
                                 </div>
-                                <h3>{{ 'douane.tt'|trans({}, 'messages') }}</h3>
+                            </form>
+
+                            <div class="w-100 overflow-hidden">
+                                <svg height="50" width="1000">
+                                    <g fill="none" stroke="#345f8a" stroke-width="1">
+                                        <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                    </g>
+                                </svg>
                             </div>
-                        </div>
-                        <div class="col-xs-12 text-right visible-md visible-lg">
-                            <div class="m-circle wow slideInRight" data-wow-delay="0.3s">
-                                <span class="b-welcome__services-circle"></span>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 m-padding">
-                            <div class="b-welcome__services-buying wow zoomInLeft" data-wow-delay="0.3s">
-                                <div class="b-welcome__services-img m-buying">
-                                    <a href="{{ path('export') }}">
-                                        <img src="{{ asset('build/location-de-voiture.png') }}" style="width: 80%">
-                                    </a>
+                            <h2>Déclaration Douanière d’Exportation<br>
+                                (Autres types d’immatriculation))</h2>
+                            <div class="row">
+                                <div class="col-md-6 mb-md-3">
+                                    <div class="card bg-white p-4 text-center douane-price">
+                                        <h3>Tarif :</h3>
+                                        <div>Nous proposons un forfait à<br>
+                                            <span>100 €</span></div>
+                                    </div>
                                 </div>
-                                <h3>{{ 'douane.w'|trans({}, 'messages') }}</h3>
+                                <div class="col-md-6">
+                                    <div class="card bg-blue-transparent p-4">
+                                        <p><strong>Ce tarif comprend :</strong></p>
+                                        <ul class="check-list">
+                                            <li>La déclaration douanière d’exportation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center"><strong>Conditions d’application :</strong> Pour une destination d’export hors de l’Union Européenne.</p>
+                        </div>
+
+                        <div class="card p-5 mb-5">
+                            <div class="px-md-5 px-3 mx-lg-auto col-lg-10">
+                                <h2>Documents nécessaires :</h2>
+                                <span class="red text-center">» Justificatifs à fournir pour finaliser votre dossier :</span>
+
+                                <div class="has-decoration-filigrane">
+                                    <p><strong>- Copie de la carte grise barrée datée et signée de la part du vendeur</strong> avec la mention vendu le ../../..</p>
+                                    <p><strong>- Copie du certificat de cession</strong> (vente)</p>
+                                    <p><strong>- Certificat de situation</strong> (non gage)</p>
+                                    <p><strong>- Fin de démonstration si véhicule de démonstration</strong> (à réclamer au concessionnaire) ou déclaration d’achat si véhicule racheter par la concession</p>
+                                    <p><strong>- Copie du passeport en cours de validité</strong></p>
+                                    <p><strong>- Justificatif de domicile de moins de trois mois</strong></p>
+                                    <p><strong>- Copie de la facture du véhicule hors taxe</strong></p>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="card bg-grey px-5 py-2">
+                            <span class="red"><strong>ATTENTION:</strong> Si votre véhicule n’a jamais été immatriculé, ce service ne vous sera pas accessible. Veuillez utiliser un TT ou un W Export dans ce cas.</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="b-welcome__text wow zoomInUp" data-wow-delay="0.3s">
-                    <h2>{{ 'douane.tiltle3'|trans({}, 'messages') }}</h2>
-                    <h3>{{ 'douane.tiltle2'|trans({}, 'messages') }}</h3>
-                    <p>{{ 'douane.ttSubtilte'|trans({}, 'messages') }}</p>
-                    <ul>
-                        <li><span class="fa fa-check"></span> {{ 'douane.list1'|trans({}, 'messages') }}</li>
-                        <li><span class="fa fa-check"></span>{{ 'douane.list2'|trans({}, 'messages') }}</li>
-                        <li><span class="fa fa-check"></span> {{ 'douane.list3'|trans({}, 'messages') }}</li>
-                        <li><span class="fa fa-check"></span> {{ 'douane.list4'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="b-welcome__services">
-                <div class="col-md-3 col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-12 m-padding">
-                            <div class="b-welcome__services-trade wow zoomInRight" data-wow-delay="0.3s">
-                                <div class="b-welcome__services-img m-trade">
-                                    <a href="{{ path('douane') }}">
-                                        <img src="{{ asset('build/declaration-douane.png') }}" style="width: 80%">
-                                    </a>
-                                </div>
-                                <h3>{{ 'douane.declaration'|trans({}, 'messages') }}</h3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 text-left visible-md visible-lg">
-                            <div class="m-circle pull-right wow slideInLeft" data-wow-delay="0.3s">
-                                <span class="b-welcome__services-circle m-left"></span>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 m-padding">
-                            <div class="b-welcome__services-support wow zoomInRight" data-wow-delay="0.3s">
-                                <div class="b-welcome__services-img m-support">
-                                    <a href="{{ path('transport') }}">
-                                        <img src="{{ asset('build/transport-maritime.png') }}" style="width: 80%">
-                                    </a>
-                                </div>
-                                <h3>{{ 'douane.transport'|trans({}, 'messages') }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--b-welcome-->
-<section class="b-asks">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-offset-1">
-                <div class="b-asks__first m-second wow zoomInRight" data-wow-delay="0.3s">
-                    <div class="b-asks__first-circle">
-                        <span class="fa fa-usd"></span>
-                    </div>
-                    <div class="b-asks__first-info">
-                        <h2>{{ 'douane.serviceTiltle'|trans({}, 'messages') }}</h2>
-                        <p>{{ 'douane.services'|trans({}, 'messages') }}
-                           <span> {{ 'douane.servicesSpan'|trans({}, 'messages') }}</span></p>
-                    </div>
-                    <div class="b-asks__first-arrow">
-                        <a href="#"><span class="fa fa-angle-right"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--b-asks-->
+        </section>
+    </main>
 {% endblock %}

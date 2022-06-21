@@ -1,24 +1,153 @@
 {% extends 'douane/base_douane.html.twig' %}
 
 {% block body %}
-<section class="b-pageHeader">
-    <div class="container">
-        <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">{{ 'menu.temporary'|trans({}, 'messages') }}</h1>
-        {#   <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
-            <h3>Read Latest Auto News &amp; Reviews</h3>
-        </div>#}
-    </div>
-</section><!--b-pageHeader-->
+    <main id="douane-export">
+        <section class="bg-img douane">
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="bg-white-transparent card mb-5">
+                            <div class="p-md-5 p-3 mx-lg-auto text-center col-lg-10">
+                                <h1>Choisir TT Douane Export :</h1>
+                                <div class="douane-icons-wrapper p-3 my-4">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-world.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>World export</strong><br /><em>et transit temporaire</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-transport.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Transport</strong><br /><em>maritime</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-immatriculation.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Immatriculation</strong><br /><em>France</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-assurance.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Assurance</strong><br /><em>courte durée</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-alt fw-bold has-shadow">Contactez-nous</a>
+                                <div class="w-100 overflow-hidden">
+                                    <svg height="50" width="1000">
+                                        <g fill="none" stroke="#345f8a" stroke-width="1">
+                                            <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a class="btn btn-primary"> Transport</a>
+                                <p class="mt-4"><strong>T CAR TRANSIT vous propose de prendre en charge l’expédition maritime de votre véhicule pour toutes destinations dans le monde.</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="b-blog s-shadow" style="margin-bottom: 15%">
-    <div class="container">
-        <h3>{{ 'douane.transport'|trans({}, 'messages') }}</h3>
-        <p>{{ 'douane.transportSubtiltle'|trans({}, 'messages') }}</p>
-        <div class="row" style="text-align: center">
-            <h2>{{ 'douane.list3'|trans({}, 'messages') }}</h2>
-            <img src="{{ asset('build/doc/dounaExport/de-transport-tarifs.png') }}" alt="tarif" width="60%" style="margin: 1%">
-            <p class="border_red">{{ 'transport.p1'|trans({}, 'messages') }}</p>
-        </div>
-    </div>
-</div>
+        <section>
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto mb-5 p-sm-5 p-0">
+                        <h2>Tarifs TT CAR Transit du XX/XX/XX au XX/XX/XX</h2>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered  table align-middle text-center">
+                                <thead>
+                                <tr>
+                                    <th scope="col">DESTINATION</th>
+                                    <th scope="col">MODE DE TRANSPORT</th>
+                                    <th scope="col">PRIX (*)</th>
+                                    <th scope="col">PRIX (*)</th>
+                                    <th scope="col">ASSURANCE</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="cell-blue"></td>
+                                    <td class="cell-blue">EN TC 20’</td>
+                                    <td class="cell-blue-light">Jusqu’à 15m3</td>
+                                    <td class="cell-blue-light">Plus de 15m3</td>
+                                    <td class="cell-blue-light"></td>
+                                </tr>
+                                <tr>
+                                    <td>Guadeloupe</td>
+                                    <td class="cell-grey"></td>
+                                    <td class="red">1 195 €</td>
+                                    <td class="red">1 695 €</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>Martinique</td>
+                                    <td class="cell-grey"></td>
+                                    <td class="red">1 195 €</td>
+                                    <td class="red">1 695 €</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>Polynésie Française</td>
+                                    <td class="cell-grey"></td>
+                                    <td class="red">3 850 €</td>
+                                    <td>Sur cotation</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td>Nouvelle Calédonie</td>
+                                    <td class="cell-grey"></td>
+                                    <td class="red">3 550 €</td>
+                                    <td>Sur cotation</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-blue"></td>
+                                    <td class="cell-blue">EN TC 20’</td>
+                                    <td class="cell-blue-light">Jusqu’à 18m3</td>
+                                    <td class="cell-blue-light">Plus de 18m3</td>
+                                    <td class="cell-blue-light"></td>
+                                </tr>
+                                <tr>
+                                    <td>Guyane Française</td>
+                                    <td class="cell-grey"></td>
+                                    <td class="red">1 820 €</td>
+                                    <td>Sur cotation</td>
+                                    <td>1%</td>
+                                </tr>
+                                <tr>
+                                    <td class="cell-blue"></td>
+                                    <td class="cell-blue">En cale navire/ RORO</td>
+                                    <td class="cell-blue-light">Jusqu’à 18m3</td>
+                                    <td class="cell-blue-light">Plus de 18m3</td>
+                                    <td class="cell-blue-light"></td>
+                                </tr>
+                                <tr>
+                                    <td>Réunion</td>
+                                    <td class="cell-grey"></td>
+                                    <td class="red">1 420 €</td>
+                                    <td>Sur cotation</td>
+                                    <td>1%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="card bg-grey px-5 py-2">
+								<span class="red">Pour toute autre demande, telle que le transport conteneurisé pour la Réunion, veuillez nous contacter en précisant: le pays de destination,
+									le modèle de véhicule et sa valeur hors taxes.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

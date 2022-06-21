@@ -3,7 +3,21 @@
     {% block body %}
         <style>
             .card {
-                width: 100%;
+                margin: auto;
+                width: 38%;
+                max-width: 600px;
+                padding: 4vh 0;
+                box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                border-top: 3px solid #007ba8;
+                border-bottom: 3px solid #007ba8;
+                border-left: none;
+                border-right: none
+            }
+
+            @media(max-width:768px) {
+                .card {
+                    width: 90%
+                }
             }
         </style>
         <section class="b-pageHeader">

@@ -1,113 +1,148 @@
 {% extends 'douane/base_douane.html.twig' %}
 
 {% block body %}
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class=" wow zoomInLeft"> {{ 'douanePage.h11'|trans({}, 'messages') }}</h1>
-            {#   <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
-            <h3>Read Latest Auto News &amp; Reviews</h3>
-        </div>#}
-        </div>
-    </section><!--b-pageHeader-->
-
-    <div class="b-blog s-shadow" style="margin-bottom: 15%">
-        <div class="container" style="text-align: center">
-            <h3> {{ 'douane.declaration'|trans({}, 'messages') }}</h3>
-            <p> {{ 'douane.declaSubtilte'|trans({}, 'messages') }}</p>
-            <div class="row">
-                <h5>»  {{ 'douanePage.h51'|trans({}, 'messages') }}:</h5>
-
-                <button class="accordion">{{ 'douanePage.btn1'|trans({}, 'messages') }}</button>
-                <div class="panel">
-                    <h3>{{ 'douanePage.h31'|trans({}, 'messages') }}</h3>
-                    <div>
-                        <p>{{ 'export.p4'|trans({}, 'messages') }} <span style="font-weight: bold">100 €.</span></p>
-                        <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
-                        <ul>
-                            <li>{{ 'douanePage.h32'|trans({}, 'messages') }}.</li>
-                        </ul>
-                    </div>
-                    <br>
-                    <div>
-                        <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
-                        <ul>
-                            <li>1. {{ 'douanePage.li1'|trans({}, 'messages') }}</li>
-                       </ul>
-                    </div>
-                    <br>
-                    <div>
-                        <p>{{ 'export.p6'|trans({}, 'messages') }} :</p>
-
-                        <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
-                        <ul>
-                            <li>- {{ 'export.li3'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'export.li4'|trans({}, 'messages') }}</li>
-                        </ul>
-                        <br>
-                        <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
-                        <ul>
-                            <li>- {{ 'douanePage.li2'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li3'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li4'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'export.li10'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li5'|trans({}, 'messages') }}</li>
-                        </ul>
-                        <br>
-                        <p class="border_red">{{ 'douanePage.p1'|trans({}, 'messages') }}</p>
-
-                        {#
-                        <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
-                        #}
+    <main id="douane-export">
+        <section class="bg-img">
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="bg-white-transparent card mb-5">
+                            <div class="p-md-5 p-3 mx-lg-auto text-center col-lg-10">
+                                <h1>Choisir TT Douane Export :</h1>
+                                <div class="douane-icons-wrapper p-3 my-4">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-world.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>World export</strong><br><em>et transit temporaire</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-transport.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Transport</strong><br><em>maritime</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-immatriculation.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Immatriculation</strong><br><em>France</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-assurance.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Assurance</strong><br><em>courte durée</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-alt fw-bold has-shadow">Contactez-nous</a>
+                                <div class="w-100 overflow-hidden">
+                                    <svg height="50" width="1000">
+                                        <g fill="none" stroke="#345f8a" stroke-width="1">
+                                            <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a class="btn btn-primary">Déclaration Douane</a>
+                                <p class="mt-4"><strong>La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés
+                                        destinés à être exportés hors Union Européenne.</strong></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <button class="accordion">{{ 'douanePage.btn2'|trans({}, 'messages') }}</button>
-                <div class="panel">
-                    <h3>{{ 'douanePage.h33'|trans({}, 'messages') }}</h3>
-                    <div>
-                        <p>{{ 'export.p4'|trans({}, 'messages') }} <span style="font-weight: bold">100 €.</span></p>
-                        <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
-                        <ul>
-                            <li>{{ 'douanePage.h32'|trans({}, 'messages') }}.</li>
-                        </ul>
-                    </div>
-                    <br>
-                    <div>
-                        <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
-                        <ul>
-                            <li>1. {{ 'douanePage.li1'|trans({}, 'messages') }}</li>
-                        </ul>
-                    </div>
-                    <br>
-                    <div>
-                        <p>{{ 'export.p6'|trans({}, 'messages') }} :</p>
-
-                        <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
-                        <ul>
-                            <li>- {{ 'export.li3'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'export.li4'|trans({}, 'messages') }}</li>
-                        </ul>
-                        <br>
-                        <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
-                        <ul>
-                            <li>- {{ 'douanePage.li6'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li7'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li8'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li9'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li10'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li11'|trans({}, 'messages') }}</li>
-                            <li>- {{ 'douanePage.li12'|trans({}, 'messages') }}</li>
-                        </ul>
-                        <br>
-                        <p class="border_red">{{ 'douanePage.p3'|trans({}, 'messages') }}</p>
-
-                        {#
-                        <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
-                        #}
-                    </div>
-                </div>
-
+        <div class="separator">
+            <div>Obtenez les informations
+                <i class="fa-solid fa-chevron-down"></i>
             </div>
         </div>
-    </div>
+
+        <section>
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card bg-grey mb-5 p-5">
+                            <h2>Sélectionnez votre immatriculation</h2>
+
+                            <form action="" class="mb-4">
+                                <div class="row row-cols-1 row-cols-md-3 g-3 mb-3">
+                                    <div class="col">
+                                        <div class="col-form-label">Type d’immatriculation</div>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big">
+                                            <div class="douane-form-label">Véhicule immatriculé en WW</div>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big">
+                                            <div class="douane-form-label">Autres types</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="w-100 overflow-hidden">
+                                <svg height="50" width="1000">
+                                    <g fill="none" stroke="#345f8a" stroke-width="1">
+                                        <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <h2>Déclaration Douanière d’Exportation<br>
+                                (Autres types d’immatriculation))</h2>
+                            <div class="row">
+                                <div class="col-md-6 mb-md-3">
+                                    <div class="card bg-white p-4 text-center douane-price">
+                                        <h3>Tarif :</h3>
+                                        <div>Nous proposons un forfait à<br>
+                                            <span>100 €</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-blue-transparent p-4">
+                                        <p><strong>Ce tarif comprend :</strong></p>
+                                        <ul class="check-list">
+                                            <li>La déclaration douanière d’exportation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-center"><strong>Conditions d’application :</strong> Pour une destination d’export hors de l’Union Européenne.</p>
+                        </div>
+
+                        <div class="card p-5 mb-5">
+                            <div class="px-md-5 px-3 mx-lg-auto col-lg-10">
+                                <h2>Documents nécessaires :</h2>
+                                <span class="red text-center">» Justificatifs à fournir pour finaliser votre dossier :</span>
+
+                                <div class="has-decoration-filigrane">
+                                    <p><strong>- Copie de la carte grise barrée datée et signée de la part du vendeur</strong> avec la mention vendu le ../../..</p>
+                                    <p><strong>- Copie du certificat de cession</strong> (vente)</p>
+                                    <p><strong>- Certificat de situation</strong> (non gage)</p>
+                                    <p><strong>- Fin de démonstration si véhicule de démonstration</strong> (à réclamer au concessionnaire) ou déclaration d’achat si véhicule racheter par la concession</p>
+                                    <p><strong>- Copie du passeport en cours de validité</strong></p>
+                                    <p><strong>- Justificatif de domicile de moins de trois mois</strong></p>
+                                    <p><strong>- Copie de la facture du véhicule hors taxe</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-grey px-5 py-2">
+                            <span class="red"><strong>ATTENTION:</strong> Si votre véhicule n’a jamais été immatriculé, ce service ne vous sera pas accessible. Veuillez utiliser un TT ou un W Export dans ce cas.</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

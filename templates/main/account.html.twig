@@ -1,214 +1,94 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <div class="main-body">
+    <style>
+        .active, .accordion:hover {
+            background-color: white;
+        }
+    </style>
+    <main id="compte">
 
-        <!-- Breadcrumb -->
-        <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ path('main') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-        </nav>
-        <!-- /Breadcrumb -->
-        {# read and display all flash messages #}
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-warning flash-{{ label }}" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
+        <section class="section bg-img">
 
-        <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{ asset('build/tt-groupimg.png') }}" alt="Admin" class="rounded-circle" width="150" style="background-color: #c1c1c1">
-                            <div class="mt-3">
-                                <h4>{{ user.username }}</h4>
-{#                                <p class="text-secondary mb-1">Full Stack Developer</p>#}
-                                <p class="text-muted font-size-sm">{{  user.getAdressUe }}</p>
-   {#                             <button class="btn btn-primary">Follow</button>
-                                <button class="btn btn-outline-primary">Message</button>#}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+
+                        <div class="bg-blue-transparent card mb-5">
+                            <div class="p-md-5 p-3 col-lg-10 mx-auto">
+                                <div class="text-center mb-5">
+                                    <h1 class="title has-decoration">Mon compte personnel</h1>
+                                    <span class="subtitle">Johanna Queille</span>
+                                </div>
+
+                                <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="pills-order-tab" data-bs-toggle="pill" data-bs-target="#pills-order" type="button" role="tab" aria-controls="pills-order" aria-selected="true">Commande</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-alert-tab" data-bs-toggle="pill" data-bs-target="#pills-alert" type="button" role="tab" aria-controls="pills-alert" aria-selected="false">Alerte</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Coordonnées</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-password-tab" data-bs-toggle="pill" data-bs-target="#pills-password" type="button" role="tab" aria-controls="pills-password" aria-selected="false">Mot de passe</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content card p-5" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-order" role="tabpanel" aria-labelledby="pills-order-tab">
+                                        <h2>Transit Temporaire</h2>
+                                        <p>Nous avons bien reçu votre dernière demande et nous vous en remercions.</p>
+                                        <p>Vous recevrez un email avec la confirmation définitive de votre réservation sous <strong>72 heures.</strong> Afin de valider la livraison de votre véhicule, l’ensemble de vos documents devra nous parvenir au plus tard <strong>25 jours</strong> avant la date de livraison prévue. À cet effet, veuillez consulter la liste des documents à nous envoyer en cliquant sur le bouton <strong>« Compléter »</strong>.</p>
+                                        <p><u>Sans ces documents, nous ne pouvons pas garantir la livraison de votre véhicule.</u></p>
+
+                                        <table class="table table-bordered table-striped table-responsive text-center mb-5">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Commande</th>
+                                                <th scope="col">Livraison</th>
+                                                <th scope="col">Retour</th>
+                                                <th scope="col">Véhicule</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><span>T125376</span><br>25/05/2021</td>
+                                                <td><strong>Genève Ferney Voltaire</strong><br>20 juin 2021</td>
+                                                <td><strong>Genève Ferney Voltaire</strong><br>23 juillet 2021</td>
+                                                <td><strong>Renault G21-Clio<br>Essence BVM GPS<br>Europe</strong></td>
+                                                <td><strong>Remboursée</strong></td>
+                                                <td><strong>(Na)</strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>T125376</span><br>25/05/2021</td>
+                                                <td><strong>Genève Ferney Voltaire</strong><br>20 juin 2021</td>
+                                                <td><strong>Genève Ferney Voltaire</strong><br>23 juillet 2021</td>
+                                                <td><strong>Renault G21-Clio<br>Essence BVM GPS<br>Europe</strong></td>
+                                                <td><strong>Remboursée</strong></td>
+                                                <td><a class="btn btn-alt" href="#">Payer&#8239;maintenant</a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <h2>Location Key Services</h2>
+                                        <p class="fst-italic">Aucune commande disponible pour cet e-mai</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-alert" role="tabpanel" aria-labelledby="pills-alert-tab">...</div>
+                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                                    <div class="tab-pane fade" id="pills-password" role="tabpanel" aria-labelledby="pills-password-tab">...</div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0">Name</h6>
-                            <span class="text-secondary">{{ user.name }}</span>
-                        </li>
-                        {% if user %}
-                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                <h6 class="mb-0">Username</h6>
-                                <span class="text-secondary">{{ user.username }}</span>
-                            </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0">Birth Date</h6>
-                            <span class="text-secondary">{{ user.getBirthdaysDate|date("m/d/Y") }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0">Number</h6>
-                            <span class="text-secondary">{{ user.phone }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h6 class="mb-0">Email</h6>
-                            <span class="text-secondary">{{ user.email }}</span>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
             </div>
-            <div class="col-md-8">
-                <div class="card mb-3">
-{#                    <a href="{{ path('edit_me', { 'id': user.id }) }}" class="btn btn-secondary btn-lg"><i class="fas fa-user-edit"></i></a>#}
-                    <a href="{{ path('edit_customer', { 'id': user.id }) }}" class="btn btn-secondary btn-lg"><i class="fas fa-user-plus"></i></a>
-                    <div class="card-body">
-                        <div class="row">
-                            {% if user %}
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.name }} {{ user.username }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Adress UE</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getAdressUe }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address Code</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getAdressCode }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address City</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getAdressCity }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address Country</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ countryUe }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address H UE</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getAdressNoUe }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address H UE</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getAdressCityHue }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address H UE</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getAdressCodeHue }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address H UE</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ countryHue }}
-                            </div>
-                        </div>
-                        <hr>
-          {#              <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Place of birth</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getPlaceBirth }}
-                            </div>
-                        </div>#}
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Birthdays Date</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getBirthdaysDate|date("m/d/Y") }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Piece</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getPiceIdentity }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Number piece</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getNumberPiece }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Develiry piece place</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.getDeliveryPiece }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Nationality</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ nationality }}
-                            </div>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+        </section>
+
+    </main>
 {% endblock %}

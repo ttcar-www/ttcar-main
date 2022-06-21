@@ -3,59 +3,59 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.7s">Login</h1>
-        </div>
-    </section><!--b-pageHeader-->
+    <main id="connexion">
+        <section class="section bg-img">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="bg-white-transparent card">
 
-    <div class="b-breadCumbs s-shadow">
-        <div class="container wow zoomInUp" data-wow-delay="0.7s">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a>
-            <span class="fa fa-angle-right"></span><a href="{{ path('app_login') }}" class="b-breadCumbs__page m-active">Blog Post</a>
-        </div>
-    </div><!--b-breadCumbs-->
+                            <div class="p-md-5 p-3 col-lg-8 mx-auto">
+                                <div class="text-center mb-5">
+                                    <h1 class="title has-decoration">Mon compte personnel</h1>
+                                    <p><strong>Vous avez déjà commandé sur un de nos sites ?</strong></p>
+                                    <p>Connectez-vous à l’aide de <strong>votre courriel</strong> et du <strong>mot de passe que vous avez reçu par e-mail</strong>, pour modifier vos coordonnées, gérer vos documents et suivre vos commandes.</p>
+                                </div>
+                                <div class="bg-blue-transparent card card-body">
+                                    <div class="p-md-5 p-3">
+                                        <form method="post">
+                                            <div class="row mb-3">
+                                                <label for="connexion-email" class="col-sm-3 col-form-label">Email</label>
+                                                <div class="col-sm-9">
+{#                                                    <input type="text" class="form-control" id="connexion-email" placeholder="Votre email">#}
+                                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label for="connexion-password" class="col-sm-3 col-form-label">Mot de passe</label>
+                                                <div class="col-sm-9">
+{#                                                    <input type="password" class="form-control" id="connexion-password" placeholder="Votre mot de passe">#}
+                                                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="_csrf_token"
+                                                   value="{{ csrf_token('authenticate') }}">
+                                            <a class="btn btn-alt alt mb-4" href="">Mot de passe oublié ou inconnu <i class="fa-solid fa-angle-right"></i></a>
 
-    <!-- basic form start -->
-    <div class="container">
-    <div class="col-12 mt-5">
-        <div class="card">
-            <div class="card-body login-div">
-                <form method="post">
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
+                                            <div class="row">
+                                                <div class="btn-wrapper d-flex justify-content-between flex-wrap">
+{#                                                    <button class="btn btn-alt" type="submit" name="submit">Se connecter</button>#}
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button class="btn btn-alt ms-sm-3" type="reset" name="reset">Fermer</button>
+                                                </div>
+                                            </div>
 
-                    {% if app.user %}
-                        <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                        </div>
-                        <br>
-                        <br>
-                    {% endif %}
-                    <div class="form-row align-items-center">
-                        <div class="col-sm-3 my-1">
-                            <label for="inputEmail">Email</label>
-                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                            <div class="input-group">
-                                <label for="inputPassword">Password</label>
-                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <input type="hidden" name="_csrf_token"
-                               value="{{ csrf_token('authenticate') }}">
-                        <br>
-                        <div class="col-auto my-1">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- basic form end -->
-    </div>
+
+        </section>
+
+    </main>
 {% endblock %}

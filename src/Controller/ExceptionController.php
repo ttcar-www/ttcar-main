@@ -13,7 +13,6 @@ class ExceptionController extends AbstractController
      */
     public function showException(): \Symfony\Component\HttpFoundation\Response
     {
-
         return $this->render('main/404.html.twig');
     }
 }
