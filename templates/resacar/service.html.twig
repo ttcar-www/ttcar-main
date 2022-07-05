@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<body id="key">
+<header></header>
+<main id="key-services">
+    <section class="bg-img">
+        <div class="container">
+            <div class="row px-3 mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="bg-white-transparent card mb-5">
+                        <div class="p-md-5 p-3 mx-lg-auto text-center col-lg-10">
+                            <h1>Choisir Key Services :</h1>
+                            <div class="services-icons-wrapper p-3 my-4">
+                                <div class="container">
+                                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                                        <div class="col">
+                                            <div class="services-icon-img">
+                                                <img src="{{ asset('build/key/icone-key-jauge.png') }}" alt="" />
+                                            </div>
+                                            <p><strong>Kilométrage</strong><br><em>illimité</em></p>
+                                        </div>
+                                        <div class="col">
+                                            <div class="services-icon-img">
+                                                <img src="{{ asset('build/key/icone-key-franchise.png') }}" alt="" />
+                                            </div>
+                                            <p><strong>Suppression totale de
+                                                    franchise</strong><em> en cas d’accident
+                                                    et de vol dès 14 jours pour
+                                                    les principales catégoriesmaritime</em></p>
+                                        </div>
+                                        <div class="col">
+                                            <div class="services-icon-img">
+                                                <img src="{{ asset('build/key/icone-key-conducteur.png') }}" alt="" />
+                                            </div>
+                                            <p><strong>2ème conducteur</strong><br><em>gratuit</em></p>
+                                        </div>
+                                        <div class="col">
+                                            <div class="services-icon-img">
+                                                <img src="{{ asset('build/key/icone-key-livraison.png') }}" alt="" />
+                                            </div>
+                                            <p><strong>Plus de 500 points</strong><br><em>de livraison et retour
+                                                    en France</em></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <a class="btn btn-alt me-md-4 has-shadow">Aide en ligne</a>
+                                <a class="btn btn-primary has-shadow">Réservation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <img src="{{ asset('build/team-work.png') }}" alt="">
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-blue-extra-light p-3 px-md-5">
+                        <h2>Choix, Conseil, Qualité, Prix</h2>
+                        <p>Nous offrons un large éventail de véhicules de location à des tarifs préférentiels réservés aux <strong>non-résidents en France métropolitaine</strong>.</p>
+
+                        <p>Notre personnel multilingue met ses compétences à votre disposition pour vous mettre sur la bonne piste.</p>
+
+                        <p>Un réseau de loueurs de voitures internationaux nous entoure et nous garantit les meilleurs services sur plus de <strong>500 points de livraisons</strong> et retour en France.</p>
+
+                        <p>Des forfaits performants et adaptés à vos besoins en <strong>kilométrage illimité</strong> avec la <strong>suppression totale de franchise en cas d’accident et de vol</strong> dès 14 jours réels de location pour les principales catégories, les surcharges aéroport et gare, la taxe d’immatriculation, la TVA.</p>
+
+                        <p>Le deuxième conducteur est <strong>GRATUIT (26 ans minimum)</strong>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card has-border p-3 px-md-5">
+                        <p><strong>SAISON HIVER 2020/2021</strong></p>
+                        <p><strong>IMPORTANT : </strong><em>Les équipements neige ne sont pas réservables sur notre site. Il faudra vous en procurer après la prise du véhicule, en boutiques spécialisées.</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+</body>
+{% endblock %}

@@ -1,234 +1,171 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{#
+    <style>
+        .active, .accordion:hover {
+            background-color: transparent;
+        }
 
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.5s">Order</h1>
-            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.5s">
-                <h3>Your Order</h3>
-            </div>
-        </div>
-    </section><!--b-pageHeader-->
-
-    <div class="b-breadCumbs s-shadow">
-        <div class="container wow zoomInUp" data-wow-delay="0.5s">
-            <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span>
-        </div>
-    </div><!--b-breadCumbs-->
-
-
-    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-infoBar__progress-line clearfix">
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <a href="#" onclick="history.back(-1)">
-                                    <div class="b-infoBar__progress-line-step-circle">
-                                        <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="b-infoBar__progress-line-step">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                                <div class="b-infoBar__progress-line-step-circle m-last">
-                                    <div class="b-infoBar__progress-line-step-circle-inner"></div>
-                                </div>
-                            </div>
-                        </div>
+    </style>
+    <main id="commande" style="margin-bottom: 100%;">
+        <section class="section bg-img">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <ul class="progressbar">
+                            <li>Devis</li>
+                            <li>Choix du véhicule</li>
+                            <li class="active">Confirmation et paiement</li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-infoBar-->
 
-
-    <div class="b-items">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-sm-8 col-xs-12">
-                    <div class="row">
-
-                        <div class="card" style="margin-top: 5%">
-                            <div class="card-header">
-                                Featured
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Paiement <i class="fas fa-car-side"></i></h5>
-                                {{ order.getPrice }} €
-#}
-{#
-                                <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" class="card-img-top" style="width: 30%">
-#}{#
-
-
+                    <div class="col-lg-9 mx-auto">
+                        <div class="card card-wrapper bg-white-transparent mb-3">
+                            <div class="p-md-5 p-3 mx-auto text-center col-lg-8">
+                                <h1>Récapitulatif de votre demande</h1>
+                                <p>Merci d’avoir réservé chez TT CAR. Votre paiement a été accepté par notre établissement bancaire.</p>
+                                <div class="label-style mb-3">Votre référence TT CAR : <span class="red">XXXXX</span></div>
+                                <p>En cas d’erreur, merci de nous contacter au plus vite au <strong>+33(0)1 40 71 72 57</strong> ou <strong>72 65</strong>, par email <a href="mailto:info@ttcar.net">info@ttcar.net</a> en indiquant la référence <span class="red fw-bold">T125442</span></p>
+                                <p><span class="red fw-bold">ATTENTION</span> : VOUS RECEVREZ UN MESSAGE CONFIRMANT DÉFINITIVEMENT VOTRE COMMANDE DANS LES <strong>72 HEURES OUVRABLES. DANS LE CAS CONTRAIRE, MERCI DE NOUS CONTACTER AFIN DE VÉRIFIER LA BONNE PRISE EN COMPTE DE VOTRE COMMANDE</strong>.</p>
                             </div>
                         </div>
 
+                        <div class="card mb-3">
+                            <div class="">
+                                <h2 class="w-100">Votre demande</h2>
+                                <div class="row p-md-5 p-3">
+                                    <div class="col-lg-8">
+                                        <h3>G22-Sandero Stepway Essence BVM GPS Europe de l’Ouest</h3>
+                                        <div class="cars-icons-wrapper d-flex flex-wrap mb-5 mt-3">
+                                            <div class="item">
+                                                <img src="{{ asset('build/page-voiture/voiture-passagers.png') }}" alt="" class="mx-auto" />
+                                                x2
+                                            </div>
 
-            #}
-{#<div class="col-lg-3 col-sm-4 col-xs-12">
-                <aside class="b-items__aside">
-                    <div class="b-items__aside-sell wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-items__aside-sell-info">
-                            <h3>Prix </h3>
-                            {% set price_without = price - price_depart - price_return %}
-                            <p> Forfait {{nb_days}} jours : {{ price_without }}€ </p>
-                            <p>Livraison du véhicule :
-                                {% if price_depart == 0 %}
-                                    Gratuit !
-                                {% else %}
-                                    {{ price_depart }}€
-                                {% endif %}
-                            </p>
-                            <p>Retour du véhicule :
-                                {% if price_return == 0 %}
-                                    Gratuit !
-                                {% else %}
-                                    {{ price_return }}€
-                                {% endif %}
-                            </p>
-                            <p id="item"></p>
-                            <h3>TOTAL</h3>
-                            <h3 id="notAjax">{{ price }}€</h3>
-                            <h3 id="results"></h3>
-
-                            </p>
-                        </div>
-                    </div>
-                </aside>#}{#
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-#}
-
-
-    <section class="b-pageHeader">
-        <div class="container">
-            <h1 class="wow zoomInLeft" data-wow-delay="0.3s">Submit Your Vehicle</h1>
-            <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
-                <h3>Add Your Vehicle In Our Listings</h3>
-            </div>
-        </div>
-    </section><!--b-pageHeader-->
-
-    <div class="b-breadCumbs s-shadow">
-        <div class="container wow zoomInUp" data-wow-delay="0.3s">
-            <a href="home.html" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="submit5.html" class="b-breadCumbs__page m-active">Submit a Vehicle</a>
-        </div>
-    </div><!--b-breadCumbs-->
-
-    <div class="b-infoBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="b-infoBar__progress wow zoomInUp" data-wow-delay="0.3s">
-                        <div class="b-infoBar__progress-line clearfix">
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                            <div class="b-infoBar__progress-line-step m-active">
-                                <a href="#" onclick="history.back(-1)">
-                                <div class="b-infoBar__progress-line-step-circle">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                                </a>
-                                <div class="b-infoBar__progress-line-step-circle m-last">
-                                    <div class="b-infoBar__progress-line-step-circle-inner m-active"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--b-infoBar-->
-
-    <div class="b-submit">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-6 col-md-offset-2">
-                    <div class="b-submit__main">
-                        <form action="/" method="post" class='s-submit'>
-                            <div class="b-submit__main-plan wow zoomInUp" data-wow-delay="0.3s">
-                                <header class="s-headerSubmit s-lineDownLeft">
-                                    <h2>Your Order</h2>
-                                </header>
-                                <p> FORFAIT : {{ nb_days }} Jours</p>
-                                <p> Voiture : {{ order.getCarLibelle }}</p>
-                                {% if order.items != null %}
-                                <p> Accessoires : </p>
-                                    {% for item in order.items %}
-                                        {{ item }}<br>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                            <div class="b-submit__main-plan wow zoomInUp" data-wow-delay="0.3s">
-                                <header class="s-headerSubmit s-lineDownLeft">
-                                    <h2>Prix <span class="b-submit__main-plan-money">( <span class="b-submit__main-plan-money-num">{{  order.price }}</span> <span class="b-submit__main-plan-money-note">€</span> )</span></h2>
-                                </header>
-                                <p>Ce prix comprend </p>
-                            </div>
-                            <div class="b-submit__main-plan wow zoomInUp" data-wow-delay="0.3s">
-                                <header class="s-headerSubmit s-lineDownLeft">
-                                    <h2>Paiement</h2>
-                                </header>
-                                <div class="b-submit__main-contacts-check">
-                                    <input type="radio" name="check2" id="check1" />
-                                    <label class="s-submitCheckLabel" for="check1"><span class="m-circle"></span></label>
-                                    <label class="s-submitCheck" for="check1">PAYPAL</label>
-                                    <input type="radio" name="check2" id="check2" />
-                                    <label class="s-submitCheckLabel" for="check2"><span class="m-circle"></span></label>
-                                    <label class="s-submitCheck" for="check2">CREDIT CARD</label>
-                                </div>
-                                <div class="b-submit__main-element">
-                                    <label>Enter Your Paypal ID <span>*</span></label>
-                                    <div class="row m-smallPadding">
-                                        <div class="col-sm-6 col-xs-12">
-                                            <input type="text" name="id"/>
+                                            <div class="item">
+                                                <img src="{{ asset('build/page-voiture/voiture-bagages.png') }}" alt="" class="mx-auto" />
+                                                x2
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{ asset('build/page-voiture/voiture-portes.png') }}" alt="" class="mx-auto" />
+                                                x2
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{ asset('build/page-voiture/voiture-transmission.png') }}" alt="" class="mx-auto" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{ asset('build/page-voiture/voiture-climatisation.png') }}" alt="" class="mx-auto" />
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6 col-xs-12">
-                                            <a href="#" class="btn m-btn m-pay">PAY NOW &amp; UPGRADE<span class="fa fa-angle-right"></span></a>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3 mb-md-0">
+                                                <div class="card p-2 text-center fw-bold">
+                                                    <p class="red">Départ</p>
+                                                    <p>PARIS PASTEUR GAREMONTPARNASSE</p>
+                                                    <p class="red">12 janvier 2022 à 12h00</p>
+                                                    <p class="red text-decoration-underline"><strong>Renaud</strong></p>
+                                                    <p><span class="fw-normal">Numéro de vol :</span> UU975</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card p-2 text-center fw-bold">
+                                                    <p class="red">Départ</p>
+                                                    <p>PARIS PASTEUR GAREMONTPARNASSE</p>
+                                                    <p class="red">12 janvier 2022 à 12h00</p>
+                                                    <p class="red text-decoration-underline"><strong>Renaud</strong></p>
+                                                    <p><span class="fw-normal">Numéro de vol :</span> UU975</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>                            </div>
-                            <button type="submit" class="btn m-btn pull-right wow zoomInUp" data-wow-delay="0.3s">PUBLISH MY LISTING NOW<span class="fa fa-angle-right"></span></button>
-                        </form>
+                                    <div class="col-lg-4">
+                                        <div class="card bg-grey p-4 fw-bold">
+                                            <div class="card mb-3 has-shadow">
+                                                <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                            </div>
+                                            <p>CONDUCTEUR PRINCIPAL</p>
+                                            <p>
+                                                <span class="red">M. serge COHEN</span><br />
+                                                <span class="fw-normal">Téléphone :</span> 0616340959<br />
+                                                <span class="fw-normal">Email :</span> <a href="mailto:scohen@ttroissy.net">scohen@ttroissy.net</a><br />
+                                                <span class="fw-normal">Adresse :</span> 2 avenue de la porte de Saint-Cloud<br />
+                                                75016 Paris<br />
+                                                Bolivie
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="">
+                                <h2 class="w-100">DOCUMENTS À ENVOYER</h2>
+                                <div class="col-lg-8 text-center mx-auto py-md-5 p-3">
+                                    <p>
+                                        <span class="red"><strong>IMPORTANT :</strong></span> AFIN DE NOUS PERMETTRE DE LIVRER VOTRE VÉHICULE À LA DATE PRÉVUE, MERCI D’IMPRIMER LE CONTRAT SUIVANT, DE LE SIGNER ET DE NOUS LE <strong>RETOURNER PAR E-MAIL SOUS 7 JOURS ACCOMPAGNÉ DES JUSTIFICATIFS NÉCESSAIRES ÉNONCÉS CI-DESSOUS.</strong>
+                                    </p>
+                                    <a class="btn btn-alt has-shadow mb-3 fw-bold">Télécharger le contrat <i class="fa-solid fa-chevron-down"></i></a>
+                                    <p>
+                                        <strong>ET DE NOUS FAIRE PARVENIR UNE COPIE DES DOCUMENTS SUIVANTS :<br />- PERMIS DE CONDUIRE NON EUROPÉEN</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card bg-grey has-border mb-3">
+                            <div class="p-md-5 p-3">
+                                <p><strong>Information importante :</strong></p>
+                                <p><strong>Besoin de vous contacter.</strong></p>
+                                <p>Lorem ipsum dolor sit amet. Et earum necessitatibus id aliquid corrupti sed facere exercitationem in labore dolorem. Est beatae dicta rem neque perferendis ut dolores voluptatibus sit expedita accusamus ex porro maiores. Et dolorem omnis ea quidem cumque ut esse nulla. In dolor optio est magni similique est architecto tenetur.</p>
+                                <p>Et illo voluptatum non dolorem autem ut omnis nostrum ea deserunt nihil. Ut consequatur sunt non repellat tenetur est necessitatibus ipsum qui assumenda fuga aut sint pariatur et consequatur dolores At accusantium quaerat. Sit quaerat quia sit earum molestiae et dolorem eligendi et reprehenderit quaerat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 aside">
+
+                        <div class="card bg-white-transparent p-4 mb-3 text-center">
+                            <h3 class="w-100">Prix TTC payé en ligne :</h3>
+                            <span>1 202 €</span>
+                        </div>
+                        <div class="card bg-blue-transparent p-4 mb-3">
+                            <h3 class="mb-3">Détail du prix :</h3>
+                            <table class="table table-borderless price-table">
+                                <tbody>
+                                <tr>
+                                    <td>Forfait 35 jours :</td>
+                                    <td>1202 €</td>
+                                </tr>
+                                <tr>
+                                    <td>Livraison du véhicule :</td>
+                                    <td>Gratuit</td>
+                                </tr>
+                                <tr>
+                                    <td>Retour du véhicule :</td>
+                                    <td>Gratuit</td>
+                                </tr>
+                                <tr>
+                                    <td>TOTAL :</td>
+                                    <td>Gratuit</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card bg-blue-transparent p-4">
+                            <h3 class="mb-3">Ce prix inclut</h3>
+                            <ul class="check-list">
+                                <li>Un véhicule neuf</li>
+                                <li>Le kilométrage illimité</li>
+                                <li>L’assurance multirisques sans franchise</li>
+                                <li>L’assistance 7j / 7 et 24h / 24</li>
+                                <li>Les frais de livraison et de restitution</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!--b-submit-->
-
+        </section>
+    </main>
 
 {% endblock %}

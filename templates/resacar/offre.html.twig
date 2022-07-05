@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body id="key">
+    <header></header>
+    <main id="key-offre">
+        <section class="section bg-img">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="bg-blue-light-transparent card mb-5">
+                            <div class="p-md-5 p-3 col-lg-10 mx-auto">
+                                <div class="text-center">
+                                    <h1 class="title has-decoration">Offres spéciales</h1>
+                                    <p>Choisissez les meilleurs tarifs aux meilleures dates</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white-transparent card mb-5">
+                            <div class="p-md-5 p-3 col-lg-10 mx-auto">
+                                <span class="badge rounded-pill mb-2">Nouveau !</span>
+                                <div class="row">
+                                    <div class="col-md-6 position-relative mb-2 mb-sm-0">
+                                        <img class="" src="{{ asset('build/page-key-offre/offre-speciale-key_service.png') }}" alt="" />
+                                        <div class="text-overlay">
+                                            <h2>RÉSERVEZ 7 JOURS ET PAYEZ EN 5</h2>
+                                            <p>Key services vous offre 2 jours gratuits</p>
+                                            <img src="{{ asset('build/page-key-offre/logo-europcar.png') }}" alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 d-flex flex-column justify-content-between">
+                                        <div>
+                                            <p>Nous vous proposons <strong class="blue">3 périodes tarifaires</strong> afin d’optimiser vos séjours en France.</p>
+                                            <p>Suivant la date de prise en charge de votre véhicule, bénéficiez du <strong class="blue">meilleur tarif</strong> avec des <strong class="blue">remises exceptionnelles</strong> selon les catégories.*</p>
+                                            <p><strong class="red">* Attention</strong>, les remises sont déjà déduites sur les tarifs affichés sur notre site internet</p>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-primary" href="#">Réservation</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    </body>
+{% endblock %}

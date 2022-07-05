@@ -1,0 +1,287 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main id="presentation">
+        <section class="hero bg-img" id="hero">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="bg-blue-transparent card mb-5">
+                            <div class="p-md-5 p-3">
+                                <div class="text-center">
+                                    <h1 class="title bg-blue">Obtenir un devis</h1>
+                                    <form action="" method="get" class="hero__form row">
+                                        <div class="row">
+                                            <div class="col-lg-4 d-flex align-items-center">
+                                                <div class="row align-items-center">
+                                                    <div class="col brand_logo_wrapper"><img class="brand_logo" src="{{ asset('build/renault-blanc.png') }}" alt="" /></div>
+                                                    <div class="col">
+                                                        <div class="form-check" id="brand_select">
+                                                            <label>
+                                                                <input class="brand_name_input" type="radio" name="test" value="Renaud" checked />
+                                                                <div class="brand_name">Renaud</div>
+                                                            </label>
+                                                            <label>
+                                                                <input class="brand_name_input" type="radio" name="test" value="Peugeot" />
+                                                                <div class="brand_name">Peugeot</div>
+                                                            </label>
+                                                            <label>
+                                                                <input class="brand_name_input" type="radio" name="test" value="Citroen" />
+                                                                <div class="brand_name">Citroën</div>
+                                                            </label>
+                                                            <label>
+                                                                <input class="brand_name_input" type="radio" name="test" value="DSauto" />
+                                                                <div class="brand_name">Ds automobiles</div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-8">
+                                                <div class="row mb-3">
+                                                    <label for="connexion-email" class="col-sm-2 col-form-label">Livraison</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-select" aria-label="Le nom d’une ville">
+                                                            <option>Paris</option>
+                                                            <option value="1">Lille</option>
+                                                            <option value="2">Brest</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 date-input">
+                                                        <input type="text" class="form-control date-picker" placeholder="24/12/2021" />
+                                                        <i class="fa fa-calendar form-control-feedback"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="connexion-email" class="col-sm-2 col-form-label">Retour</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-select" aria-label="Le nom d’une ville">
+                                                            <option>Paris</option>
+                                                            <option value="1">Lille</option>
+                                                            <option value="2">Brest</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4 date-input">
+                                                        <input type="text" class="form-control date-picker" placeholder="24/12/2021" />
+                                                        <i class="fa fa-calendar form-control-feedback"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-100 overflow-hidden">
+                                            <svg height="50" width="1000">
+                                                <g fill="none" stroke="#FFFFFF" stroke-width="1">
+                                                    <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="row">
+                                            <label for="connexion-email" class="col-md-3 col-form-label">Code spécial</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" id="connexion-email" placeholder="CODE0078TT" />
+                                            </div>
+
+                                            <div class="form-example col-md-3 offset-md-1 text-end mt-3 mt-md-0">
+                                                <button class="btn btn-alt has-shadow fw-bold" id="btn-submit">Réserver<i class="fa-solid fa-angle-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="bg-white-transparent card">
+                            <div class="p-md-5 p-3">
+                                <h2 class="title mb-0">TTCAR Transit en quelques chiffres</h2>
+                                <div class="w-100 overflow-hidden">
+                                    <svg height="50" width="1000">
+                                        <g fill="none" stroke="#345f8a" stroke-width="1">
+                                            <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="row mx-auto numbers">
+                                    <div class="col-md-3">
+                                        <span>500</span>
+                                        Véhicules
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span>15000</span>
+                                        Clients
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span>20000</span>
+                                        Commandes
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span>23</span>
+                                        Pays
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-grey" id="partner">
+            <div class="">
+                <h2 class="title">Nos partenaires</h2>
+                <div class="mx-auto px-4">
+                    <div class="partner_wrapper row justify-content-center">
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-renault.png') }}" alt="" /></a>
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-peugeot.png') }}" alt="" /></a>
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-citroen.png') }}" alt="" /></a>
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-ds.png') }}" alt="" /></a>
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-dc.png') }}" alt="" /></a>
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-hertz.png') }}" alt="" /></a>
+                        <a class="partner_item col col-md-3"><img src="{{ asset('build/logo-europcar.png') }}" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video bg-blue" id="video">
+            <div class="container-fluid px-5">
+                <div class="row">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="video_wrapper">
+                            <video width="100%" height="" poster="{{ asset('build/video-placeholder.png') }}" controls="">
+                                <source src="//www.ttcar.com/blog-ttcar/video/ttcar/ttcar-2016.mp4" type="video/mp4" />
+                                Désolé, votre navigateur ne supporte pas le tag Video.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="card bg-white-transparent-extra-light py-4 px-5">
+                            <h2 class="title mb-0">Comprendre le transit temporaire</h2>
+                            <div class="w-100 overflow-hidden">
+                                <svg height="50" width="1000">
+                                    <g fill="none" stroke="#FFFFFF" stroke-width="1">
+                                        <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <p>Le transit temporaire est une disposition douanière et fiscale qui permet à toute personne résidant hors du territoire communautaire (DOM TOM inclus) de disposer d’un véhicule neuf lors de son séjour en Europe et de l’acquérir exonéré des droits de douanes et de la TVA. Vous bénéficiez ainsi d’une immatriculation française spécifique permettant une libre circulation en Europe.</p>
+                            <p>Il est aussi possible de bénéficier de ce régime sans avoir a payer l’intégralité du prix du véhicule. Cette formule, connue sous le terme générique d’achat-rachat, ressemble beaucoup à une location de voiture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="btn-wrapper has-border d-inline-block">
+                <a href="" class="btn btn-primary">Réserver</a>
+                <a href="" class="btn btn-alt btn-border ms-sm-2">Autre question</a>
+            </div>
+        </div>
+
+        <section class="container feature" id="feature">
+            <h2 class="title">Avantages du transit temporaire</h2>
+            <div class="row has-border p-5">
+                <div class="feature_item col-lg-2 col-md-3 col-sm-6">
+                    <div class="feature_icon mx-auto"><img src="{{ asset('build/icone-vehicule.png') }}" alt="" /></div>
+                    <div class="feature_text">Véhicules neuf</div>
+                </div>
+
+                <div class="feature_item col-lg-2 col-md-3 col-sm-6">
+                    <div class="feature_icon mx-auto"><img src="{{ asset('build/icone-jauge.png') }}" alt="" /></div>
+                    <div class="feature_text">Kilométrage illimité</div>
+                </div>
+                <div class="feature_item col-lg-2 col-md-3 col-sm-6">
+                    <div class="feature_icon mx-auto"><img src="{{ asset('build/icone-bulle.png') }}" alt="" /></div>
+                    <div class="feature_text">assistance 7j/7 et 24h/24</div>
+                </div>
+                <div class="feature_item col-lg-2 col-md-3 col-sm-6">
+                    <div class="feature_icon mx-auto"><img src="{{ asset('build/icone-protection.png') }}" alt="" /></div>
+                    <div class="feature_text">assurance multirisques sans franchise</div>
+                </div>
+                <div class="feature_item col-lg-2 col-md-3 col-sm-6">
+                    <div class="feature_icon mx-auto"><img src="{{ asset('build/icone-monde.png') }}" alt="" /></div>
+                    <div class="feature_text">GPS gratuit</div>
+                </div>
+                <div class="feature_item col-lg-2 col-md-3 col-sm-6">
+                    <div class="feature_icon mx-auto"><img src="{{ asset('build/icone-certificat.png') }}" alt="" /></div>
+                    <div class="feature_text">24 mois de garantie constructeur</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles">
+            <div class="container">
+                <h2 class="title">Comment ca marche ?</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
+                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
+                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
+                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
+                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
+                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
+                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
+                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
+                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
+                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
+                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
+                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
+                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

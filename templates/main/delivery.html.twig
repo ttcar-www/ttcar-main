@@ -3,13 +3,10 @@
 {% block body %}
 
     <main id="livraison">
-
         <section class="bg-img">
             <div class="container mb-5">
-
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
-
                         <div class="bg-blue-transparent card mb-3">
                             <div class="p-md-4 p-3 col-lg-10 mx-auto">
                                 <div class="text-center">
@@ -25,45 +22,34 @@
                             <div class="p-5">
                                 <div class="wrapper">
                                     <form action="" method="get">
-
                                         <div class="row">
                                             <div class="col-sm-2 my-auto text-center">
-                                                    <span class="btn btn-primary">
-                                                        Sélectionnez une marque
-                                                    </span>
+                                                <span class="btn btn-primary"> Sélectionnez une marque </span>
                                             </div>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-10 my-auto">
                                                 <div class="inner">
                                                     <div class="form-check">
-                                                        <label class="" for="inlineRadioOptions">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                            <div class="brand_item"><img src="{{ asset('build/logo-renault.png') }}" alt=""></div>
+                                                        <label>
+                                                            <input type="radio" name="test" value="small" checked />
+                                                            <div class="brand_item"><img src="{{ asset('build/logo-renault.png') }}" alt="" /></div>
                                                         </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <label class="brand_item" for="inlineRadioOptions">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                            <img src="{{ asset('build/logo-peugeot.png') }}" alt="">
+                                                        <label>
+                                                            <input type="radio" name="test" value="small" checked />
+                                                            <div class="brand_item"><img src="{{ asset('build/logo-peugeot.png') }}" alt="" /></div>
                                                         </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <label class="brand_item" for="inlineRadioOptions">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                                            <img src="{{ asset('build/logo-ds.png') }}" alt="">
+                                                        <label>
+                                                            <input type="radio" name="test" value="small" checked />
+                                                            <div class="brand_item"><img src="{{ asset('build/logo-ds.png') }}" alt="" /></div>
                                                         </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <label class="brand_item" for="inlineRadioOptions">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                                                            <img src="{{ asset('build/logo-citroen.png') }}" alt="">
+                                                        <label>
+                                                            <input type="radio" name="test" value="small" checked />
+                                                            <div class="brand_item"><img src="{{ asset('build/logo-citroen.png') }}" alt="" /></div>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </form>
-
                                 </div>
 
                                 <div class="w-100 overflow-hidden">
@@ -74,30 +60,42 @@
                                     </svg>
                                 </div>
 
+                                <div class="wrapper">
+                                    <div class="row">
+                                        <div class="col-sm-2 my-auto text-center">
+                                            <span class="btn btn-primary"> Filtrer la Recherche </span>
+                                        </div>
+                                        <div class="col-sm-10 my-auto">
+                                            <form class="row g-3">
+                                                <div class="col-md-6">
+                                                    <select class="form-select" aria-label="">
+                                                        <option selected>Centres de livraison</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Rechercher par nom de ville" aria-label="ville" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-                <div class="row px-3">
-                    <div class="col-lg-10 mx-auto bg-blue-transparent">
-
-                    </div>
-                </div>
-
             </div>
 
             <div class="container bg-grey p-sm-5 p-4">
-
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-
                     <div class="col">
                         <div class="card p-3 border">
                             <div class="card-body mx-auto">
                                 <div class="d-flex align-items-start mb-3">
                                     <div class="center_img">
-                                        <img src="{{ asset('build/logo-renault.png') }}" alt="">
+                                        <img src="{{ asset('build/logo-renault.png') }}" alt="" />
                                     </div>
                                     <div class="center_data">
                                         <span class="mb-2">Aéroports en France</span>
@@ -114,7 +112,7 @@
                             <div class="card-body mx-auto">
                                 <div class="d-flex align-items-start mb-3">
                                     <div class="center_img">
-                                        <img src="{{ asset('build/logo-renault.png') }}" alt="">
+                                        <img src="{{ asset('build/logo-renault.png') }}" alt="" />
                                     </div>
                                     <div class="center_data">
                                         <span class="mb-2">Aéroports en France</span>
@@ -130,7 +128,7 @@
                             <div class="card-body mx-auto">
                                 <div class="d-flex align-items-start mb-3">
                                     <div class="center_img">
-                                        <img src="{{ asset('build/logo-renault.png') }}" alt="">
+                                        <img src="{{ asset('build/logo-renault.png') }}" alt="" />
                                     </div>
                                     <div class="center_data">
                                         <span class="mb-2">Aéroports en France</span>
@@ -146,7 +144,7 @@
                             <div class="card-body mx-auto">
                                 <div class="d-flex align-items-start mb-3">
                                     <div class="center_img">
-                                        <img src="{{ asset('build/logo-renault.png') }}" alt="">
+                                        <img src="{{ asset('build/logo-renault.png') }}" alt="" />
                                     </div>
                                     <div class="center_data">
                                         <span class="mb-2">Aéroports en France</span>
@@ -162,7 +160,7 @@
                             <div class="card-body mx-auto">
                                 <div class="d-flex align-items-start mb-3">
                                     <div class="center_img">
-                                        <img src="{{ asset('build/logo-renault.png') }}" alt="">
+                                        <img src="{{ asset('build/logo-renault.png') }}" alt="" />
                                     </div>
                                     <div class="center_data">
                                         <span class="mb-2">Aéroports en France</span>
@@ -178,7 +176,7 @@
                             <div class="card-body mx-auto">
                                 <div class="d-flex align-items-start mb-3">
                                     <div class="center_img">
-                                        <img src="{{ asset('build/logo-renault.png') }}" alt="">
+                                        <img src="{{ asset('build/logo-renault.png') }}" alt="" />
                                     </div>
                                     <div class="center_data">
                                         <span class="mb-2">Aéroports en France</span>
@@ -189,12 +187,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
         </section>
-
     </main>
 {% endblock %}

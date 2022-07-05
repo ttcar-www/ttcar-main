@@ -59,6 +59,39 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/key", name="key")
+     * @param Request $request
+     * @return Response
+     */
+    public function key(Request $request)
+    {
+
+        return $this->render('resacar/index.html.twig');
+    }
+
+    /**
+     * @Route("/key_service", name="key_service")
+     * @param Request $request
+     * @return Response
+     */
+    public function key_service(Request $request)
+    {
+
+        return $this->render('resacar/service.html.twig');
+    }
+
+    /**
+     * @Route("/key_offre", name="key_offre")
+     * @param Request $request
+     * @return Response
+     */
+    public function key_offre(Request $request)
+    {
+
+        return $this->render('resacar/offre.html.twig');
+    }
+
+    /**
      * @Route("/delivery", name="delivery")
      * @param Request $request
      * @return Response
@@ -67,6 +100,17 @@ class MainController extends AbstractController
     {
 
         return $this->render('main/delivery.html.twig');
+    }
+
+    /**
+     * @Route("/about", name="about")
+     * @param Request $request
+     * @return Response
+     */
+    public function about(Request $request)
+    {
+
+        return $this->render('main/about.html.twig');
     }
 
 

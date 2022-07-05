@@ -1,366 +1,125 @@
     {% extends 'base.html.twig' %}
     {% block body %}
-    <style>
-        .b-items__cars{
-            margin-top: 5%;
-        }
-    </style>
-        <section class="b-pageHeader">
-            <div class="container">
-                <h1 class="wow zoomInLeft" data-wow-delay="0.7s">{{ 'promo_page.tiltle'|trans({}, 'messages') }}</h1>
-                <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.7s">
-                    <h3>The Largest Auto Dealer Online</h3>
-                </div>
-            </div>
-        </section><!--b-pageHeader-->
-
-        <div class="b-breadCumbs s-shadow">
-            <div class="container">
-                <a href="{{ path('main') }}" class="b-breadCumbs__page">Home</a><span class="fa fa-angle-right"></span><a href="{{ path('main') }}" class="b-breadCumbs__page m-active">Promotions</a>
-            </div>
-        </div><!--b-breadCumbs-->
-        <div class="b-auto__main">
-
-            <div class="col-md-11 col-md-offset-3 col-xs-12">
-                <a href="javascript:void(0);"  class="b-auto__main-toggle s-lineDownCenter m-active j-tab wow zoomInLeft" onclick="ClickAll()">{{ 'promo_page.all'|trans({}, 'messages') }}</a>
-                <a href="javascript:void(0);" class="b-auto__main-toggle j-tab wow zoomInRight" onclick="ClickRe()">Renault</a>
-                <a href="javascript:void(0);" class="b-auto__main-toggle j-tab wow zoomInRight" onclick="ClickPe()">Peugeot</a>
-                <a href="javascript:void(0);" class="b-auto__main-toggle j-tab wow zoomInRight" onclick="ClickCi()">Citroën</a>
-                <a href="javascript:void(0);" class="b-auto__main-toggle j-tab wow zoomInRight" onclick="ClickD()">DS Automobile</a>
-            </div>
-                <div class="b-items">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-9 col-sm-8 col-xs-12">
-                       {% for car in cars %}
-                        {% if car.getMark.getLibelle == "Renault" %}
-                            <div class="b-items__cars renault" id="renault" style="display: block">
-                                <div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
-                                    <div class="b-items__cars-one-img">
-                                        <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt='toyota' style="width: 100%"/>
-                                        <span class="b-items__cars-one-img-type m-premium">{{ car.getMark.getLibelle }}</span>
+        <main id="gamme">
+            <section class="bg-img">
+                <div class="container mb-5">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="bg-blue-transparent card mb-3">
+                                <div class="p-md-4 p-3 col-lg-10 mx-auto">
+                                    <div class="text-center">
+                                        <h1 class="title has-decoration">Marques, gammes et modèles</h1>
+                                        <p><strong>Découvrez les marques, les gammes et les modèles de véhicules mis à votre
+                                                disposition chez TT Car Transit.</strong></p>
                                     </div>
-                                    <div class="b-items__cars-one-info">
-                                        <h2>{{ car.name }}</h2>
-                                        <div class="row s-noRightMargin">
-                                            <div class="col-md-9 col-xs-12">
-                                                <p>{{ car.description }}</p>
-                                                <div class="m-width row m-smallPadding">
-                                                    <div class="col-xs-6">
-                                                        <div class="row m-smallPadding">
-                                                            <div class="col-xs-6">
-                                                                <span class="b-items__cars-one-info-title">Body Style:</span>
-                                                                <span class="b-items__cars-one-info-title">Mileage:</span>
-                                                                <span class="b-items__cars-one-info-title">Transmission:</span>
-                                                            </div>
-                                                            <div class="col-xs-6">
-                                                                <span class="b-items__cars-one-info-value">{{ car.years }}</span>
-                                                                <span class="b-items__cars-one-info-value">35,000 KM</span>
-                                                                <span class="b-items__cars-one-info-value">6-Speed Auto</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <div class="row m-smallPadding">
-                                                            <div class="col-xs-4">
-                                                                <span class="b-items__cars-one-info-title">Engine:</span>
-                                                                <span class="b-items__cars-one-info-title">Color:</span>
-                                                                <span class="b-items__cars-one-info-title">Specs:</span>
-                                                            </div>
-                                                            <div class="col-xs-8">
-                                                                <span class="b-items__cars-one-info-value">DOHC 24-valve V-6</span>
-                                                                <span class="b-items__cars-one-info-value">White</span>
-                                                                <span class="b-items__cars-one-info-value">2-Passenger, 2-Door</span>
-                                                            </div>
+                                </div>
+                            </div>
+                            <div class="bg-blue-transparent card mb-5">
+                                <div class="p-5">
+                                    <div class="wrapper">
+                                        <form action="" method="get">
+                                            <div class="row">
+                                                <div class="col-sm-2 my-auto text-center">
+                                                    <span class="btn btn-primary"> Sélectionnez une marque </span>
+                                                </div>
+                                                <div class="col-sm-10 my-auto">
+                                                    <div class="inner">
+                                                        <div class="form-check">
+                                                            <label>
+                                                                <input type="radio" name="test" value="small" checked />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-renault.png') }}" alt="" /></div>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="test" value="small" checked />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-peugeot.png') }}" alt="" /></div>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="test" value="small" checked />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-ds.png') }}" alt="" /></div>
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" name="test" value="small" checked />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-citroen.png') }}" alt="" /></div>
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 col-xs-12">
-                                                <div class="b-items__cars-one-info-price">
-                                                    <div class="pull-right">
-                                                     {#   <h3>Price:</h3>
-                                                        <h4>$29,415</h4>#}
-                                                    </div>
-                                                    <a href="{{ path('detail_car', { 'id': car.id }) }}" class="btn m-btn" style="margin-top: 5%">VIEW DETAILS<span class="fa fa-angle-right"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-            {% endif %}
-            {% if car.getMark.getLibelle == "Peugeot" %}
-            <div class="b-items__cars peugeot" id="peugeot" style="display: block">
-                <div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
-                    <div class="b-items__cars-one-img">
-                        <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt='toyota' style="width: 100%"/>
-                        <span class="b-items__cars-one-img-type m-premium">{{ car.getMark.getLibelle }}</span>
-                    </div>
-                    <div class="b-items__cars-one-info">
-                        <h2>{{ car.name }}</h2>
-                        <div class="row s-noRightMargin">
-                            <div class="col-md-9 col-xs-12">
-                                <p>{{ car.description }}</p>
-                                <div class="m-width row m-smallPadding">
-                                    <div class="col-xs-6">
-                                        <div class="row m-smallPadding">
-                                            <div class="col-xs-6">
-                                                <span class="b-items__cars-one-info-title">Body Style:</span>
-                                                <span class="b-items__cars-one-info-title">Mileage:</span>
-                                                <span class="b-items__cars-one-info-title">Transmission:</span>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <span class="b-items__cars-one-info-value">{{ car.years }}</span>
-                                                <span class="b-items__cars-one-info-value">35,000 KM</span>
-                                                <span class="b-items__cars-one-info-value">6-Speed Auto</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="row m-smallPadding">
-                                            <div class="col-xs-4">
-                                                <span class="b-items__cars-one-info-title">Engine:</span>
-                                                <span class="b-items__cars-one-info-title">Color:</span>
-                                                <span class="b-items__cars-one-info-title">Specs:</span>
-                                            </div>
-                                            <div class="col-xs-8">
-                                                <span class="b-items__cars-one-info-value">DOHC 24-valve V-6</span>
-                                                <span class="b-items__cars-one-info-value">White</span>
-                                                <span class="b-items__cars-one-info-value">2-Passenger, 2-Door</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-xs-12">
-                                <div class="b-items__cars-one-info-price">
-                                    <div class="pull-right">
-                                     {#   <h3>Price:</h3>
-                                        <h4>$29,415</h4>#}
-                                    </div>
-                                    <a href="{{ path('detail_car', { 'id': car.id }) }}" class="btn m-btn" style="margin-top: 5%">VIEW DETAILS<span class="fa fa-angle-right"></span></a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endif %}
-           {% if car.getMark.getLibelle == "Citroën" %}
-               <div class="b-items__cars citroen" id="citroen" style="display: block">
-                   <div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
-                       <div class="b-items__cars-one-img">
-                           <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt='toyota' style="width: 100%"/>
-                           <span class="b-items__cars-one-img-type m-premium">{{ car.getMark.getLibelle }}</span>
-                       </div>
-                       <div class="b-items__cars-one-info">
-                           <h2>{{ car.name }}</h2>
-                           <div class="row s-noRightMargin">
-                               <div class="col-md-9 col-xs-12">
-                                   <p>{{ car.description }}</p>
-                                   <div class="m-width row m-smallPadding">
-                                       <div class="col-xs-6">
-                                           <div class="row m-smallPadding">
-                                               <div class="col-xs-6">
-                                                   <span class="b-items__cars-one-info-title">Body Style:</span>
-                                                   <span class="b-items__cars-one-info-title">Mileage:</span>
-                                                   <span class="b-items__cars-one-info-title">Transmission:</span>
-                                               </div>
-                                               <div class="col-xs-6">
-                                                   <span class="b-items__cars-one-info-value">{{ car.years }}</span>
-                                                   <span class="b-items__cars-one-info-value">35,000 KM</span>
-                                                   <span class="b-items__cars-one-info-value">6-Speed Auto</span>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-xs-6">
-                                           <div class="row m-smallPadding">
-                                               <div class="col-xs-4">
-                                                   <span class="b-items__cars-one-info-title">Engine:</span>
-                                                   <span class="b-items__cars-one-info-title">Color:</span>
-                                                   <span class="b-items__cars-one-info-title">Specs:</span>
-                                               </div>
-                                               <div class="col-xs-8">
-                                                   <span class="b-items__cars-one-info-value">DOHC 24-valve V-6</span>
-                                                   <span class="b-items__cars-one-info-value">White</span>
-                                                   <span class="b-items__cars-one-info-value">2-Passenger, 2-Door</span>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div class="col-md-3 col-xs-12">
-                                   <div class="b-items__cars-one-info-price">
-                                       <div class="pull-right">
-                                         {#  <h3>Price:</h3>
-                                           <h4>$29,415</h4>#}
-                                       </div>
-                                       <a href="{{ path('detail_car', { 'id': car.id }) }}" class="btn m-btn" style="margin-top: 5%">VIEW DETAILS<span class="fa fa-angle-right"></span></a>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           {% endif %}
-            {% if car.getMark.getLibelle == "DS Automobile" %}
-                <div class="b-items__cars dsAuto" id="dsAuto" style="display: block">
-                    <div class="b-items__cars-one wow zoomInUp" data-wow-delay="0.5s">
-                        <div class="b-items__cars-one-img">
-                            <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt='toyota' style="width: 100%"/>
-                            <span class="b-items__cars-one-img-type m-premium">{{ car.getMark.getLibelle }}</span>
-                        </div>
-                        <div class="b-items__cars-one-info">
-                            <h2>{{ car.name }}</h2>
-                            <div class="row s-noRightMargin">
-                                <div class="col-md-9 col-xs-12">
-                                    <p>{{ car.description }}</p>
-                                    <div class="m-width row m-smallPadding">
-                                        <div class="col-xs-6">
-                                            <div class="row m-smallPadding">
-                                                <div class="col-xs-6">
-                                                    <span class="b-items__cars-one-info-title">Body Style:</span>
-                                                    <span class="b-items__cars-one-info-title">Mileage:</span>
-                                                    <span class="b-items__cars-one-info-title">Transmission:</span>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <span class="b-items__cars-one-info-value">{{ car.years }}</span>
-                                                    <span class="b-items__cars-one-info-value">35,000 KM</span>
-                                                    <span class="b-items__cars-one-info-value">6-Speed Auto</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div class="row m-smallPadding">
-                                                <div class="col-xs-4">
-                                                    <span class="b-items__cars-one-info-title">Engine:</span>
-                                                    <span class="b-items__cars-one-info-title">Color:</span>
-                                                    <span class="b-items__cars-one-info-title">Specs:</span>
-                                                </div>
-                                                <div class="col-xs-8">
-                                                    <span class="b-items__cars-one-info-value">DOHC 24-valve V-6</span>
-                                                    <span class="b-items__cars-one-info-value">White</span>
-                                                    <span class="b-items__cars-one-info-value">2-Passenger, 2-Door</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="container bg-grey p-sm-5 p-4">
+
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                        <div class="col">
+                            <div class="card shadow-on-hover">
+                                <div class="card-body mx-auto">
+                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
+                                    <div class="card-body text-center">
+                                        <span class="mb-2 fw-bold">DACIA Duster</span>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-xs-12">
-                                    <div class="b-items__cars-one-info-price">
-                                        <div class="pull-right">
-                                            {#<h3>Price:</h3>
-                                            <h4>$29,415</h4>#}
-                                        </div>
-                                        <a href="{{ path('detail_car', { 'id': car.id }) }}" class="btn m-btn" style="margin-top: 5%">VIEW DETAILS<span class="fa fa-angle-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card shadow-on-hover">
+                                <div class="card-body mx-auto">
+                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
+                                    <div class="card-body text-center">
+                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-on-hover">
+                                <div class="card-body mx-auto">
+                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
+                                    <div class="card-body text-center">
+                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-on-hover">
+                                <div class="card-body mx-auto">
+                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
+                                    <div class="card-body text-center">
+                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-on-hover">
+                                <div class="card-body mx-auto">
+                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
+                                    <div class="card-body text-center">
+                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card shadow-on-hover">
+                                <div class="card-body mx-auto">
+                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
+                                    <div class="card-body text-center">
+                                        <span class="mb-2 fw-bold">DACIA Duster</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-            {% endfor %}
-                <div class="b-items__pagination wow zoomInUp">
-                    <div class="b-items__pagination-main">
-{#
-                        {{ knp_pagination_render(pagination) }}
-#}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!--b-items-->
-</div>
-<script>
-
-    function ClickAll() {
-        [].forEach.call(document.querySelectorAll('#dsAuto'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#peugeot'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#citroen'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#renault'), function (el) {
-            el.style.display = "block";
-        });
-    }
-    function ClickRe() {
-        [].forEach.call(document.querySelectorAll('#renault'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#peugeot'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#citroen'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#dsAuto'), function (el) {
-            el.style.display = "none";
-        });
-    }
-    function ClickPe() {
-        [].forEach.call(document.querySelectorAll('#peugeot'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#renault'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#citroen'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#dsAuto'), function (el) {
-            el.style.display = "none";
-        });
-
-    }
-    function ClickCi() {
-        [].forEach.call(document.querySelectorAll('#citroen'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#peugeot'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#dsAuto'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#renault'), function (el) {
-            el.style.display = "none";
-        });
-    }
-    function ClickD() {
-        [].forEach.call(document.querySelectorAll('#dsAuto'), function (el) {
-            el.style.display = "block";
-        });
-
-        [].forEach.call(document.querySelectorAll('#peugeot'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#citroen'), function (el) {
-            el.style.display = "none";
-        });
-
-        [].forEach.call(document.querySelectorAll('#renault'), function (el) {
-            el.style.display = "none";
-        });
-    }
-</script>
+            </section>
+        </main>
     {% endblock %}

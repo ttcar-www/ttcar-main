@@ -536,7 +536,7 @@ class OrdersController extends AbstractController
         }
 
 
-        $this->sendMailCustomer($user, $mailer, $order);
+     //   $this->sendMailCustomer($user, $mailer, $order);
         return $newCustomer;
 
     }

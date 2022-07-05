@@ -73,7 +73,7 @@
                 <nav id="sub_nav">
                     <ul>
                         <li><a href="#">{{ 'menu.booking'|trans({}, 'messages') }}</a></li>
-                        <li><a href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
+                        <li><a href="{{ path('about') }}">{{ 'menu.presentation'|trans({}, 'messages') }}</a></li>
                         <li><a {% if app.request.pathinfo == '/mark_listing' %} style="text-decoration: underline;"{% endif %} href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a></li>
                         <li><a {% if app.request.pathinfo == '/promotions' %} style="text-decoration: underline;"{% endif %} href="{{ path('promotions') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a></li>
                         <li><a {% if app.request.pathinfo == '/groupe' %} style="text-decoration: underline;"{% endif %} href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a></li>
@@ -98,7 +98,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:13px;">
                         <a class="dropdown-item d-flex justify-content-center" href="{{ path('main') }}">{{ 'menu.booking'|trans({}, 'messages') }}</a>
-                        <a class="dropdown-item d-flex justify-content-center" href="#">{{ 'menu.presentation'|trans({}, 'messages') }}</a>
+                        <a class="dropdown-item d-flex justify-content-center" href="{{ path('about') }}">{{ 'menu.presentation'|trans({}, 'messages') }}</a>
                         <a class="dropdown-item d-flex justify-content-center" href="{{ path('mark_listing') }}">{{ 'menu.range'|trans({}, 'messages') }}</a>
                         <a class="dropdown-item d-flex justify-content-center" href="{{ path('promotions') }}">{{ 'menu.promo'|trans({}, 'messages') }}</a>
                         <a class="dropdown-item d-flex justify-content-center" href="{{ path('groupe') }}">{{ 'menu.groupe'|trans({}, 'messages') }}</a>
