@@ -2,44 +2,43 @@
     {% block body %}
         <main id="gamme">
             <section class="bg-img">
-                <div class="container mb-5">
+                <div class="container">
                     <div class="row">
                         <div class="col-lg-10 mx-auto">
                             <div class="bg-blue-transparent card mb-3">
-                                <div class="p-md-4 p-3 col-lg-10 mx-auto">
+                                <div class="p-md-4 p-3 col-lg-8 mx-auto">
                                     <div class="text-center">
                                         <h1 class="title has-decoration">Marques, gammes et modèles</h1>
-                                        <p><strong>Découvrez les marques, les gammes et les modèles de véhicules mis à votre
-                                                disposition chez TT Car Transit.</strong></p>
+                                        <p><strong>Découvrez les marques, les gammes et les modèles de véhicules mis à votre disposition chez TT Car Transit.</strong></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-blue-transparent card mb-5">
-                                <div class="p-5">
+                            <div class="bg-blue-transparent card mb-4">
+                                <div class="p-4">
                                     <div class="wrapper">
                                         <form action="" method="get">
                                             <div class="row">
-                                                <div class="col-sm-2 my-auto text-center">
-                                                    <span class="btn btn-primary"> Sélectionnez une marque </span>
+                                                <div class="col-md-3 my-auto text-center">
+                                                    <span class="col-form-label d-inline-block p-3 mb-2 mb-lg-0"> Sélectionnez une marque </span>
                                                 </div>
-                                                <div class="col-sm-10 my-auto">
+                                                <div class="col-md-9 my-auto">
                                                     <div class="inner">
                                                         <div class="form-check">
                                                             <label>
                                                                 <input type="radio" name="test" value="small" checked />
-                                                                <div class="brand_item"><img src="{{ asset('build/logo-renault.png') }}" alt="" /></div>
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-renault.png') }}" alt="Logo Renault" /></div>
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="test" value="small" checked />
-                                                                <div class="brand_item"><img src="{{ asset('build/logo-peugeot.png') }}" alt="" /></div>
+                                                                <input type="radio" name="test" value="small" />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-peugeot.png') }}" alt="Logo Peugeot" /></div>
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="test" value="small" checked />
-                                                                <div class="brand_item"><img src="{{ asset('build/logo-ds.png') }}" alt="" /></div>
+                                                                <input type="radio" name="test" value="small" />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-ds.png') }}" alt="Logo Ds" /></div>
                                                             </label>
                                                             <label>
-                                                                <input type="radio" name="test" value="small" checked />
-                                                                <div class="brand_item"><img src="{{ asset('build/logo-citroen.png') }}" alt="" /></div>
+                                                                <input type="radio" name="test" value="small" />
+                                                                <div class="brand_item"><img src="{{ asset('build/logo-citroen.png') }}" alt="Logo Citroën" /></div>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -49,74 +48,83 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <div class="container bg-grey p-sm-5 p-4">
-
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-                        <div class="col">
-                            <div class="card shadow-on-hover">
-                                <div class="card-body mx-auto">
-                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
-                                    <div class="card-body text-center">
-                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <a href="#">
+                                <div class="card shadow-on-hover">
+                                    <div class="card-body mx-auto">
+                                        <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                        <div class="card-body text-center">
+                                            <span class="mb-2 fw-bold">DACIA Duster</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
-                        <div class="col">
-                            <div class="card shadow-on-hover">
-                                <div class="card-body mx-auto">
-                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
-                                    <div class="card-body text-center">
-                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                        <div class="col-md-4">
+                            <a href="#">
+                                <div class="card shadow-on-hover">
+                                    <div class="card-body mx-auto">
+                                        <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                        <div class="card-body text-center">
+                                            <span class="mb-2 fw-bold">DACIA Duster</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                        <div class="col">
-                            <div class="card shadow-on-hover">
-                                <div class="card-body mx-auto">
-                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
-                                    <div class="card-body text-center">
-                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                        <div class="col-md-4">
+                            <a href="#">
+                                <div class="card shadow-on-hover">
+                                    <div class="card-body mx-auto">
+                                        <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                        <div class="card-body text-center">
+                                            <span class="mb-2 fw-bold">DACIA Duster</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                        <div class="col">
-                            <div class="card shadow-on-hover">
-                                <div class="card-body mx-auto">
-                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
-                                    <div class="card-body text-center">
-                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                        <div class="col-md-4">
+                            <a href="#">
+                                <div class="card shadow-on-hover">
+                                    <div class="card-body mx-auto">
+                                        <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                        <div class="card-body text-center">
+                                            <span class="mb-2 fw-bold">DACIA Duster</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                        <div class="col">
-                            <div class="card shadow-on-hover">
-                                <div class="card-body mx-auto">
-                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
-                                    <div class="card-body text-center">
-                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                        <div class="col-md-4">
+                            <a href="#">
+                                <div class="card shadow-on-hover">
+                                    <div class="card-body mx-auto">
+                                        <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                        <div class="card-body text-center">
+                                            <span class="mb-2 fw-bold">DACIA Duster</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                        <div class="col">
-                            <div class="card shadow-on-hover">
-                                <div class="card-body mx-auto">
-                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="">
-                                    <div class="card-body text-center">
-                                        <span class="mb-2 fw-bold">DACIA Duster</span>
+                        <div class="col-md-4">
+                            <a href="#">
+                                <div class="card shadow-on-hover">
+                                    <div class="card-body mx-auto">
+                                        <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                        <div class="card-body text-center">
+                                            <span class="mb-2 fw-bold">DACIA Duster</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
