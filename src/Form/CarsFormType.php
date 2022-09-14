@@ -62,7 +62,7 @@ class CarsFormType extends AbstractType
                     'Hybride' => 'hybride',
                     'Electrique' => "electrique"
                 ],
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'label' => false
             ])

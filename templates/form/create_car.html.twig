@@ -24,7 +24,10 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <span class="text-muted col-form-label d-block">Image</span>
-                                        {{ form_row(form.carImg, {'attr': {'class': 'custom-file-label'}}) }}
+                                        <div class="custom-file">
+                                            {{ form_row(form.carImg, {'attr': {'class': 'custom-file-input'}}) }}
+                                            <label class="custom-file-label" for="imageFile">Choisir une image</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
