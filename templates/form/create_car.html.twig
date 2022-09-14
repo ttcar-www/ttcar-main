@@ -16,57 +16,57 @@
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="name-text-input" class="col-form-label">Nom du modèle</label>
-                                        {{ form_row(form.name) }}
+                                        {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="year-input" class="col-form-label">Année</label>
-                                        {{ form_row(form.years) }}
+                                        {{ form_row(form.years, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <span class="text-muted col-form-label d-block">Image</span>
-                                        {{ form_row(form.carImg) }}
+                                        {{ form_row(form.carImg, {'attr': {'class': 'custom-file-label'}}) }}
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
                                         <label for="description-textarea-input" class="col-form-label">Description</label>
-                                        {{ form_row(form.description) }}
+                                        {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <span class="text-muted col-form-label d-block">Carburant</span>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            {{ form_row(form.fuel) }}
+                                            {{ form_row(form.fuel, {'attr': {'class': 'form-control'}}) }}
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="col-form-label">Transmission</label>
-                                        {{ form_row(form.transmission) }}
+                                        {{ form_row(form.transmission, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="passengers-number-input" class="col-form-label">Passagers</label>
-                                        {{ form_row(form.passenger) }}
+                                        {{ form_row(form.passenger, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="doors-number-input" class="col-form-label">Portes</label>
-                                        {{ form_row(form.door) }}
+                                        {{ form_row(form.door, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="luggage-number-input" class="col-form-label">Nombre de bagages</label>
-                                        {{ form_row(form.luggage) }}
+                                        {{ form_row(form.luggage, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="co2-number-input" class="col-form-label">CO2</label>
-                                        {{ form_row(form.co2) }}
+                                        {{ form_row(form.co2, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <span class="text-muted col-form-label d-block">Climatisation</span>
-                                        {{ form_row(form.clim) }}
+                                        {{ form_row(form.clim, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
 
@@ -76,11 +76,11 @@
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="price-number-input" class="col-form-label">Prix de vente</label>
-                                        {{ form_row(form.sellingPrice) }}
+                                        {{ form_row(form.sellingPrice, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="margin-number-input" class="col-form-label">Marge en %</label>
-                                        {{ form_row(form.margin) }}
+                                        {{ form_row(form.margin, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -92,32 +92,32 @@
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="bar-price-number-input" class="col-form-label">Prix de la barre de toit</label>
-                                        {{ form_row(form.roofRack) }}
+                                        {{ form_row(form.roofRack, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="chain-price-number-input" class="col-form-label">Prix des chaines</label>
-                                        {{ form_row(form.chains) }}
+                                        {{ form_row(form.chains, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="start-date-input" class="col-form-label">Date de début de commande</label>
-                                        {{ form_row(form.date_start) }}
+                                        {{ form_row(form.date_start, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="end-date-input" class="col-form-label">Date de fin de commande</label>
-                                        {{ form_row(form.date_end) }}
+                                        {{ form_row(form.date_end, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="minimum-days-input" class="col-form-label">Jours minimum</label>
-                                        {{ form_row(form.minDays) }}
+                                        {{ form_row(form.minDays, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
 
 
                                 <div class="form-check">
                                     <span class="text-muted col-form-label d-block">Message pour la disponibilité</span>
-                                    {{ form_row(form.contactActived) }}
+                                    {{ form_row(form.contactActived, {'attr': {'class': 'form-control'}}) }}
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
