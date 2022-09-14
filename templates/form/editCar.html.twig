@@ -1,101 +1,134 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-    <!-- page title area end -->
-    <div class="main-content-inner">
-        <div class="row">
-            <div class="col-lg-6 col-ml-12">
-                <div class="row">
-                    <!-- Textual inputs start -->
-                    <div class="col-12 mt-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Ajouter une voiture</h4>
-                                {{ form_start(form) }}
-                                <div class="form-group">
-                                    <label>Nom <span>*</span></label>
-                                    {{ form_row(form.name) }}
+    <div class="main-content">
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Ajouter une voiture</h4>
+                                    {{ form_start(form) }}
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="name-text-input" class="col-form-label">Nom du modèle</label>
+                                            {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="year-input" class="col-form-label">Année</label>
+                                            {{ form_row(form.years, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <span class="text-muted col-form-label d-block">Image</span>
+                                            <div class="custom-file">
+                                                {{ form_row(form.carImg, {'attr': {'class': 'custom-file-input'}}) }}
+                                                <label class="custom-file-label" for="imageFile">Choisir une image</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="description-textarea-input" class="col-form-label">Description</label>
+                                            {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <span class="text-muted col-form-label d-block">Carburant</span>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                {{ form_row(form.fuel, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="col-form-label">Transmission</label>
+                                            {{ form_row(form.transmission, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="passengers-number-input" class="col-form-label">Passagers</label>
+                                            {{ form_row(form.passenger, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="doors-number-input" class="col-form-label">Portes</label>
+                                            {{ form_row(form.door, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="luggage-number-input" class="col-form-label">Nombre de bagages</label>
+                                            {{ form_row(form.luggage, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="co2-number-input" class="col-form-label">CO2</label>
+                                            {{ form_row(form.co2, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <span class="text-muted col-form-label d-block">Climatisation</span>
+                                            {{ form_row(form.clim, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="price-number-input" class="col-form-label">Prix de vente</label>
+                                            {{ form_row(form.sellingPrice, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="margin-number-input" class="col-form-label">Marge en %</label>
+                                            {{ form_row(form.margin, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <span class="text-muted col-form-label d-block">Accessoires</span>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{ form_row(form.items) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="bar-price-number-input" class="col-form-label">Prix de la barre de toit</label>
+                                            {{ form_row(form.roofRack, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="chain-price-number-input" class="col-form-label">Prix des chaines</label>
+                                            {{ form_row(form.chains, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="start-date-input" class="col-form-label">Date de début de commande</label>
+                                            {{ form_row(form.date_start, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="end-date-input" class="col-form-label">Date de fin de commande</label>
+                                            {{ form_row(form.date_end, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="minimum-days-input" class="col-form-label">Jours minimum</label>
+                                            {{ form_row(form.minDays, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-check">
+                                        <span class="text-muted col-form-label d-block">Message pour la disponibilité</span>
+                                        {{ form_row(form.contactActived, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                    <div class="form-check">
+                                        <span class="text-muted col-form-label d-block">Active</span>
+                                        {{ form_row(form.is_online, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
                                 </div>
-                                <div class="form-group">
-                                    <label>Description <span>*</span></label>
-                                    {{ form_row(form.description) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Accessoires<span>*</span></label>
-                                    {{ form_row(form.items) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Date de debut de commande<span>*</span></label>
-                                    {{ form_row(form.date_start) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Date de fin<span>*</span></label>
-                                    {{ form_row(form.date_end) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Prix de vente<span>*</span></label>
-                                    {{ form_row(form.sellingPrice) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Année <span>*</span></label>
-                                    {{ form_row(form.years) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Marge en %<span>*</span></label>
-                                    {{ form_row(form.margin) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Carburant<span>*</span></label>
-                                    {{ form_row(form.fuel) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Prix de la Barre de toit<span>*</span></label>
-                                    {{ form_row(form.roofRack) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Prix des Chaines <span>*</span></label>
-                                    {{ form_row(form.chains) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Passagers <span>*</span></label>
-                                    {{ form_row(form.passenger) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Portes <span>*</span></label>
-                                    {{ form_row(form.door) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>CO2 <span>*</span></label>
-                                    {{ form_row(form.co2) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Clim <span>*</span></label>
-                                    {{ form_row(form.clim) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Transmission <span>*</span></label>
-                                    {{ form_row(form.transmission) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Baguage <span>*</span></label>
-                                    {{ form_row(form.luggage) }}
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <label>Message sur la disponibilité <span>*</span></label>
-                                    {{ form_row(form.contactActived) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Active  <span>*</span></label>
-                                    {{ form_row(form.is_online) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Image <span>*</span></label>
-                                    {{ form_row(form.carImg) }}
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
                                 {{ form_end(form) }}
                             </div>
                         </div>
@@ -104,4 +137,5 @@
             </div>
         </div>
     </div>
+    <!-- main content area end -->
 {% endblock %}

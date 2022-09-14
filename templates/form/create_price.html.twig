@@ -1,53 +1,60 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
-    <!-- page title area end -->
-    <div class="main-content-inner">
-        <div class="row">
-            <div class="col-lg-6 col-ml-12">
-                <div class="row">
-                    <!-- Textual inputs start -->
-                    <div class="col-12 mt-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Ajouter un prix</h4>
-                                {{ form_start(form) }}
-                                <div class="form-group">
-                                    <label>Prix de référence à utiliser<span>*</span></label>
-                                    {{ form_row(form.libelle) }}
+    <div class="main-content">
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Ajouter un prix</h4>
+                                    {{ form_start(form) }}
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="name-text-input" class="col-form-label">Prix de référence à utiliser</label>
+                                            {{ form_row(form.libelle, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="year-input" class="col-form-label">Prix</label>
+                                            {{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="year-input" class="col-form-label">Prix Fournisseur</label>
+                                            {{ form_row(form.priceSupplierValue, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="passengers-number-input" class="col-form-label">Promotion en %</label>
+                                            {{ form_row(form.promo, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="start-date-input" class="col-form-label">Date de début de commande</label>
+                                            {{ form_row(form.date_start, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="end-date-input" class="col-form-label">Date de fin de commande</label>
+                                            {{ form_row(form.date_end, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="start-date-input" class="col-form-label">Date de début de livraison</label>
+                                            {{ form_row(form.date_start_delivery, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="end-date-input" class="col-form-label">Date de fin de livraison</label>
+                                            {{ form_row(form.date_end_delivery, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
                                 </div>
-                                <div class="form-group">
-                                    <label>Prix <span>*</span></label>
-                                    {{ form_row(form.price) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Prix Fournisseur<span>*</span></label>
-                                    {{ form_row(form.priceSupplierValue) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Date de debut de commande<span>*</span></label>
-                                    {{ form_row(form.date_start) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Date de fin<span>*</span></label>
-                                    {{ form_row(form.date_end) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Date de livraison <span>*</span></label>
-                                    {{ form_row(form.date_start_delivery) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Date de fin de livraison <span>*</span></label>
-                                    {{ form_row(form.date_end_delivery) }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Promotion <span>en %</span></label>
-                                    {{ form_row(form.promo) }}
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
                                 {{ form_end(form) }}
                             </div>
                         </div>
@@ -56,4 +63,5 @@
             </div>
         </div>
     </div>
+    <!-- main content area end -->
 {% endblock %}
