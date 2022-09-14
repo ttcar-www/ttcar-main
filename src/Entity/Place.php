@@ -361,4 +361,5 @@ class Place
     {
         $this->brand_id = $brand_id;
     }
+
 }

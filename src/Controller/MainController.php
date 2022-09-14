@@ -48,73 +48,6 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/faq", name="faq")
-     * @param Request $request
-     * @return Response
-     */
-    public function faq(Request $request)
-    {
-
-        return $this->render('main/faq.html.twig');
-    }
-
-    /**
-     * @Route("/key", name="key")
-     * @param Request $request
-     * @return Response
-     */
-    public function key(Request $request)
-    {
-
-        return $this->render('resacar/index.html.twig');
-    }
-
-    /**
-     * @Route("/key_service", name="key_service")
-     * @param Request $request
-     * @return Response
-     */
-    public function key_service(Request $request)
-    {
-
-        return $this->render('resacar/service.html.twig');
-    }
-
-    /**
-     * @Route("/key_offre", name="key_offre")
-     * @param Request $request
-     * @return Response
-     */
-    public function key_offre(Request $request)
-    {
-
-        return $this->render('resacar/offre.html.twig');
-    }
-
-    /**
-     * @Route("/delivery", name="delivery")
-     * @param Request $request
-     * @return Response
-     */
-    public function deliveryCenter(Request $request)
-    {
-
-        return $this->render('main/delivery.html.twig');
-    }
-
-    /**
-     * @Route("/about", name="about")
-     * @param Request $request
-     * @return Response
-     */
-    public function about(Request $request)
-    {
-
-        return $this->render('main/about.html.twig');
-    }
-
-
-    /**
      * @Route("/home/", name="main")
      * @param TranslatorInterface $translator
      * @param Request $request
@@ -586,6 +519,22 @@ class MainController extends AbstractController
 
     }
 
+    /**
+     * @Route("/about", name="about")
+     * @param Request $request
+     * @return Response
+     */
+    public function about(Request $request)
+    {
+        $repository_blog = $this->getDoctrine()->getRepository(Blog::class);
+        $posts = $repository_blog->findAll();
+
+
+        return $this->render('main/about.html.twig', [
+            'posts' =>$posts
+        ]);
+    }
+
 
     /**
      * @Route("/change_locale/{locale}", name="change_locale")
@@ -600,6 +549,61 @@ class MainController extends AbstractController
 
         // On revient sur la page précédente
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * @Route("/faq", name="faq")
+     * @param Request $request
+     * @return Response
+     */
+    public function faq(Request $request)
+    {
+
+        return $this->render('main/faq.html.twig');
+    }
+
+    /**
+     * @Route("/key", name="key")
+     * @param Request $request
+     * @return Response
+     */
+    public function key(Request $request)
+    {
+
+        return $this->render('resacar/index.html.twig');
+    }
+
+    /**
+     * @Route("/key_service", name="key_service")
+     * @param Request $request
+     * @return Response
+     */
+    public function key_service(Request $request)
+    {
+
+        return $this->render('resacar/service.html.twig');
+    }
+
+    /**
+     * @Route("/key_offre", name="key_offre")
+     * @param Request $request
+     * @return Response
+     */
+    public function key_offre(Request $request)
+    {
+
+        return $this->render('resacar/offre.html.twig');
+    }
+
+    /**
+     * @Route("/delivery", name="delivery")
+     * @param Request $request
+     * @return Response
+     */
+    public function deliveryCenter(Request $request)
+    {
+
+        return $this->render('main/delivery.html.twig');
     }
 
 }

@@ -1,9 +1,7 @@
 {% extends 'admin/admin.html.twig' %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
+<div class="main-content">
     <!-- page title area end -->
     <div class="main-content-inner">
         <div class="row">
@@ -15,120 +13,122 @@
                             <div class="card-body">
                                 <h4 class="header-title">Ajouter une voiture</h4>
                                 {{ form_start(form) }}
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Nom <span>*</span></label>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="name-text-input" class="col-form-label">Nom du modèle</label>
                                         {{ form_row(form.name) }}
                                     </div>
-                                    <div class="col">
-                                        <label>Description <span>*</span></label>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="year-input" class="col-form-label">Année</label>
+                                        {{ form_row(form.years) }}
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <span class="text-muted col-form-label d-block">Image</span>
+                                        {{ form_row(form.carImg) }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="description-textarea-input" class="col-form-label">Description</label>
                                         {{ form_row(form.description) }}
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Accessoires<span>*</span></label>
-                                        {{ form_row(form.items) }}
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <span class="text-muted col-form-label d-block">Carburant</span>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            {{ form_row(form.fuel) }}
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <label>Prix de vente<span>*</span></label>
-                                        {{ form_row(form.sellingPrice) }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Date de debut de commande<span>*</span></label>
-                                        {{ form_row(form.date_start) }}
-                                    </div>
-                                    <div class="col">
-                                        <label>Date de fin<span>*</span></label>
-                                        {{ form_row(form.date_end) }}
+                                    <div class="col-md-6 mb-3">
+                                        <label class="col-form-label">Transmission</label>
+                                        {{ form_row(form.transmission) }}
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Année <span>*</span></label>
-                                        {{ form_row(form.years) }}
-                                    </div>
-                                    <div class="col">
-                                        <label>Marge en %<span>*</span></label>
-                                        {{ form_row(form.margin) }}
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Jour minimum<span>*</span></label>
-                                        {{ form_row(form.minDays) }}
-                                    </div>
-                                    <div class="col">
-                                        <label>Carburant<span>*</span></label>
-                                        {{ form_row(form.fuel) }}
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Prix de la Barre de toit<span>*</span></label>
-                                        {{ form_row(form.roofRack) }}
-                                    </div>
-                                    <div class="col">
-                                        <label>Prix des Chaines <span>*</span></label>
-                                        {{ form_row(form.chains) }}
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Passagers <span>*</span></label>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="passengers-number-input" class="col-form-label">Passagers</label>
                                         {{ form_row(form.passenger) }}
                                     </div>
-                                    <div class="col">
-                                        <label>Portes <span>*</span></label>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="doors-number-input" class="col-form-label">Portes</label>
                                         {{ form_row(form.door) }}
                                     </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="luggage-number-input" class="col-form-label">Nombre de bagages</label>
+                                        {{ form_row(form.luggage) }}
+                                    </div>
                                 </div>
-
-
-                                <div class="row">
-                                    <div class="col">
-                                        <label>CO2 <span>*</span></label>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="co2-number-input" class="col-form-label">CO2</label>
                                         {{ form_row(form.co2) }}
                                     </div>
-                                    <div class="col">
-                                        <label>Clim <span>*</span></label>
+                                    <div class="col-md-6 mb-3">
+                                        <span class="text-muted col-form-label d-block">Climatisation</span>
                                         {{ form_row(form.clim) }}
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label>Transmission <span>*</span></label>
-                                        {{ form_row(form.transmission) }}
+                                <div class="form-row">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="price-number-input" class="col-form-label">Prix de vente</label>
+                                        {{ form_row(form.sellingPrice) }}
                                     </div>
-                                    <div class="col">
-                                        <label>Baguage <span>*</span></label>
-                                        {{ form_row(form.luggage) }}
+                                    <div class="col-md-6 mb-3">
+                                        <label for="margin-number-input" class="col-form-label">Marge en %</label>
+                                        {{ form_row(form.margin) }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <span class="text-muted col-form-label d-block">Accessoires</span>
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            {{ form_row(form.items) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="bar-price-number-input" class="col-form-label">Prix de la barre de toit</label>
+                                        {{ form_row(form.roofRack) }}
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="chain-price-number-input" class="col-form-label">Prix des chaines</label>
+                                        {{ form_row(form.chains) }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="start-date-input" class="col-form-label">Date de début de commande</label>
+                                        {{ form_row(form.date_start) }}
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="end-date-input" class="col-form-label">Date de fin de commande</label>
+                                        {{ form_row(form.date_end) }}
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="minimum-days-input" class="col-form-label">Jours minimum</label>
+                                        {{ form_row(form.minDays) }}
                                     </div>
                                 </div>
 
 
                                 <div class="form-check">
-                                    <label>Message sur la disponibilité <span>*</span></label>
+                                    <span class="text-muted col-form-label d-block">Message pour la disponibilité</span>
                                     {{ form_row(form.contactActived) }}
                                 </div>
-                                <div class="mb-3">
-                                    <label>Image <span>*</span></label>
-                                    {{ form_row(form.carImg) }}
-                                </div>
+
                                 <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
-                                {{ form_end(form) }}
                             </div>
+                            {{ form_end(form) }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- main content area end -->
 {% endblock %}

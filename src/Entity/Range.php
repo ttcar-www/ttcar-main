@@ -51,6 +51,22 @@ class Range
      */
     private $extraCost;
 
+    /**
+     * @ORM\Column(type="date", nullable = true)
+     */
+    private $create_at;
+
+    /**
+     * @ORM\Column(type="date" , nullable = true)
+     */
+    private $update_at;
+
+    /**
+     * @ORM\Column(type="date", nullable = true)
+     */
+    private $deleted_at;
+
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
@@ -174,5 +190,53 @@ class Range
     public function setExtraCost($extraCost): void
     {
         $this->extraCost = $extraCost;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreateAt()
+    {
+        return $this->create_at;
+    }
+
+    /**
+     * @param mixed $create_at
+     */
+    public function setCreateAt($create_at): void
+    {
+        $this->create_at = $create_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateAt()
+    {
+        return $this->update_at;
+    }
+
+    /**
+     * @param mixed $update_at
+     */
+    public function setUpdateAt($update_at): void
+    {
+        $this->update_at = $update_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeletedAt()
+    {
+        return $this->deleted_at;
+    }
+
+    /**
+     * @param mixed $deleted_at
+     */
+    public function setDeletedAt($deleted_at): void
+    {
+        $this->deleted_at = $deleted_at;
     }
 }

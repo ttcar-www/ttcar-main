@@ -1541,7 +1541,7 @@ hr.dashed_index {
 .ttcar:hover {
     opacity: revert;
 }
-.douane {
+.douaneHome {
     background-color: rgba(255,255,255,1);
     border-radius: 30px;
     opacity: 0.646;
@@ -1553,7 +1553,7 @@ hr.dashed_index {
     flex-direction: column;
     align-items: center;
 }
-.douane:hover {
+.douaneHome:hover {
     opacity: revert;
 }
 .preHome_info {
@@ -2157,7 +2157,7 @@ hr.dashed_listing {
         width: 80%;
         margin-bottom: 15px;
     }
-    .douane {
+    .douaneHome {
         width: 80%;
         margin-bottom: 15px;
     }

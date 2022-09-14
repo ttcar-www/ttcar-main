@@ -23,15 +23,15 @@ class ContactFormType extends AbstractType
             ))
             ->add('email', TextType::class, array(
                 'required' => true,
-                'label' => 'Email'
+                'label' => false
             ))
             ->add('name', TextType::class, array(
                 'required' => true,
-                'label' => 'Name'
+                'label' => false
             ))
             ->add('content', TextareaType::class, array(
                 'required' => true,
-                'label' => 'Content'
+                'label' => false
             ))
 
         ;

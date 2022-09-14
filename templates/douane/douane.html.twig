@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn btn-alt fw-bold has-shadow">Contactez-nous</a>
+                                <a href="{{ path('contactDouane') }}" class="btn btn-alt fw-bold has-shadow">Contactez-nous</a>
                                 <div class="w-100 overflow-hidden">
                                     <svg height="50" width="1000">
                                         <g fill="none" stroke="#345f8a" stroke-width="1">
@@ -47,7 +47,7 @@
                                         </g>
                                     </svg>
                                 </div>
-                                <a class="btn btn-primary">Déclaration Douane</a>
+                                <a href="" class="btn btn-primary">Déclaration Douane</a>
                                 <p class="mt-4"><strong>La déclaration douanière d’exportation seule, est réservée aux véhicules déjà immatriculés
                                         destinés à être exportés hors Union Européenne.</strong></p>
                             </div>
@@ -58,9 +58,7 @@
         </section>
 
         <div class="separator">
-            <div>Obtenez les informations
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
+            <div>Obtenez les informations</div>
         </div>
 
         <section>
@@ -77,13 +75,13 @@
                                     </div>
                                     <div class="col">
                                         <label>
-                                            <input type="radio" name="test" value="big">
+                                            <input type="radio" name="test" value="selected" id="wwww" onclick="ClickWWW()">
                                             <div class="douane-form-label">Véhicule immatriculé en WW</div>
                                         </label>
                                     </div>
                                     <div class="col">
                                         <label>
-                                            <input type="radio" name="test" value="big">
+                                            <input type="radio" name="test" value="big" id="other" onclick="ClickOther()">
                                             <div class="douane-form-label">Autres types</div>
                                         </label>
                                     </div>
@@ -97,8 +95,10 @@
                                     </g>
                                 </svg>
                             </div>
-                            <h2>Déclaration Douanière d’Exportation<br>
-                                (Autres types d’immatriculation))</h2>
+                            <h2 id="tilte_other" style="display: none">Déclaration Douanière d’Exportation<br>
+                                (Autres types d’immatriculation)</h2>
+                            <h2 id="tilte_ww">Déclaration Douanière d’Exportation<br>
+                                (Immatriculation en WW)</h2>
                             <div class="row">
                                 <div class="col-md-6 mb-md-3">
                                     <div class="card bg-white p-4 text-center douane-price">
@@ -124,11 +124,19 @@
                                 <h2>Documents nécessaires :</h2>
                                 <span class="red text-center">» Justificatifs à fournir pour finaliser votre dossier :</span>
 
-                                <div class="has-decoration-filigrane">
+                                <div class="has-decoration-filigrane" id="text_other" style="display: none">
                                     <p><strong>- Copie de la carte grise barrée datée et signée de la part du vendeur</strong> avec la mention vendu le ../../..</p>
                                     <p><strong>- Copie du certificat de cession</strong> (vente)</p>
                                     <p><strong>- Certificat de situation</strong> (non gage)</p>
                                     <p><strong>- Fin de démonstration si véhicule de démonstration</strong> (à réclamer au concessionnaire) ou déclaration d’achat si véhicule racheter par la concession</p>
+                                    <p><strong>- Copie du passeport en cours de validité</strong></p>
+                                    <p><strong>- Justificatif de domicile de moins de trois mois</strong></p>
+                                    <p><strong>- Copie de la facture du véhicule hors taxe</strong></p>
+                                </div>
+
+                                <div class="has-decoration-filigrane" id="text_ww">
+                                    <p><strong>- Copie du certificat de conformité </strong> ou PV des Mines (3 en 1)</p>
+                                    <p><strong>- Copie du certificat provisoire d’immatriculation</strong></p>
                                     <p><strong>- Copie du passeport en cours de validité</strong></p>
                                     <p><strong>- Justificatif de domicile de moins de trois mois</strong></p>
                                     <p><strong>- Copie de la facture du véhicule hors taxe</strong></p>
@@ -145,4 +153,35 @@
             </div>
         </section>
     </main>
+
+    <script>
+
+        function ClickWWW() {
+            let title_other = document.getElementById("tilte_other");
+            let tilte_ww = document.getElementById("tilte_ww");
+
+            let text_other = document.getElementById("text_other");
+            let text_ww = document.getElementById("text_ww");
+
+            tilte_ww.style.display = "block";
+            title_other.style.display = "none";
+
+            text_ww.style.display = "block";
+            text_other.style.display = "none";
+        }
+
+        function ClickOther() {
+            let title_other = document.getElementById("tilte_other");
+            let tilte_ww = document.getElementById("tilte_ww");
+
+            let text_other = document.getElementById("text_other");
+            let text_ww = document.getElementById("text_ww");
+
+            tilte_ww.style.display = "none";
+            title_other.style.display = "block";
+
+            text_ww.style.display = "none";
+            text_other.style.display = "block";
+        }
+    </script>
 {% endblock %}

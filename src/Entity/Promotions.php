@@ -80,6 +80,21 @@ class Promotions
      */
     private $range_promo;
 
+    /**
+     * @ORM\Column(type="date", nullable = true)
+     */
+    private $create_at;
+
+    /**
+     * @ORM\Column(type="date" , nullable = true)
+     */
+    private $update_at;
+
+    /**
+     * @ORM\Column(type="date", nullable = true)
+     */
+    private $deleted_at;
+
     public function __construct()
     {
         $this->range_promo = new ArrayCollection();

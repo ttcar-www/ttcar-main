@@ -178,8 +178,8 @@
 
         <div class="container">
             <div class="btn-wrapper has-border d-inline-block">
-                <a href="" class="btn btn-primary">Réserver</a>
-                <a href="" class="btn btn-alt btn-border ms-sm-2">Autre question</a>
+                <a href="{{ path('main') }}" class="btn btn-primary">Réserver</a>
+                <a href="{{ path('contact') }}" class="btn btn-alt btn-border ms-sm-2">Autre question</a>
             </div>
         </div>
 
@@ -218,67 +218,18 @@
             <div class="container">
                 <h2 class="title">Comment ca marche ?</h2>
                 <div class="row">
+                    {% for post in posts %}
                     <div class="col-lg-4 col-md-6">
                         <div class="card">
-                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
+                            <img src="{{ asset('build/uploads/'~ post.getPostImg) }}" class="card-img-top" alt="..." style="width: 60%" />
                             <div class="card-body">
-                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
-                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
-                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
+                                <h3 class="card-title">{{  post.title }}</h3>
+                                <p class="card-text">{{  post.content }}</p>
+                                <a href="{{ path('see_post', { 'id': post.id }) }}" class="card-link text-end">Lire la suite </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
-                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
-                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
-                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
-                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
-                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
-                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
-                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
-                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
-                            <img src="{{ asset('build/shutterstock_1041257008_g.png') }}" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h3 class="card-title">L’achat rachat, c’est quoi ?</h3>
-                                <p class="card-text">Vous rêvez d’une formule tout compris ? Une location de véhicule sans les inconvénients qui lui sont propres ? Vous aimeriez choisir votre véhicule neuf et si vous en tombez amoureux, l’acheter à un prix très avantageux ? Le TT est fait pour vous !</p>
-                                <a href="#" class="card-link text-end">Lire la suite  <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>

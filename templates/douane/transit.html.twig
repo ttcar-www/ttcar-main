@@ -1,230 +1,404 @@
 {% extends 'douane/base_douane.html.twig' %}
 
 {% block body %}
-<section class="b-pageHeader">
-    <div class="container">
-        <h1 class=" wow zoomInLeft" data-wow-delay="0.3s">{{ 'menu.temporary'|trans({}, 'messages') }}</h1>
-     {#   <div class="b-pageHeader__search wow zoomInRight" data-wow-delay="0.3s">
-            <h3>Read Latest Auto News &amp; Reviews</h3>
-        </div>#}
-    </div>
-</section><!--b-pageHeader-->
-
-<div class="b-blog s-shadow" style="margin-bottom: 15%">
-    <div class="container">
-        <h3>{{ 'menu.temporary'|trans({}, 'messages') }}</h3>
-        <p>{{ 'tt.p1'|trans({}, 'messages') }}</p>
-
-        <div class="row" style="text-align: center">
-            <h5>{{ 'tt.p2'|trans({}, 'messages') }}</h5>
-            <button class="accordion">{{ 'tt.btn1'|trans({}, 'messages') }}</button>
-            <div class="panel">
-                <div>
-                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € + Malus CO2.</span></p>
-                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
-                    <ul>
-                        <li>- {{ 'tt.li1'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li2'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li3'|trans({}, 'messages') }}</li>
-                    </ul>
+    <main id="douane-export">
+        <section class="bg-img douane">
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="bg-white-transparent card mb-5">
+                            <div class="p-md-5 p-3 mx-lg-auto text-center col-lg-10">
+                                <h1>Choisir TT Douane Export :</h1>
+                                <div class="douane-icons-wrapper p-3 my-4">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-world.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>World export</strong><br><em>et transit temporaire</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-transport.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Transport</strong><br><em>maritime</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-immatriculation.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Immatriculation</strong><br><em>France</em></p>
+                                            </div>
+                                            <div class="col">
+                                                <div class="douane-icon-img">
+                                                    <img src="{{ asset('build/icon-douane-assurance.png') }}" alt="" />
+                                                </div>
+                                                <p><strong>Assurance</strong><br><em>courte durée</em></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{{ path('contactDouane') }}" class="btn btn-alt fw-bold has-shadow">Contactez-nous</a>
+                                <div class="w-100 overflow-hidden">
+                                    <svg height="50" width="1000">
+                                        <g fill="none" stroke="#345f8a" stroke-width="1">
+                                            <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <a class="btn btn-primary">{{ 'menu.temporary'|trans({}, 'messages') }}</a>
+                                <p class="mt-4"><strong>{{ 'tt.p1'|trans({}, 'messages') }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
-                    <ul>
-                        <li>1. {{ 'tt.li4'|trans({}, 'messages') }}</li>
-                        <li>2. {{ 'tt.li5'|trans({}, 'messages') }}.</li>
-                        <li>3. {{ 'tt.li6'|trans({}, 'messages') }}.</li>
-                    </ul>
-                </div>
-                <br>
-                <p class="border_red">{{ 'tt.p3'|trans({}, 'messages') }}</p>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
-
-                       <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
-                            <ul>
-                                <li>- {{ 'tt.li7'|trans({}, 'messages') }}</li>
-                                <li>- {{ 'tt.li8'|trans({}, 'messages') }}</li>
-                                <li>- {{ 'tt.li9'|trans({}, 'messages') }}</li>
-                            </ul>
-                    <br>
-                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li11'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li12'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li15'|trans({}, 'messages') }}</li>
-                    </ul>
-                        {#
-                                        <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
-                        #}
-                </div>
-                <br>
-                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
             </div>
+        </section>
 
-            <button class="accordion">{{ 'tt.btn2'|trans({}, 'messages') }}</button>
-            <div class="panel">
-                <h3>{{ 'tt.h31'|trans({}, 'messages') }}</h3>
-                <div>
-                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € + Malus EcoTaxe.</span></p>
-                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
-                    <ul>
-                        <li>{{ 'tt.li1'|trans({}, 'messages') }}</li>
-                        <li>{{ 'tt.li2'|trans({}, 'messages') }}</li>
-                        <li>{{ 'tt.li3'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
-                    <ul>
-                        <li>1. {{ 'tt.li16'|trans({}, 'messages') }}</li>
-                        <li>2. {{ 'tt.li17'|trans({}, 'messages') }}</li>
-                        <li>3. {{ 'tt.li18'|trans({}, 'messages') }}</li>
-                        <li>4. {{ 'tt.li19'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-                <br>
-                <p class="border_red">{{ 'tt.p5'|trans({}, 'messages') }}</p>
-                <div>
-                    <p>{{ 'tt.p6'|trans({}, 'messages') }}: </p>
-                    <p class="bold_red">{{ 'tt.p7'|trans({}, 'messages') }}</p>
-                </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
-
-                    <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li21'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li22'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li23'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li24'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li25'|trans({}, 'messages') }}</li>
-                    </ul>
-                    <br>
-                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li26'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li27'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li28'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li29'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
-                    </ul>
-                    {#
-                    <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
-                    #}
-                </div>
-                <br>
-                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
-            </div>
-
-            <button class="accordion">{{ 'tt.btn3'|trans({}, 'messages') }}</button>
-            <div class="panel">
-                <h3>{{ 'tt.h32'|trans({}, 'messages') }}</h3>
-                <div>
-                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € +  Malus CO2.</span></p>
-                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
-                    <ul>
-                        <li>{{ 'tt.li1'|trans({}, 'messages') }}</li>
-                        <li>{{ 'tt.li2'|trans({}, 'messages') }}</li>
-                        <li>{{ 'tt.li3'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
-                    <ul>
-                        <li>1. {{ 'tt.li30'|trans({}, 'messages') }}.</li>
-                        <li>2. {{ 'tt.li31'|trans({}, 'messages') }}</li>
-                        <li>3. {{ 'tt.li32'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-                <br>
-                <p class="border_red">{{ 'tt.p5'|trans({}, 'messages') }}</p>
-                <div>
-                    <p>{{ 'tt.p6'|trans({}, 'messages') }}: </p>
-                    <p class="bold_red">{{ 'tt.p8'|trans({}, 'messages') }}</p>
-                </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
-
-                    <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li33'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li34'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li35'|trans({}, 'messages') }}</li>
-                    </ul>
-                    <br>
-                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li36'|trans({}, 'messages') }}<</li>
-                        <li>- {{ 'tt.li37'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li38'|trans({}, 'messages') }}</li>
-                    </ul>
-                    {#
-                    <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
-                    #}
-                </div>
-                <br>
-                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
-            </div>
-
-            <button class="accordion">{{ 'tt.btn4'|trans({}, 'messages') }}</button>
-            <div class="panel">
-                <h3>{{ 'tt.h34'|trans({}, 'messages') }}</h3>
-                <div>
-                    <p>{{ 'export.p4'|trans({}, 'messages') }}<span style="font-weight: bold">300 € +  Malus CO2.</span></p>
-                    <p>{{ 'export.p5'|trans({}, 'messages') }} :</p>
-                    <ul>
-                        <li>{{ 'tt.li1'|trans({}, 'messages') }}</li>
-                        <li>{{ 'tt.li2'|trans({}, 'messages') }}</li>
-                        <li>{{ 'tt.li3'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :   </p>
-                    <ul>
-                        <li>1. {{ 'tt.li39'|trans({}, 'messages') }}</li>
-                        <li>2. {{ 'tt.li40'|trans({}, 'messages') }}</li>
-                    </ul>
-                </div>
-                <br>
-                <p class="border_red">{{ 'tt.p5'|trans({}, 'messages') }}</p>
-                <div>
-                    <p>{{ 'tt.p6'|trans({}, 'messages') }}: </p>
-                    <p class="bold_red">{{ 'tt.p9'|trans({}, 'messages') }}</p>
-                </div>
-                <div>
-                    <p>{{ 'douanePage.p1'|trans({}, 'messages') }} :</p>
-
-                    <p class="subtilble"> » {{ 'export.p7'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li41'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li42'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li43'|trans({}, 'messages') }}</li>
-                    </ul>
-                    <br>
-                    <p class="subtilble">» {{ 'export.p9'|trans({}, 'messages') }}:</p>
-                    <ul>
-                        <li>- {{ 'tt.li10'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li13'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li14'|trans({}, 'messages') }}</li>
-                        <li>- {{ 'tt.li20'|trans({}, 'messages') }}</li>
-                    </ul>
-                    {#
-                    <a href="public/build/doc/dounaExport/tt-touriste.pdf" download> Télecharger les doc</a>
-                    #}
-                </div>
-                <br>
-                <p class="bold_red">{{ 'tt.p4'|trans({}, 'messages') }}</p>
+        <div class="separator">
+            <div>Obtenez les informations
             </div>
         </div>
-    </div>
-</div>
+
+        <section>
+            <div class="container">
+                <div class="row px-3 mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="card bg-grey mb-5 p-5">
+                            <h2>Motif de votre séjour</h2>
+                            <form action="" class="mb-4">
+                                <div class="row row-cols-1 row-cols-md-3 g-3 mb-3">
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big" onclick="ClickTourist()">
+                                            <div class="douane-form-label">Tourisme</div>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big" onclick="ClickStudent()">
+                                            <div class="douane-form-label">Études</div>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big" onclick="ClickMissiont()">
+                                            <div class="douane-form-label">Mission ou Stage</div>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test" value="big" onclick="ClickDero()">
+                                            <div class="douane-form-label">Dérogation</div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3 g-3" id="btn_tourist" style="display: none">
+                                    <div class="col">
+                                        <div class="col-form-label">Votre lieu de résidence :</div>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test2" value="big2">
+                                            <div class="douane-form-label">Société</div>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label>
+                                            <input type="radio" name="test2" value="big2">
+                                            <div class="douane-form-label">Particulier</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="w-100 overflow-hidden">
+                                <svg height="50" width="1000">
+                                    <g fill="none" stroke="#345f8a" stroke-width="1">
+                                        <path stroke-dasharray="10,15" d="M5 20 l1200 0" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <h2 id="tiltle_tourrist">TT Touriste (Dom/Tom)</h2>
+                            <h2 id="tiltle_student" style="display: none">TT Étudiant</h2>
+                            <h2 id="tiltle_stage" style="display: none">TT Mission ou Stage</h2>
+                            <h2 id="tiltle_dero" style="display: none">TT Dérogatoire</h2>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-md-3">
+                                    <div class="card bg-white p-4 text-center douane-price">
+                                        <h3>Tarif :</h3>
+                                        <div>Nous proposons un forfait à<br>
+                                            <span id="span_eco" style="display: none">300 € + Malus EcoTaxe</span>
+                                            <span id="span_co2">300 € + Malus CO2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-blue-transparent p-4">
+                                        <p><strong>Ce tarif comprend :</strong></p>
+                                        <ul class="check-list">
+                                            <li id="li_student" style="display: none">Le <strong>certificat provisoire d’immatriculation </strong>valable 4 mois</li>
+                                            <li id="cart_grey">La <strong> carte grise TT</strong></li>
+                                            <li>Les <strong>plaques d’immatriculation</strong></li>
+                                            <li>La <strong>déclaration douane d’exportation</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="condition_student" style="display: none"><strong>Conditions d’application :</strong><br><br>
+                               1. Acheter un véhicule neuf de tourisme, jamais immatriculé, en France Métropolitaine.<br>
+                               2. Résider habituellement, ainsi que ses parents, hors de l’UE ou dans un Dom/Tom depuis plus de 6 mois.<br>
+                               3. Effectuer des études secondaires ou supérieures en France métropolitaine.<br>
+                               4. Ne pas exercer d’activité rémunérée.<br>
+                            </p>
+
+                            <p id="condition_tourist"><strong>Conditions d’application :</strong><br><br>
+                               1. Uniquement valable pour les véhicules neufs de tourisme (VP).<br>
+                               2. Personne de nationalité française ou étrangère résidant hors Union Européenne ou dans les DOM/TOM, depuis plus de 6 mois.<br>
+                               3.  Pour un séjour de 15 jours minimum à 6 mois maximum (la durée d'immatriculation ne peut pas être inférieure à 15 jours).<br>
+                            </p>
+
+                            <p id="condition_stage" style="display: none"><strong>Conditions d’application :</strong><br><br>
+                                1. Uniquement valable pour les véhicules neufs de tourisme (VP).<br>
+                                2. Résider habituellement hors de l’U.E. ou dans un Dom/Tom.<br>
+                                3. Être détaché par un organisme privé ou public, en France métropolitaine, pour une durée d’un an maximum pour un stage ou deux ans pour une mission.<br>
+                            </p>
+
+                            <p id="condition_dero" style="display: none"><strong>Conditions d’application :</strong><br><br>
+                                1. Ce régime est réservé aux personnes résidant en France métropolitaine et dont le départ définitif ou l’affectation hors de l’U.E. est prévue dans les 3 mois.<br>
+                                2. Le véhicule « TT » doit être acheté neuf en France Métropolitaine.<br>
+                            </p>
+
+                            <p id="dure_student" style="display: none"><strong>Durée de validité  :</strong><br>
+                                La carte « TT étudiant » est valable pendant la durée de l’année scolaire. Elle est NON renouvelable.
+                            </p>
+
+                            <p id="dure_dero" style="display: none"><strong>Durée de validité  :</strong><br>
+                                Le régime « TT dérogation » a une durée de validité de 3 mois maximum. Il s’adresse aux personnes déménageant de métropole à destination de l’étranger ou d’un Dom/Tom.
+                            </p>
+
+                            <p id="dure_stage" style="display: none"><strong>Durée de validité  :</strong><br>
+                                Maximum un an pour un stage, deux ans pour une mission
+                            </p>
+                        </div>
+                        </div>
+                        <div class="card bg-grey px-md-5 px-3 mx-lg-auto col-lg-10" style="margin-bottom: 5%">
+                            <span class="red"><strong>ATTENTION: </strong> En réalisant un TT, l’acheteur s’engage à exporter son véhicule à la fin de son séjour. S’il ne peut pas (panne, accident, réparation…),
+                                il devra contacter le bureau de douane de Paris Principal dans les plus bref délais.</span>
+                        </div>
+
+                        <div class="card p-5">
+                            <div class="px-md-5 px-3 mx-lg-auto col-lg-10">
+                                <h2>Documents nécessaires :</h2>
+                                <span class="red">» Documents à remplir, dater, signer (même signature que sur la pièce d’identité) et à nous retourner par voie postale ou à déposer sur place:</span>
+                                <div class="has-decoration-filigrane">
+                                    <div class="row">
+                                        <div class="col-md-8 fw-bold" id="paper_TT">
+                                            - Demande d’engagement TT Touriste <br>
+                                            - Pouvoir TT Touriste <br>
+                                            - Mandat TT Touriste
+                                        </div>
+                                        <div class="col-md-8 fw-bold" id="paper_student" style="display: none">
+                                            - Pouvoir TT Étudiant <br>
+                                            - Mandat TT Étudiant <br>
+                                            - Attestation étudiant TT Étudiant <br>
+                                            - Attestation parentale TT Étudiant <br>
+                                            - Demande d’engagement TT Étudiant
+                                        </div>
+                                        <div class="col-md-8 fw-bold" id="paper_stage" style="display: none">
+                                            - Demande d’engagement TT Mission ou Stage<br>
+                                            - Pouvoir TT Mission ou Stage <br>
+                                            - Mandat TT Mission ou Stage
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="" class="btn btn-alt has-shadow">Télécharger les documents à remplir</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="red">» Justificatifs supplémentaires à fournir pour finaliser votre dossier:</span>
+                                <div class="has-decoration-filigrane" id="doc_tourist">
+                                    <p>- <strong>Copie du passeport ou pièce d’identité</strong>, en cours de validité, du Gérant mentionné sur le K.BIS ou les statuts</p>
+                                    <p>- <strong>Copie d’un extrait K.BIS ou du registre du commerce de la société</strong> de moins de deux ans (accompagnée de sa traduction officielle si nécessaire)</p>
+                                    <p>- <strong>Facture d’achat HT originale</strong> mentionnant le nom et l’adresse de l’entreprise à l’étranger ou dans les DOM/TOM et l’annotation « Exonération de TVA article 262-1 du CGI »</p>
+                                    <p>- <strong>PV des mines original</strong>, tamponné et signé par le concessionnaire</p>
+                                </div>
+                                <div class="has-decoration-filigrane" id="doc_student" style="display: none">
+                                    <p>- <strong>Copie du passeport ou de la CNI</strong>, en cours de validité.</p>
+                                    <p>- <strong>Copie de la carte étudiant</strong></p>
+                                    <p>- <strong>Copie du certificat de scolarité</strong></p>
+                                    <p>- <strong>Copie de la carte de séjour ou de son récépissé</strong>, pour un étudiant de nationalité étrangère</p>
+                                    <p>- <strong>Certificat de résidence des parents</strong> émis par le Consulat ou la Mairie de leur commune</p>
+                                    <p>- <strong>PV des mines original</strong> , tamponné et signé par le concessionnaire</p>
+                                    <p>- <strong>Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM
+                                            et l’annotation « Exonération de TVA article 262-1 du CGI »</strong></p>
+
+                                </div>
+                                <div class="has-decoration-filigrane" id="doc_stage" style="display: none">
+                                    <p>- <strong>Copie du passeport ou de la CNI</strong>, en cours de validité.</p>
+                                    <p>- <strong>Une attestation de la société ou de l’organisme d’accueil en France métropolitaine</strong></p>
+                                    <p>- <strong>Copie de la carte de séjour ou de son récépissé</strong>, pour un étudiant de nationalité étrangère</p>
+                                    <p>- <strong>Une attestation de la société ou de l’organisme étranger concernant le stage ou la mission</strong> </p>
+                                    <p>- <strong>PV des mines original</strong> , tamponné et signé par le concessionnaire</p>
+                                    <p>- <strong>Facture d’achat HT originale mentionnant le nom, le prénom et l’adresse de l’acheteur à l’étranger ou dans les DOM/TOM
+                                            et l’annotation « Exonération de TVA article 262-1 du CGI »</strong></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let title_tourist = document.getElementById("tiltle_tourrist");
+        let tiltle_student = document.getElementById("tiltle_student");
+        let tiltle_stage = document.getElementById("tiltle_stage");
+        let tiltle_dero = document.getElementById("tiltle_dero");
+
+        let span_eco = document.getElementById("span_eco");
+        let span_co2 = document.getElementById("span_co2");
+
+        let condition_tourist = document.getElementById("condition_tourist");
+        let condition_student = document.getElementById("condition_student");
+        let condition_stage = document.getElementById("condition_stage");
+        let condition_dero = document.getElementById("condition_dero");
+
+
+        let dure_student = document.getElementById("dure_student");
+        let dure_stage = document.getElementById("dure_stage");
+        let dure_dero = document.getElementById("dure_dero");
+
+
+        let paper_TT = document.getElementById("paper_TT");
+        let paper_student = document.getElementById("paper_student");
+        let paper_stage = document.getElementById("paper_student");
+
+        let doc_tourist = document.getElementById("doc_tourist");
+        let doc_student = document.getElementById("doc_student");
+        let doc_stage = document.getElementById("doc_stage");
+
+        let li_student = document.getElementById("li_student");
+        let cart_grey = document.getElementById("cart_grey");
+
+        let btn_tourist = document.getElementById("btn_tourist");
+
+
+        function ClickTourist() {
+            title_tourist.style.display = "block";
+            tiltle_student.style.display = "none";
+            tiltle_stage.style.display = "none";
+            tiltle_dero.style.display = "none";
+
+            span_eco.style.display = "none";
+            span_co2.style.display = "block";
+
+            condition_student.style.display = "none";
+            condition_tourist.style.display = "block";
+            condition_stage.style.display = "none";
+            condition_dero.style.display = "none";
+
+            paper_student.style.display = "none";
+            paper_TT.style.display = "block";
+
+            dure_student.style.display = "none";
+            dure_stage.style.display = "none";
+            dure_dero.style.display = "none";
+
+
+            doc_student.style.display = "none";
+            doc_tourist.style.display = "block";
+
+            // btn_tourist.style.display = "block";
+
+        }
+
+        function ClickStudent() {
+
+            title_tourist.style.display = "none";
+            tiltle_student.style.display = "block";
+            tiltle_stage.style.display = "none";
+            tiltle_dero.style.display = "none";
+
+            span_eco.style.display = "block";
+            span_co2.style.display = "none";
+
+            condition_student.style.display = "block";
+            condition_tourist.style.display = "none";
+            condition_stage.style.display = "none";
+            condition_dero.style.display = "none";
+
+            dure_student.style.display = "block";
+            dure_stage.style.display = "none";
+            dure_dero.style.display = "none";
+
+            paper_student.style.display = "block";
+            paper_TT.style.display = "none";
+
+            doc_student.style.display = "block";
+            doc_tourist.style.display = "none";
+
+            li_student.style.display = "block";
+            cart_grey.style.display = "none";
+
+
+        }
+
+        function ClickMissiont() {
+            title_tourist.style.display = "none";
+            tiltle_student.style.display = "none";
+            tiltle_stage.style.display = "block";
+            tiltle_dero.style.display = "none";
+
+            span_eco.style.display = "none";
+            span_co2.style.display = "block";
+
+            condition_student.style.display = "none";
+            condition_tourist.style.display = "none";
+            condition_stage.style.display = "block";
+            condition_dero.style.display = "none";
+
+            paper_TT.style.display = "none";
+            paper_student.style.display = "none";
+            paper_stage.style.display = "block";
+
+            dure_student.style.display = "none";
+            dure_stage.style.display = "block";
+            dure_dero.style.display = "none";
+
+            doc_student.style.display = "none";
+            doc_tourist.style.display = "none";
+            doc_stage.style.display = "block";
+        }
+
+        function ClickDero() {
+            title_tourist.style.display = "none";
+            tiltle_student.style.display = "none";
+            tiltle_stage.style.display = "none";
+            tiltle_dero.style.display = "block";
+
+            span_eco.style.display = "none";
+            span_co2.style.display = "block";
+
+            condition_student.style.display = "none";
+            condition_tourist.style.display = "none";
+            condition_stage.style.display = "none";
+            condition_dero.style.display = "block";
+
+            paper_TT.style.display = "none";
+            paper_student.style.display = "none";
+            paper_stage.style.display = "block";
+
+            dure_student.style.display = "none";
+            dure_stage.style.display = "none";
+            dure_dero.style.display = "block";
+
+            doc_student.style.display = "none";
+            doc_tourist.style.display = "none";
+            doc_stage.style.display = "block";
+        }
+    </script>
 {% endblock %}
