@@ -1,0 +1,55 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+    <div class="main-content">
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Ajouter une voiture</h4>
+                                    {{ form_start(form) }}
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="name-text-input" class="col-form-label">Nom du document</label>
+                                            {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <span class="text-muted col-form-label d-block">Image</span>
+                                            <div class="custom-file">
+                                                {{ form_row(form.DocImg, {'attr': {'class': 'custom-file-input'}}) }}
+                                                <label class="custom-file-label" for="imageFile">Choisir le document</label>
+                                                <span style="color: red">{{ form_errors(form.DocImg) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                           {#         <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="description-textarea-input" class="col-form-label">Description</label>
+                                            {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>#}
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <span class="text-muted col-form-label d-block">Raisons</span>
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                {{ form_row(form.reason) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Créer</button>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main content area end -->
+{% endblock %}

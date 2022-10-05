@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReasonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Reason
      * @ORM\Column(type="date", nullable = true)
      */
     private $deleted_at;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Doc::class, mappedBy="reason")
+     */
+    private $docs;
+
+    public function __construct()
+    {
+        $this->docs = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -122,4 +134,35 @@ class Reason
     {
         $this->deleted_at = $deleted_at;
     }
+
+    public function addDoc(Doc $doc): self
+    {
+        if (!$this->docs->contains($doc)) {
+            $this->docs[] = $doc;
+            $doc->addReason($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDoc(Doc $doc): self
+    {
+        if ($this->docs->removeElement($doc)) {
+            // set the owning side to null (unless already changed)
+            if ($doc->getReason() === $this) {
+                $doc->setReason(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Test>
+     */
+    public function getDocs(): Collection
+    {
+        return $this->docs;
+    }
+
 }

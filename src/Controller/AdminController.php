@@ -8,6 +8,7 @@ use App\Entity\CategoryResacar;
 use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\Customer;
+use App\Entity\Doc;
 use App\Entity\Mark;
 use App\Entity\Nationality;
 use App\Entity\Order;
@@ -24,6 +25,7 @@ use App\Form\CategoryResacarFormType;
 use App\Form\EditAccessoryFormType;
 use App\Form\UserEditFormType;
 use App\Service\FileUploader;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -342,12 +344,12 @@ class AdminController extends AbstractController
     /**
      * @Route("/manage_doc", name="manage_doc")
      */
-    public function manageDoc(): Response
+    public function manageDoc(EntityManagerInterface $entityManager): Response
     {
-        $minDays = Order::minDays;
+        $docs = $entityManager->getRepository(Doc::class)->findAll();
 
         return $this->render('admin/manage_doc.html.twig', [
-            'minDays' =>$minDays
+            'docs' =>$docs
         ]);
     }
 

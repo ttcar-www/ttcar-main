@@ -606,4 +606,15 @@ class MainController extends AbstractController
         return $this->render('main/delivery.html.twig');
     }
 
+    /**
+     * @Route("/account_alert", name="account_alert")
+     * @param Request $request
+     * @return Response
+     */
+    public function accountAlert(Request $request)
+    {
+
+        return $this->render('main/alertes.html.twig');
+    }
+
 }

@@ -51,6 +51,31 @@ class Order
     private $customer_type;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $doc_1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $doc_2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $doc_3;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $doc_4;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $doc_5;
+
+    /**
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\Length(
@@ -1053,5 +1078,87 @@ class Order
 
         return $this;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getDoc1()
+    {
+        return $this->doc_1;
+    }
+
+    /**
+     * @param mixed $doc_1
+     */
+    public function setDoc1($doc_1): void
+    {
+        $this->doc_1 = $doc_1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoc2()
+    {
+        return $this->doc_2;
+    }
+
+    /**
+     * @param mixed $doc_2
+     */
+    public function setDoc2($doc_2): void
+    {
+        $this->doc_2 = $doc_2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoc3()
+    {
+        return $this->doc_3;
+    }
+
+    /**
+     * @param mixed $doc_3
+     */
+    public function setDoc3($doc_3): void
+    {
+        $this->doc_3 = $doc_3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoc4()
+    {
+        return $this->doc_4;
+    }
+
+    /**
+     * @param mixed $doc_4
+     */
+    public function setDoc4($doc_4): void
+    {
+        $this->doc_4 = $doc_4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDoc5()
+    {
+        return $this->doc_5;
+    }
+
+    /**
+     * @param mixed $doc_5
+     */
+    public function setDoc5($doc_5): void
+    {
+        $this->doc_5 = $doc_5;
+    }
+
 
 }

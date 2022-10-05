@@ -15,6 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Tout les docs</h4>
+                    <a href="{{ path('new_doc') }}" style="color: darkslategrey; margin-left: 5%" class="btn btn-light"><i class="fas fa-paper-plane"></i> Ajouté un document</a>
                     <div class="single-table">
                         <div class="table-responsive">
                             <table class="table table-striped text-center">
@@ -27,16 +28,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                            {#    {% for customer in customers %}
+                              {% for doc in docs %}
                                     <tr>
-                                        <th scope="row">{{ customer.id }}</th>
-                                        <td>{{ customer.email }}</td>
-                                        <td>{{ customer.username }}</td>
+                                        <th scope="row">{{ doc.id }}</th>
+                                        <td>{{ doc.name }}</td>
                                         <td>
-                                            <a href="{{ path('edit_customer_bo', { 'id': customer.id }) }}" ><i class="far fa-edit"></i></a>
+                                            {% for reason in doc.getReason %}
+                                            {{ reason.content }} ,
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <a href="#"> <i class="far fa-edit"></i></a>
+                                            <br>
+                                            <a href="{{ path('delete_doc', { 'id': doc.id }) }}" ><i class="ti-trash"></i></a>
                                         </td>
                                     </tr>
-                                {% endfor %}#}
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
