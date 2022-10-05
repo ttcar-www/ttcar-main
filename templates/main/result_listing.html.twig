@@ -81,7 +81,7 @@
             #form_mark label {
                 margin-right: 22px;
             }
-            
+
         }
 
         /* Smartphone */
@@ -93,7 +93,7 @@
                 display: inline-block;
                 height: 100%;
                 width: 83px;
-                
+
             }
             #form_mark label {
                 margin-right: 0px;
@@ -109,7 +109,7 @@
                 margin-bottom: 15px;
             }
         }
-        
+
     </style>
 <div>
     <div class="listing_V1">
@@ -262,8 +262,8 @@
                             <div class="car_container_listing">
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-6">
-                                    <span class="dispo_listing">Disponible !</span>
-                                    <div class="car_tilte_listing">{{ car.mark.getlibelle }}</div>
+                              {#      <span class="dispo_listing">Disponible !</span>#}
+                                    <div class="car_tilte_listing">{{ car.ranges.getlibelle }}</div>
                                     <div class="car_desc_listing">
                                         Le design intérieur gagne en attractivité. Dacia Sandero inaugure une nouvelle planche de bord carbone
                                         foncé ou bi-ton (selon versions) à l’instrumentation complète et au traité moderne avec des contours
@@ -304,9 +304,9 @@
                                     </div>
                                     <div class="col-6 d-flex justify-content-end">
                                         {% if car.getDateStart > today %}
-                                        <a href="#" class="soon_listing">Disponible à partir du : 01 Apr 2022</a>
-                                    {% elseif car.isContactActived == true %}
-                                        <a href="#" class="contact_listing">Contact</a>
+                                        <a href="#" class="soon_listing">Disponible à partir du : {{ car.getDateStart|date("d/m/Y") }}</a>
+                                  {#  {% elseif car.isContactActived != true %}
+                                        <a href="#" class="contact_listing">Contact</a>#}
                                     {% else %}
                                         <span class="btn_price_listing">{{ carsResult[loop.index-1]}}€
                                         <a href="{{ path('order', { 'id': car.id }) }}" class="reservez_listing">Reservez</a>

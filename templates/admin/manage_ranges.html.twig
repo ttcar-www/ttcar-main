@@ -33,6 +33,7 @@
                                         <td>
                                             <a href="{{ path('create_car', { 'id': range.id }) }}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>Ajouté une voiture</a>
                                             <a href="{{ path('create_range_promo', { 'id': range.id }) }}" class="btn btn-outline-warning"><i class="fas fa-plus-circle"></i>Ajouté une promo</a>
+                                            <a href="{{ path('edit_range', { 'id': range.id }) }}" class="btn btn-outline-info"><i class="fas fa-edit"></i>Modifier la gamme</a>
                                         </td>
                                     </tr>
                                 {% endfor %}

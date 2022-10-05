@@ -608,6 +608,144 @@ class CarsController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/create_slice_bo/{id}", name="create_slice_bo")
+     * @param Request $request
+     * @param $id
+     * @return Response
+     */
+    public function createSliceByBo(Request $request, $id): Response
+    {
+        $price = $this->getDoctrine()
+            ->getRepository(Price::class)
+            ->findOneBy(['id' => $id]);
+
+
+        $car = $this->getDoctrine()
+            ->getRepository(Cars::class)
+            ->findOneBy(
+                ['price' => $price->getId()]
+            );
+
+        $mark = $this->getDoctrine()
+            ->getRepository(Mark::class)
+            ->findOneBy(
+                ['id' => $car->getMark()->getId()]
+            );
+
+
+        $priceSupplier = $this->getDoctrine()
+            ->getRepository(PriceSupplier::class)
+            ->findOneBy(['price_customer' => $price->getId()]);
+
+        $slicesSupplier = $this->getDoctrine()
+            ->getRepository(SliceSupplier::class)
+            ->findBy(
+                ['price' => $priceSupplier->getId()], ['days' => 'ASC']
+            );
+
+        $originalPrice = $car->getPrice()->getPrice();
+        $originalPriceSupplier = $priceSupplier->getPrice();
+
+        $em = $this->getDoctrine()->getManager();
+        $priceId = $price->getId();
+
+        //UPDATE CAR WITH PRICE AND SUPPLIERPRICE ID
+        $car->setPrice($price);
+        $car->setPriceSupplier($priceSupplier);
+        $priceSupplier->setPriceCustomer($price);
+        $em->persist($car);
+        $em->flush();
+
+        $slices = $this->getDoctrine()
+            ->getRepository(Slice::class)
+            ->findBy(
+                ['tarif' => $priceId], ['days' => 'ASC']
+            );
+
+
+        $slicesArray = [];
+        $countSlice = count($slices);
+        $i = 0;
+        $minDay = 0;
+
+        foreach ( $slices as $slice ) {
+            if ($slice->getTarif()->getId() == $priceId) {
+                array_push($slicesArray, $slice);
+            }
+            if(++$i === $countSlice) {
+                $minDay = $slice->getDays();
+            }
+        }
+
+        $slice = new Slice();
+        $sliceSupplier = new SliceSupplier();
+
+        $form = $this->createFormBuilder($slice)
+            ->add('id', HiddenType::class, array(
+                'required' => true,
+            ))
+            ->add('code_price', TextType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('value', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('priceSupplierValue', NumberType::class, array(
+                'required' => true,
+                'label' => false
+            ))
+            ->add('days', NumberType::class, array(
+                'required' => true,
+                'label' => false,
+                'data' => $minDay
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $slice->setTarif($price);
+            $slice->setMark($car->getMark());
+
+            $sliceSupplier->setPrice($priceSupplier);
+            $sliceSupplier->setCodePrice($form->get('code_price')->getData());
+            $sliceSupplier->setDays($form->get('days')->getData());
+            $sliceSupplier->setValue($form->get('priceSupplierValue')->getData());
+            $sliceSupplier->setMark($slice->getMark());
+
+            $em->persist($sliceSupplier);
+            $em->persist($slice);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Tranche créé'
+            );
+
+            return $this->redirectToRoute('create_slice_bo', ['id' => $id]);
+
+        }
+
+
+        return $this->render('form/create_slice.html.twig', [
+            'form' => $form->createView(),
+            'slices' => $slicesArray,
+            'slicesSupplier' => $slicesSupplier,
+            'originalPrice' => $originalPrice,
+            'originalPriceSupplier' => $originalPriceSupplier,
+            'priceId' => $price->getId()
+        ]);
+    }
+
     /**
      * @Route("/admin/edit_price/{id}", name="edit_price")
      * @param Request $request
