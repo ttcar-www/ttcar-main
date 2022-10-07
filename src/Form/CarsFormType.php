@@ -31,9 +31,6 @@ class CarsFormType extends AbstractType
             ->add('name', TextType::class, array(
                 'label' => false
             ))
-            ->add('description', TextareaType::class, array(
-                'label' => false
-            ))
             ->add('items', EntityType::class, [
                 'class' => Accessory::class,
                 'choice_label' => 'getLibelle',

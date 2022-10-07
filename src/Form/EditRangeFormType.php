@@ -7,6 +7,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -28,6 +29,9 @@ class EditRangeFormType extends AbstractType
                 'choice_label' => 'getLibelle',
                 'multiple' => false
             ])
+            ->add('description', TextareaType::class, array(
+                'label' => false
+            ))
             ->add('extraCost', ChoiceType::class, [
                 'choices' => [
                     '1' => '1',

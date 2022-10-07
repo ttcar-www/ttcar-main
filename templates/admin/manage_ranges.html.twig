@@ -21,7 +21,8 @@
                                 <thead class="text-uppercase">
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -30,6 +31,7 @@
                                     <tr>
                                         <th scope="row">{{ range.id }}</th>
                                         <td>{{ range.libelle }}</td>
+                                        <td>{{ range.description }}</td>
                                         <td>
                                             <a href="{{ path('create_car', { 'id': range.id }) }}" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>Ajouté une voiture</a>
                                             <a href="{{ path('create_range_promo', { 'id': range.id }) }}" class="btn btn-outline-warning"><i class="fas fa-plus-circle"></i>Ajouté une promo</a>

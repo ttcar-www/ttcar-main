@@ -66,6 +66,10 @@ class Range
      */
     private $deleted_at;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $description;
 
     public function __construct()
     {
@@ -239,4 +243,21 @@ class Range
     {
         $this->deleted_at = $deleted_at;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
 }

@@ -71,11 +71,6 @@ class Cars
     private $transmission;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $description;
-
-    /**
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $clim;
@@ -479,23 +474,6 @@ class Cars
     public function setContactActived(bool $contactActived): void
     {
         $this->contactActived = $contactActived;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description): void
-    {
-        $this->description = $description;
     }
 
     /**
