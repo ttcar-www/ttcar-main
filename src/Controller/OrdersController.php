@@ -127,7 +127,7 @@ class OrdersController extends AbstractController
         $order = new Order();
 
             // Utilisateur
-            if ($this->getUser()) {
+     /*       if ($this->getUser()) {
                 $user = $this->getDoctrine()
                     ->getRepository(Customer::class)
                     ->findOneBy(['user' => $this->getUser()->getId()]);
@@ -147,7 +147,12 @@ class OrdersController extends AbstractController
                 $formOrder = $this->createForm(
                     OrderFormType::class,
                     $order);
-            }
+            }*/
+
+        $user = null;
+        $formOrder = $this->createForm(
+            OrderFormType::class,
+            $order);
 
             //form Order
             $formOrder->handleRequest($request);
@@ -221,6 +226,10 @@ class OrdersController extends AbstractController
             $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('main/order.html.twig', [
+            'date_depart' => $_SESSION['searchResult']['dateStart'],
+          'date_end' => $_SESSION['searchResult']['dateEnd'],
+          'name_depart' => $_SESSION['searchResult']['placeDepart']->getlibelle(),
+          'name_return' => $_SESSION['searchResult']['placeReturn']->getlibelle(),
           'car' => $car,
           'nb_days' => $nb_days,
           'promos' => $promos,

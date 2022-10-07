@@ -24,14 +24,13 @@
                                 <div class="card">
                                     <div class="p-md-5 p-3 mx-auto">
                                         <div class="header-wrapper d-flex flex-wrap justify-content-between mb-3">
-                                            <h2>G22-Sandero Stepway Essence BVM GPS Europe de l’Ouest</h2>
-                                            <a href="#">Modifier la sélection</a>
+                                            <h2>{{ car.name }}</h2>
+{#                                            <a href="#">Modifier la sélection</a>#}
                                         </div>
-
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="card p-3 bg-grey has-shadow">
-                                                    <img src="{{ asset('build/gamme-voiture.png') }}" alt="" />
+                                                    <img src="{{ asset('build/uploads/'~ car.getCarImg) }}" alt="" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -61,15 +60,15 @@
                                                     <div class="col-md-6 mb-3 mb-md-0">
                                                         <div class="card p-2 text-center fw-bold">
                                                             <p class="red">Départ</p>
-                                                            <p>PARIS PASTEUR GAREMONTPARNASSE</p>
-                                                            <p class="red">12 janvier 2022 à 12h00</p>
+                                                            <p>{{ name_depart }}</p>
+                                                            <p class="red">{{ date_depart|date("d/m/Y") }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="card p-2 text-center fw-bold">
                                                             <p class="red">Départ</p>
-                                                            <p>PARIS PASTEUR GAREMONTPARNASSE</p>
-                                                            <p class="red">12 janvier 2022 à 12h00</p>
+                                                            <p>{{ name_return }}</p>
+                                                            <p class="red">{{ date_end|date("d/m/Y") }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -78,7 +77,7 @@
                                     </div>
                                 </div>
 
-                                <div class="price mx-auto p-3">Prix total à payer maintenant : <span>1 202€</span></div>
+                                <div class="price mx-auto p-3">Prix total à payer maintenant : <span>{{ price }}€</span></div>
                             </div>
 
                             <div class="card mb-3">
@@ -123,34 +122,48 @@
                                             <p><span>ASTUCE :</span> Si vous avez déjà commandé chez nous, <a href="#">identifiez-vous</a> avec votre e-mail pour bénéficier de champs pré-remplis. Sinon, indiquez simplement un email pour créer votre compte.</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <form action="">
                                                 <div class="row mb-3">
                                                     <label for="connexion-email" class="col-sm-3 col-form-label">Email</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="connexion-email" placeholder="Votre email" />
                                                     </div>
                                                 </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{ form_start(formOrder) }}
+                            <form class="row gx-5">
+                                <div class="card bg-grey mb-3">
+                                    <div class="p-md-5 p-3">
+                                        <h3>Identification</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                    <div class="row mb-3">
+                                                        <label for="connexion-email" class="col-sm-3 col-form-label">Email</label>
+                                                        <div class="col-sm-9">
+                                                            {{ form_row(formOrder.email, { 'attr': {'class': 'form-control'} }) }}
+                                                        </div>
+                                                    </div>
+                                                <div class="row mb-3">
+                                                    <label for="connexion-email" class="col-sm-3 col-form-label">Mot de passe</label>
+                                                    <div class="col-sm-9">
+                                                        {{ form_row(formOrder.plainPassword, { 'attr': {'class': 'form-control'} }) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             <div class="card mb-3">
                                 <div class="p-md-5 p-4">
-                                    <form class="row gx-5">
                                         <div class="col-md-6">
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-3 col-form-label">Civilité</label>
                                                 <div class="col-sm-9 d-flex align-items-center">
                                                     <div class="form-check form-check-inline">
-                                                        <label class="form-check-label" for="inlineRadio1">Mr.</label>
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <label class="form-check-label" for="inlineRadio2">Mme.</label>
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                                    </div>
+                                                        {{ form_row(formOrder.customer_type, { 'attr': {'class': 'form-check-input'} }) }}                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,54 +173,37 @@
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-3 col-form-label">Nom</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.customer_name, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-4 col-form-label">Nom de jeune fille</label>
                                                 <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.customer_old_name, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-4 col-form-label">Date de naissance</label>
                                                 <div class="col-sm-8 date-select">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Jour</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Mois</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Année</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    {{ form_row(formOrder.birth_date) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-4 col-form-label">Ville de naissance</label>
                                                 <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.birth_city, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-5 col-form-label">Numéro de passeport</label>
                                                 <div class="col-sm-7">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.passport_number, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-4 col-form-label">Date de délivrance</label>
                                                 <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.passport_date) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -216,56 +212,46 @@
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-3 col-form-label">Nationalité</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option hidden disabled selected value>Choix</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    {{ form_row(formOrder.nationality, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-3 col-form-label">Prénom</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.customer_username, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-4 col-form-label">Pays de naissance</label>
                                                 <div class="col-sm-8">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option hidden disabled selected value>Choix</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    {{ form_row(formOrder.birth_country, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-6 col-form-label">Code postal de naissance</label>
                                                 <div class="col-sm-6">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.birth_postal, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-3 col-form-label">Profession</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option hidden disabled selected value>Choix</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    {{ form_row(formOrder.profession, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row pb-3">
                                                 <label for="inputEmail4" class="col-sm-4 col-form-label">Lieu de délivrance</label>
                                                 <div class="col-sm-8">
-                                                    <input type="email" class="form-control" id="inputEmail3" />
+                                                    {{ form_row(formOrder.passport_place, { 'attr': {'class': 'form-control'} }) }}
+                                                </div>
+                                            </div>
+                                            <div class="row pb-3">
+                                                <label for="inputEmail4" class="col-sm-4 col-form-label">Raison</label>
+                                                <div class="col-sm-8">
+                                                    {{ form_row(formOrder.reason, { 'attr': {'class': 'form-control form-control-sm'} }) }}
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
 
@@ -279,24 +265,28 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 pe-lg-5">
-                                            <form action="">
                                                 <div class="row mb-3">
                                                     <label for="connexion-email" class="col-sm-4 col-form-label">Numéro de vol</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="connexion-email" />
+                                                        {{ form_row(formOrder.number_plane, { 'attr': {'class': 'form-control'} }) }}
                                                     </div>
                                                 </div>
-                                            </form>
                                         </div>
                                         <div class="col-md-6">
-                                            <form action="">
                                                 <div class="row mb-3">
-                                                    <label for="connexion-email" class="col-sm-4 col-form-label">Heure d’arrivé</label>
+                                                    <label for="connexion-email" class="col-sm-4 col-form-label">Lieux d'arrivé </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="connexion-email" />
+                                                        {{ form_row(formOrder.place_plane, { 'attr': {'class': 'form-control'} }) }}
                                                     </div>
                                                 </div>
-                                            </form>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row mb-3">
+                                                <label for="connexion-email" class="col-sm-4 col-form-label">Heure d’arrivé</label>
+                                                <div class="col-sm-8">
+                                                    {{ form_row(formOrder.planeDate2) }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -305,79 +295,76 @@
                             <div class="row px-2 g-4">
                                 <div class="col-md-6 pe-md-2 px-0">
                                     <div class="card p-md-5 p-4">
-                                        <h3 class="red mb-3">Coordonnées permanentes</h3>
-                                        <form action="">
+                                        <h3 class="red mb-3">Coordonnées en France</h3>
                                             <div class="row mb-3">
                                                 <div class="col-sm-4 px-0">
                                                     <label for="exampleFormControlTextarea1" class="w-100 col-form-label">Adresse</label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                </div>
+                                                    {{ form_row(formOrder.adress, { 'attr': {'class': 'form-control'} }) }}                                                </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Ville</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="connexion-email" />
+                                                    {{ form_row(formOrder.city, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Code postal</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="connexion-email" />
+                                                    {{ form_row(formOrder.postal_code, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Pays</label>
                                                 <div class="col-sm-8">
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option hidden disabled selected value>Choix</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
+                                                    {{ form_row(formOrder.country, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Téléphone</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="connexion-email" />
+                                                    {{ form_row(formOrder.phone, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Mobile</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="connexion-email" />
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 ps-md-2 px-0">
                                     <div class="card p-md-5 p-4">
-                                        <h3 class="red mb-3">Coordonnées en France</h3>
-                                        <form action="">
+                                        <h3 class="red mb-3">Coordonnées permanentes</h3>
                                             <div class="row mb-3">
                                                 <div class="col-sm-4 px-0">
                                                     <label for="exampleFormControlTextarea1" class="w-100 col-form-label">Adresse</label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                    {{ form_row(formOrder.adress_no_ue, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Ville</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="connexion-email" />
+                                                    {{ form_row(formOrder.adress_city_hue, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Code postal</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" class="form-control" id="connexion-email" />
+                                                    {{ form_row(formOrder.adress_code_hue, { 'attr': {'class': 'form-control'} }) }}
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
+                                        <div class="row mb-3">
+                                            <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Pays</label>
+                                            <div class="col-sm-8">
+                                                {{ form_row(formOrder.adress_country_hue, { 'attr': {'class': 'form-control'} }) }}
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Commentaire</label>
+                                            <div class="col-sm-8">
+                                                {{ form_row(formOrder.comment, { 'attr': {'class': 'form-control form-control-lg textarena_large'} }) }}
+                                            </div>
+                                        </div>
+                                       {#     <div class="row mb-3">
                                                 <label for="exampleFormControlInput1" class="col-sm-4 col-form-label">Téléphone</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control" id="connexion-email" />
@@ -388,8 +375,7 @@
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control" id="connexion-email" />
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </div>#}
                                     </div>
                                 </div>
                             </div>
@@ -406,10 +392,13 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <button class="btn btn-primary px-4">RÉSERVER ET PAYER</button>
+                                    <button class="btn btn-primary px-4" type="submit">RÉSERVER ET PAYER</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                        {{ form_end(formOrder) }}
 
                         <div class="col-lg-3">
                             <div class="card bg-blue-transparent p-4 mb-3">
@@ -417,20 +406,32 @@
                                 <table class="table table-borderless price-table">
                                     <tbody>
                                     <tr>
-                                        <td>Forfait 35 jours :</td>
-                                        <td>1202 €</td>
+                                        <td>Forfait {{ nb_days}} jours :</td>
+                                        <td>{{ price }} €</td>
                                     </tr>
                                     <tr>
                                         <td>Livraison du véhicule :</td>
-                                        <td>Gratuit</td>
+                                        <td>
+                                            {% if price_depart == 0 %}
+                                                {{ 'form_order.free'|trans({}, 'messages') }} !
+                                            {% else %}
+                                                {{ price_depart }}€
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Retour du véhicule :</td>
-                                        <td>Gratuit</td>
+                                        <td>
+                                            {% if price_return == 0 %}
+                                                {{ 'form_order.free'|trans({}, 'messages') }} !
+                                            {% else %}
+                                                {{ price_return }}€
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>TOTAL :</td>
-                                        <td>Gratuit</td>
+                                        <td>{{ price }}€</td>
                                     </tr>
                                     </tbody>
                                 </table>
