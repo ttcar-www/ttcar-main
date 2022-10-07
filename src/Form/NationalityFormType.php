@@ -30,6 +30,16 @@ class NationalityFormType extends AbstractType
             ->add('name_en', TextType::class, array(
                 'label' => false
             ))
+            ->add('is_eu', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => '1',
+                    'Non' => '0'
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'required' => true,
+                'label' => false
+            ])
         ;
     }
 

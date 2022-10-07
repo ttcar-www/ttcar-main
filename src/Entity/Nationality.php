@@ -38,6 +38,11 @@ class Nationality
     private $order;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $is_eu;
+
+    /**
      * @ORM\Column(type="date", nullable = true)
      */
     private $create_at;
@@ -139,5 +144,21 @@ class Nationality
     public function setDeletedAt($deleted_at): void
     {
         $this->deleted_at = $deleted_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsEu()
+    {
+        return $this->is_eu;
+    }
+
+    /**
+     * @param mixed $is_eu
+     */
+    public function setIsEu($is_eu): void
+    {
+        $this->is_eu = $is_eu;
     }
 }

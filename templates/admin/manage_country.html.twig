@@ -25,6 +25,7 @@
                                     <th scope="col">Code</th>
                                     <th scope="col">Nom FR</th>
                                     <th scope="col">Nom EN</th>
+                                    <th scope="col">UE</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -35,6 +36,11 @@
                                         <td>{{ country.code }}</td>
                                         <td>{{ country.getNameFr }}</td>
                                         <td>{{ country.getNameEn }}</td>
+                                        {% if country.getIsEu == true %}
+                                            <td><i class="fas fa-check-circle" style="color: green"></i></td>
+                                        {% else %}
+                                            <td><i class="fas fa-times" style="color: red"></i></td>
+                                        {% endif %}
                                         <td>
                                             <a href="{{ path('delete_country', { 'id': country.id }) }}"
                                                onclick="return confirm(' you want to delete?');" class="action-delete"><i class="ti-trash"></i></a>

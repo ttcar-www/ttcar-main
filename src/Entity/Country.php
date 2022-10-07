@@ -70,6 +70,11 @@ class Country
     private $deleted_at;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $is_eu;
+
+    /**
      * @return mixed
      */
     public function getOrder()
@@ -172,5 +177,21 @@ class Country
     public function setDeletedAt($deleted_at): void
     {
         $this->deleted_at = $deleted_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsEu()
+    {
+        return $this->is_eu;
+    }
+
+    /**
+     * @param mixed $is_eu
+     */
+    public function setIsEu($is_eu): void
+    {
+        $this->is_eu = $is_eu;
     }
 }
